@@ -1,0 +1,121 @@
+/*practical 1 CSS : register V002-2*/
+
+
+*{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-color: lightgrey;
+    margin: auto;
+}
+
+body div{
+    text-align: center;
+}
+
+.nav{
+    width: 99%;
+    background-color: lightslategray;
+    text-align: right;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 0 10px;
+    border-bottom: 4px solid gray;
+}
+
+.nav a{
+    color: azure;
+    text-shadow: 2px 2px 20px whitesmoke;
+    text-decoration: none;
+    margin: 15px;
+}
+
+.nav a:hover{
+    text-decoration: underline;
+    transition: 0.5s;
+    background-color: gray;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.content{
+    padding: 5px;
+}
+
+.text-header{
+    margin-top: 15svh;
+    text-align: center;
+}
+
+.text-header h1{
+    font-size: 40px;
+    text-shadow: 2px 2px 20px black;
+}
+
+.content-box{
+    width: 80%;
+    height: auto;
+    margin: 12svh;
+    display: inline-block;
+    background-color: lightgrey;
+    border-radius: 15px;
+    border: 2px solid lightcyan;
+    box-shadow: 10px 10px gray;
+}
+
+.text-content{
+    font-size: large;
+    text-shadow: 2px 2px 20px black;
+    text-decoration: overline;
+}
+
+.content-box p, li{
+    margin: 10px;
+}
+
+.content-box table{
+    text-align: justify;
+    margin: 40px;
+}
+
+.about-me img {
+    border-radius: 20px;
+    margin: 20px;
+    border: 2px solid lightslategray;
+    box-shadow: 5px 5px gray;
+}
+
+/*https://www.gradient-animator.com/*/
+.background_grad_color {
+    background: linear-gradient(253deg, #d3d3d3, #b8c0d6);
+    background-size: 400% 400%;
+    animation: background-text 5s ease infinite;
+}
+
+.time-table p{
+    margin: 0;
+}
+
+@keyframes background-text {
+    0%{background-position:0% 41%}
+    50%{background-position:100% 60%}
+    100%{background-position:0% 41%}
+}
+
+.footer_line{
+    height: 3px;
+    border-width: 0;
+    color: gray;
+    background-color: gray;
+}
+
+footer{
+    padding: 15px;
+    text-align: justify;
+    background-color: lightslategray;
+    color: azure;
+    text-shadow: 2px 2px 20px whitesmoke;
+}
