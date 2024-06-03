@@ -47,7 +47,7 @@ function clicks(click_times, lang){
         } else if (click_times === 3){
             alert ("Stop spending time on this");
         } else if (click_times === 5){
-            comment_text.innerHTML = "Feel bored?";
+            comment_text.innerHTML = "<a href=\"https://www.youtube.com/watch?v=xvFZjo5PgG0&t=2s\">Feel bored?</a>";
         } else if (click_times === 6){
             alert ("You should do something more meaningful");
         } else if (click_times === 7){
