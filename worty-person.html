@@ -1,4 +1,4 @@
-<!--assignment V001-->
+<!--assignment v002-->
 <!--By Loh Min Yu-->
 
 <!DOCTYPE html>
@@ -13,16 +13,39 @@
 <nav>
     <div>
         <a href="index.html">Home</a>
-        <a href="#">page2</a>
-        <a href="#">page3</a>
+        <a href="#share">Share</a>
+        <a href="">Muyu</a>
     </div>
 </nav>
 
 <body>
     <div class="skeleton">
+        <div id="box-button" class="box-button">
+            <h1>Attention</h1>
+            <p><span id="spawn_text"></span></p>
+            <p><span id="comment_text"></span></p>
+            <button onclick="SenseText_eng()">Click Me!</button>
+        </div>
+    </div> 
+
+    <div>
+        <p>Link: <span id="linkContainer"></span></p>
+        <button onclick="generateLink()">Generate Link</button>
+    </div>
+
+
+
+    <div id="share" class="skeleton">
         <div class="box-button">
-            <span id="spawn_text"></span>
-            <button onclick="SenseText_ch()">Click Me!</button>
+            <h1>Share</h1>
+            <div>
+                <div><input type="number" id="share_number" placeholder="Numbers: 1 - 10"></div>
+                <div><input type="text" id="share_text" placeholder="Words: I, Fox, Doggy"></div>
+            </div>
+            <p><span id="spawnShareText"></span></p>
+            <button onclick="updateShareText()">Update</button>
+            <p>Share Link: <span id="share_link"></span></p>
+            <button onclick="generateShareLink()">Generate Link</button>
         </div>
     </div>
     <script src="worty-person_script.js"></script>
