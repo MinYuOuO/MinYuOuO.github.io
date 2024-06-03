@@ -4,7 +4,6 @@
 }
 
 nav{
-    width: 100%;
     height: 8svh;
     background-color: lightsteelblue;
     z-index: 1000;
@@ -25,6 +24,7 @@ nav a{
     transition-duration: 0.5s;
     text-shadow: 2px 2px 20px lightskyblue;
     border: 2px solid black;
+    text-decoration: overline;
 }
 
 nav a:hover{
@@ -37,6 +37,7 @@ nav a:hover{
 body{
     text-align: center;
     background-color: lightslategrey;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .skeleton{
@@ -47,20 +48,96 @@ body{
 
 .box-button{
     padding: 100px;
-    width: 80%;
-    text-align: center;
+    width: auto;
     background-color: gray;
     border-radius: 40px;
-    text-align: center;
+    box-shadow: 5px 5px slategray;
+    border: 1px solid lightsteelblue;
 }
 
 .box-button button{
-    width: 250px;
-    height: 100px;
+    position: relative;
+    margin: 20px;
+    width: 150px;
+    height: 50px;
     border-radius: 50px;
-    background-color: lightsteelblue;
+    text-decoration: none;
+    line-height: 2em;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 300%;
+    border: none;
+    position: relative;
+    z-index: 1;
 }
 
-.box-button:hover{
-    transition-duration: 1s;
+.box-button button:hover {
+    animation: animation 5s linear infinite;
+    border: none;
+}
+
+@keyframes animation {
+    0% {
+      background-position: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+}
+
+.box-button button:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+}
+
+.box-button button:hover::before {
+    filter: blur(20px);
+}
+  
+.box-button button:active {
+    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+}
+
+.box-button span{
+    text-align: center;
+    display: inline-block;
+    margin: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+    border-right: 1px solid transparent;
+    animation: caret 1s steps(1) infinite;
+}
+
+.box-button p{
+    color: azure;
+    font-size: medium;
+    font-weight: bold;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 5px lightsteelblue;
+    border-top: 2px solid;
+}
+
+.box-button h1{
+    margin: 50px;
+    color: aliceblue;
+    text-shadow: 2px 2px 5px lightsteelblue;
+}
+
+@keyframes caret{
+    50% { border-right-color: whitesmoke}
 }
