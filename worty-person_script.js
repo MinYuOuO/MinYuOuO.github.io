@@ -61,7 +61,7 @@ function clicks(click_times, lang){
 function generateLink() {
     var data = "ran=" + encodeURIComponent(random_num) + encodeURIComponent(random_text);
     var url = "https://wa.me/?text=" + encodeURIComponent("https://minyuouo.github.io/worty-person.html?") + data;
-    document.getElementById("linkContainer").innerHTML = '<a href="' + url + '" target="_blank">Click here to send via WhatsApp</a>';
+    document.getElementById("linkContainer").innerHTML = '<a href="' + url + '" target="_blank">Send via WhatsApp</a>';
 }
 
 function generateShareLink() {
@@ -69,7 +69,7 @@ function generateShareLink() {
     text_generate = document.getElementById("share_text");
     var data = "ran=" + encodeURIComponent(number_generate.value) + encodeURIComponent(text_generate.value);
     var url = "https://wa.me/?text=" + encodeURIComponent("https://minyuouo.github.io/worty-person.html?") + data;
-    document.getElementById("share_link").innerHTML = '<a href="' + url + '" target="_blank">Click here to send via WhatsApp</a>';
+    document.getElementById("share_link").innerHTML = '<a href="' + url + '" target="_blank">Send via WhatsApp</a>';
 }
 
 window.onload = function() {
