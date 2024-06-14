@@ -1,6 +1,3 @@
-<!--assignment v002-->
-<!--By Loh Min Yu-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +11,22 @@
     <div>
         <a href="index.html">Home</a>
         <a href="#share">Share</a>
-        <a href="">Muyu</a>
+        <a href="muyu.html">Muyu</a>
     </div>
 </nav>
 
 <body>
-    <div class="skeleton">
+    <dialog id="eCardWindow" style="background-color: lightslategrey;">
+        <div>
+            <div class="box-button">
+                <h1 style="font-size: medium;">You receive an E-card</h1>
+                <p><span id="card_text"></span></p>
+            </div>
+            <button onclick="eCardWindow.close()">Close</button>
+        </div>
+    </dialog>
+
+    <div class="container">
         <div id="box-button" class="box-button">
             <h1>Attention</h1>
             <p><span id="spawn_text"></span></p>
@@ -35,7 +42,7 @@
 
 
 
-    <div id="share" class="skeleton">
+    <div id="share" class="container">
         <div class="box-button">
             <h1>Share</h1>
             <div>
