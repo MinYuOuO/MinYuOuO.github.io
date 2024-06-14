@@ -5,6 +5,8 @@ var click_times = 0;
 var random_num = 0;
 var random_text = "";
 
+const eCardWindow = document.getElementById("eCardWindow");
+
 function GetRandomText(Target, Max) {
     return Target[Math.floor(Math.random()*Max)];
 }
@@ -68,9 +70,11 @@ function generateShareLink() {
     number_generate = document.getElementById("share_number");
     text_generate = document.getElementById("share_text");
     var data = "ran=" + encodeURIComponent(number_generate.value) + encodeURIComponent(text_generate.value);
-    var url = "https://wa.me/?text=" + encodeURIComponent("https://minyuouo.github.io/worty-person.html?") + data;
-    document.getElementById("share_link").innerHTML = '<a href="' + url + '" target="_blank">Send via WhatsApp</a>';
+    var url = "https://wa.me/?text=" + "Hey, watch this e-card I sent you: " + encodeURIComponent("https://minyuouo.github.io/worty-person.html?") + data;
+    document.getElementById("share_link").innerHTML =  '<a href="' + url + '" target="_blank">Send via WhatsApp</a>';
 }
+
+const cardText = document.getElementById("card_text");
 
 window.onload = function() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -82,12 +86,13 @@ window.onload = function() {
     }
     
     if (random_num || random_text) {
+        eCardWindow.showModal();
         if (random_num === 1){
-            text.innerHTML = random_num + " " + random_text + " is thinking of you now";
+            cardText.innerHTML = random_num + " " + random_text + " is thinking of you now";
         } else if (random_text == "I") {
-            text.innerHTML = random_num + " " + random_text + " am thinking of you now";
+            cardText.innerHTML = random_num + " " + random_text + " am thinking of you now";
         } else {
-            text.innerHTML = random_num + " " + random_text + " are thinking of you now";
+            cardText.innerHTML = random_num + " " + random_text + " are thinking of you now";
         }
     }
 };
