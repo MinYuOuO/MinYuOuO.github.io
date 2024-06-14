@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: slategray;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+    text-align: center;
+    color: white;
+}
+
+.woodFish{
+    width: 250px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.increment{
+    position: absolute;
+    font-size: 30px;
+    color: red;
+    animation: fadeUp 1s ease-out;
+    font-weight: bold;
+}
+
+.woodFish:active{
+    transform: scale(0.9);
+}
+
+.woodFish:active{
+    color: red;
+}
+
+#dialogWindow{
+    border-radius: 20px;
+    background-color: lightsteelblue;
+}
+
+#dialogWindow h2{
+    text-decoration: overline;
+    color: tomato;
+}
+
+@keyframes fadeUp{
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .woodFish{
+        width: 200px;
+    }
+    .increment{
+        font-size: 20px;
+    }
+}
