@@ -1,19 +1,23 @@
 
 *{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 nav{
+    width: 100%;
     height: 8svh;
     background-color: lightsteelblue;
     z-index: 1000;
     justify-content: center;
     display: flex;
     border-bottom: 2px solid gray;
+    overflow: hidden;
 }
 
 nav a{
-    font-size: medium;
+    font-size: 30px;
     padding: 10px;
     text-decoration: none;
     color: white;
@@ -40,7 +44,7 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
-.skeleton{
+.container{
     margin: 40px;
     display: inline-flex;
     text-align: center;
@@ -86,7 +90,6 @@ body{
       background-position: 400%;
     }
 }
-
 .box-button button:before {
     content: "";
     position: absolute;
@@ -110,9 +113,10 @@ body{
 }
 
 .box-button span{
+    font-size: 20px;
     text-align: center;
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
     overflow: hidden;
     white-space: nowrap;
     font-weight: 500;
@@ -133,26 +137,51 @@ body{
 }
 
 .box-button h1{
-    margin: 50px;
+    margin: 30px;
     color: aliceblue;
     text-shadow: 2px 2px 5px lightsteelblue;
+}
+
+#eCardWindow{
+    border-radius: 20px;
+    margin: auto;
+    padding: auto;
 }
 
 @keyframes caret{
     50% { border-right-color: whitesmoke}
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
     .box-button{
-        padding: 20px; 
+        padding: 20px;
+        margin: 20px;
     }
     .box-button button{
-        width: auto;
-    }
-    .nav{
         width: 100%;
+        margin: 5px 0;
     }
-    .nav a{
-        padding: 0;
+    .box-button span{
+        font-size: small;
+    }
+    nav a{
+        font-size: medium;
+        margin: 5px;
     }
   }
+
+@media only screen and (max-width: 385px) {
+    .box-button{
+        padding: 5px;
+    }
+    .box-button button{
+        width: 80%;
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .box-button h1{
+        margin: 25px;
+    }
+}
