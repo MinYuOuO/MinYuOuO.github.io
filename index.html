@@ -1,203 +1,102 @@
-<!--Practical 2: personal page V002-2-->
-<!--By Loh Min Yu-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index-style_V002-2.css" type="text/css">
-    <!--<link rel="stylesheet" href="practical2-style_V002-1.css" type="text/css">-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>practical 2</title>
+    <link rel="stylesheet" href="./src/style/main.css" type="text/css">
+    <link rel="shortcut icon" href="./src/assets/logo.ico" type="image/icon">
+    <script src="./src/script/main.js"></script>
+    <script src="./src/script/animation.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Miu - Home Page</title>
 </head>
 
-<header>
-    <div class="nav">
-        <a href="practical2_V002-2.html" title="Home">Home</a>
-        <a href="#text-about-me" title="About Me">About Me</a>
-        <a href="#text-skills-expertise" title="Skills">Skills & Expertise</a>
-        <a href="#text-project" title="Projects">Projects</a>
-        <a href="#text-contact" title="Contact">Contact</a>
-        <a href="#text-time-table" title="Time Table">Time Table</a>
-    </div>
-</header>
-
-<body class="background_grad_color">
-    <div>
-        <div class="content">
-            <div class="text-header">
-                <h1>Welcome to Bitbard</h1>
-            </div>
+<body>
+    <header>
+        <div class="nav">
+            <a href="./index.html" title="Home">Home</a>
+            <a href="./project.html" title="Project">Project</a>
+            <a href="./index.html#contact" title="Contact">Contact</a>
+            <a href="" title="Resume">Resume</a>
         </div>
-
-        <div>
-            <div class="content" id="text-about-me">
-                <div class="content-box about-me">
-                    <h2 class="text-content">About Me</h2>
-                    <table>
-                        <tr>
-                            <td><img src="personal-img.jpg" height="200px" alt="Personal Image"></td>
-                            <td>
-                                <p>I am a student at Raffles University.</p>
-                                <p>Pursuing a Bachelor's degree in Information Technology</p>
-                                <p>My hobbies are reading literary works (poetry and prose) and novels (sci-fi and serialized novels)</p>
-                                <p>My aspiration for the future is to contribute to the gaming industry and software development.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="content" id="text-skills-expertise">
-                <div class="content-box">
-                    <h2 class="text-content">Skills & Expertise</h2>
-                    <table>
-                        <tr>
-                            <td>
-                                <ul>
-                                    <li>Proficient in microsoft word, powerpoint and excel</li>
-                                    <li>Slightly understanding on Python</li>
-                                    <li>Could understand HTML, CSS and JavaScript</li>
-                                    <li>Learned to use Blender, Tinkercad and prisma3D</li>
-                                    <li>Proficient in operating Unity and Unreal Engine</li>
-                                    <li>Learning on various professional editing software</li>
-                                </ul>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="content" id="text-project">
-                <div class="content-box">
-                    <h2 class="text-content">Project</h2>
-                    <table border="1">
-                        <tr>
-                            <td>
-                                <h3>Project 1 : Student Management System</h3>
-                                <p>Programming Language: Python</p>
-                                <p>language: Chinese & English</p>
-                            </td>
-                            <td><img src="/images/" alt="IMG"></td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <h3>Project 2 : House</h3>
-                                <p>3D Project</p>
-                            </td>
-                            <td><img src="/images/" alt="IMG"></td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <h3>Project 3 : Worthy Person</h3>
-                                <p>Web Programming Assignment</p>
-                            </td>
-                            <td><a href="worty-person.html" title="Worty">Link</a></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="content" id="text-contact">
-                <div class="content-box">
-                    <h2 class="text-content">Contact Me</h2>
-                    <table>
-                        <tr>
-                            <td id="content">Phone: </td>
-                            <td><a href="tel:+60127659611p000">6012-765 9611</a></td>
-                        </tr>
-                        <tr>
-                            <td id="content">Email: </td>
-                            <td><a href="mailto:lohminyu1999@gmailcom">lohminyu1999@gmail.com</a></td>
-                        </tr>
-                        <tr>
-                            <td id="content">Facebook: </td>
-                            <td><a href="https://www.facebook.com/minyu.loh.1">minyu.loh</a></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="content" id="text-time-table">
-                <div class="content-box time-table">
-                    <h2 class="text-content">My Time Table</h2>
-                    <p>Raffles University</p>
-                    <p>Programme Timetable - Jan 2024 Semester</p>
-                    <p>Period : May 2024 to Aug 2024</p>
-                    <p style="text-align: justify;">Programme : Bachelor of Information Technology</p>
-                    <table border="1">
-                        <tr>
-                            <td>Day / Time</td>
-                            <td colspan="2">8:00AM - 8:59AM</td>
-                            <td colspan="2">9:00AM - 9:59AM</td>
-                            <td colspan="2">10:00AM - 10:59AM</td>
-                            <td colspan="2">11:00AM - 11:59AM</td>
-                            <td colspan="3">12:00AM - 12:59AM</td>
-                            <td colspan="2">1:00PM - 1:59PM</td>
-                            <td colspan="2">2:00PM - 2:59PM</td>
-                            <td colspan="2">3:00PM - 3:59PM</td>
-                            <td colspan="2">4:00PM - 4:59PM</td>
-                            <td colspan="2">5:00PM - 6:00PM</td>
-                        </tr>
-                        <tr>
-                            <td>Monday</td>
-                            <div style="border: 1 ;">
-                                <td colspan="1" style="border-right: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-right: 0; border-left: 0;"></td>
-                                <td colspan="1" style="border-left: 0;"></td>
-                            </div>
-                            <td colspan="3"></td>
-                            <td colspan="6" style="background-color: bisque;"><p>BAI12153 Web Programming</p><p>Dr Choo - Academic room 12</p></td>
-                            <td colspan="4"></td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td colspan="1"></td>
-                            <td colspan="6" style="background-color: aqua;"><p>MPU3213 Bahasa Kebangsaan A</p><p>Salmiah - Academic Room 5 & 6</p></td>
-                            <td colspan="1"></td>
-                            <td colspan="3"></td>
-                            <td colspan="6" style="background-color: yellow;"><p>BAI12133 Operating System</p><p>Dr Pong - Academic Room 12</p></td>
-                            <td colspan="4"></td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td colspan="8"></td>
-                            <td colspan="3"></td>
-                            <td colspan="10"></td>
-                            <td colspan="3"></td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td colspan="8"></td>
-                            <td colspan="3"></td>
-                            <td colspan="10"></td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td colspan="1"></td>
-                            <td colspan="6" style="background-color: blanchedalmond;"><p>BAI12123 Databases</p><p>PT Kang - Academic Room 9</p></td>
-                            <td colspan="1"></td>
-                            <td colspan="6" style="background-color: blueviolet;"><p>BAI12113 Computer Organisation and Architecture</p><p>PT Kang - Academic Room 9</p></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <hr class="footer_line">
-            <footer>
-                <p>© 2024 BitBard. All rights reserved.</p>
-            </footer>
+    </header>
+    <div class="section">
+        <div id="container">
+            <canvas id="canvas" width="800" height="600"></canvas>
+            <div id="title">Logic   |   Creativity  |   Livelong Learning</div>
+            <div class="scroll-indicator"></div>
         </div>
     </div>
+
+    <hr style="border: 1px solid #000;">
+
+    <div class="section">
+        <div id="about">
+            <h1>Hello, this is Min Yu, a learner...</h1>
+            <p>Explore my projects and learn more about me.</p>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #000;">
+
+    <div class="section">
+        <div id="contact">
+            <h1>Contact Me</h1>
+            <p>Email: <a href="mailto:lohminyu1999@gmail.com">lohminyu1999@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/min-yu-loh-329377345/">Min Yu Loh</a></p>
+            <p>GitHub: <a href="https://github.com/MinYuOuO">MinYuOuO</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/minyu.loh.1">Min Yu Loh</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/loh_min_yu/">@loh_min_yu</a></p>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #000;">
+
+    <footer>
+            <p>© 2025 Loh Min Yu. All rights reserved.</p>
+        </footer>
+    <script>
+        window.addEventListener('load', () => {
+            new Tesseract();
+            new NavBackground();
+            document.querySelectorAll('.nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Update active state
+                            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+                            this.classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Update active menu on scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const sections = document.querySelectorAll('.section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav a').forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === current) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
