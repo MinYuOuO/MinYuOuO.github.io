@@ -14,13 +14,13 @@
 <body>
     <header>
         <div class="nav">
-            <a href="./index.html" title="Home">Home</a>
+            <a href="./index.html#home" title="Home">Home</a>
             <a href="./project.html" title="Project">Project</a>
             <a href="./index.html#contact" title="Contact">Contact</a>
             <a href="" title="Resume">Resume</a>
         </div>
     </header>
-    <div class="section">
+    <div class="section" id="home">
         <div id="container">
             <canvas id="canvas" width="800" height="600"></canvas>
             <div id="title">Logic   |   Creativity  |   Livelong Learning</div>
@@ -53,50 +53,8 @@
     <hr style="border: 1px solid #000;">
 
     <footer>
-            <p>© 2025 Loh Min Yu. All rights reserved.</p>
-        </footer>
-    <script>
-        window.addEventListener('load', () => {
-            new Tesseract();
-            new NavBackground();
-            document.querySelectorAll('.nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId !== '#') {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
-                            
-                            // Update active state
-                            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
-                            this.classList.add('active');
-                        }
-                    }
-                });
-            });
-            
-            // Update active menu on scroll
-            window.addEventListener('scroll', function() {
-                let current = '';
-                const sections = document.querySelectorAll('.section');
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (scrollY >= sectionTop - 100) {
-                        current = '#' + section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.nav a').forEach(a => {
-                    a.classList.remove('active');
-                    if (a.getAttribute('href') === current) {
-                        a.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
+        <p>© 2025 Loh Min Yu. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
