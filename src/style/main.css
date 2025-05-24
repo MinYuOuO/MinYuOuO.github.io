@@ -69,6 +69,7 @@ body {
 
 /* Nav bar styling */
 .nav {
+    transition: all 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,20 +103,31 @@ body {
 .nav a.active {
     color: #00ffff;
     font-weight: 700;
+    border-bottom: #aaaaaa 3px solid;
+    border-radius: 3px;
 }
 
 /* Active page indicator */
 .nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
+    bottom: -8px;
+    width: 8px;
+    height: 8px;
     background: #00ffff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #00ffff;
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+}
+
+.nav.scrolled {
+    border-radius: 0 0 30px 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
+
+.nav.onclick {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 5px rgba(255, 255, 255, 0.3);
 }
 
 /* Header positioning */
@@ -125,6 +137,13 @@ header {
     width: 100%;
     z-index: 100;
     padding: 10px 0;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+header.scrolled {
+    transform: translateY(-20%);
+    background-color: rgba(10, 10, 20, 0.9);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Nav background canvas */
@@ -262,6 +281,12 @@ footer {
         padding: 8px 10px;
         margin: 0 2px;
         font-size: 14px;
+    }
+
+    .nav.scrolled {
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: flex-end;
     }
 }
 
