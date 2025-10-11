@@ -1,56 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/style/main.css" type="text/css">
-    <link rel="shortcut icon" href="./src/assets/logo.ico" type="image/icon">
-    <script src="./src/script/main.js"></script>
-    <script src="./src/script/animation.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <title>Miu - Home Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Miu — Portfolio</title>
+
+    <meta name="description"
+        content="Loh Min Yu — IT student & software engineering / AI enthusiast. Projects, skills, interests, and experience." />
+    <link rel="canonical" href="./index.html" />
+    <link rel="icon" href="./src/assets/logo.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/style/main.css" type="text/css" />
+
+    <!-- Defer scripts for performance -->
+    <script src="./src/script/animation.js" defer></script>
+    <script src="./src/script/main.js" defer></script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Loh Min Yu",
+        "jobTitle": "IT Student | Software Engineering & AI Enthusiast",
+        "url": "https://example.com/",
+        "sameAs": [
+          "https://www.linkedin.com/in/min-yu-loh-329377345/",
+          "https://github.com/MinYuOuO",
+          "https://www.instagram.com/loh_min_yu/"
+        ]
+      }
+    </script>
 </head>
 
 <body>
     <header>
-        <div class="nav">
-            <a href="./index.html#home" title="Home">Home</a>
-            <a href="./project.html" title="Project">Project</a>
+        <nav class="nav" aria-label="Primary">
+            <a href="./index.html#home" title="Home" class="active">Home</a>
+            <a href="./project.html" title="Projects">Projects</a>
+            <a href="./index.html#skills" title="Skills">Skills</a>
+            <a href="./index.html#about" title="About">About</a>
             <a href="./index.html#contact" title="Contact">Contact</a>
-            <a href="" title="Resume">Resume</a>
-        </div>
+            <a href="./src/assets/resume.pdf" title="Resume" target="_blank" rel="noopener">Resume</a>
+        </nav>
     </header>
-    <div class="section" id="home">
-        <div id="container">
-            <canvas id="canvas" width="800" height="600"></canvas>
-            <div id="title">Logic   |   Creativity  |   Livelong Learning</div>
-            <div class="scroll-indicator"></div>
-        </div>
-    </div>
 
-    <hr style="border: 1px solid #000;">
+    <main>
+        <!-- HERO -->
+        <section class="section" id="home" aria-label="Hero">
+            <div id="container" role="img" aria-label="Animated 4D tesseract visualization">
+                <canvas id="canvas"></canvas>
+                <div id="title">Logic · Creativity · Lifelong Learning</div>
+                <div class="scroll-indicator" aria-hidden="true"></div>
+            </div>
+        </section>
 
-    <div class="section">
-        <div id="about">
-            <h1>Hello, this is Min Yu, a learner...</h1>
-            <p>Explore my projects and learn more about me.</p>
-        </div>
-    </div>
+        <hr aria-hidden="true" />
 
-    <hr style="border: 1px solid #000;">
+        <!-- PROJECTS PREVIEW -->
+        <section class="section" id="projects">
+            <div class="wrap">
+                <h1>Featured Projects</h1>
+                <p class="lead">
+                    A selection of work across software, games, and AI Application. See more on the
+                    <a href="./project.html">Projects page</a>.
+                </p>
+                <div class="grid projects-grid">
+                    <!-- Example card: replace images/links/content -->
+                    <article class="card project" data-tags="c++ tool">
+                        <img src="./src/assets/projects/travel-calc-app.png"Travel Calculator App UI"
+                            loading="lazy" />
+                        <div class="card-body">
+                            <h3>Travel Calculator App</h3>
+                            <p>Plan trips with cost/time breakdowns and route options.</p>
+                            <div class="tags">
+                                <span>C++</span><span>Tool</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="./project.html#travel-calculator" class="btn">Details</a>
+                                <a href="https://github.com/MinYuOuO/Travel-Calculator-App" target="_blank" rel="noopener"
+                                    class="btn ghost">Code</a>
+                            </div>
+                        </div>
+                    </article>
 
-    <div class="section">
-        <div id="contact">
-            <h1>Contact Me</h1>
-            <p>Email: <a href="mailto:lohminyu1999@gmail.com">lohminyu1999@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/min-yu-loh-329377345/">Min Yu Loh</a></p>
-            <p>GitHub: <a href="https://github.com/MinYuOuO">MinYuOuO</a></p>
-            <p>Facebook: <a href="https://www.facebook.com/minyu.loh.1">Min Yu Loh</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/loh_min_yu/">@loh_min_yu</a></p>
-        </div>
-    </div>
+                    <!-- Before/After Case Study card -->
+                    <article class="card project" data-tags="web">
+                        <div class="before-after">
+                            <img src="./src/assets/projects/website-before.png" alt="Before redesign" class="before"
+                                loading="lazy" />
+                            <img src="./src/assets/projects/website-after.png" alt="After redesign" class="after"
+                                loading="lazy" />
+                            <input type="range" class="ba-slider" min="0" max="100" value="100"
+                                aria-label="Slide to compare before (Version 1) and after (Version 2)." />
+                        </div>
+                        <div class="card-body">
+                            <h3>Portfolio Redesign (Before/After)</h3>
+                            <p>From static page to interactive, accessible portfolio.</p>
+                            <div class="tags"><span>Web</span><span>UI/UX</span></div>
+                            <div class="card-actions">
+                                <a href="./project.html#portfolio-redesign" class="btn">Details</a>
+                            </div>
+                        </div>
+                    </article>
 
-    <hr style="border: 1px solid #000;">
+                    <article class="card project" data-tags="c++ game">
+                        <img src="./src/assets/projects/hangman-game.png" alt="Hangman Game"
+                            loading="lazy" />
+                        <div class="card-body">
+                            <h3>Hangman Game</h3>
+                            <p>Console-based Hangman Game.</p>
+                            <div class="tags">
+                                <span>C++</span><span>Game</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="./project.html#Hangman-Game" class="btn">Details</a>
+                                <a href="https://github.com/MinYuOuO/Hangman-Game" target="_blank" rel="noopener"
+                                    class="btn ghost">Code</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <hr aria-hidden="true" />
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="wrap">
+                <h1>Skills & Tools</h1>
+                <div class="skills">
+                    <div class="skill-group">
+                        <h3>Languages</h3>
+                        <div class="chips">
+                            <span>Python</span><span>C++</span><span>C#</span><span>JavaScript</span><span>HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Frameworks & Tech</h3>
+                        <div class="chips">
+                            <span>Flask/FastAPI</span><span>Unity</span><span>IoT</span><span>Git</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Domains</h3>
+                        <div class="chips">
+                            <span>Software Engineering</span><span>AI/ML</span><span>Cybersecurity Intro</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Certifications</h3>
+                        <ul class="timeline">
+                            <li>
+                                <strong>JomHack Varsity Challenge 2025</strong> — Apr 2025
+                            </li>
+                            <li>
+                                <strong>Cisco Introduction to Cybersecurity</strong> — Mar
+                                2025
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr aria-hidden="true" />
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div id="about-card">
+                <h1>Hello, this is Min Yu — a learner.</h1>
+                <p>
+                    I’m a Bachelor of Information Technology student interested in
+                    software engineering, game development, and AI systems. I enjoy
+                    solving complex problems with pragmatic thinking and structured
+                    logic. I also explore existential/nihilistic ideas, and balance
+                    meaning with craft. Outside of tech I love literature and the art of
+                    tea.
+                </p>
+
+                <div class="two-col">
+                    <div>
+                        <h3>Experience</h3>
+                        <ul class="timeline">
+                            <li>
+                                <strong>Vice President, Digital Technology Club</strong> — Dec
+                                2024–Present (Raffles University)
+                            </li>
+                            <li>
+                                <strong>Treasurer, Student Representative Council</strong> —
+                                Nov 2024–Present (Raffles University)
+                            </li>
+                        </ul>
+                        <h3>Education</h3>
+                        <ul class="timeline">
+                            <li>
+                                <strong>Bachelor of Information Technology</strong>, Raffles
+                                University — 2024–2026
+                            </li>
+                            <li>
+                                <strong>Foon Yew High School</strong> (Accounting) — 2018–2023
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Interests</h3>
+                        <div class="chips">
+                            <span>AI Systems</span><span>Game Production</span><span>Technology</span><span>Coding</span><span>Tea Cultural</span>
+                        </div>
+                        <h3>Languages</h3>
+                        <div class="chips">
+                            <span>中文 — Professional</span><span>English — Limited Working</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr aria-hidden="true" />
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div id="contact-card">
+                <h1>Contact Me</h1>
+                <p>
+                    Email: 
+                    <a href="mailto:lohminyu1999@gmail.com"> lohminyu1999@gmail.com</a>
+                </p>
+                <p>
+                    LinkedIn: 
+                    <a href="https://www.linkedin.com/in/min-yu-loh-329377345/" target="_blank" rel="noopener"> Min Yu
+                        Loh</a>
+                </p>
+                <p>
+                    GitHub: 
+                    <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener"> MinYuOuO</a>
+                </p>
+                <p>
+                    Facebook: 
+                    <a href="https://www.facebook.com/minyu.loh.1" target="_blank" rel="noopener"> Min Yu Loh</a>
+                </p>
+                <p>
+                    Instagram: 
+                    <a href="https://www.instagram.com/loh_min_yu/" target="_blank" rel="noopener"> @loh_min_yu</a>
+                </p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>© 2025 Loh Min Yu. All rights reserved.</p>
