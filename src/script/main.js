@@ -37,7 +37,7 @@ window.playHoverSound = playHoverSound;
 window.playClickSound = playClickSound;
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================
     // 1. MOBILE MENU
     // ==========================================
@@ -116,6 +116,80 @@ document.addEventListener('DOMContentLoaded', () => {
             link: 'https://github.com/MinYuOuO/Hangman-Game'
         },
         {
+            id: 'miu-portfolio',
+            title: 'Miu | Architect of Dissociative Recombination',
+            type: 'Web Portfolio',
+            stack: ['HTML', 'Tailwind CSS', 'JavaScript', 'Three.js', 'WebGL', 'Web Audio API'],
+            shortDesc: 'Experimental portfolio SPA exploring Digital Deconstruction through WebGL physics, kinetic typography, and procedural audio.',
+            fullDesc: `
+                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
+
+                <p class="mb-4">
+                    Miu Portfolio is a high-performance, single-page application that treats the interface as a living computational organism.
+                    User input injects energy into the system, triggering controlled visual dissociation and recomposition in real time.
+                </p>
+
+                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
+                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
+                    <li><strong>WebGL Core:</strong> Three.js scene with instanced geometry and post-processing for 60 FPS performance.</li>
+                    <li><strong>Input-Driven Physics:</strong> Mouse and scroll interactions directly modulate camera, particles, and shaders.</li>
+                    <li><strong>Procedural Systems:</strong> Real-time audio synthesis and glitch effects—no pre-rendered assets.</li>
+                </ul>
+            `,
+            link: 'https://github.com/MinYuOuO/MinYuOuO.github.io'
+        },
+        {
+            id: 'stellar-echoes',
+            title: 'Stellar Echoes',
+            type: 'Web / Interactive Memory Archive',
+            stack: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'Web Audio API'],
+            shortDesc: 'An immersive 3D memory archive where photographs are preserved as floating data shards inside a cinematic WebGL...',
+            fullDesc: `
+                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: MEMORY_RECALL_ACTIVE</h3>
+
+                <p class="mb-4">
+                    Stellar Echoes is an experimental WebGL experience that transforms personal memories into navigable, three-dimensional artifacts.
+                    Photos are embedded within floating geometric shards, forming a constellation that users can explore through rotation, zoom, and interaction.
+                </p>
+
+                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
+                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
+                    <li><strong>Boot Sequence Preloader:</strong> Image assets are buffered with a system-style progress log before activation.</li>
+                    <li><strong>3D Memory Shards:</strong> Icosahedron-based particles arranged in spherical space using Three.js.</li>
+                    <li><strong>Interactive Recall:</strong> Raycasting enables direct selection and modal viewing of memories.</li>
+                    <li><strong>Procedural Atmosphere:</strong> Real-time audio cues and bloom post-processing enhance emotional immersion.</li>
+                </ul>
+            `,
+            link: 'stellarEchoes.html'
+        },
+        {
+            id: 'colorella-ticketing',
+            title: 'Colorella Ticketing System',
+            type: 'Desktop Application',
+            stack: ['Python', 'Tkinter', 'Google Sheets API', 'Pandas'],
+            shortDesc: 'A lightweight desktop system for syncing registrations, managing ticket tiers, and tracking attendance using Google...',
+            fullDesc: `
+                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
+
+                <p class="mb-4">
+                    Colorella Ticketing System is a pragmatic, Python-based desktop tool designed to manage real-world event workflows.
+                    It ingests Google Form responses, enforces tier constraints, and provides a responsive UI for payment review and attendance tracking—
+                    all while using Google Sheets as a transparent, auditable data source.
+                </p>
+
+                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
+                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
+                    <li><strong>Google Sheets Backend:</strong> Sheets API used as a shared, live data store.</li>
+                    <li><strong>Tiered Ticket Logic:</strong> Early Bird / Mid / Last tiers with caps, waitlists, and position tracking.</li>
+                    <li><strong>Deduplication Engine:</strong> Email-based conflict resolution with deterministic tier assignment.</li>
+                    <li><strong>Asynchronous UI:</strong> Background threads ensure Tkinter remains fast and non-blocking.</li>
+                    <li><strong>Layered OOP Design:</strong> Gateway → repositories → services → UI separation.</li>
+                </ul>
+            `,
+            link: 'https://github.com/MinYuOuO/colorella-ticket-system'
+        },
+
+        {
             id: 'travel',
             title: 'Travel Calculator',
             type: 'Utility System',
@@ -168,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
             `,
             link: 'https://github.com/MinYuOuO/SE-Assignment'
-        }
+        },
     ];
 
     const projectGrid = document.getElementById('project-grid');
@@ -177,30 +251,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProjects(count) {
         if (!projectGrid) return;
-        projectGrid.innerHTML = ''; 
-        
+        projectGrid.innerHTML = '';
+
         projects.slice(0, count).forEach(project => {
             const card = document.createElement('div');
             card.className = 'project-card p-6 cursor-pointer group flex flex-col h-full opacity-0 translate-y-4 animate-fade-in-up';
             card.style.animationFillMode = 'forwards';
             card.style.animation = `fadeInUp 0.5s ease forwards`;
-            
+
             card.setAttribute('data-id', project.id);
             card.addEventListener('mouseenter', playHoverSound);
             card.addEventListener('click', () => {
                 playClickSound();
                 openModal(project);
             });
-            
+
             card.innerHTML = `
                 <div class="flex justify-between items-start mb-4">
                     <span class="font-mono text-[10px] md:text-xs text-cerenkov border border-cerenkov px-2 py-1 rounded opacity-70 group-hover:opacity-100 transition-opacity">${project.type}</span>
-                    <span class="text-gray-600 text-[10px] md:text-xs font-mono">ID: ${Math.random().toString(36).substr(2, 6).toUpperCase()}</span>
+                    <span class="text-gray-600 text-[10px] md:text-xs font-mono">ID: ${project.id}</span>
                 </div>
                 <h3 class="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-cerenkov transition-colors">${project.title}</h3>
                 <p class="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">${project.shortDesc}</p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                    ${project.stack.slice(0,3).map(tech => `<span class="text-[10px] md:text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">${tech}</span>`).join('')}
+                    ${project.stack.slice(0, 3).map(tech => `<span class="text-[10px] md:text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">${tech}</span>`).join('')}
                 </div>
                 <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-auto">
                     <span class="text-[10px] md:text-xs font-mono text-gray-500 group-hover:text-cerenkov">CLICK_TO_DECRYPT</span>
@@ -217,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showMoreBtn.addEventListener('click', () => {
             playClickSound();
             renderProjects(projects.length);
-            showMoreBtn.style.display = 'none'; 
+            showMoreBtn.style.display = 'none';
         });
     }
 
@@ -228,9 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalLink = document.getElementById('modal-link');
 
     function openModal(project) {
-        if(!modal) return;
+        if (!modal) return;
         modalBody.innerHTML = project.fullDesc;
-        if(modalLink) {
+        if (modalLink) {
             modalLink.href = project.link;
             modalLink.style.display = (project.link === '#' || !project.link) ? 'none' : 'inline-block';
         }
@@ -239,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const closeModal = () => {
-        if(modal) {
+        if (modal) {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
@@ -268,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- POST PROCESSING SETUP ---
         const renderScene = new THREE.RenderPass(scene, camera);
-        
+
         // 1. Bloom Pass
         const bloomPass = new THREE.UnrealBloomPass(
             new THREE.Vector2(window.innerWidth, window.innerHeight),
@@ -291,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Optimize: Reduce shard count on mobile
         const isMobile = window.innerWidth < 768;
         const shardCount = isMobile ? 60 : 120;
-        
+
         const geometry = new THREE.IcosahedronGeometry(0.5, 0);
         const material = new THREE.MeshBasicMaterial({
             color: 0x00f0ff,
@@ -302,8 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const shards = new THREE.InstancedMesh(geometry, material, shardCount);
         const dummy = new THREE.Object3D();
-        const positions = []; 
-        const velocities = []; 
+        const positions = [];
+        const velocities = [];
 
         for (let i = 0; i < shardCount; i++) {
             dummy.position.set(
@@ -311,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 (Math.random() - 0.5) * 100,
                 (Math.random() - 0.5) * 50
             );
-            dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+            dummy.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
             dummy.scale.setScalar(Math.random() * 2 + 0.5);
             dummy.updateMatrix();
             shards.setMatrixAt(i, dummy.matrix);
@@ -327,21 +401,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- LINES ---
         // Buffer lines optimization
-        const maxLines = isMobile ? 200 : 400; 
+        const maxLines = isMobile ? 200 : 400;
         const lineGeo = new THREE.BufferGeometry();
-        const linePos = new Float32Array(maxLines * 2 * 3); 
-        const lineColors = new Float32Array(maxLines * 2 * 3); 
-        
+        const linePos = new Float32Array(maxLines * 2 * 3);
+        const lineColors = new Float32Array(maxLines * 2 * 3);
+
         lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos, 3));
         lineGeo.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
-        
-        const lineMat = new THREE.LineBasicMaterial({ 
-            vertexColors: true, 
-            transparent: true, 
-            opacity: 0.4, 
-            blending: THREE.AdditiveBlending 
+
+        const lineMat = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.4,
+            blending: THREE.AdditiveBlending
         });
-        
+
         const linesMesh = new THREE.LineSegments(lineGeo, lineMat);
         scene.add(linesMesh);
 
@@ -358,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dx = e.clientX - lastMouseX;
             const dy = e.clientY - lastMouseY;
             // Normalize velocity for RGB shift
-            mouseVelocity = Math.min(Math.sqrt(dx*dx + dy*dy) / 50, 1.0); 
+            mouseVelocity = Math.min(Math.sqrt(dx * dx + dy * dy) / 50, 1.0);
 
             lastMouseX = e.clientX;
             lastMouseY = e.clientY;
@@ -368,19 +442,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const animate = () => {
             requestAnimationFrame(animate);
             scrollY += (targetScrollY - scrollY) * 0.05;
-            camera.position.y = -scrollY * 0.02; 
+            camera.position.y = -scrollY * 0.02;
             camera.rotation.z = scrollY * 0.0005;
             camera.rotation.x = mouseY * 0.05;
             camera.rotation.y = mouseX * 0.05;
 
             // Decay RGB Shift
-            mouseVelocity *= 0.95; 
+            mouseVelocity *= 0.95;
             rgbShiftPass.uniforms['amount'].value = 0.0015 + (mouseVelocity * 0.005);
 
             const connectionDistance = 15;
             let vertexIndex = 0;
             let colorIndex = 0;
-            
+
             for (let i = 0; i < shardCount; i++) {
                 const pos = positions[i];
                 const vel = velocities[i];
@@ -393,9 +467,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Mouse Gravity
                 const mouseVec = new THREE.Vector3(mouseX * 30, mouseY * 30 + camera.position.y, 0);
                 if (pos.distanceTo(mouseVec) < 20) {
-                    vel.add(mouseVec.sub(pos).normalize().multiplyScalar(0.01)).multiplyScalar(0.95); 
+                    vel.add(mouseVec.sub(pos).normalize().multiplyScalar(0.01)).multiplyScalar(0.95);
                 } else {
-                    vel.clampLength(0, 0.03); 
+                    vel.clampLength(0, 0.03);
                 }
 
                 dummy.position.copy(pos);
@@ -407,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Line Logic (Only check subset for performance if needed)
                 for (let j = i + 1; j < shardCount; j++) {
                     const dist = pos.distanceTo(positions[j]);
-                    
+
                     if (dist < connectionDistance && vertexIndex < maxLines * 2 * 3) {
                         linePos[vertexIndex++] = pos.x;
                         linePos[vertexIndex++] = pos.y;
@@ -415,18 +489,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         linePos[vertexIndex++] = positions[j].x;
                         linePos[vertexIndex++] = positions[j].y;
                         linePos[vertexIndex++] = positions[j].z;
-                        
+
                         // Fade Alpha based on distance
                         const alpha = 1.0 - (dist / connectionDistance);
-                        const intensity = alpha * alpha; 
-                        
+                        const intensity = alpha * alpha;
+
                         // Blue Color (R,G,B)
                         lineColors[colorIndex++] = 0; lineColors[colorIndex++] = 0.94 * intensity; lineColors[colorIndex++] = 1.0 * intensity;
                         lineColors[colorIndex++] = 0; lineColors[colorIndex++] = 0.94 * intensity; lineColors[colorIndex++] = 1.0 * intensity;
                     }
                 }
             }
-            
+
             // Clear remaining buffer
             for (let k = vertexIndex; k < maxLines * 2 * 3; k++) {
                 linePos[k] = 0;

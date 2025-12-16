@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Stellar Echoes">
+    <meta name="keywords"
+        content="Loh Min Yu, Picture">
+    <meta name="author" content="Loh Min Yu">
     <title>Miu | Stellar Echoes</title>
 
     <link rel="icon" href="src/assets/logo.ico">
@@ -426,6 +431,12 @@
                 bg: 0x050505,
                 accent: 0x00f0ff,
                 glow: 0xff0055
+            },
+            zoom: {
+                min: 30,  // Closest
+                max: 180, // Furthest
+                current: 100, // Starting Z
+                speed: 0.1
             }
         };
 
@@ -516,7 +527,7 @@
 
             // 2. Camera
             state.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            state.camera.position.z = 100;
+            state.camera.position.z = CONFIG.zoom.current;
 
             // 3. Renderer
             state.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -634,6 +645,7 @@
         // ============================================
         function setupInteraction() {
             let startX = 0, startY = 0;
+            let lastTouchDist = 0;
 
             // Rotate logic
             document.addEventListener('mousedown', e => {
@@ -673,6 +685,56 @@
                     playSfx(600, 'sine');
                     openPhotoModal(target.userData.url);
                 }
+            });
+
+            // --- ZOOM LOGIC ---
+
+            // 1. Mouse Wheel Zoom
+            document.addEventListener('wheel', (e) => {
+                e.preventDefault();
+
+                const delta = e.deltaY;
+                const zoomAmount = delta * CONFIG.zoom.speed;
+
+                // Update target zoom
+                CONFIG.zoom.current = Math.max(
+                    CONFIG.zoom.min,
+                    Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount)
+                );
+
+                // Apply immediately (or smooth in animate loop if preferred)
+                // For direct feel:
+                state.camera.position.z = CONFIG.zoom.current;
+            }, { passive: false });
+
+            // 2. Touch Pinch Zoom
+            document.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 2) {
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+
+                    const dist = Math.hypot(
+                        touch1.clientX - touch2.clientX,
+                        touch1.clientY - touch2.clientY
+                    );
+
+                    if (lastTouchDist > 0) {
+                        const delta = lastTouchDist - dist;
+                        const zoomAmount = delta * CONFIG.zoom.speed * 2; // Multiplier for touch sensitivity
+
+                        CONFIG.zoom.current = Math.max(
+                            CONFIG.zoom.min,
+                            Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount)
+                        );
+                        state.camera.position.z = CONFIG.zoom.current;
+                    }
+
+                    lastTouchDist = dist;
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchend', () => {
+                lastTouchDist = 0;
             });
         }
 
