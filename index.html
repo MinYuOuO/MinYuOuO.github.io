@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Miu Portfolio - Architect of Dissociative Recombination. Exploring the intersection of Software Engineering, Game Development, and AI.">
-    <meta name="keywords" content="Portfolio, Software Engineer, Web Developer, Three.js, Creative Coding, Miu, Loh Min Yu">
+    <meta name="description"
+        content="Miu Portfolio - Exploring the intersection of Software Engineering, Game Development, and AI.">
+    <meta name="keywords"
+        content="Portfolio, Software Engineer, Web Developer, Three.js, Creative Coding, Miu, Loh Min Yu">
     <meta name="author" content="Loh Min Yu">
-    <title>Miu | Logic & Creativity</title>
-    
+    <title>Miu | Terminal</title>
+
     <!-- Tailwind CSS (CDN for standalone, would use build tool in full prod env) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -53,61 +56,85 @@
     <link rel="stylesheet" href="src/style/main.css">
     <link rel="icon" href="src/assets/logo.ico">
 </head>
+
 <body class="bg-abyssal text-white selection:bg-dissociation selection:text-white overflow-x-hidden">
 
     <!-- Three.js Background Canvas -->
-    <div id="canvas-container" class="fixed top-0 left-0 w-full h-full -z-10 opacity-100 transition-opacity duration-1000"></div>
+    <div id="canvas-container"
+        class="fixed top-0 left-0 w-full h-full -z-10 opacity-100 transition-opacity duration-1000"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 left-0 px-6 py-4 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <nav
+        class="fixed w-full z-50 top-0 left-0 px-6 py-4 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Brand / Logo -->
-            <a href="#" class="group flex items-center gap-2" onmouseenter="playHoverSound()" onclick="playClickSound()">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_8px_#00f0ff] transition-all duration-300">
-                    <path d="M10 30V10L20 20L30 10V30" stroke="#00f0ff" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
-                </svg>
-                <span class="font-mono font-bold text-xl text-white tracking-tighter group-hover:text-cerenkov transition-colors">&lt;MIU/&gt;</span>
+            <a href="#" class="group flex items-center gap-2" onmouseenter="playHoverSound()"
+                onclick="playClickSound()">
+                <span
+                    class="font-mono font-bold text-xl text-white tracking-tighter group-hover:text-cerenkov transition-colors">&lt;MIU/&gt;</span>
             </a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 text-sm font-mono text-gray-400">
-                <a href="#about" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">01. PROFILE</a>
-                <a href="#projects" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">02. ARCHIVES</a>
-                <a href="#experience" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">03. TIMELINE</a>
-                <a href="#contact" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">04. SIGNAL</a>
+                <a href="#about" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">01.
+                    PROFILE</a>
+                <a href="#projects" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">02.
+                    ARCHIVES</a>
+                <a href="#experience" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">03.
+                    TIMELINE</a>
+                <a href="#contact" class="hover:text-cerenkov transition-colors" onmouseenter="playHoverSound()">04.
+                    SIGNAL</a>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-cerenkov focus:outline-none" aria-label="Toggle Menu" onclick="playClickSound()">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <button id="mobile-menu-btn" class="md:hidden text-cerenkov focus:outline-none" aria-label="Toggle Menu"
+                onclick="playClickSound()">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
             </button>
         </div>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-abyssal/95 border-b border-white/10 p-6 md:hidden flex-col space-y-4 font-mono text-sm text-gray-300 backdrop-blur-xl">
-            <a href="#about" class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all" onclick="playClickSound()">01. PROFILE</a>
-            <a href="#projects" class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all" onclick="playClickSound()">02. ARCHIVES</a>
-            <a href="#experience" class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all" onclick="playClickSound()">03. TIMELINE</a>
-            <a href="#contact" class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all" onclick="playClickSound()">04. SIGNAL</a>
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-abyssal/95 border-b border-white/10 p-6 md:hidden flex-col space-y-4 font-mono text-sm text-gray-300 backdrop-blur-xl">
+            <a href="#about"
+                class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all"
+                onclick="playClickSound()">01. PROFILE</a>
+            <a href="#projects"
+                class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all"
+                onclick="playClickSound()">02. ARCHIVES</a>
+            <a href="#experience"
+                class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all"
+                onclick="playClickSound()">03. TIMELINE</a>
+            <a href="#contact"
+                class="block hover:text-cerenkov py-2 border-l-2 border-transparent hover:border-cerenkov pl-4 transition-all"
+                onclick="playClickSound()">04. SIGNAL</a>
         </div>
     </nav>
 
     <!-- Main Scroll Container -->
     <main class="container mx-auto px-6 pt-32 pb-20 relative z-10 pointer-events-none">
-        
+
         <!-- Hero Section -->
         <section class="min-h-[85vh] flex flex-col justify-center items-start pl-4 md:pl-0 pointer-events-auto">
             <div class="border-l-2 border-cerenkov pl-6 md:pl-8 py-2 mb-8">
                 <p class="font-mono text-cerenkov mb-4 text-sm md:text-base">Hello, world. I am</p>
-                <h1 class="text-5xl sm:text-7xl md:text-9xl font-bold mb-4 leading-none glitch-text tracking-tight" data-text="LOH MIN YU">LOH MIN YU</h1>
+                <h1 class="text-5xl sm:text-7xl md:text-9xl font-bold mb-4 leading-none glitch-text tracking-tight"
+                    data-text="LOH MIN YU">LOH MIN YU</h1>
             </div>
             <h2 class="text-lg md:text-3xl text-gray-400 font-light mb-8 font-mono max-w-2xl">
-                Logic <span class="text-cerenkov px-2">|</span> Creativity <span class="text-cerenkov px-2">|</span> Lifelong Learning
+                Logic <span class="text-cerenkov px-2">|</span> Creativity <span class="text-cerenkov px-2">|</span>
+                Lifelong Learning
             </h2>
             <p class="max-w-xl text-gray-500 leading-relaxed mb-10 text-sm md:text-base">
-                Bachelor of IT student exploring the intersection of Software Engineering, Game Development, and AI systems. I craft systems where logic meets chaos.
+                Bachelor of IT student exploring the intersection of Software Engineering, Game Development, and AI
+                systems. I craft systems where logic meets chaos.
             </p>
-            <a href="#projects" class="btn-glitch px-8 py-4 font-mono text-cerenkov uppercase text-xs md:text-sm tracking-[0.2em] hover:text-black hover:bg-cerenkov transition-all" onmouseenter="playHoverSound()" onclick="playClickSound()">
+            <a href="#projects"
+                class="btn-glitch px-8 py-4 font-mono text-cerenkov uppercase text-xs md:text-sm tracking-[0.2em] hover:text-black hover:bg-cerenkov transition-all"
+                onmouseenter="playHoverSound()" onclick="playClickSound()">
                 Initialize_Sequence()
             </a>
         </section>
@@ -123,13 +150,32 @@
                         <div class="h-[1px] bg-white/20 flex-grow ml-4"></div>
                     </div>
                     <div class="prose text-gray-400 space-y-4 text-sm md:text-base leading-relaxed">
-                        <p>I enjoy solving complex problems with pragmatic thinking and structured logic. I also explore existential ideas, and balance meaning with craft. Currently serving as the <span class="text-white">Vice President of the Digital Technology Club</span> and Treasurer of the SRC at Raffles University.</p>
-                        
+                        <p>
+                            I enjoy <span class="text-white">solving complex problems</span> through disciplined logic
+                            and pragmatic design,
+                            shaping systems that are both intentional and resilient.
+                            My work moves between <span class="text-white">software engineering, game worlds, and
+                                intelligent systems</span>,
+                            while my thinking drifts toward <span class="text-white">existential and nihilistic
+                                questions</span>—
+                            not to escape meaning, but to construct it with care.
+                            Outside the machine, I find clarity in <span class="text-white">literature and the quiet
+                                ritual of tea</span>,
+                            grounding reflection so creation remains human.
+                        </p>
+
                         <!-- Link to Stellar Echoes Sub-site -->
                         <div class="mt-6">
-                            <a href="stellarEchoes.html" class="group inline-flex items-center font-mono text-xs text-cerenkov hover:text-white transition-colors" onmouseenter="playHoverSound()" onclick="playClickSound()">
-                                <span class="border-b border-cerenkov group-hover:border-white pb-1 tracking-widest">[ ACCESS_STELLAR_ECHOES ]</span>
-                                <svg class="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            <a href="stellarEchoes.html"
+                                class="group inline-flex items-center font-mono text-xs text-cerenkov hover:text-white transition-colors"
+                                onmouseenter="playHoverSound()" onclick="playClickSound()">
+                                <span class="border-b border-cerenkov group-hover:border-white pb-1 tracking-widest">[
+                                    ACCESS_STELLAR_ECHOES ]</span>
+                                <svg class="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -138,14 +184,15 @@
                 <!-- Terminal-Style Skill Matrix -->
                 <div class="order-2 bg-white/5 border border-white/10 p-6 rounded-sm backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-2">
-                        <h4 class="font-mono text-cerenkov text-sm uppercase tracking-widest">>> SYSTEM_CONFIGURATION</h4>
+                        <h4 class="font-mono text-cerenkov text-sm uppercase tracking-widest">>> SYSTEM_CONFIGURATION
+                        </h4>
                         <div class="flex gap-2">
                             <div class="w-3 h-3 rounded-full bg-dissociation/70"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-6 font-mono text-xs md:text-sm">
                         <div>
                             <span class="text-gray-500 block mb-2">// PROGRAMMING_LANGUAGES</span>
@@ -159,24 +206,27 @@
                         <div>
                             <span class="text-gray-500 block mb-2">// INDUSTRY_KNOWLEDGE</span>
                             <div class="grid grid-cols-2 gap-2 text-gray-400">
-                                <span>- Data Analysis</span>
-                                <span>- UML Design</span>
-                                <span>- CI/CD</span>
-                                <span>- SDLC</span>
+                                <span>- System Design, UML, SDLC</span>
+                                <span>- FP / OOP</span>
+                                <span>- Factory Pattern, MVC, DDD (Learning)</span>
+                                <span>- Continuous Integration</span>
+                                <span>- User Interface / User Experience</span>
                                 <span>- Project Management</span>
-                                <span>- Event Management</span>
                             </div>
                         </div>
                         <div>
                             <span class="text-gray-500 block mb-2">// TOOLS_&_DB</span>
                             <div class="flex flex-wrap gap-2 text-cerenkov">
-                                <span>SQLite</span> <span class="text-gray-600">|</span>
                                 <span>Git</span> <span class="text-gray-600">|</span>
+                                <span>Ionic</span> <span class="text-gray-600">|</span>
+                                <span>SQLite</span> <span class="text-gray-600">|</span>
                                 <span>Unity</span> <span class="text-gray-600">|</span>
-                                <span>Ionic</span>
+                                <span>Figma</span> <span class="text-gray-600">|</span>
+                                <span>Canva</span> <span class="text-gray-600">|</span>
+                                <span>Draw.io</span>
                             </div>
                         </div>
-                         <div>
+                        <div>
                             <span class="text-gray-500 block mb-2">// NATURAL_LANGUAGES</span>
                             <div class="flex justify-between text-gray-300">
                                 <span>Chinese [Native]</span>
@@ -195,7 +245,7 @@
                 <span class="font-mono text-cerenkov mr-4">02.</span>
                 <h3 class="text-2xl font-bold uppercase tracking-wider">Encrypted Archives</h3>
             </div>
-            
+
             <div class="bg-cerenkov/5 border border-cerenkov/20 p-4 mb-12 rounded-sm max-w-2xl mx-auto text-center">
                 <p class="text-cerenkov font-mono text-xs md:text-sm">
                     [!] CLASSIFIED DATA DETECTED. CLICK SHARDS TO DECRYPT.
@@ -207,7 +257,9 @@
             </div>
 
             <div class="text-center">
-                <button id="show-more-projects" class="btn-glitch px-6 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all" onclick="playClickSound()">
+                <button id="show-more-projects"
+                    class="btn-glitch px-6 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all"
+                    onclick="playClickSound()">
                     [LOAD_FULL_DATABASE]
                 </button>
             </div>
@@ -223,21 +275,30 @@
 
             <div class="relative border-l border-white/10 ml-3 space-y-16">
                 <div class="relative pl-8 group" onmouseenter="playHoverSound()">
-                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-cerenkov rounded-full shadow-[0_0_10px_#00f0ff] group-hover:scale-150 transition-transform"></div>
+                    <div
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-cerenkov rounded-full shadow-[0_0_10px_#00f0ff] group-hover:scale-150 transition-transform">
+                    </div>
                     <span class="font-mono text-xs text-cerenkov mb-1 block">Dec 2024 - Dec 2025</span>
-                    <h4 class="text-xl font-bold text-white group-hover:text-cerenkov transition-colors">Vice President, Digital Technology Club</h4>
+                    <h4 class="text-xl font-bold text-white group-hover:text-cerenkov transition-colors">Vice President,
+                        Digital Technology Club</h4>
                     <p class="text-sm text-gray-500 mb-2">Raffles University</p>
                 </div>
                 <div class="relative pl-8 group" onmouseenter="playHoverSound()">
-                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-cerenkov rounded-full group-hover:shadow-[0_0_10px_#00f0ff] transition-all"></div>
+                    <div
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-cerenkov rounded-full group-hover:shadow-[0_0_10px_#00f0ff] transition-all">
+                    </div>
                     <span class="font-mono text-xs text-cerenkov mb-1 block">Nov 2024 - Dec 2025</span>
-                    <h4 class="text-xl font-bold text-white group-hover:text-cerenkov transition-colors">Treasurer, Student Representative Council</h4>
+                    <h4 class="text-xl font-bold text-white group-hover:text-cerenkov transition-colors">Treasurer,
+                        Student Representative Council</h4>
                     <p class="text-sm text-gray-500 mb-2">Raffles University</p>
                 </div>
-                 <div class="relative pl-8 group" onmouseenter="playHoverSound()">
-                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full group-hover:bg-white transition-colors"></div>
+                <div class="relative pl-8 group" onmouseenter="playHoverSound()">
+                    <div
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full group-hover:bg-white transition-colors">
+                    </div>
                     <span class="font-mono text-xs text-gray-500 mb-1 block">Present</span>
-                    <h4 class="text-xl font-bold text-gray-300 group-hover:text-white transition-colors">Focus: System Design</h4>
+                    <h4 class="text-xl font-bold text-gray-300 group-hover:text-white transition-colors">Focus: System
+                        Design</h4>
                     <p class="text-sm text-gray-500">Currently executing Final Year Project.</p>
                 </div>
             </div>
@@ -248,29 +309,47 @@
             <div class="max-w-4xl mx-auto text-center">
                 <p class="font-mono text-cerenkov mb-4">04. Signal Recombination</p>
                 <h2 class="text-4xl md:text-5xl font-bold mb-8">Execute Communication?</h2>
-                <div class="grid md:grid-cols-2 gap-8 text-left bg-white/5 p-8 border border-white/10 rounded-sm hover:border-cerenkov/30 transition-colors">
+                <div
+                    class="grid md:grid-cols-2 gap-8 text-left bg-white/5 p-8 border border-white/10 rounded-sm hover:border-cerenkov/30 transition-colors">
                     <div>
-                        <h4 class="font-mono text-gray-400 text-sm mb-4 border-b border-gray-700 pb-2">CONTACT_CHANNELS</h4>
+                        <h4 class="font-mono text-gray-400 text-sm mb-4 border-b border-gray-700 pb-2">CONTACT_CHANNELS
+                        </h4>
                         <div class="space-y-4">
-                            <a href="mailto:lohminyu1999@gmail.com" class="block hover:text-cerenkov transition-colors flex items-center group" onmouseenter="playHoverSound()">
-                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">EMAIL ::</span> <span class="text-sm">lohminyu1999@gmail.com</span>
+                            <a href="mailto:lohminyu1999@gmail.com"
+                                class="block hover:text-cerenkov transition-colors flex items-center group"
+                                onmouseenter="playHoverSound()">
+                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">EMAIL
+                                    ::</span> <span class="text-sm">lohminyu1999@gmail.com</span>
                             </a>
-                            <a href="https://www.linkedin.com/in/min-yu-loh-329377345/" class="block hover:text-cerenkov transition-colors flex items-center group" onmouseenter="playHoverSound()">
-                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">LINKEDIN ::</span> <span class="text-sm">Min Yu Loh</span>
+                            <a href="https://www.linkedin.com/in/min-yu-loh-329377345/"
+                                class="block hover:text-cerenkov transition-colors flex items-center group"
+                                onmouseenter="playHoverSound()">
+                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">LINKEDIN
+                                    ::</span> <span class="text-sm">Min Yu Loh</span>
                             </a>
-                            <a href="https://www.facebook.com/minyu.loh.1" class="block hover:text-cerenkov transition-colors flex items-center group" onmouseenter="playHoverSound()">
-                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">FACEBOOK ::</span> <span class="text-sm">Min Yu Loh</span>
+                            <a href="https://www.facebook.com/minyu.loh.1"
+                                class="block hover:text-cerenkov transition-colors flex items-center group"
+                                onmouseenter="playHoverSound()">
+                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">FACEBOOK
+                                    ::</span> <span class="text-sm">Min Yu Loh</span>
                             </a>
                         </div>
                     </div>
                     <div>
-                        <h4 class="font-mono text-gray-400 text-sm mb-4 border-b border-gray-700 pb-2">CODE_REPOS & SOCIAL</h4>
+                        <h4 class="font-mono text-gray-400 text-sm mb-4 border-b border-gray-700 pb-2">CODE_REPOS &
+                            SOCIAL</h4>
                         <div class="space-y-4">
-                            <a href="https://github.com/MinYuOuO" target="_blank" class="block hover:text-cerenkov transition-colors flex items-center group" onmouseenter="playHoverSound()">
-                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">GITHUB ::</span> <span class="text-sm">MinYuOuO</span>
+                            <a href="https://github.com/MinYuOuO" target="_blank"
+                                class="block hover:text-cerenkov transition-colors flex items-center group"
+                                onmouseenter="playHoverSound()">
+                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">GITHUB
+                                    ::</span> <span class="text-sm">MinYuOuO</span>
                             </a>
-                            <a href="https://www.instagram.com/loh_min_yu/" class="block hover:text-cerenkov transition-colors flex items-center group" onmouseenter="playHoverSound()">
-                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">INSTAGRAM ::</span> <span class="text-sm">@loh_min_yu</span>
+                            <a href="https://www.instagram.com/loh_min_yu/"
+                                class="block hover:text-cerenkov transition-colors flex items-center group"
+                                onmouseenter="playHoverSound()">
+                                <span class="w-24 font-mono text-gray-600 text-xs group-hover:text-cerenkov">INSTAGRAM
+                                    ::</span> <span class="text-sm">@loh_min_yu</span>
                             </a>
                         </div>
                     </div>
@@ -288,11 +367,14 @@
             <div class="scan-line"></div>
             <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                 <h2 class="text-xl md:text-2xl font-bold text-white font-mono">>> DATA_LOG</h2>
-                <button id="modal-close" class="text-gray-500 hover:text-dissociation font-mono transition-colors" onclick="playClickSound()">[CLOSE_X]</button>
+                <button id="modal-close" class="text-gray-500 hover:text-dissociation font-mono transition-colors"
+                    onclick="playClickSound()">[CLOSE_X]</button>
             </div>
             <div id="modal-body" class="prose prose-invert prose-sm md:prose-base max-w-none mb-8 text-gray-300"></div>
             <div class="flex justify-end">
-                <a id="modal-link" href="#" target="_blank" class="btn-glitch px-6 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all" onclick="playClickSound()">Access_Source_Code</a>
+                <a id="modal-link" href="#" target="_blank"
+                    class="btn-glitch px-6 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all"
+                    onclick="playClickSound()">Access_Source_Code</a>
             </div>
         </div>
     </div>
@@ -300,4 +382,5 @@
     <!-- Main Logic -->
     <script src="src/script/main.js"></script>
 </body>
+
 </html>
