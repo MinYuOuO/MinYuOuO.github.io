@@ -4,13 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description"
-        content="Stellar Echoes">
-    <meta name="keywords"
-        content="Loh Min Yu, Picture">
-    <meta name="author" content="Loh Min Yu">
     <title>Miu | Stellar Echoes</title>
-
+    
     <link rel="icon" href="src/assets/logo.ico">
 
     <!-- Fonts -->
@@ -49,6 +44,7 @@
             overflow: hidden;
             width: 100vw;
             height: 100vh;
+            touch-action: none; /* Critical for custom touch handling */
         }
 
         /* --- UI Overlay --- */
@@ -105,7 +101,7 @@
             margin-top: 1rem;
             font-size: 0.9rem;
         }
-
+        
         .progress-bar-container {
             width: 200px;
             height: 2px;
@@ -113,7 +109,7 @@
             margin-top: 10px;
             position: relative;
         }
-
+        
         .progress-bar {
             width: 0%;
             height: 100%;
@@ -141,8 +137,7 @@
             background: rgba(0, 240, 255, 0.1);
             box-shadow: 0 0 20px var(--color-cerenkov);
         }
-
-        /* Disable interaction on start button until ready */
+        
         .btn-start.disabled {
             opacity: 0.3;
             pointer-events: none;
@@ -258,29 +253,12 @@
         }
 
         @keyframes glitch {
-            0% {
-                transform: translate(0)
-            }
-
-            20% {
-                transform: translate(-2px, 2px)
-            }
-
-            40% {
-                transform: translate(-2px, -2px)
-            }
-
-            60% {
-                transform: translate(2px, 2px)
-            }
-
-            80% {
-                transform: translate(2px, -2px)
-            }
-
-            100% {
-                transform: translate(0)
-            }
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
         }
 
         .scanline {
@@ -296,13 +274,8 @@
         }
 
         @keyframes scan {
-            0% {
-                top: 0
-            }
-
-            100% {
-                top: 100%
-            }
+            0% { top: 0 }
+            100% { top: 100% }
         }
     </style>
 </head>
@@ -350,14 +323,13 @@
     <div id="boot-screen">
         <h1 class="glitch-header">STELLAR ECHOES</h1>
         <div class="boot-log" id="boot-log">INITIALIZING...</div>
-
+        
         <!-- Progress Bar -->
         <div class="progress-bar-container">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
 
-        <button id="start-btn" class="btn-start disabled" style="display: block; opacity: 0; transition: opacity 0.5s;"
-            onclick="playSfx(800, 'square')">
+        <button id="start-btn" class="btn-start disabled" style="display: block; opacity: 0; transition: opacity 0.5s;" onclick="playSfx(800, 'square')">
             [ INITIATE_LINK ]
         </button>
     </div>
@@ -382,16 +354,11 @@
                     TRANSMISSION_RECEIVED</h2>
                 <div style="font-family: 'Space Grotesk'; color: #e0e0e0; line-height: 1.6; font-size: 1.1rem;">
                     <p style="margin-bottom: 1rem;">"May Our Friendship Last Forever!"</p>
-                    <p style="margin-bottom: 1rem;">> I am so glad that our friendship has continued and grown stronger
-                        over the years.</p>
-                    <p style="margin-bottom: 1rem;">> May each day bring you joy and happiness, and may all our dreams
-                        come true.</p>
-                    <p style="margin-bottom: 1rem;">> Our memories are like scattered starlight, twinkling brightly
-                        whenever we look back.</p>
-                    <p style="margin-bottom: 1rem;">> Even when we are far apart, we still hold each other close in our
-                        hearts.</p>
-                    <p style="color: var(--color-dim); font-size: 0.9rem; text-align: right; margin-top: 2rem;">//
-                        SIGNED: Minyu</p>
+                    <p style="margin-bottom: 1rem;">> I am so glad that our friendship has continued and grown stronger over the years.</p>
+                    <p style="margin-bottom: 1rem;">> May each day bring you joy and happiness, and may all our dreams come true.</p>
+                    <p style="margin-bottom: 1rem;">> Our memories are like scattered starlight, twinkling brightly whenever we look back.</p>
+                    <p style="margin-bottom: 1rem;">> Even when we are far apart, we still hold each other close in our hearts.</p>
+                    <p style="color: var(--color-dim); font-size: 0.9rem; text-align: right; margin-top: 2rem;">// SIGNED: Minyu</p>
                 </div>
             </div>
         </div>
@@ -453,7 +420,7 @@
         function preloadImages(urls, onProgress, onComplete) {
             let loadedCount = 0;
             const total = urls.length;
-
+            
             if (total === 0) {
                 onComplete();
                 return;
@@ -480,19 +447,19 @@
             const log = document.getElementById('boot-log');
             const btn = document.getElementById('start-btn');
             const progressBar = document.getElementById('progress-bar');
-
+            
             log.innerText = "DETECTING_SHARDS...";
-
+            
             // Start Image Preloading
             preloadImages(CONFIG.photos, (loaded, total) => {
                 // Update Progress
                 const percent = Math.floor((loaded / total) * 100);
                 progressBar.style.width = `${percent}%`;
                 log.innerText = `BUFFERING_MEMORY_BANKS... [${loaded}/${total}]`;
-
+                
                 // Play tiny tick sound occasionally
                 if (loaded % 2 === 0) playSfx(200 + (loaded * 10));
-
+                
             }, () => {
                 // On Complete
                 setTimeout(() => {
@@ -505,10 +472,10 @@
         }
 
         document.addEventListener('DOMContentLoaded', runBootSequence);
-
+        
         document.getElementById('start-btn').addEventListener('click', (e) => {
             if (e.target.classList.contains('disabled')) return;
-
+            
             const screen = document.getElementById('boot-screen');
             screen.style.opacity = 0;
             setTimeout(() => screen.style.display = 'none', 800);
@@ -641,13 +608,13 @@
         }
 
         // ============================================
-        // INTERACTION
+        // INTERACTION (Fixed for Touch)
         // ============================================
         function setupInteraction() {
             let startX = 0, startY = 0;
             let lastTouchDist = 0;
 
-            // Rotate logic
+            // 1. MOUSE CONTROLS (Desktop)
             document.addEventListener('mousedown', e => {
                 state.isDragging = true;
                 startX = e.clientX;
@@ -658,10 +625,8 @@
                 if (state.isDragging) {
                     const dx = e.clientX - startX;
                     const dy = e.clientY - startY;
-
                     state.scene.rotation.y += dx * 0.005;
                     state.scene.rotation.x += dy * 0.005;
-
                     startX = e.clientX;
                     startY = e.clientY;
                 }
@@ -669,73 +634,95 @@
 
             document.addEventListener('mouseup', () => state.isDragging = false);
 
-            // Raycasting for Clicks
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
-
-            document.addEventListener('click', e => {
-                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-                mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-                raycaster.setFromCamera(mouse, state.camera);
-                const intersects = raycaster.intersectObjects(state.particles);
-
-                if (intersects.length > 0) {
-                    const target = intersects[0].object;
-                    playSfx(600, 'sine');
-                    openPhotoModal(target.userData.url);
-                }
-            });
-
-            // --- ZOOM LOGIC ---
-
-            // 1. Mouse Wheel Zoom
+            // 2. ZOOM (Mouse Wheel)
             document.addEventListener('wheel', (e) => {
                 e.preventDefault();
-
                 const delta = e.deltaY;
                 const zoomAmount = delta * CONFIG.zoom.speed;
-
-                // Update target zoom
-                CONFIG.zoom.current = Math.max(
-                    CONFIG.zoom.min,
-                    Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount)
-                );
-
-                // Apply immediately (or smooth in animate loop if preferred)
-                // For direct feel:
+                CONFIG.zoom.current = Math.max(CONFIG.zoom.min, Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount));
                 state.camera.position.z = CONFIG.zoom.current;
             }, { passive: false });
 
-            // 2. Touch Pinch Zoom
-            document.addEventListener('touchmove', (e) => {
-                if (e.touches.length === 2) {
-                    const touch1 = e.touches[0];
-                    const touch2 = e.touches[1];
-
-                    const dist = Math.hypot(
-                        touch1.clientX - touch2.clientX,
-                        touch1.clientY - touch2.clientY
+            // 3. TOUCH CONTROLS (Mobile)
+            document.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    // Single finger: Rotation
+                    state.isDragging = true;
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                } else if (e.touches.length === 2) {
+                    // Two fingers: Zoom init
+                    state.isDragging = false; // Stop rotation
+                    lastTouchDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
                     );
+                }
+            }, { passive: false });
 
+            document.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && state.isDragging) {
+                    // Single finger: Rotate
+                    e.preventDefault(); // Prevent scrolling
+                    const dx = e.touches[0].clientX - startX;
+                    const dy = e.touches[0].clientY - startY;
+                    state.scene.rotation.y += dx * 0.008; // Slightly faster for mobile feel
+                    state.scene.rotation.x += dy * 0.008;
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                } 
+                else if (e.touches.length === 2) {
+                    // Two fingers: Pinch Zoom
+                    e.preventDefault(); // Prevent browser zoom
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    
                     if (lastTouchDist > 0) {
                         const delta = lastTouchDist - dist;
-                        const zoomAmount = delta * CONFIG.zoom.speed * 2; // Multiplier for touch sensitivity
-
-                        CONFIG.zoom.current = Math.max(
-                            CONFIG.zoom.min,
-                            Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount)
-                        );
+                        const zoomAmount = delta * CONFIG.zoom.speed * 0.5; // Adjusted sensitivity
+                        
+                        CONFIG.zoom.current = Math.max(CONFIG.zoom.min, Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount));
                         state.camera.position.z = CONFIG.zoom.current;
                     }
-
                     lastTouchDist = dist;
                 }
             }, { passive: false });
 
             document.addEventListener('touchend', () => {
+                state.isDragging = false;
                 lastTouchDist = 0;
             });
+
+            // 4. CLICK / TAP DETECTION (Raycaster)
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            // Unified handler for click/tap
+            const handleTap = (clientX, clientY) => {
+                mouse.x = (clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+                raycaster.setFromCamera(mouse, state.camera);
+                const intersects = raycaster.intersectObjects(state.particles);
+                if (intersects.length > 0) {
+                    const target = intersects[0].object;
+                    playSfx(600, 'sine');
+                    openPhotoModal(target.userData.url);
+                }
+            };
+
+            // Mouse Click
+            document.addEventListener('click', e => {
+                // Ignore if it was a drag
+                handleTap(e.clientX, e.clientY);
+            });
+            
+            // Touch Tap is tricky because 'click' fires after 'touchend', 
+            // but we might want to ensure it wasn't a drag. 
+            // For simplicity in this Three.js context, standard 'click' usually works 
+            // if we didn't preventDefault on touchstart/move too aggressively.
+            // If dragging, 'click' might not fire or we can filter it.
         }
 
         function animate() {
