@@ -17,6 +17,29 @@ body {
     overflow-x: hidden;
 }
 
+.hero-grid {
+    position: absolute;
+    right: -10%;
+    width: 50%;
+    height: 100dvh;
+
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+
+    transform: rotateX(60deg) scale(2);
+    transform-origin: center center;
+
+    pointer-events: none;
+    z-index: 0;
+
+    mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+
+    opacity: 0.6;
+}
+
 .font-mono {
     font-family: 'JetBrains Mono', monospace;
 }
@@ -31,8 +54,10 @@ body {
 .glitch-text::after {
     content: attr(data-text);
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: var(--color-abyssal);
 }
 
@@ -51,21 +76,147 @@ body {
 }
 
 @keyframes glitch-anim-1 {
-    0% { clip: rect(20px, 9999px, 80px, 0); }
-    20% { clip: rect(60px, 9999px, 10px, 0); }
-    40% { clip: rect(30px, 9999px, 90px, 0); }
-    60% { clip: rect(10px, 9999px, 50px, 0); }
-    80% { clip: rect(70px, 9999px, 20px, 0); }
-    100% { clip: rect(50px, 9999px, 60px, 0); }
+    0% {
+        clip: rect(20px, 9999px, 80px, 0);
+    }
+
+    20% {
+        clip: rect(60px, 9999px, 10px, 0);
+    }
+
+    40% {
+        clip: rect(30px, 9999px, 90px, 0);
+    }
+
+    60% {
+        clip: rect(10px, 9999px, 50px, 0);
+    }
+
+    80% {
+        clip: rect(70px, 9999px, 20px, 0);
+    }
+
+    100% {
+        clip: rect(50px, 9999px, 60px, 0);
+    }
 }
 
 @keyframes glitch-anim-2 {
-    0% { clip: rect(10px, 9999px, 30px, 0); }
-    20% { clip: rect(80px, 9999px, 20px, 0); }
-    40% { clip: rect(40px, 9999px, 60px, 0); }
-    60% { clip: rect(20px, 9999px, 70px, 0); }
-    80% { clip: rect(50px, 9999px, 90px, 0); }
-    100% { clip: rect(30px, 9999px, 10px, 0); }
+    0% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+
+    20% {
+        clip: rect(80px, 9999px, 20px, 0);
+    }
+
+    40% {
+        clip: rect(40px, 9999px, 60px, 0);
+    }
+
+    60% {
+        clip: rect(20px, 9999px, 70px, 0);
+    }
+
+    80% {
+        clip: rect(50px, 9999px, 90px, 0);
+    }
+
+    100% {
+        clip: rect(30px, 9999px, 10px, 0);
+    }
+}
+
+/* Shattered Geometry (Triangles) */
+.shattered-geo {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
+    animation: shatter-spin 20s linear infinite;
+}
+
+@keyframes shatter-spin {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(180deg) translate(20px, -20px);
+    }
+
+    100% {
+        transform: rotate(360deg) translate(0, 0);
+    }
+}
+
+/* Floating Symbols (</> and {}) */
+.float-decoration {
+    animation: float-slow 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes float-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Data Streams (Horizontal text lines) */
+.data-stream {
+    position: absolute;
+    right: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(0, 240, 255, 0.15);
+    white-space: nowrap;
+    letter-spacing: 0.2em;
+    pointer-events: none;
+    user-select: none;
+    /* Optional: Make them drift slowly */
+    animation: stream 15s linear infinite;
+}
+
+@keyframes stream {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+/* Vertical Architectural Text */
+.deco-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    color: rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(0, 240, 255, 0.3);
+    padding-right: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 /* --- UI Components --- */
@@ -81,28 +232,143 @@ body {
 .btn-glitch:hover {
     background-color: rgba(0, 240, 255, 0.1);
     box-shadow: 0 0 20px var(--color-cerenkov);
-    letter-spacing: 0.25em; /* Subtle expansion on hover */
+    letter-spacing: 0.25em;
+    /* Subtle expansion on hover */
+}
+
+.cyber-stack {
+    position: relative;
+    background: rgba(10, 10, 10, 0.6); /* Semi-transparent dark */
+    backdrop-filter: blur(12px);       /* Blurs the grid behind it */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cyber-stack::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 1px solid var(--color-cerenkov);
+    transform: translate(4px, 4px); /* Shifted down-right */
+    z-index: -1;
+    opacity: 0.3;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.cyber-stack:hover {
+    transform: translate(-2px, -2px); /* Lift the card physically */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cyber-stack:hover::before {
+    transform: translate(8px, 8px); /* Push the phantom border further away */
+    opacity: 0.6;
+}
+
+.cyber-nav {
+    background: rgba(5, 5, 5, 0.85); /* Darker, more solid */
+    backdrop-filter: blur(20px);     /* Heavy blur for glass effect */
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    position: relative;
+    color: var(--color-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-white);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-cerenkov);
+    box-shadow: 0 0 8px var(--color-cerenkov);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.scroll-progress-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    z-index: 1000; /* Above everything */
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: var(--color-cerenkov);
+    width: 0%;
+    box-shadow: 0 0 10px var(--color-cerenkov);
+    transition: width 0.1s linear;
+}
+
+#mobile-menu {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-cerenkov);
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--color-graphite);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* Inherit base styles */
     position: relative;
-    overflow: hidden;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    /* Keep existing transition */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 1px solid var(--color-cerenkov);
+    transform: translate(4px, 4px);
+    z-index: -1;
+    opacity: 0.2;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    pointer-events: none;
 }
 
 .project-card:hover {
     border-color: var(--color-cerenkov);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+    box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.1);
+}
+
+.project-card:hover::before {
+    transform: translate(8px, 8px);
+    opacity: 0.6;
 }
 
 /* --- Modal Overlay --- */
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(5, 5, 5, 0.9);
     backdrop-filter: blur(8px);
     z-index: 100;
@@ -137,32 +403,67 @@ body {
 }
 
 .scan-line {
-    width: 100%; height: 2px;
+    width: 100%;
+    height: 2px;
     background: var(--color-cerenkov);
-    position: sticky; top: 0;
+    position: sticky;
+    top: 0;
     animation: scan 2s linear infinite;
     opacity: 0.5;
 }
 
 @keyframes scan {
-    0% { top: 0%; opacity: 0; }
-    50% { opacity: 1; }
-    100% { top: 100%; opacity: 0; }
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
     width: 6px;
+    height: 0px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--color-abyssal);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 ::-webkit-scrollbar-thumb {
-    background: var(--color-dim);
-    border-radius: 3px;
+    background: var(--color-graphite);
+    border: 1px solid var(--color-cerenkov);
+    border-radius: 0;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-cerenkov);
+    box-shadow: 0 0 10px var(--color-cerenkov);
+}
+
+::selection {
+    background: var(--color-cerenkov);
+    color: var(--color-abyssal);
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: var(--color-cerenkov);
+    color: var(--color-abyssal);
+}
+
+.system-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to top, rgba(0, 240, 255, 0.05), transparent);
 }
 
 /* --- Mobile Fixes --- */
@@ -171,6 +472,7 @@ body {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
     .btn-glitch {
         width: 100%;
         text-align: center;

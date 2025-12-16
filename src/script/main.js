@@ -1,5 +1,5 @@
 // ==========================================
-// 0. PROCEDURAL SOUND ENGINE (Global)
+// PROCEDURAL SOUND ENGINE (Global)
 // ==========================================
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -39,7 +39,7 @@ window.playClickSound = playClickSound;
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. MOBILE MENU
+    // MOBILE MENU
     // ==========================================
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. PROJECT ARCHIVES (Show More Logic)
+    // PROJECT ARCHIVES (Show More Logic)
     // ==========================================
     const projects = [
         {
@@ -323,21 +323,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================
-    // 3. THREE.JS SCENE (Optimized + RGB Shift)
+    // THREE.JS SCENE (Optimized + RGB Shift)
     // ==========================================
     const container = document.getElementById('canvas-container');
     if (container) {
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x050505, 0.003);
+        scene.fog = new THREE.FogExp2(0x050505, 0.003); // lag
+        scene.background = null;
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 40;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
         // Optimize: Limit pixel ratio to 2 for High-DPI screens to save battery
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.toneMapping = THREE.ReinhardToneMapping;
+        renderer.setClearColor(0x000000, 0);
         container.appendChild(renderer.domElement);
 
         // --- POST PROCESSING SETUP ---
@@ -356,7 +358,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const rgbShiftPass = new THREE.ShaderPass(THREE.RGBShiftShader);
         rgbShiftPass.uniforms['amount'].value = 0.0015; // Base glitch
 
-        const composer = new THREE.EffectComposer(renderer);
+        const renderTarget = new THREE.WebGLRenderTarget(
+            window.innerWidth,
+            window.innerHeight,
+            {
+                minFilter: THREE.LinearFilter,
+                magFilter: THREE.LinearFilter,
+                format: THREE.RGBAFormat
+            }
+        );
+        const composer = new THREE.EffectComposer(renderer, renderTarget);
         composer.addPass(renderScene);
         composer.addPass(bloomPass);
         composer.addPass(rgbShiftPass);
@@ -523,4 +534,19 @@ document.addEventListener('DOMContentLoaded', () => {
             composer.setSize(window.innerWidth, window.innerHeight);
         });
     }
+
+    // ==========================================
+    // SCROLL PROGRESS BAR
+    // ==========================================
+    const progressBar = document.getElementById('scroll-progress');
+
+    window.addEventListener('scroll', () => {
+        if (!progressBar) return;
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / docHeight) * 100;
+
+        progressBar.style.width = scrolled + '%';
+    }, { passive: true });
 });

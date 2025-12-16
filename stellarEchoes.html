@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Miu | Stellar Echoes</title>
-    
+
     <link rel="icon" href="src/assets/logo.ico">
 
-    <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
         rel="stylesheet">
 
-    <!-- Three.js & Post-Processing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
@@ -29,6 +27,7 @@
             --color-white: #e0e0e0;
             --color-dim: #666;
             --color-alert: #ff0055;
+            --color-dissociation: #ff0088;
         }
 
         * {
@@ -44,10 +43,58 @@
             overflow: hidden;
             width: 100vw;
             height: 100vh;
-            touch-action: none; /* Critical for custom touch handling */
+            touch-action: none;
         }
 
-        /* --- UI Overlay --- */
+        /* --- ATMOSPHERE --- */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0) 40%, rgba(5, 5, 5, 0.8) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.5;
+        }
+
+        /* --- UI COMPONENTS (CYBER STYLE) --- */
+        .cyber-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--color-cerenkov);
+            color: var(--color-cerenkov);
+            font-family: 'JetBrains Mono', monospace;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+
+        .cyber-btn:hover {
+            background: var(--color-cerenkov);
+            color: var(--color-abyssal);
+            box-shadow: 0 0 15px var(--color-cerenkov);
+        }
+
+        /* --- HUD LAYER --- */
         #ui-layer {
             position: absolute;
             top: 0;
@@ -62,15 +109,50 @@
             padding: 2rem;
         }
 
+        /* HUD Corners */
+        .hud-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: var(--color-cerenkov);
+            border-style: solid;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .tl {
+            top: 20px;
+            left: 20px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .tr {
+            top: 20px;
+            right: 20px;
+            border-width: 2px 2px 0 0;
+        }
+
+        .bl {
+            bottom: 20px;
+            left: 20px;
+            border-width: 0 0 2px 2px;
+        }
+
+        .br {
+            bottom: 20px;
+            right: 20px;
+            border-width: 0 2px 2px 0;
+        }
+
         .hud-text {
             font-family: 'JetBrains Mono', monospace;
             color: var(--color-cerenkov);
+            font-size: 0.75rem;
+            opacity: 0.7;
             text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
-            font-size: 0.8rem;
-            opacity: 0.8;
         }
 
-        /* --- Boot Screen --- */
+        /* --- BOOT SCREEN (TERMINAL STYLE) --- */
         #boot-screen {
             position: absolute;
             top: 0;
@@ -87,202 +169,167 @@
             transition: opacity 0.8s ease-out;
         }
 
-        .glitch-header {
+        .glitch-text {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 3rem;
             font-weight: 700;
-            position: relative;
             color: var(--color-white);
-            animation: glitch 1s infinite;
+            position: relative;
+            animation: glitch-anim 2s infinite;
         }
 
-        .boot-log {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--color-dim);
-            margin-top: 1rem;
-            font-size: 0.9rem;
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-abyssal);
         }
-        
-        .progress-bar-container {
+
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--color-dissociation);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--color-cerenkov);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        .loader-bar {
             width: 200px;
             height: 2px;
-            background: #333;
-            margin-top: 10px;
-            position: relative;
-        }
-        
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: var(--color-cerenkov);
-            transition: width 0.2s;
-            box-shadow: 0 0 10px var(--color-cerenkov);
-        }
-
-        .btn-start {
+            background: #111;
             margin-top: 2rem;
-            background: transparent;
-            border: 1px solid var(--color-cerenkov);
-            color: var(--color-cerenkov);
-            padding: 1rem 3rem;
-            font-family: 'JetBrains Mono', monospace;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-start:hover {
-            background: rgba(0, 240, 255, 0.1);
-            box-shadow: 0 0 20px var(--color-cerenkov);
-        }
-        
-        .btn-start.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-            border-color: var(--color-dim);
-            color: var(--color-dim);
+        .loader-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--color-cerenkov);
+            box-shadow: 0 0 10px var(--color-cerenkov);
+            transition: width 0.2s;
         }
 
-        /* --- Modals --- */
+        /* --- CYBER MODALS (Phase 2 Style) --- */
         .modal {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 5, 5, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
             z-index: 50;
             display: none;
             justify-content: center;
             align-items: center;
             pointer-events: all;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .modal.active {
             display: flex;
+            opacity: 1;
         }
 
-        .modal-content {
-            border: 1px solid var(--color-cerenkov);
-            padding: 2px;
-            background: rgba(0, 240, 255, 0.1);
+        .cyber-stack {
             position: relative;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
             max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-inner {
-            background: var(--color-abyssal);
-            padding: 1rem;
-            position: relative;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .cyber-stack {
+            transform: scale(1);
+        }
+
+        /* The Cyan Offset Border */
+        .cyber-stack::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--color-cerenkov);
+            transform: translate(6px, 6px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
         }
 
         .modal-img {
             max-width: 100%;
-            max-height: 80vh;
-            border: 1px solid #333;
-            display: block;
-            object-fit: contain;
+            max-height: 70vh;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
-        .modal-close {
+        .close-btn {
             position: absolute;
             top: -40px;
             right: 0;
+            background: transparent;
+            border: none;
             color: var(--color-dim);
             font-family: 'JetBrains Mono', monospace;
             cursor: pointer;
-            border: none;
-            background: transparent;
-            font-size: 1rem;
+            transition: color 0.3s;
         }
 
-        .modal-close:hover {
+        .close-btn:hover {
             color: var(--color-alert);
         }
 
-        /* --- Nav Controls --- */
-        .nav-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            pointer-events: all;
-            background: transparent;
-            border: 1px solid var(--color-cerenkov);
-            color: var(--color-cerenkov);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            transition: 0.3s;
-        }
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(20px, 9999px, 80px, 0);
+            }
 
-        .nav-btn:hover {
-            box-shadow: 0 0 10px var(--color-cerenkov);
-            background: rgba(0, 240, 255, 0.1);
-        }
+            20% {
+                clip: rect(60px, 9999px, 10px, 0);
+            }
 
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            pointer-events: all;
-            color: var(--color-dim);
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            border-bottom: 1px solid transparent;
-            transition: 0.3s;
-        }
+            40% {
+                clip: rect(30px, 9999px, 90px, 0);
+            }
 
-        .back-link:hover {
-            color: var(--color-cerenkov);
-            border-bottom-color: var(--color-cerenkov);
-        }
+            60% {
+                clip: rect(10px, 9999px, 50px, 0);
+            }
 
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
-        }
+            80% {
+                clip: rect(70px, 9999px, 20px, 0);
+            }
 
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: rgba(0, 240, 255, 0.3);
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: scan 3s linear infinite;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        @keyframes scan {
-            0% { top: 0 }
-            100% { top: 100% }
+            100% {
+                clip: rect(50px, 9999px, 60px, 0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Sound Engine -->
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playSfx(freq, type = 'sine') {
@@ -301,65 +348,94 @@
         }
     </script>
 
-    <!-- 3D Canvas -->
     <div id="canvas-container" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:1;"></div>
 
-    <!-- UI Layer -->
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+
     <div id="ui-layer">
-        <a href="index.html" class="back-link" onmouseenter="playSfx(200)" onclick="playSfx(800, 'square')">&lt;
-            RETURN_TO_TERMINAL</a>
-        <button id="blessing-btn" class="nav-btn" onmouseenter="playSfx(200)"
-            onclick="playSfx(800, 'square')">!</button>
+        <div class="hud-corner tl"></div>
+        <div class="hud-corner tr"></div>
+        <div class="hud-corner bl"></div>
+        <div class="hud-corner br"></div>
 
-        <div style="margin-top: auto;">
-            <div class="hud-text">>> SYSTEM_STATUS: MEMORY_RECALL_ACTIVE</div>
-            <div class="hud-text">>> COORDS: [UNKNOWN_SECTOR]</div>
-        </div>
-    </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; pointer-events: auto;">
+            <a href="index.html" class="cyber-btn" onmouseenter="playSfx(200)" onclick="playSfx(800, 'square')">
+                &lt; TERMINAL_RETURN
+            </a>
 
-    <div class="scanline"></div>
-
-    <!-- Boot Screen -->
-    <div id="boot-screen">
-        <h1 class="glitch-header">STELLAR ECHOES</h1>
-        <div class="boot-log" id="boot-log">INITIALIZING...</div>
-        
-        <!-- Progress Bar -->
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
+            <button id="blessing-btn" class="cyber-btn" style="padding: 10px 15px;" onmouseenter="playSfx(200)"
+                onclick="playSfx(800, 'square')">
+                [ ! ]
+            </button>
         </div>
 
-        <button id="start-btn" class="btn-start disabled" style="display: block; opacity: 0; transition: opacity 0.5s;" onclick="playSfx(800, 'square')">
-            [ INITIATE_LINK ]
-        </button>
-    </div>
-
-    <!-- Photo Modal -->
-    <div id="photo-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="close-photo">[CLOSE]</button>
-            <div class="modal-inner">
-                <div class="hud-text" style="margin-bottom: 0.5rem;">>> DECRYPTED_MEMORY_FILE</div>
-                <img id="modal-img" class="modal-img" src="" alt="">
+        <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <div class="hud-text">>> SYSTEM_STATUS: MEMORY_RECALL_ACTIVE</div>
+            </div>
+            <div class="hud-text text-right hidden md:block">
+                SECTOR: DEEP_SPACE<br>
+                OBJ_COUNT: 23
             </div>
         </div>
     </div>
 
-    <!-- Blessing Modal -->
+    <div id="boot-screen">
+        <h1 class="glitch-text" data-text="STELLAR ECHOES">STELLAR ECHOES</h1>
+        <div class="hud-text" id="boot-log" style="margin-top: 1rem; color: var(--color-dim);">
+            INITIALIZING_NEURAL_LINK...</div>
+
+        <div class="loader-bar">
+            <div class="loader-fill" id="progress-bar"></div>
+        </div>
+
+        <button id="start-btn" class="cyber-btn" style="margin-top: 3rem; opacity: 0; pointer-events: none;"
+            onclick="playSfx(800, 'square')">
+            [ INITIATE_LINK ]
+        </button>
+    </div>
+
+    <div id="photo-modal" class="modal">
+        <div class="cyber-stack">
+            <button class="close-btn" id="close-photo">[CLOSE_X]</button>
+            <div class="hud-text"
+                style="width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                >> DECRYPTED_MEMORY_FILE
+            </div>
+            <img id="modal-img" class="modal-img" src="" alt="Memory Fragment">
+        </div>
+    </div>
+
     <div id="blessing-modal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
-            <button class="modal-close" id="close-blessing">[CLOSE]</button>
-            <div class="modal-inner">
-                <h2 style="font-family: 'JetBrains Mono'; color: var(--color-cerenkov); margin-bottom: 1rem;">>>
-                    TRANSMISSION_RECEIVED</h2>
-                <div style="font-family: 'Space Grotesk'; color: #e0e0e0; line-height: 1.6; font-size: 1.1rem;">
-                    <p style="margin-bottom: 1rem;">"May Our Friendship Last Forever!"</p>
-                    <p style="margin-bottom: 1rem;">> I am so glad that our friendship has continued and grown stronger over the years.</p>
-                    <p style="margin-bottom: 1rem;">> May each day bring you joy and happiness, and may all our dreams come true.</p>
-                    <p style="margin-bottom: 1rem;">> Our memories are like scattered starlight, twinkling brightly whenever we look back.</p>
-                    <p style="margin-bottom: 1rem;">> Even when we are far apart, we still hold each other close in our hearts.</p>
-                    <p style="color: var(--color-dim); font-size: 0.9rem; text-align: right; margin-top: 2rem;">// SIGNED: Minyu</p>
+        <div class="cyber-stack" style="max-width: 600px; text-align: left; align-items: flex-start;">
+            <button class="close-btn" id="close-blessing">[CLOSE_X]</button>
+
+            <h2
+                style="font-family: 'JetBrains Mono'; color: var(--color-cerenkov); font-size: 1.2rem; margin-bottom: 1.5rem; width: 100%; border-bottom: 1px solid var(--color-cerenkov); padding-bottom: 1rem;">
+                >> INCOMING_TRANSMISSION
+            </h2>
+
+            <div style="font-family: 'Space Grotesk'; color: #e0e0e0; line-height: 1.6; font-size: 1rem;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: bold; color: white;">
+                    "May Our Friendship Last Forever!"
+                </p>
+                <div
+                    style="border-left: 2px solid var(--color-dim); padding-left: 1rem; margin-bottom: 1.5rem; font-family: 'JetBrains Mono'; font-size: 0.9rem; color: #bbb;">
+                    <p class="mb-2">> Friendship_Duration: CONTINUOUS</p>
+                    <p class="mb-2">> Status: STRONG</p>
                 </div>
+                <p style="margin-bottom: 0.5rem;">May each day bring you joy and happiness, and may all our dreams come
+                    true.</p>
+                <p style="margin-bottom: 0.5rem;">Our memories are like scattered starlight, twinkling brightly whenever
+                    we look back.</p>
+                <p style="margin-bottom: 1.5rem;">Even when we are far apart, we still hold each other close in our
+                    hearts.</p>
+
+                <p
+                    style="color: var(--color-cerenkov); font-family: 'JetBrains Mono'; font-size: 0.8rem; text-align: right; margin-top: 2rem; width: 100%;">
+                    // END_OF_MESSAGE :: SENDER: Min Yu
+                </p>
             </div>
         </div>
     </div>
@@ -420,25 +496,13 @@
         function preloadImages(urls, onProgress, onComplete) {
             let loadedCount = 0;
             const total = urls.length;
-            
-            if (total === 0) {
-                onComplete();
-                return;
-            }
+
+            if (total === 0) { onComplete(); return; }
 
             urls.forEach(url => {
                 const img = new Image();
-                img.onload = () => {
-                    loadedCount++;
-                    onProgress(loadedCount, total);
-                    if (loadedCount === total) onComplete();
-                };
-                img.onerror = () => {
-                    console.warn(`Failed to load: ${url}`);
-                    loadedCount++; // Count error as loaded so we don't hang
-                    onProgress(loadedCount, total);
-                    if (loadedCount === total) onComplete();
-                };
+                img.onload = () => { loadedCount++; onProgress(loadedCount, total); if (loadedCount === total) onComplete(); };
+                img.onerror = () => { loadedCount++; onProgress(loadedCount, total); if (loadedCount === total) onComplete(); };
                 img.src = url;
             });
         }
@@ -447,35 +511,30 @@
             const log = document.getElementById('boot-log');
             const btn = document.getElementById('start-btn');
             const progressBar = document.getElementById('progress-bar');
-            
-            log.innerText = "DETECTING_SHARDS...";
-            
-            // Start Image Preloading
+
+            log.innerText = "SCANNING_MEMORY_SHARDS...";
+
             preloadImages(CONFIG.photos, (loaded, total) => {
-                // Update Progress
                 const percent = Math.floor((loaded / total) * 100);
                 progressBar.style.width = `${percent}%`;
-                log.innerText = `BUFFERING_MEMORY_BANKS... [${loaded}/${total}]`;
-                
-                // Play tiny tick sound occasionally
-                if (loaded % 2 === 0) playSfx(200 + (loaded * 10));
-                
+                log.innerText = `BUFFERING_DATA... [${loaded}/${total}]`;
+
+                if (loaded % 3 === 0) playSfx(200 + (loaded * 10));
+
             }, () => {
-                // On Complete
                 setTimeout(() => {
                     log.innerText = "SYSTEM_READY. LINK_ESTABLISHED.";
-                    btn.classList.remove('disabled');
+                    log.style.color = "var(--color-cerenkov)";
                     btn.style.opacity = 1;
-                    playSfx(600, 'square'); // Success sound
+                    btn.style.pointerEvents = "all";
+                    playSfx(600, 'square');
                 }, 500);
             });
         }
 
         document.addEventListener('DOMContentLoaded', runBootSequence);
-        
+
         document.getElementById('start-btn').addEventListener('click', (e) => {
-            if (e.target.classList.contains('disabled')) return;
-            
             const screen = document.getElementById('boot-screen');
             screen.style.opacity = 0;
             setTimeout(() => screen.style.display = 'none', 800);
@@ -490,7 +549,8 @@
 
             // 1. Scene
             state.scene = new THREE.Scene();
-            state.scene.fog = new THREE.FogExp2(CONFIG.colors.bg, 0.002);
+            // Removed Fog to keep it crisp against the CSS vignette
+            // state.scene.fog = new THREE.FogExp2(CONFIG.colors.bg, 0.002);
 
             // 2. Camera
             state.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -503,29 +563,25 @@
             state.renderer.toneMapping = THREE.ReinhardToneMapping;
             container.appendChild(state.renderer.domElement);
 
-            // 4. Post-Processing (Bloom)
+            // 4. Post-Processing
             const renderPass = new THREE.RenderPass(state.scene, state.camera);
             const bloomPass = new THREE.UnrealBloomPass(
                 new THREE.Vector2(window.innerWidth, window.innerHeight),
                 1.5, 0.4, 0.85
             );
             bloomPass.threshold = 0;
-            bloomPass.strength = 1.5; // Intense glow
+            bloomPass.strength = 1.2; // Adjusted for better text readability
             bloomPass.radius = 0.5;
 
             state.composer = new THREE.EffectComposer(state.renderer);
             state.composer.addPass(renderPass);
             state.composer.addPass(bloomPass);
 
-            // 5. Objects
             createParticles();
             createBackgroundNoise();
 
-            // 6. Listeners
             window.addEventListener('resize', onResize);
             setupInteraction();
-
-            // 7. Loop
             animate();
         }
 
@@ -533,20 +589,25 @@
         // SCENE OBJECTS
         // ============================================
         function createParticles() {
-            // Replaced Spheres with Icosahedrons (Shards)
             const geometry = new THREE.IcosahedronGeometry(2, 0);
 
             CONFIG.photos.forEach((url, i) => {
-                // Generate Texture
                 const canvas = document.createElement('canvas');
                 canvas.width = 128; canvas.height = 128;
                 const ctx = canvas.getContext('2d');
 
-                // Draw a "Data Shard" frame
+                // Cyber Frame for Shards
                 ctx.strokeStyle = '#00f0ff';
                 ctx.lineWidth = 4;
                 ctx.strokeRect(10, 10, 108, 108);
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.2)';
+                // Corner Accents
+                ctx.fillStyle = '#00f0ff';
+                ctx.fillRect(10, 10, 10, 10);
+                ctx.fillRect(108, 10, 10, 10);
+                ctx.fillRect(10, 108, 10, 10);
+                ctx.fillRect(108, 108, 10, 10);
+
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.1)';
                 ctx.fillRect(14, 14, 100, 100);
 
                 const texture = new THREE.CanvasTexture(canvas);
@@ -556,12 +617,12 @@
                     color: CONFIG.colors.accent,
                     wireframe: true,
                     transparent: true,
-                    opacity: 0.8
+                    opacity: 0.8,
+                    side: THREE.DoubleSide
                 });
 
                 const mesh = new THREE.Mesh(geometry, material);
 
-                // Random Spherical Position
                 const r = 40 + Math.random() * 20;
                 const theta = Math.random() * Math.PI * 2;
                 const phi = Math.acos(2 * Math.random() - 1);
@@ -570,71 +631,50 @@
                 mesh.position.y = r * Math.sin(phi) * Math.sin(theta);
                 mesh.position.z = r * Math.cos(phi);
 
-                mesh.lookAt(0, 0, 0); // Face center
-                mesh.userData = { url: url, originalScale: 1 };
+                mesh.lookAt(0, 0, 0);
+                mesh.userData = { url: url };
 
                 state.scene.add(mesh);
                 state.particles.push(mesh);
-
-                // Add connecting line to center (optional visual)
-                const lineGeo = new THREE.BufferGeometry().setFromPoints([
-                    new THREE.Vector3(0, 0, 0),
-                    mesh.position
-                ]);
-                const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.1 });
-                state.scene.add(new THREE.Line(lineGeo, lineMat));
             });
         }
 
         function createBackgroundNoise() {
             const geo = new THREE.BufferGeometry();
-            const count = 1000;
+            const count = 800;
             const pos = new Float32Array(count * 3);
-
-            for (let i = 0; i < count * 3; i++) {
-                pos[i] = (Math.random() - 0.5) * 300;
-            }
+            for (let i = 0; i < count * 3; i++) pos[i] = (Math.random() - 0.5) * 300;
 
             geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
             const mat = new THREE.PointsMaterial({
                 size: 0.5,
                 color: CONFIG.colors.accent,
                 transparent: true,
-                opacity: 0.4
+                opacity: 0.3
             });
-
-            const points = new THREE.Points(geo, mat);
-            state.scene.add(points);
+            state.scene.add(new THREE.Points(geo, mat));
         }
 
         // ============================================
-        // INTERACTION (Fixed for Touch)
+        // INTERACTION
         // ============================================
         function setupInteraction() {
             let startX = 0, startY = 0;
             let lastTouchDist = 0;
 
-            // 1. MOUSE CONTROLS (Desktop)
-            document.addEventListener('mousedown', e => {
-                state.isDragging = true;
-                startX = e.clientX;
-                startY = e.clientY;
-            });
-
+            // Desktop
+            document.addEventListener('mousedown', e => { state.isDragging = true; startX = e.clientX; startY = e.clientY; });
             document.addEventListener('mousemove', e => {
                 if (state.isDragging) {
                     const dx = e.clientX - startX;
                     const dy = e.clientY - startY;
                     state.scene.rotation.y += dx * 0.005;
                     state.scene.rotation.x += dy * 0.005;
-                    startX = e.clientX;
-                    startY = e.clientY;
+                    startX = e.clientX; startY = e.clientY;
                 }
             });
-
             document.addEventListener('mouseup', () => state.isDragging = false);
 
-            // 2. ZOOM (Mouse Wheel)
             document.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 const delta = e.deltaY;
@@ -643,97 +683,61 @@
                 state.camera.position.z = CONFIG.zoom.current;
             }, { passive: false });
 
-            // 3. TOUCH CONTROLS (Mobile)
+            // Mobile Touch
             document.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 1) {
-                    // Single finger: Rotation
                     state.isDragging = true;
                     startX = e.touches[0].clientX;
                     startY = e.touches[0].clientY;
                 } else if (e.touches.length === 2) {
-                    // Two fingers: Zoom init
-                    state.isDragging = false; // Stop rotation
-                    lastTouchDist = Math.hypot(
-                        e.touches[0].clientX - e.touches[1].clientX,
-                        e.touches[0].clientY - e.touches[1].clientY
-                    );
+                    state.isDragging = false;
+                    lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
                 }
             }, { passive: false });
 
             document.addEventListener('touchmove', (e) => {
                 if (e.touches.length === 1 && state.isDragging) {
-                    // Single finger: Rotate
-                    e.preventDefault(); // Prevent scrolling
+                    e.preventDefault();
                     const dx = e.touches[0].clientX - startX;
                     const dy = e.touches[0].clientY - startY;
-                    state.scene.rotation.y += dx * 0.008; // Slightly faster for mobile feel
+                    state.scene.rotation.y += dx * 0.008;
                     state.scene.rotation.x += dy * 0.008;
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                } 
-                else if (e.touches.length === 2) {
-                    // Two fingers: Pinch Zoom
-                    e.preventDefault(); // Prevent browser zoom
-                    const dist = Math.hypot(
-                        e.touches[0].clientX - e.touches[1].clientX,
-                        e.touches[0].clientY - e.touches[1].clientY
-                    );
-                    
+                    startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+                } else if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
                     if (lastTouchDist > 0) {
                         const delta = lastTouchDist - dist;
-                        const zoomAmount = delta * CONFIG.zoom.speed * 0.5; // Adjusted sensitivity
-                        
-                        CONFIG.zoom.current = Math.max(CONFIG.zoom.min, Math.min(CONFIG.zoom.max, CONFIG.zoom.current + zoomAmount));
+                        CONFIG.zoom.current = Math.max(CONFIG.zoom.min, Math.min(CONFIG.zoom.max, CONFIG.zoom.current + delta * CONFIG.zoom.speed * 0.5));
                         state.camera.position.z = CONFIG.zoom.current;
                     }
                     lastTouchDist = dist;
                 }
             }, { passive: false });
 
-            document.addEventListener('touchend', () => {
-                state.isDragging = false;
-                lastTouchDist = 0;
-            });
+            document.addEventListener('touchend', () => { state.isDragging = false; lastTouchDist = 0; });
 
-            // 4. CLICK / TAP DETECTION (Raycaster)
+            // Raycaster
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
-
-            // Unified handler for click/tap
             const handleTap = (clientX, clientY) => {
                 mouse.x = (clientX / window.innerWidth) * 2 - 1;
                 mouse.y = -(clientY / window.innerHeight) * 2 + 1;
                 raycaster.setFromCamera(mouse, state.camera);
                 const intersects = raycaster.intersectObjects(state.particles);
                 if (intersects.length > 0) {
-                    const target = intersects[0].object;
                     playSfx(600, 'sine');
-                    openPhotoModal(target.userData.url);
+                    openPhotoModal(intersects[0].object.userData.url);
                 }
             };
-
-            // Mouse Click
-            document.addEventListener('click', e => {
-                // Ignore if it was a drag
-                handleTap(e.clientX, e.clientY);
-            });
-            
-            // Touch Tap is tricky because 'click' fires after 'touchend', 
-            // but we might want to ensure it wasn't a drag. 
-            // For simplicity in this Three.js context, standard 'click' usually works 
-            // if we didn't preventDefault on touchstart/move too aggressively.
-            // If dragging, 'click' might not fire or we can filter it.
+            document.addEventListener('click', e => handleTap(e.clientX, e.clientY));
         }
 
         function animate() {
             requestAnimationFrame(animate);
+            if (!state.isDragging) state.scene.rotation.y += 0.001;
 
-            // Idle rotation
-            if (!state.isDragging) {
-                state.scene.rotation.y += 0.001;
-            }
-
-            // Pulse particles
+            // Pulse
             const time = Date.now() * 0.001;
             state.particles.forEach((p, i) => {
                 const scale = 1 + Math.sin(time * 2 + i) * 0.1;
@@ -751,7 +755,7 @@
         }
 
         // ============================================
-        // UI HANDLERS
+        // MODALS
         // ============================================
         function openPhotoModal(url) {
             const modal = document.getElementById('photo-modal');
@@ -774,9 +778,7 @@
             playSfx(300, 'square');
         });
 
-        // Initialize
         initThree();
-
     </script>
 </body>
 
