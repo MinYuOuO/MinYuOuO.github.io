@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shortDesc: 'Voice-enabled AI narrator/concierge for cultural tourism.',
             fullDesc: `
                 <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">An AI narrator/concierge interface designed for rural cultural tourism. It prioritizes a seamless text and voice chat experience with an animated avatar.</p>
+                <p class="mb-4">An AI-powered tour guide/concierge interface designed specifically for rural cultural tourism. Its core lies in delivering a seamless text and voice chat experience, complemented by a dynamic virtual avatar.</p>
                 <h4 class="text-white font-bold mb-2">Core Features:</h4>
                 <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
                     <li><strong>Voice UX:</strong> Integrated ASR (Speech-to-Text) & TTS via iFLYTEK/WebSpeech.</li>
