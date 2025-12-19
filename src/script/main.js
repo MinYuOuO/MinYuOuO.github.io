@@ -39,6 +39,89 @@ window.playClickSound = playClickSound;
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
+    // THEME TOGGLE
+    // ==========================================
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const html = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcons(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    }
+
+    function toggleTheme() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcons(newTheme);
+        updateThreeJSTheme(newTheme);
+    }
+
+    function updateThemeIcons(theme) {
+        const sunIcons = document.querySelectorAll('.sun-icon');
+        const moonIcons = document.querySelectorAll('.moon-icon');
+
+        if (theme === 'light') {
+            sunIcons.forEach(icon => icon.classList.add('hidden'));
+            moonIcons.forEach(icon => icon.classList.remove('hidden'));
+        } else {
+            sunIcons.forEach(icon => icon.classList.remove('hidden'));
+            moonIcons.forEach(icon => icon.classList.add('hidden'));
+        }
+    }
+
+    function updateThreeJSTheme(theme) {
+        if (window.threeJSScene) {
+            const bgColor = theme === 'light' ? 0xe8f4ff : 0x000308;
+            const fogColor = theme === 'light' ? 0xe8f4ff : 0x000308;
+
+            window.threeJSScene.background.setHex(bgColor);
+            window.threeJSScene.fog.color.setHex(fogColor);
+            window.threeJSRenderer.setClearColor(bgColor, 1);
+
+            // FIX: Adjust Bloom Strength to prevent "Foggy" look in Light Mode
+            if (window.threeJSBloomPass) {
+                 window.threeJSBloomPass.strength = theme === 'light' ? 0.3 : 1.2;
+            }
+
+            // FIX: Reset Star Colors based on theme
+            if (window.threeJSStarGeometry) {
+                const colors = window.threeJSStarGeometry.attributes.color.array;
+                for (let i = 0; i < colors.length; i += 3) {
+                    if (theme === 'light') {
+                        // Darker blue/grey for light mode visibility
+                        colors[i]     = 0.2; 
+                        colors[i + 1] = 0.4; 
+                        colors[i + 2] = 0.8; 
+                    } else {
+                        // Restore brighter colors for dark mode
+                        colors[i]     = 0.8; 
+                        colors[i + 1] = 0.9; 
+                        colors[i + 2] = 1.0; 
+                    }
+                }
+                window.threeJSStarGeometry.attributes.color.needsUpdate = true;
+            }
+
+            // FIX: Reset Shard Colors based on theme
+            if (window.threeJSShardMaterial) {
+                const shardColor = theme === 'light' ? 0x0055cc : 0x00f0ff; // Darker blue vs Neon Cyan
+                window.threeJSShardMaterial.color.setHex(shardColor);
+            }
+        }
+    }
+
+    // ==========================================
     // MOBILE MENU
     // ==========================================
     const mobileBtn = document.getElementById('mobile-menu-btn');
@@ -60,190 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // PROJECT ARCHIVES (Show More Logic)
     // ==========================================
-    const projects = [
-        {
-            id: 'remind',
-            title: 'ReMind',
-            type: 'Mobile App',
-            stack: ['Ionic', 'Angular', 'SQLite', 'Capacitor'],
-            shortDesc: 'Privacy-first, offline-enabled relationship manager focused on data sovereignty.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">ReMind is a privacy-first, offline-enabled relationship manager designed to help users record, organize, and sustain meaningful friendships without cloud dependency. Built with Ionic + Angular + Capacitor.</p>
-                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Local-First:</strong> Built with SQLite. Data never leaves the device.</li>
-                    <li><strong>Data Sovereignty:</strong> Unlike cloud-based CRMs, user owns 100% of the data.</li>
-                    <li><strong>Offline Capability:</strong> Full CRUD functionality without internet access.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/ReMind'
-        },
-        {
-            id: 'jiuxi',
-            title: 'JiuXi Mindscape',
-            type: 'AI Service',
-            stack: ['HTML/JS', 'iFLYTEK', 'WebSpeech', 'LLM'],
-            shortDesc: 'Voice-enabled AI narrator/concierge for cultural tourism.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">An AI-powered tour guide/concierge interface designed specifically for rural cultural tourism. Its core lies in delivering a seamless text and voice chat experience, complemented by a dynamic virtual avatar.</p>
-                <h4 class="text-white font-bold mb-2">Core Features:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Voice UX:</strong> Integrated ASR (Speech-to-Text) & TTS via iFLYTEK/WebSpeech.</li>
-                    <li><strong>RAG Logic:</strong> Retrieval-Augmented Generation using local JSON knowledge bases.</li>
-                    <li><strong>Provider Resilience:</strong> Fallback mechanisms for offline voice support.</li>
-                </ul>
-            `,
-            link: '#'
-        },
-        {
-            id: 'hangman',
-            title: 'Hangman Game',
-            type: 'Game Dev',
-            stack: ['C++', 'SFML', 'CMake'],
-            shortDesc: 'Console-based Hangman game with multimedia integration.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">An Object-Oriented Programming project demonstrating game logic, memory management, and multimedia integration in C++.</p>
-                <h4 class="text-white font-bold mb-2">Technical Specs:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Build System:</strong> CMake for cross-platform compilation (Windows/Presets).</li>
-                    <li><strong>Audio:</strong> SFML integration for background music playback.</li>
-                    <li><strong>Architecture:</strong> Modular design separating Server, Game Logic, and Entry Point.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/Hangman-Game'
-        },
-        {
-            id: 'miu-portfolio',
-            title: 'Miu | Architect of Dissociative Recombination',
-            type: 'Web Portfolio',
-            stack: ['HTML', 'Tailwind CSS', 'JavaScript', 'Three.js', 'WebGL', 'Web Audio API'],
-            shortDesc: 'Experimental portfolio SPA exploring Digital Deconstruction through WebGL physics, kinetic typography, and procedural audio.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
+    const projects = window.projectsData || [];
 
-                <p class="mb-4">
-                    Miu Portfolio is a high-performance, single-page application that treats the interface as a living computational organism.
-                    User input injects energy into the system, triggering controlled visual dissociation and recomposition in real time.
-                </p>
-
-                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>WebGL Core:</strong> Three.js scene with instanced geometry and post-processing for 60 FPS performance.</li>
-                    <li><strong>Input-Driven Physics:</strong> Mouse and scroll interactions directly modulate camera, particles, and shaders.</li>
-                    <li><strong>Procedural Systems:</strong> Real-time audio synthesis and glitch effects—no pre-rendered assets.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/MinYuOuO.github.io'
-        },
-        {
-            id: 'stellar-echoes',
-            title: 'Stellar Echoes',
-            type: 'Web / Interactive Memory Archive',
-            stack: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'Web Audio API'],
-            shortDesc: 'An immersive 3D memory archive where photographs are preserved as floating data shards inside a cinematic WebGL...',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: MEMORY_RECALL_ACTIVE</h3>
-
-                <p class="mb-4">
-                    Stellar Echoes is an experimental WebGL experience that transforms personal memories into navigable, three-dimensional artifacts.
-                    Photos are embedded within floating geometric shards, forming a constellation that users can explore through rotation, zoom, and interaction.
-                </p>
-
-                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Boot Sequence Preloader:</strong> Image assets are buffered with a system-style progress log before activation.</li>
-                    <li><strong>3D Memory Shards:</strong> Icosahedron-based particles arranged in spherical space using Three.js.</li>
-                    <li><strong>Interactive Recall:</strong> Raycasting enables direct selection and modal viewing of memories.</li>
-                    <li><strong>Procedural Atmosphere:</strong> Real-time audio cues and bloom post-processing enhance emotional immersion.</li>
-                </ul>
-            `,
-            link: 'stellarEchoes.html'
-        },
-        {
-            id: 'colorella-ticketing',
-            title: 'Colorella Ticketing System',
-            type: 'Desktop Application',
-            stack: ['Python', 'Tkinter', 'Google Sheets API', 'Pandas'],
-            shortDesc: 'A lightweight desktop system for syncing registrations, managing ticket tiers, and tracking attendance using Google...',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-
-                <p class="mb-4">
-                    Colorella Ticketing System is a pragmatic, Python-based desktop tool designed to manage real-world event workflows.
-                    It ingests Google Form responses, enforces tier constraints, and provides a responsive UI for payment review and attendance tracking—
-                    all while using Google Sheets as a transparent, auditable data source.
-                </p>
-
-                <h4 class="text-white font-bold mb-2">Key Architecture:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Google Sheets Backend:</strong> Sheets API used as a shared, live data store.</li>
-                    <li><strong>Tiered Ticket Logic:</strong> Early Bird / Mid / Last tiers with caps, waitlists, and position tracking.</li>
-                    <li><strong>Deduplication Engine:</strong> Email-based conflict resolution with deterministic tier assignment.</li>
-                    <li><strong>Asynchronous UI:</strong> Background threads ensure Tkinter remains fast and non-blocking.</li>
-                    <li><strong>Layered OOP Design:</strong> Gateway → repositories → services → UI separation.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/colorella-ticket-system'
-        },
-
-        {
-            id: 'travel',
-            title: 'Travel Calculator',
-            type: 'Utility System',
-            stack: ['C++', 'Terminal'],
-            shortDesc: 'Business trip expense calculator enforcing company policy limits.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">A C++ system to calculate allowable expenses for business trips, comparing actual costs against specific company policy limits.</p>
-                <h4 class="text-white font-bold mb-2">Policy Logic Gates:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Mileage:</strong> Calculates vehicle allowance at $0.58/km.</li>
-                    <li><strong>Lodging:</strong> Checks against $90/night limit.</li>
-                    <li><strong>Meal Logic:</strong> Complex time-based rules for breakfast/lunch/dinner eligibility on travel days.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/Travel-Calculator-App'
-        },
-        {
-            id: 'student',
-            title: 'Score Manager',
-            type: 'CLI Tool',
-            stack: ['Python', 'File I/O'],
-            shortDesc: 'CRUD system for managing student records and analyzing performance.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">A CLI-based management system for teachers to input, manage, and analyze student academic performance in Python.</p>
-                <h4 class="text-white font-bold mb-2">Features:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Persistence:</strong> Custom text-based database format (StudentInfo.txt).</li>
-                    <li><strong>Data Viz:</strong> Uses 'PrettyTable' library for clean console output.</li>
-                    <li><strong>Algorithms:</strong> Sorting functions for subject scores.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/Student-Score-Management'
-        },
-        {
-            id: 'bmi',
-            title: 'BMI Calculator',
-            type: 'GUI App',
-            stack: ['Python', 'Tkinter'],
-            shortDesc: 'Graphical interface for real-time body mass index calculation.',
-            fullDesc: `
-                <h3 class="text-cerenkov font-mono text-lg mb-2">> System Status: DECRYPTED</h3>
-                <p class="mb-4">A Software Engineering assignment demonstrating iterative development cycles and UI design patterns.</p>
-                <h4 class="text-white font-bold mb-2">Dev Process:</h4>
-                <ul class="list-disc list-inside text-gray-400 mb-4 font-mono text-sm">
-                    <li><strong>Modularization:</strong> Strict separation of UI and Calculation logic.</li>
-                    <li><strong>Validation:</strong> Robust error handling for zero-division/invalid inputs.</li>
-                    <li><strong>Workflow:</strong> Managed via Kanban & Git branching.</li>
-                </ul>
-            `,
-            link: 'https://github.com/MinYuOuO/SE-Assignment'
-        },
-    ];
+    if (projects.length === 0) {
+        console.error('Projects data not loaded!');
+    }
 
     const projectGrid = document.getElementById('project-grid');
     const showMoreBtn = document.getElementById('show-more-projects');
@@ -266,17 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 openModal(project);
             });
 
+            // Card HTML structure
+            // Note: Colors here are handled by main.css variables (text-primary, etc)
             card.innerHTML = `
                 <div class="flex justify-between items-start mb-4">
                     <span class="font-mono text-[10px] md:text-xs text-cerenkov border border-cerenkov px-2 py-1 rounded opacity-70 group-hover:opacity-100 transition-opacity">${project.type}</span>
                     <span class="text-gray-600 text-[10px] md:text-xs font-mono">ID: ${project.id}</span>
                 </div>
-                <h3 class="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-cerenkov transition-colors">${project.title}</h3>
-                <p class="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">${project.shortDesc}</p>
+                <h3 class="text-lg md:text-xl font-bold mb-2 group-hover:text-cerenkov transition-colors" style="color: var(--text-primary)">${project.title}</h3>
+                <p class="text-sm mb-4 line-clamp-2 flex-grow" style="color: var(--text-secondary)">${project.shortDesc}</p>
                 <div class="flex flex-wrap gap-2 mb-4">
-                    ${project.stack.slice(0, 3).map(tech => `<span class="text-[10px] md:text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">${tech}</span>`).join('')}
+                    ${project.stack.slice(0, 3).map(tech => `<span class="text-[10px] md:text-xs text-gray-500 bg-gray-500/10 px-2 py-1 rounded border border-gray-500/20">${tech}</span>`).join('')}
                 </div>
-                <div class="border-t border-white/10 pt-4 flex justify-between items-center mt-auto">
+                <div class="border-t border-gray-500/20 pt-4 flex justify-between items-center mt-auto">
                     <span class="text-[10px] md:text-xs font-mono text-gray-500 group-hover:text-cerenkov">CLICK_TO_DECRYPT</span>
                     <svg class="w-4 h-4 text-gray-600 group-hover:text-cerenkov transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </div>
@@ -303,11 +209,154 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModal(project) {
         if (!modal) return;
-        modalBody.innerHTML = project.fullDesc;
-        if (modalLink) {
-            modalLink.href = project.link;
-            modalLink.style.display = (project.link === '#' || !project.link) ? 'none' : 'inline-block';
+
+        // Build Media Section
+        let mediaHTML = '';
+
+        if (project.media) {
+            switch (project.media.type) {
+                case 'youtube':
+                    mediaHTML = `
+                    <div class="aspect-video w-full mb-8 rounded overflow-hidden border border-cerenkov/30">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/${project.media.content}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+                    break;
+
+                case 'video':
+                    mediaHTML = `
+                    <div class="aspect-video w-full mb-8 rounded overflow-hidden border border-cerenkov/30">
+                        <video class="w-full h-full" controls>
+                            <source src="${project.media.content}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                `;
+                    break;
+
+                case 'figma':
+                    mediaHTML = `
+                    <div class="aspect-video w-full mb-8 rounded overflow-hidden border border-cerenkov/30">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="${project.media.content}" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+                    break;
+
+                case 'images':
+                    mediaHTML = `
+                    <div class="w-full mb-8 space-y-4">
+                        ${project.media.content.map(img => `
+                            <div class="rounded overflow-hidden border border-cerenkov/30">
+                                <img src="${img}" alt="${project.title} screenshot" class="w-full h-auto">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                    break;
+            }
         }
+
+        // Build Details Content
+        const detailsHTML = `
+        <div class="modal-content-wrapper">
+            ${mediaHTML}
+            
+            <section class="mb-8 pb-8 border-b border-gray-500/20">
+                <h3 class="text-cerenkov font-mono text-sm mb-3 tracking-wider">>> INTRODUCTION</h3>
+                <p style="color: var(--text-secondary)" class="leading-relaxed">${project.introduction}</p>
+            </section>
+            
+            ${project.details.overview ? `
+                <section class="mb-8 pb-8 border-b border-gray-500/20">
+                    <h3 class="text-cerenkov font-mono text-sm mb-3 tracking-wider">>> OVERVIEW</h3>
+                    <p style="color: var(--text-secondary)" class="leading-relaxed">${project.details.overview}</p>
+                </section>
+            ` : ''}
+            
+            ${project.details.features ? `
+                <section class="mb-8 pb-8 border-b border-gray-500/20">
+                    <h3 class="text-cerenkov font-mono text-sm mb-3 tracking-wider">>> KEY FEATURES</h3>
+                    <ul class="space-y-3">
+                        ${project.details.features.map(feature => `
+                            <li class="flex items-start gap-3">
+                                <span class="text-cerenkov mt-1 text-xs">▹</span>
+                                <span style="color: var(--text-tertiary)" class="text-sm leading-relaxed">${feature}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </section>
+            ` : ''}
+            
+            ${project.details.responsibilities ? `
+                <section class="mb-8 pb-8 border-b border-gray-500/20">
+                    <h3 class="text-cerenkov font-mono text-sm mb-3 tracking-wider">>> MY RESPONSIBILITIES</h3>
+                    <ul class="space-y-3">
+                        ${project.details.responsibilities.map(resp => `
+                            <li class="flex items-start gap-3">
+                                <span class="text-dissociation mt-1 text-xs">●</span>
+                                <span style="color: var(--text-tertiary)" class="text-sm leading-relaxed">${resp}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </section>
+            ` : ''}
+            
+            ${project.details.challenges ? `
+                <section class="mb-8 pb-8 border-b border-gray-500/20">
+                    <h3 class="text-cerenkov font-mono text-sm mb-3 tracking-wider">>> CHALLENGES & SOLUTIONS</h3>
+                    <ul class="space-y-3">
+                        ${project.details.challenges.map(challenge => `
+                            <li class="flex items-start gap-3">
+                                <span class="text-alert mt-1 text-xs">⚠</span>
+                                <span style="color: var(--text-tertiary)" class="text-sm leading-relaxed">${challenge}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </section>
+            ` : ''}
+            
+            ${project.showcase && project.showcase.length > 0 ? `
+                <section class="mb-4">
+                    <h3 class="text-cerenkov font-mono text-sm mb-4 tracking-wider">>> PROJECT LINKS</h3>
+                    <div class="flex flex-wrap gap-3">
+                        ${project.showcase.map(item => {
+            const labels = {
+                'demo': 'LIVE DEMO',
+                'github': 'SOURCE CODE',
+                'live': 'VIEW LIVE',
+                'figma': 'FIGMA DESIGN',
+                'info': 'INFORMATION'
+            };
+            return `
+                                <a href="${item.url}" target="_blank" 
+                                   class="btn-glitch px-4 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all inline-block"
+                                   onclick="playClickSound()">
+                                    ${labels[item.type] || item.type.toUpperCase()}
+                                </a>
+                            `;
+        }).join('')}
+                    </div>
+                </section>
+            ` : ''}
+        </div>
+    `;
+
+        modalBody.innerHTML = detailsHTML;
+
+        if (modalLink) {
+            modalLink.style.display = 'none';
+        }
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -328,19 +377,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('canvas-container');
     if (container) {
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x050505, 0.003); // lag
-        scene.background = null;
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const bgColor = currentTheme === 'light' ? 0xe8f4ff : 0x000308;
+        const fogColor = currentTheme === 'light' ? 0xe8f4ff : 0x000308;
+
+        scene.fog = new THREE.FogExp2(fogColor, 0.003);
+        scene.background = new THREE.Color(bgColor);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 40;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: false });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         // Optimize: Limit pixel ratio to 2 for High-DPI screens to save battery
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.toneMapping = THREE.ReinhardToneMapping;
-        renderer.setClearColor(0x000000, 0);
+        renderer.setClearColor(bgColor, 1);
         container.appendChild(renderer.domElement);
+
+        window.threeJSScene = scene;
+        window.threeJSRenderer = renderer;
 
         // --- POST PROCESSING SETUP ---
         const renderScene = new THREE.RenderPass(scene, camera);
@@ -351,8 +407,12 @@ document.addEventListener('DOMContentLoaded', () => {
             1.5, 0.4, 0.85
         );
         bloomPass.threshold = 0;
-        bloomPass.strength = 1.2;
+        // Initial strength set based on theme
+        bloomPass.strength = currentTheme === 'light' ? 0.3 : 1.2;
         bloomPass.radius = 0.5;
+        
+        // FIX: EXPOSE BLOOM PASS GLOBALLY SO WE CAN UPDATE IT LATER
+        window.threeJSBloomPass = bloomPass;
 
         // 2. RGB Shift Pass (Chromatic Aberration)
         const rgbShiftPass = new THREE.ShaderPass(THREE.RGBShiftShader);
@@ -372,14 +432,96 @@ document.addEventListener('DOMContentLoaded', () => {
         composer.addPass(bloomPass);
         composer.addPass(rgbShiftPass);
 
-        // --- SHARDS ---
-        // Optimize: Reduce shard count on mobile
         const isMobile = window.innerWidth < 768;
+
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = 32;
+
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+            gradient.addColorStop(0.4, 'rgba(255,255,255,0.3)');
+            gradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 32, 32);
+
+            const texture = new THREE.Texture(canvas);
+            texture.needsUpdate = true;
+            return texture;
+        }
+
+        // --- STARFIELD ---
+        const starCount = isMobile ? 1000 : 2000;
+        const starGeometry = new THREE.BufferGeometry();
+        // FIX: EXPOSE GEOMETRY GLOBALLY
+        window.threeJSStarGeometry = starGeometry;
+        
+        const starPositions = new Float32Array(starCount * 3);
+        const starColors = new Float32Array(starCount * 3);
+        const starSizes = new Float32Array(starCount);
+        const starVelocities = [];
+
+        const starColorPalette = [
+            { r: 0.0, g: 0.6, b: 1.0 },
+            { r: 0.0, g: 0.9, b: 1.0 },
+            { r: 1.0, g: 1.0, b: 1.0 },
+            { r: 0.6, g: 0.7, b: 1.0 },
+            { r: 0.8, g: 0.6, b: 1.0 }
+        ];
+
+        for (let i = 0; i < starCount; i++) {
+            starPositions[i * 3] = (Math.random() - 0.5) * 200;
+            starPositions[i * 3 + 1] = (Math.random() - 0.5) * 200;
+            starPositions[i * 3 + 2] = (Math.random() - 0.5) * 150;
+
+            const colorIndex = Math.floor(Math.random() * starColorPalette.length);
+            const color = starColorPalette[colorIndex];
+            
+            // Initial color set based on current theme
+            if (currentTheme === 'light') {
+                starColors[i * 3] = 0.2;
+                starColors[i * 3 + 1] = 0.4;
+                starColors[i * 3 + 2] = 0.8;
+            } else {
+                starColors[i * 3] = color.r;
+                starColors[i * 3 + 1] = color.g;
+                starColors[i * 3 + 2] = color.b;
+            }
+
+            starSizes[i] = Math.random() * 1.2 + 0.3;
+
+            starVelocities.push(Math.random() * 0.15 + 0.05);
+        }
+
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3)); 
+        starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1)); 
+
+        const starMaterial = new THREE.PointsMaterial({
+            vertexColors: true,
+            size: 0.5,
+            sizeAttenuation: true,
+            transparent: true,
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending,
+            map: createCircleTexture(),
+            depthWrite: false
+        });
+        window.threeJSStarMaterial = starMaterial;
+
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        // --- SHARDS ---
         const shardCount = isMobile ? 60 : 120;
 
         const geometry = new THREE.IcosahedronGeometry(0.5, 0);
         const material = new THREE.MeshBasicMaterial({
-            color: 0x00f0ff,
+            color: currentTheme === 'light' ? 0x0055cc : 0x00f0ff,
             wireframe: true,
             transparent: true,
             opacity: 0.6
@@ -408,10 +550,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 (Math.random() - 0.5) * 0.02
             ));
         }
+
+        window.threeJSShardMaterial = material;
         scene.add(shards);
 
         // --- LINES ---
-        // Buffer lines optimization
         const maxLines = isMobile ? 200 : 400;
         const lineGeo = new THREE.BufferGeometry();
         const linePos = new Float32Array(maxLines * 2 * 3);
@@ -453,6 +596,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const animate = () => {
             requestAnimationFrame(animate);
             scrollY += (targetScrollY - scrollY) * 0.05;
+
+            const starPositions = stars.geometry.attributes.position.array;
+            const scrollSpeed = Math.abs(targetScrollY - scrollY) * 0.001;
+
+            const cameraVelocity = Math.abs(mouseX) + Math.abs(mouseY);
+
+            for (let i = 0; i < starCount; i++) {
+                starPositions[i * 3 + 2] += starVelocities[i] * (0.5 + scrollSpeed * 8);
+
+                starPositions[i * 3] += mouseX * starVelocities[i] * 0.3;
+                starPositions[i * 3 + 1] += mouseY * starVelocities[i] * 0.3;
+
+                if (starPositions[i * 3 + 2] > 75) {
+                    starPositions[i * 3 + 2] = -75;
+                    starPositions[i * 3] = (Math.random() - 0.5) * 300;
+                    starPositions[i * 3 + 1] = (Math.random() - 0.5) * 300;
+                }
+
+                if (Math.abs(starPositions[i * 3]) > 150) {
+                    starPositions[i * 3] = (Math.random() - 0.5) * 300;
+                }
+                if (Math.abs(starPositions[i * 3 + 1]) > 150) {
+                    starPositions[i * 3 + 1] = (Math.random() - 0.5) * 300;
+                }
+            }
+
+            starMaterial.opacity = Math.max(0.4, 0.9 - scrollSpeed * 8 - cameraVelocity * 0.2);
+
+            stars.geometry.attributes.position.needsUpdate = true;
+
             camera.position.y = -scrollY * 0.02;
             camera.rotation.z = scrollY * 0.0005;
             camera.rotation.x = mouseY * 0.05;
