@@ -178,7 +178,7 @@
 
     <main class="container mx-auto px-6 pt-32 pb-20 relative z-10 pointer-events-none flex-grow">
 
-        <section class="min-h-[85vh] flex flex-col justify-center items-start pl-4 md:pl-0 pointer-events-auto">
+        <section class="min-h-[70vh] flex flex-col justify-center items-start pl-4 md:pl-0 pointer-events-auto">
 
             <div class="hero-grid"></div>
 
@@ -487,7 +487,7 @@
                                     </div>
                                 </a>
 
-                                <a href="https://www.linkedin.com/in/min-yu-loh-329377345/"
+                                <a href="https://www.linkedin.com/in/loh-min-yu-329377345/"
                                     class="group flex items-center space-x-4 hover:bg-white/5 p-3 rounded transition-colors"
                                     onmouseenter="playHoverSound()">
                                     <div class="text-gray-500 group-hover:text-cerenkov transition-colors">
@@ -562,8 +562,7 @@
                     <button id="modal-close" class="text-gray-500 hover:text-dissociation font-mono transition-colors"
                         onclick="playClickSound()" aria-label="Close Modal">[CLOSE_X]</button>
                 </div>
-                <div id="modal-body" class="prose prose-invert prose-sm md:prose-base max-w-none mb-8 text-theme-text-muted">
-                </div>
+                <div id="modal-body" class="modal-content-wrapper text-theme-text-muted" data-lenis-prevent></div>
                 <div class="flex justify-end">
                     <a id="modal-link" href="#" target="_blank"
                         class="btn-glitch px-6 py-2 font-mono text-xs text-cerenkov uppercase tracking-widest hover:text-black hover:bg-cerenkov transition-all"
@@ -597,6 +596,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/RGBShiftShader.js"></script>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <script defer src="src/script/projects-data.js"></script>
     <script defer src="src/script/main.js"></script>

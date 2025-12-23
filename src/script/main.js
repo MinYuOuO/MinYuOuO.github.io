@@ -37,6 +37,53 @@ window.playHoverSound = playHoverSound;
 window.playClickSound = playClickSound;
 
 document.addEventListener('DOMContentLoaded', () => {
+    const lenis = new Lenis({
+        duration: 1.3, 
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false, 
+        touchMultiplier: 2,
+    });
+
+    window.lenis = lenis;
+
+    // ==========================================
+    // GSAP SCROLL TRIGGER SETUP
+    // ==========================================
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+    const fadeElements = document.querySelectorAll('.fade-section, .project-card, section h2, section h3, section p, .cyber-stack, .btn-glitch');
+    fadeElements.forEach((element) => {
+        gsap.fromTo(element, 
+            { 
+                autoAlpha: 0,
+                y: 50
+            }, 
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 90%", 
+                    end: "bottom 15%", 
+                    toggleActions: "play reverse play reverse",
+                    markers: false
+                }
+            }
+        );
+    });
 
     // ==========================================
     // THEME TOGGLE
@@ -91,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // FIX: Adjust Bloom Strength to prevent "Foggy" look in Light Mode
             if (window.threeJSBloomPass) {
-                 window.threeJSBloomPass.strength = theme === 'light' ? 0.3 : 1.2;
+                window.threeJSBloomPass.strength = theme === 'light' ? 0.3 : 1.2;
             }
 
             // FIX: Reset Star Colors based on theme
@@ -100,14 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (let i = 0; i < colors.length; i += 3) {
                     if (theme === 'light') {
                         // Darker blue/grey for light mode visibility
-                        colors[i]     = 0.2; 
-                        colors[i + 1] = 0.4; 
-                        colors[i + 2] = 0.8; 
+                        colors[i] = 0.2;
+                        colors[i + 1] = 0.4;
+                        colors[i + 2] = 0.8;
                     } else {
                         // Restore brighter colors for dark mode
-                        colors[i]     = 0.8; 
-                        colors[i + 1] = 0.9; 
-                        colors[i + 2] = 1.0; 
+                        colors[i] = 0.8;
+                        colors[i + 1] = 0.9;
+                        colors[i + 2] = 1.0;
                     }
                 }
                 window.threeJSStarGeometry.attributes.color.needsUpdate = true;
@@ -350,7 +397,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ` : ''}
         </div>
     `;
-
+        
+        modalBody.className = 'modal-content-wrapper';
         modalBody.innerHTML = detailsHTML;
 
         if (modalLink) {
@@ -410,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial strength set based on theme
         bloomPass.strength = currentTheme === 'light' ? 0.3 : 1.2;
         bloomPass.radius = 0.5;
-        
+
         // FIX: EXPOSE BLOOM PASS GLOBALLY SO WE CAN UPDATE IT LATER
         window.threeJSBloomPass = bloomPass;
 
@@ -459,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const starGeometry = new THREE.BufferGeometry();
         // FIX: EXPOSE GEOMETRY GLOBALLY
         window.threeJSStarGeometry = starGeometry;
-        
+
         const starPositions = new Float32Array(starCount * 3);
         const starColors = new Float32Array(starCount * 3);
         const starSizes = new Float32Array(starCount);
@@ -480,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const colorIndex = Math.floor(Math.random() * starColorPalette.length);
             const color = starColorPalette[colorIndex];
-            
+
             // Initial color set based on current theme
             if (currentTheme === 'light') {
                 starColors[i * 3] = 0.2;
@@ -498,8 +546,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3)); 
-        starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1)); 
+        starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+        starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
 
         const starMaterial = new THREE.PointsMaterial({
             vertexColors: true,
@@ -591,11 +639,13 @@ document.addEventListener('DOMContentLoaded', () => {
             lastMouseX = e.clientX;
             lastMouseY = e.clientY;
         });
-        document.addEventListener('scroll', () => { targetScrollY = window.scrollY; });
+        document.addEventListener('scroll', () => { targetScrollY = lenis.scroll; });
 
-        const animate = () => {
+        const animate = (time) => {
             requestAnimationFrame(animate);
-            scrollY += (targetScrollY - scrollY) * 0.05;
+            lenis.raf(time);
+            scrollY = lenis.scroll;
+            targetScrollY = lenis.scroll;
 
             const starPositions = stars.geometry.attributes.position.array;
             const scrollSpeed = Math.abs(targetScrollY - scrollY) * 0.001;
@@ -722,4 +772,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressBar.style.width = scrolled + '%';
     }, { passive: true });
+
+    
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElem = document.querySelector(targetId);
+        
+        if (targetElem) {
+            lenis.scrollTo(targetElem, {
+                offset: 0, 
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }
+        }
+    });
 });
