@@ -1,5 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap');
+@import "tailwindcss";
 
+/* 1. CONFIGURATION (Tailwind v4) */
+@theme {
+  /* Link Tailwind utilities to your CSS variables for dynamic switching */
+  --color-cerenkov: var(--color-cerenkov);
+  --color-abyssal: var(--color-abyssal);
+  --color-graphite: var(--color-graphite);
+  --color-alert: var(--color-alert);
+  --color-dissociation: var(--color-dissociation);
+  
+  --color-theme-bg: var(--bg-primary);
+  --color-theme-text: var(--text-primary);
+  --color-theme-text-muted: var(--text-secondary);
+
+  /* Fonts */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Space Grotesk', sans-serif;
+  
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.5s ease-out;
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* 2. FONTS */
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('../assets/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../assets/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+/* 3. VARIABLES (The Values) */
 :root {
     /* --- DARK MODE (Default/Abyssal) --- */
     --color-abyssal: #050505;
@@ -32,7 +74,7 @@
     /* --- LIGHT MODE (Laboratory/Clean) --- */
     --color-abyssal: #ffffff;
     --color-graphite: #f0f0f0;
-    --color-cerenkov: #0055cc; /* Darker Blue for readability on white */
+    --color-cerenkov: #0055cc; /* Darker Blue */
     --color-white: #0a0a0a;
     --color-dim: #888;
     --color-alert: #cc0044;
@@ -42,20 +84,21 @@
     --bg-secondary: #f4f6f8;
     --bg-tertiary: rgba(255, 255, 255, 0.9);
     
-    --text-primary: #050505; /* Pitch Black */
-    --text-secondary: #404040; /* Dark Grey */
+    --text-primary: #050505;
+    --text-secondary: #404040;
     --text-tertiary: #666666;
     
-    --border-primary: rgba(0, 0, 0, 0.15); /* Stronger borders */
+    --border-primary: rgba(0, 0, 0, 0.15);
     --border-secondary: rgba(0, 85, 204, 0.3);
     
-    --scene-bg: #f0f8ff; /* Alice Blue tint */
+    --scene-bg: #f0f8ff;
     --scene-fog: #f0f8ff;
     
     --card-bg: rgba(255, 255, 255, 0.85);
-    --card-shadow: 0 10px 40px -10px rgba(0, 85, 204, 0.15); /* Soft blue shadow */
+    --card-shadow: 0 10px 40px -10px rgba(0, 85, 204, 0.15);
 }
 
+/* 4. BASE STYLES */
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -64,6 +107,7 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* --- Keep the rest of your existing CSS below this line --- */
 .hero-grid {
     position: absolute;
     right: 5%;
@@ -106,7 +150,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-primary); /* Updates dynamically with theme */
+    background: var(--bg-primary);
 }
 
 .glitch-text::before {
@@ -188,10 +232,10 @@ body {
 }
 
 @keyframes stream {
-    0% { transform: translateX(-50dvw); opacity: 0; }
+    0% { transform: translateX(-20%); opacity: 0; }
     10% { opacity: 0.5; }
     90% { opacity: 0.5; }
-    100% { transform: translateX(100dvw); opacity: 0; }
+    100% { transform: translateX(100%); opacity: 0; }
 }
 
 /* Vertical Architectural Text */
