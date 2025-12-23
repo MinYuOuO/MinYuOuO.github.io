@@ -38,13 +38,13 @@ window.playClickSound = playClickSound;
 
 document.addEventListener('DOMContentLoaded', () => {
     const lenis = new Lenis({
-        duration: 1.3, 
+        duration: 1.3,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: 'vertical',
         gestureDirection: 'vertical',
         smooth: true,
         mouseMultiplier: 1,
-        smoothTouch: false, 
+        smoothTouch: false,
         touchMultiplier: 2,
     });
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // GSAP SCROLL TRIGGER SETUP
     // ==========================================
-    
+
     gsap.registerPlugin(ScrollTrigger);
 
     lenis.on('scroll', ScrollTrigger.update);
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.ticker.lagSmoothing(0);
     const fadeElements = document.querySelectorAll('.fade-section, .project-card, section h2, section h3, section p, .cyber-stack, .btn-glitch');
     fadeElements.forEach((element) => {
-        gsap.fromTo(element, 
-            { 
+        gsap.fromTo(element,
+            {
                 autoAlpha: 0,
                 y: 50
-            }, 
+            },
             {
                 autoAlpha: 1,
                 y: 0,
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: element,
-                    start: "top 90%", 
-                    end: "bottom 15%", 
+                    start: "top 90%",
+                    end: "bottom 15%",
                     toggleActions: "play reverse play reverse",
                     markers: false
                 }
@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ` : ''}
         </div>
     `;
-        
+
         modalBody.className = 'modal-content-wrapper';
         modalBody.innerHTML = detailsHTML;
 
@@ -773,27 +773,40 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = scrolled + '%';
     }, { passive: true });
 
-    
+
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetElem = document.querySelector(targetId);
-        
-        if (targetElem) {
-            lenis.scrollTo(targetElem, {
-                offset: 0, 
+
+        if (targetId === '#') {
+            lenis.scrollTo(0, {
                 duration: 1.5,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
             });
-            
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
+            return;
+        }
+
+        try {
+            const targetElem = document.querySelector(targetId);
+
+            if (targetElem) {
+                lenis.scrollTo(targetElem, {
+                    offset: 0,
+                    duration: 1.5,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                });
+
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
             }
+        } catch (err) {
+            console.warn("Invalid selector:", targetId);
         }
     });
 });
