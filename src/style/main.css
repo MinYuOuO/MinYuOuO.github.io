@@ -136,6 +136,32 @@ body {
     font-family: 'JetBrains Mono', monospace;
 }
 
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important; /* 强制覆盖原生平滑滚动 */
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none; /* 滚动时禁用 iframe 交互，提升性能 */
+}
+
+.fade-section {
+    opacity: 0;
+    visibility: hidden;
+    will-change: opacity, transform;
+}
+
 /* --- Glitch Header --- */
 .glitch-text {
     position: relative;
@@ -415,7 +441,7 @@ body {
     height: 100%;
     background: rgba(5, 5, 5, 0.9);
     backdrop-filter: blur(8px);
-    z-index: 100;
+    z-index: 9999;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -434,17 +460,19 @@ body {
 }
 
 .modal-content-wrapper {
-    max-height: calc(85vh - 120px);
+    flex: 1;
     overflow-y: auto;
-    padding-right: 8px;
+    padding: 1.5rem;
+    overscroll-behavior: contain;
 }
 
 .modal-content-wrapper::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
 }
 
-.modal-content-wrapper::-webkit-scrollbar-track {
-    background: rgba(125, 125, 125, 0.05);
+.modal-content-wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-cerenkov);
+    border-radius: 4px;
 }
 
 .modal-content-wrapper::-webkit-scrollbar-thumb {
@@ -469,8 +497,9 @@ body {
     border: 1px solid var(--color-cerenkov);
     width: 90%;
     max-width: 800px;
-    max-height: 85vh;
-    overflow-y: auto;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
     position: relative;
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
