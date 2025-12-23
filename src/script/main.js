@@ -245,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playClickSound();
             renderProjects(projects.length);
             showMoreBtn.style.display = 'none';
+            ScrollTrigger.refresh();
         });
     }
 
