@@ -56,7 +56,7 @@ const projectsData = [
             // Replace with your actual links:
             // If you want Figma to be the main media instead, switch media.type to 'figma'
             // and paste the embed URL into media.content.
-            { type: 'figma', url: 'PASTE_YOUR_FIGMA_SHARE_OR_EMBED_URL_HERE' },
+            { type: 'figma', url: 'https://www.figma.com/design/6ukaFjEmDfwMgvfcJJop5N/ReMind?node-id=0-1&t=oSeDMvmTn8c8KBmz-1' },
 
             // Optional extra links:
             // { type: 'demo', url: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID' },
@@ -85,8 +85,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'src/assets/icon.png',
-                'src/assets/flowchart.png'
+                'https://i.postimg.cc/7LYZMMsN/jiuxi.png'
             ]
         },
 
@@ -143,19 +142,19 @@ const projectsData = [
         title: 'Hangman Game — Object-Oriented Multiplayer Console Game',
         type: 'Game Development',
         stack: [
-            'C++17',
-            'Object-Oriented Programming',
+            'C++',
+            'OOP',
             'SFML (Audio & Network)',
             'TCP Sockets',
             'CMake',
-            'Git & GitHub'
+            'Git'
         ],
         shortDesc:
             'A C++ object-oriented Hangman game supporting single-player, local multiplayer, and online multiplayer modes.',
 
         media: {
             type: 'youtube',
-            content: 'PASTE_YOUR_YOUTUBE_DEMO_VIDEO_ID_HERE'
+            content: 'fBLt0iN_Cxo'
         },
 
         introduction:
@@ -196,10 +195,6 @@ const projectsData = [
             {
                 type: 'github',
                 url: 'https://github.com/MinYuOuO/Hangman-Game'
-            },
-            {
-                type: 'demo',
-                url: 'https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID'
             }
         ],
 
@@ -212,20 +207,19 @@ const projectsData = [
         type: 'Portfolio Website',
         stack: [
             'HTML5',
-            'CSS3 / Tailwind CSS',
+            'CSS / Tailwind CSS',
             'JavaScript',
             'Three.js',
             'WebGL',
             'GitHub Pages'
         ],
         shortDesc:
-            'A highly experimental personal portfolio that rejects conventional grid-based layouts, combining anti-design principles, asymmetric UI, and WebGL-driven interactions to express both technical rigor and creative dissociation. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}',
+            'A highly experimental personal portfolio that rejects conventional grid-based layouts, combining anti-design principles, asymmetric UI, and WebGL-driven interactions to express both technical rigor and creative dissociation.',
 
         media: {
             type: 'images',
             content: [
-                'assets/portfolio-hero.png',
-                'assets/portfolio-projects.png'
+                './src/assets/preview-card.png'
             ]
         },
 
@@ -282,9 +276,8 @@ const projectsData = [
         stack: [
             'JavaScript',
             'Three.js',
-            'WebGL',
-            'HTML5',
-            'CSS3',
+            'HTML',
+            'CSS',
             'Web Audio API'
         ],
         shortDesc:
@@ -293,8 +286,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/stellar-echoes-boot.png',
-                'assets/stellar-echoes-stars.png'
+                'https://i.postimg.cc/pL0HxNCW/stellar_Echoes.png'
             ]
         },
 
@@ -423,13 +415,12 @@ const projectsData = [
             'Threading (Async UI)'
         ],
         shortDesc:
-            'A custom-built ticketing and attendance management system developed for the Colorella: Bazaar of Colors event, supporting tiered ticket sales, payment review, and real-time attendance tracking for a large-scale student festival. :contentReference[oaicite:2]{index=2}',
+            'A custom-built ticketing and attendance management system developed for the Colorella: Bazaar of Colors event, supporting tiered ticket sales, payment review, and real-time attendance tracking for a large-scale student festival.',
 
         media: {
             type: 'images',
             content: [
-                'assets/colorella-ui-main.png',
-                'assets/colorella-payment-review.png'
+                'https://i.postimg.cc/ZnFMY38Z/Colorella-Ticketing-System.png'
             ]
         },
 
@@ -468,6 +459,10 @@ const projectsData = [
         },
 
         showcase: [
+            {
+                type: 'info',
+                url: 'https://share.google/aimode/FuksYKCE3dbNmDNIx'
+            },
         ],
 
         link: ''
@@ -489,7 +484,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/student-score-cli.png'
+                'https://i.postimg.cc/sx9pG40y/SSMS.png'
             ]
         },
 
@@ -498,7 +493,7 @@ const projectsData = [
 
         details: {
             overview:
-                'Developed as a coursework project for Principles of Computer Programming, this system focuses on applying fundamental programming and object-oriented concepts to a real-world educational scenario. The application separates core logic and user interaction into multiple modules, using text files as a lightweight persistence layer to store student records. :contentReference[oaicite:3]{index=3}',
+                'Developed as a coursework project for Principles of Computer Programming, this system focuses on applying fundamental programming and object-oriented concepts to a real-world educational scenario. The application separates core logic and user interaction into multiple modules, using text files as a lightweight persistence layer to store student records.',
 
             features: [
                 'Student Record CRUD: Allows users to create, search, modify, and delete student records stored in a text-based database.',
@@ -552,7 +547,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/bmi-calculator-ui.png'
+                'https://i.postimg.cc/59Tcsq0H/lteration4.png'
             ]
         },
 
@@ -614,13 +609,8 @@ const projectsData = [
             "A data processing and visualization project comparing Malaysia’s internet penetration growth (2000–2023) against selected countries using cleaned World Bank data and multiple visual analytics (trend lines, bar charts, heatmaps, correlation matrix).",
 
         media: {
-            type: 'images',
-            content: [
-                'assets/internet-penetration-trends.png',
-                'assets/internet-penetration-2023-bar.png',
-                'assets/internet-growth-heatmap.png',
-                'assets/internet-correlation-matrix.png'
-            ]
+            type: 'youtube',
+            content: 'FEO8kZxSLHQ'
         },
 
         introduction:
@@ -628,7 +618,7 @@ const projectsData = [
 
         details: {
             overview:
-                "Using World Bank Open Data (Individuals using the Internet % of population), we filtered relevant countries and years, handled missing values via forward/backward filling, removed duplicates (precautionary), treated outliers outside 0–100%, transformed the dataset from wide to tidy long format, and encoded countries for analysis. Visualizations include trend comparisons, 2023 snapshots, growth-rate heatmaps, and a correlation matrix to summarize relationships in adoption patterns. :contentReference[oaicite:3]{index=3}",
+                "Using World Bank Open Data (Individuals using the Internet % of population), we filtered relevant countries and years, handled missing values via forward/backward filling, removed duplicates (precautionary), treated outliers outside 0–100%, transformed the dataset from wide to tidy long format, and encoded countries for analysis. Visualizations include trend comparisons, 2023 snapshots, growth-rate heatmaps, and a correlation matrix to summarize relationships in adoption patterns",
 
             features: [
                 'Data Acquisition & Filtering: Loaded World Bank dataset and filtered selected countries and years (2000–2023).',
@@ -657,10 +647,10 @@ const projectsData = [
 
         showcase: [
             // Add your repo / notebook link if you have one
-            // { type: 'github', url: 'PASTE_YOUR_GITHUB_REPO_URL_HERE' }
+            // { type: 'info', url: '' },
 
             // If you want the PPT as a showcase item, host it and paste the link:
-            // { type: 'demo', url: 'PASTE_YOUR_SLIDES_LINK_HERE' }
+            { type: 'demo', url: 'https://youtu.be/FEO8kZxSLHQ' }
         ]
     },
     {
@@ -681,9 +671,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/eda-histogram-waste.png',
-                'assets/eda-correlation-heatmap.png',
-                'assets/eda-waste-by-customer-load.png'
+                'https://i.postimg.cc/FsVfyRFs/Power-BI-Mamak-Eateries.png'
             ]
         },
 
@@ -721,7 +709,7 @@ const projectsData = [
 
         showcase: [
             // Optional: add a GitHub repo or notebook link if available
-            // { type: 'github', url: 'PASTE_YOUR_REPO_OR_NOTEBOOK_LINK_HERE' }
+            { type: 'info', url: 'https://colab.research.google.com/drive/1QqTAhM5hGkFpGegCzdgVfixNcCNy_1W0?usp=sharing' }
         ]
     },
     {
@@ -742,10 +730,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/telco-architecture.png',
-                'assets/telco-eda-state.png',
-                'assets/telco-model-results.png',
-                'assets/telco-gui.png'
+                'https://i.postimg.cc/kGfm5kCN/Telecom_Churn_Predictor_Exe.png'
             ]
         },
 
@@ -785,6 +770,7 @@ const projectsData = [
         showcase: [
             // Optional: add repo / notebook if hosted
             // { type: 'github', url: 'PASTE_REPO_URL_HERE' }
+            { type: 'info', url: 'https://colab.research.google.com/drive/1rND6DuffaajBer8j4GUiCMip2_VEeaKa?usp=sharing' }
         ]
     },
     {
@@ -869,9 +855,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'assets/rain-alert-system-diagram.png',
-                'assets/rain-alert-figma-wireframe.png',
-                'assets/rain-alert-prototype.png'
+                'https://i.postimg.cc/htgK0byZ/HCI_Presentation.png'
             ]
         },
 
