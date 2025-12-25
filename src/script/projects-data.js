@@ -15,7 +15,7 @@ const projectsData = [
 
         media: {
             type: 'youtube',
-            content: 'PASTE_YOUR_YOUTUBE_VIDEO_ID_HERE'
+            content: 'v6Pw95EJqNA'
         },
 
         introduction:
@@ -355,7 +355,7 @@ const projectsData = [
         // Replace with your actual YouTube presentation video ID.
         media: {
             type: 'youtube',
-            content: 'PASTE_YOUR_YOUTUBE_PRESENTATION_VIDEO_ID_HERE'
+            content: 'zHorgB2bUeg'
         },
 
         introduction:
@@ -671,7 +671,7 @@ const projectsData = [
         media: {
             type: 'images',
             content: [
-                'https://i.postimg.cc/FsVfyRFs/Power-BI-Mamak-Eateries.png'
+                'https://i.postimg.cc/GtYc3wnt/Power-BI-Mamak-Eateries.png'
             ]
         },
 
