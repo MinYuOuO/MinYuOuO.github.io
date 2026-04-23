@@ -41,9 +41,37 @@
     font-display: swap;
 }
 
-/* 3. VARIABLES (The Values) */
+/* 3. VARIABLES (Light-First Priority) */
 :root {
-    /* --- DARK MODE (Default/Abyssal) --- */
+    /* --- LIGHT MODE (Premium Editorial - Default) --- */
+    --color-abyssal: #f7f5f0;
+    --color-graphite: #eeebe3;
+    --color-cerenkov: #4a3728; /* Warm Espresso */
+    --color-white: #1a1612;
+    --color-dim: #5c5248;
+    --color-alert: #8b2f5a;
+    --color-dissociation: #8b2f5a; /* Deep Rose */
+    
+    --bg-primary: #f7f5f0;
+    --bg-secondary: #eeebe3;
+    --bg-tertiary: rgba(247, 245, 240, 0.9);
+    
+    --text-primary: #1a1612;
+    --text-secondary: #5c5248;
+    --text-tertiary: #7d736a;
+    
+    --border-primary: rgba(74, 55, 40, 0.15);
+    --border-secondary: rgba(74, 55, 40, 0.3);
+    
+    --scene-bg: #f7f5f0;
+    --scene-fog: #f7f5f0;
+    
+    --card-bg: rgba(238, 235, 227, 0.6);
+    --card-shadow: 0 10px 40px -10px rgba(74, 55, 40, 0.1);
+}
+
+[data-theme="dark"] {
+    /* --- DARK MODE (Refined Cyber - Toggle) --- */
     --color-abyssal: #050505;
     --color-graphite: #1a1a1a;
     --color-cerenkov: #00f0ff; /* Neon Cyan */
@@ -70,34 +98,6 @@
     --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="light"] {
-    /* --- LIGHT MODE (Laboratory/Clean) --- */
-    --color-abyssal: #ffffff;
-    --color-graphite: #f0f0f0;
-    --color-cerenkov: #0055cc; /* Darker Blue */
-    --color-white: #0a0a0a;
-    --color-dim: #888;
-    --color-alert: #cc0044;
-    --color-dissociation: #d60071;
-    
-    --bg-primary: #ffffff;
-    --bg-secondary: #f4f6f8;
-    --bg-tertiary: rgba(255, 255, 255, 0.9);
-    
-    --text-primary: #050505;
-    --text-secondary: #404040;
-    --text-tertiary: #666666;
-    
-    --border-primary: rgba(0, 0, 0, 0.15);
-    --border-secondary: rgba(0, 85, 204, 0.3);
-    
-    --scene-bg: #f0f8ff;
-    --scene-fog: #f0f8ff;
-    
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --card-shadow: 0 10px 40px -10px rgba(0, 85, 204, 0.15);
-}
-
 /* 4. BASE STYLES */
 body {
     background-color: var(--bg-primary);
@@ -105,6 +105,77 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Blueprint Archive Technical Background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -100;
+    background-color: var(--bg-primary);
+    background-image: 
+        /* Major Grid Lines */
+        linear-gradient(var(--border-primary) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-primary) 1px, transparent 1px),
+        /* Minor Grid Lines */
+        linear-gradient(rgba(74, 55, 40, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74, 55, 40, 0.05) 1px, transparent 1px),
+        /* Dot Matrix Pattern */
+        radial-gradient(var(--border-primary) 0.5px, transparent 0.5px);
+    background-size: 
+        100px 100px, 100px 100px, 
+        20px 20px, 20px 20px,
+        40px 40px;
+    background-position: center center;
+    opacity: 0.8;
+}
+
+/* Tech Ticker Animation */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.tech-ticker {
+    animation: ticker 30s linear infinite;
+    width: max-content;
+}
+.tech-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--text-primary);
+    opacity: 0.6;
+}
+.tech-sep {
+    color: var(--cerenkov);
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.3;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px);
+}
+
+#hero-orb-container {
+    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
+
+#hero-orb-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
 }
 
 /* --- Keep the rest of your existing CSS below this line --- */
@@ -166,6 +237,7 @@ html.lenis, html.lenis body {
 .glitch-text {
     position: relative;
     display: inline-block;
+    overflow: hidden; /* Prevent overflow of pseudo-elements */
 }
 
 .glitch-text::before,
@@ -177,6 +249,14 @@ html.lenis, html.lenis body {
     width: 100%;
     height: 100%;
     background: var(--bg-primary);
+    display: none; /* Hide by default, show on desktop */
+}
+
+@media (min-width: 1024px) {
+    .glitch-text::before,
+    .glitch-text::after {
+        display: block;
+    }
 }
 
 .glitch-text::before {
@@ -516,13 +596,14 @@ html.lenis, html.lenis body {
     background: var(--color-cerenkov);
     position: sticky;
     top: 0;
-    animation: scan 2s linear infinite;
+    animation: scan 8s linear infinite;
     opacity: 0.5;
 }
 
 @keyframes scan {
     0% { top: 0%; opacity: 0; }
-    50% { opacity: 1; }
+    5% { opacity: 1; }
+    20% { top: 100%; opacity: 0; }
     100% { top: 100%; opacity: 0; }
 }
 

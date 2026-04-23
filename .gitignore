@@ -1,2 +1,6 @@
 docs
 node_modules
+.agents
+.vscode
+.iderules
+.env

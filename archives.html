@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Archives | Loh Min Yu (Miu)</title>
+    <meta name="description"
+        content="Explore the full archive of projects by Loh Min Yu, featuring software engineering, game development, and system design work.">
+    <meta name="keywords"
+        content="Portfolio Archive, Loh Min Yu Projects, Software Engineering Portfolio, Miu Projects">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://minyuouo.github.io/archives.html">
+    <meta property="og:title" content="Project Archives | Loh Min Yu (Miu)">
+    <meta property="og:description"
+        content="Explore the full archive of projects by Loh Min Yu, featuring software engineering, game development, and system design work.">
+    <meta property="og:image" content="https://minyuouo.github.io/src/assets/preview-card.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Project Archives | Loh Min Yu (Miu)">
+    <meta property="twitter:description"
+        content="Explore the full archive of projects by Loh Min Yu, featuring software engineering, game development, and system design work.">
+    <meta property="twitter:image" content="https://minyuouo.github.io/src/assets/preview-card.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Project Archives",
+      "description": "Full record of software and design projects by Loh Min Yu.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Loh Min Yu"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="src/style/output.css">
+    <link rel="icon" href="src/assets/logo.ico">
+    <style>
+        .blueprint-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -100;
+            opacity: 0.8;
+            background-image:
+                linear-gradient(var(--border-primary) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-primary) 1px, transparent 1px),
+                linear-gradient(rgba(74, 55, 40, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 55, 40, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+        }
+
+        [data-theme="dark"] .blueprint-grid {
+            opacity: 0.3;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-theme-bg text-theme-text selection:bg-dissociation selection:text-white min-h-screen transition-colors duration-300 flex flex-col">
+    <div class="blueprint-grid"></div>
+
+    <nav class="p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-mono text-xs text-cerenkov group flex items-center gap-2">
+                <span class="transition-transform group-hover:-translate-x-1">←</span> [ RETURN_TO_BASE ]
+            </a>
+            <div class="flex items-center gap-4">
+                <span
+                    class="font-mono text-[10px] text-theme-text-muted opacity-50 uppercase tracking-widest">Database_Access:
+                    Authorized</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12 max-w-6xl grow">
+        <header class="mb-16 border-b border-gray-500/10 pb-12">
+            <span class="font-mono text-xs text-cerenkov mb-2 block tracking-[0.3em]">//
+                CENTRAL_INTELLIGENCE_RECORDS</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-8">Project Archives</h1>
+
+            <div class="flex flex-col gap-6">
+                <div class="w-full">
+                    <label for="search-input"
+                        class="font-mono text-[10px] text-theme-text-muted uppercase mb-2 block tracking-widest">Search_Query</label>
+                    <input type="text" id="search-input" placeholder="Keyword / Technology / Project Name..."
+                        class="w-full bg-gray-500/5 border border-gray-500/20 rounded p-4 font-mono text-sm focus:outline-none focus:border-cerenkov transition-all">
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label
+                            class="font-mono text-[10px] text-theme-text-muted uppercase tracking-widest">Filter_By_Tech</label>
+                        <button id="toggle-all-tags"
+                            class="text-[10px] font-mono text-cerenkov hover:underline">Show_All_Tags</button>
+                    </div>
+                    <div id="tag-filters" class="flex flex-wrap gap-2 transition-all duration-500">
+                        <!-- Dynamic tags will be injected -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="archives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projects will be injected -->
+        </div>
+
+        <div id="no-results" class="hidden py-24 text-center">
+            <p class="font-mono text-xs text-theme-text-muted uppercase tracking-widest">>> NO_MATCHING_RECORDS_FOUND
+            </p>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-gray-500/10">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-mono text-[10px] text-theme-text-muted tracking-widest uppercase">
+                © 2026 LOH MIN YU
+            </p>
+        </div>
+    </footer>
+
+    <script src="src/script/projects-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projects = window.projectsData || [];
+            const grid = document.getElementById('archives-grid');
+            const searchInput = document.getElementById('search-input');
+            const tagContainer = document.getElementById('tag-filters');
+            const toggleTagsBtn = document.getElementById('toggle-all-tags');
+            const noResults = document.getElementById('no-results');
+
+            // Theme handling
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            let activeTag = 'ALL';
+            let tagsExpanded = false;
+
+            // Extract unique tags and prioritize them
+            const tags = new Set(['ALL']);
+            projects.forEach(p => {
+                p.stack.forEach(s => tags.add(s.toUpperCase()));
+            });
+
+            const sortedTags = Array.from(tags).sort((a, b) => {
+                if (a === 'ALL') return -1;
+                if (b === 'ALL') return 1;
+                return a.localeCompare(b);
+            });
+
+            // Create tag buttons
+            sortedTags.forEach(tag => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1 font-mono text-[10px] rounded border transition-all ${tag === 'ALL' ? 'bg-cerenkov text-white border-cerenkov' : 'border-gray-500/20 text-theme-text-muted hover:border-cerenkov'}`;
+                btn.textContent = tag;
+                btn.addEventListener('click', () => {
+                    activeTag = tag;
+                    document.querySelectorAll('#tag-filters button').forEach(b => {
+                        b.classList.remove('bg-cerenkov', 'text-white', 'border-cerenkov');
+                        b.classList.add('border-gray-500/20', 'text-theme-text-muted');
+                    });
+                    btn.classList.remove('border-gray-500/20', 'text-theme-text-muted');
+                    btn.classList.add('bg-cerenkov', 'text-white', 'border-cerenkov');
+                    filterProjects();
+                });
+                tagContainer.appendChild(btn);
+            });
+
+            // Toggle tags logic
+            tagContainer.style.maxHeight = '48px'; // Initial collapsed state (approx 1.5 rows)
+            tagContainer.style.overflow = 'hidden';
+            tagContainer.style.transition = 'max-height 0.5s ease-out';
+
+            toggleTagsBtn.addEventListener('click', () => {
+                tagsExpanded = !tagsExpanded;
+                if (tagsExpanded) {
+                    tagContainer.style.maxHeight = '1000px'; // Expand to a large enough value
+                    toggleTagsBtn.textContent = 'Hide_Tags';
+                } else {
+                    tagContainer.style.maxHeight = '48px';
+                    toggleTagsBtn.textContent = 'Show_All_Tags';
+                }
+            });
+
+            function filterProjects() {
+                const query = searchInput.value.toLowerCase();
+                const filtered = projects.filter(p => {
+                    const matchesSearch = p.title.toLowerCase().includes(query) ||
+                        p.shortDesc.toLowerCase().includes(query) ||
+                        p.stack.some(s => s.toLowerCase().includes(query));
+                    const matchesTag = activeTag === 'ALL' || p.stack.some(s => s.toUpperCase() === activeTag);
+                    return matchesSearch && matchesTag;
+                });
+
+                renderProjects(filtered);
+            }
+
+            function renderProjects(data) {
+                grid.innerHTML = '';
+                if (data.length === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                    data.forEach(p => {
+                        const card = document.createElement('a');
+                        card.href = `project.html?id=${p.id}`;
+                        card.className = 'group bg-gray-500/5 border border-gray-500/10 p-6 rounded-lg hover:border-cerenkov/50 transition-all flex flex-col h-full';
+                        card.innerHTML = `
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="font-mono text-[10px] text-cerenkov border border-cerenkov/30 px-2 py-0.5 rounded">${p.type}</span>
+                                <span class="text-[10px] font-mono text-theme-text-muted opacity-50">#${p.id.toUpperCase()}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-cerenkov transition-colors">${p.title}</h3>
+                            <p class="text-sm text-theme-text-muted mb-6 line-clamp-3 grow">${p.shortDesc}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${p.stack.slice(0, 4).map(s => `<span class="text-[9px] font-mono bg-gray-500/10 px-2 py-0.5 rounded opacity-70">${s}</span>`).join('')}
+                            </div>
+                            <div class="pt-4 border-t border-gray-500/10 flex justify-between items-center">
+                                <span class="font-mono text-[10px] text-cerenkov opacity-0 group-hover:opacity-100 transition-opacity tracking-widest">ACCESS_FILE_01</span>
+                                <span class="text-xs">→</span>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                }
+            }
+
+            searchInput.addEventListener('input', filterProjects);
+            renderProjects(projects);
+        });
+    </script>
+</body>
+
+</html>

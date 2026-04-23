@@ -7,7 +7,7 @@ const projectsData = [
             'Ionic',
             'Angular',
             'Capacitor',
-            'SQLite (@capacitor-community/sqlite)',
+            'SQLite',
             'Ionic Storage'
         ],
         shortDesc:
@@ -52,15 +52,20 @@ const projectsData = [
 
         showcase: [
             { type: 'github', url: 'https://github.com/MinYuOuO/ReMind' },
-
-            // Replace with your actual links:
-            // If you want Figma to be the main media instead, switch media.type to 'figma'
-            // and paste the embed URL into media.content.
             { type: 'figma', url: 'https://www.figma.com/design/6ukaFjEmDfwMgvfcJJop5N/ReMind?node-id=0-1&t=oSeDMvmTn8c8KBmz-1' },
+        ],
 
-            // Optional extra links:
-            // { type: 'demo', url: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID' },
-            // { type: 'live', url: 'https://your-live-site.com' }
+        artifacts: [
+            {
+                type: 'poster',
+                title: 'Project Poster',
+                url: 'https://i.postimg.cc/7LYZMMsN/jiuxi.png' // Placeholder image
+            },
+            {
+                type: 'ppt',
+                title: 'Presentation Slides',
+                url: 'https://docs.google.com/presentation/d/e/2PACX-1vTshk0P_LlyuU6L-TjH1hDq_KkKk_HjGzO-XWlWwXWlWwXWlWw/embed?start=false&loop=false&delayms=3000' // Placeholder embed
+            }
         ],
 
         link: 'https://github.com/MinYuOuO/ReMind'
@@ -71,12 +76,10 @@ const projectsData = [
         type: 'AI Service',
         stack: [
             'JavaScript',
-            'HTML',
-            'CSS',
-            'LLM (REST API)',
-            'Speech-to-Text (ASR)',
-            'Text-to-Speech (TTS)',
-            'Web Speech API',
+            'HTML5',
+            'CSS3',
+            'AI / LLM',
+            'Voice / AI',
             'iFLYTEK'
         ],
         shortDesc:
@@ -144,8 +147,8 @@ const projectsData = [
         stack: [
             'C++',
             'OOP',
-            'SFML (Audio & Network)',
-            'TCP Sockets',
+            'SFML',
+            'TCP Networking',
             'CMake',
             'Git'
         ],
@@ -207,7 +210,8 @@ const projectsData = [
         type: 'Portfolio Website',
         stack: [
             'HTML5',
-            'CSS / Tailwind CSS',
+            'CSS3',
+            'Tailwind CSS',
             'JavaScript',
             'Three.js',
             'WebGL',
@@ -276,8 +280,8 @@ const projectsData = [
         stack: [
             'JavaScript',
             'Three.js',
-            'HTML',
-            'CSS',
+            'HTML5',
+            'CSS3',
             'Web Audio API'
         ],
         shortDesc:
@@ -343,10 +347,10 @@ const projectsData = [
         type: 'Desktop Application',
         stack: [
             'C++',
-            'Object-Oriented Programming',
+            'OOP',
             'STL',
-            'CLI / Console UI',
-            'Git & GitHub'
+            'CLI',
+            'Git'
         ],
         shortDesc:
             'A C++ object-oriented travel cost calculator that helps users estimate trip expenses using modular OOP design, multiple calculation modes',
@@ -410,9 +414,8 @@ const projectsData = [
             'Python',
             'Tkinter',
             'Google Sheets API',
-            'gspread',
             'pandas',
-            'Threading (Async UI)'
+            'Async UI'
         ],
         shortDesc:
             'A custom-built ticketing and attendance management system developed for the Colorella: Bazaar of Colors event, supporting tiered ticket sales, payment review, and real-time attendance tracking for a large-scale student festival.',
@@ -473,10 +476,10 @@ const projectsData = [
         type: 'Console Application',
         stack: [
             'Python',
-            'Object-Oriented Programming',
-            'File I/O (TXT)',
+            'OOP',
+            'File I/O',
             'PrettyTable',
-            'CLI Interface'
+            'CLI'
         ],
         shortDesc:
             'A Python-based student score management system that allows teachers to input, manage, sort, and analyze student academic records using a structured object-oriented design.',
@@ -537,8 +540,8 @@ const projectsData = [
         stack: [
             'Python',
             'Tkinter',
-            'Software Engineering Practices',
-            'Git & GitHub',
+            'Software Engineering',
+            'Git',
             'Modular Design'
         ],
         shortDesc:
@@ -661,9 +664,8 @@ const projectsData = [
             'Python',
             'pandas',
             'NumPy',
-            'Matplotlib',
-            'Seaborn',
-            'Jupyter Notebook'
+            'Data Visualization',
+            'Jupyter'
         ],
         shortDesc:
             'An exploratory data analysis project examining pre-consumer food waste at mamak eateries, using cleaned and simulated datasets derived from real interviews to uncover waste patterns and operational inefficiencies.',
@@ -720,9 +722,9 @@ const projectsData = [
             'Python',
             'scikit-learn',
             'pandas',
-            'Orange Data Mining',
+            'Orange Mining',
             'Tkinter',
-            'CSV-based Data Warehouse'
+            'Data Warehouse'
         ],
         shortDesc:
             'A data mining and data warehousing project that builds a Malaysia-contextualized telecom churn dataset, evaluates multiple predictive models, and deploys a desktop decision-support prototype for churn prediction.',
@@ -779,11 +781,8 @@ const projectsData = [
         type: 'UI/UX Design',
         stack: [
             'Figma',
-            'User Persona',
-            'User Story Mapping',
-            'User Journey',
-            'Information Architecture',
-            'Wireframing & Prototyping'
+            'UX Research',
+            'Prototyping'
         ],
         shortDesc:
             'A comprehensive UI/UX redesign of the Unifi TV Box interface, focusing on accessibility, simplified navigation, and remote-friendly interaction through user personas, user stories, wireframes, and an interactive prototype.',
@@ -843,11 +842,9 @@ const projectsData = [
         type: 'HCI / IoT System',
         stack: [
             'ESP32',
-            'HW-038 Rain Sensor',
-            'IoT Prototyping',
+            'IoT',
             'Figma',
-            'User-Centered Design',
-            'Survey Analysis'
+            'UX Research'
         ],
         shortDesc:
             'An HCI-focused IoT rain detection system that delivers real-time alerts using visual LEDs, audio buzzers, and a mobile interface, designed through user research and usability testing.',

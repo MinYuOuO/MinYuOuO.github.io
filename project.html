@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Loh Min Yu (Miu)</title>
+    <meta name="description" content="Detailed overview of technical projects by Loh Min Yu (Miu), covering software engineering, game dev, and system architecture.">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Details | Loh Min Yu (Miu)">
+    <meta property="og:description" content="Detailed overview of technical projects by Loh Min Yu (Miu).">
+    <meta property="og:image" content="https://minyuouo.github.io/src/assets/preview-card.png">
+
+    <link rel="stylesheet" href="src/style/output.css">
+    <link rel="icon" href="src/assets/logo.ico">
+    <style>
+        .project-blueprint {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -100;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(var(--cerenkov) 1px, transparent 1px),
+                linear-gradient(90deg, var(--cerenkov) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        [data-theme="dark"] .project-blueprint {
+            opacity: 0.05;
+        }
+    </style>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-dissociation selection:text-white min-h-screen transition-colors duration-300">
+    <div class="project-blueprint"></div>
+
+    <nav class="p-6">
+        <div class="container mx-auto">
+            <a href="index.html#projects" class="back-link inline-flex items-center gap-2 font-mono text-xs text-cerenkov group">
+                <span class="arrow transition-transform duration-300">←</span>
+                <span class="group-hover:underline tracking-widest uppercase">TERMINAL_RETURN</span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="project-container" class="container mx-auto px-6 py-12 max-w-6xl opacity-0 transition-opacity duration-500">
+        <!-- Project content will be injected here -->
+        <div id="error-screen" class="hidden py-24 text-center">
+            <h1 class="text-4xl font-bold mb-4 font-mono text-alert">>> RECORD_NOT_FOUND</h1>
+            <p class="text-theme-text-muted mb-8">The requested project ID does not exist in the database.</p>
+            <a href="index.html" class="btn-glitch px-8 py-4 font-mono text-cerenkov uppercase text-xs tracking-widest">Return_to_Home()</a>
+        </div>
+
+        <article id="project-content">
+            <header class="mb-12 border-b border-gray-500/10 pb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <span id="project-type" class="font-mono text-[10px] text-cerenkov border border-cerenkov/30 px-3 py-1 rounded tracking-tighter">TYPE_RECORD</span>
+                    <span id="project-id" class="text-theme-text-muted font-mono text-[10px] opacity-50">#ID_####</span>
+                </div>
+                <h1 id="project-title" class="text-5xl md:text-8xl font-bold mb-8 tracking-tight leading-none text-theme-text">Project Title</h1>
+                <div id="project-stack" class="flex flex-wrap gap-2">
+                    <!-- Stack will be injected -->
+                </div>
+            </header>
+
+            <!-- Flexible Media Gallery -->
+            <section id="project-media-gallery" class="mb-20 space-y-6">
+                <!-- Media items will be injected here -->
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+                <div class="md:col-span-8">
+                    <div class="mb-16">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// NARRATIVE_START</h2>
+                        <p id="project-intro" class="text-2xl md:text-3xl leading-snug text-theme-text font-light mb-12 max-w-4xl">
+                            Introduction text goes here.
+                        </p>
+                    </div>
+
+                    <div class="mb-16">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// TECHNICAL_OVERVIEW</h2>
+                        <div id="project-overview" class="text-theme-text-muted leading-relaxed text-lg space-y-4 max-w-3xl">
+                            <!-- Overview content -->
+                        </div>
+                    </div>
+
+                    <div id="features-section">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// CORE_CAPABILITIES</h2>
+                        <ul id="project-features" class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 mb-12">
+                            <!-- Features will be injected -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 space-y-16">
+                    <aside id="resp-aside">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// OPERATOR_ROLES</h2>
+                        <ul id="project-responsibilities" class="space-y-4 text-sm text-theme-text-muted">
+                            <!-- Responsibilities will be injected -->
+                        </ul>
+                    </aside>
+
+                    <aside id="challenge-aside">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// ANOMALIES_DETECTED</h2>
+                        <ul id="project-challenges" class="space-y-4 text-sm text-theme-text-muted">
+                            <!-- Challenges will be injected -->
+                        </ul>
+                    </aside>
+
+                    <aside id="links-aside">
+                        <h2 class="font-mono text-cerenkov text-[10px] mb-6 tracking-[0.3em] uppercase opacity-60">// EXTERNAL_UPLINKS</h2>
+                        <div id="project-links" class="flex flex-col gap-3">
+                            <!-- Links will be injected -->
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Artifacts Section (Poster/PPT) -->
+            <section id="artifacts-section" class="mb-24 py-16 border-t border-gray-500/10 hidden">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
+                    <h2 class="font-mono text-cerenkov text-[10px] tracking-[0.3em] uppercase opacity-60">// PROJECT_ARTIFACTS</h2>
+                    <div id="artifact-tabs" class="flex gap-2">
+                        <!-- Tab buttons will be injected -->
+                    </div>
+                </div>
+                <div id="artifact-display-container" class="relative group">
+                    <div id="artifacts-viewer" class="w-full">
+                        <!-- Active artifact will be injected here -->
+                    </div>
+                    <!-- Navigation Arrows for artifacts -->
+                    <button id="prev-artifact" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">←</button>
+                    <button id="next-artifact" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">→</button>
+                </div>
+            </section>
+        </article>
+
+        <!-- Project Navigation -->
+        <nav class="flex flex-col md:flex-row justify-between items-center py-12 border-t border-gray-500/10 gap-8">
+            <a href="index.html#projects" class="font-mono text-xs text-theme-text-muted hover:text-cerenkov transition-colors uppercase tracking-widest">
+                [ BACK_TO_ARCHIVES ]
+            </a>
+            <div id="next-project-link" class="text-right">
+                <!-- Next project link will be injected -->
+            </div>
+        </nav>
+    </main>
+
+    <footer class="py-12 bg-gray-500/5">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-mono text-[10px] text-theme-text-muted tracking-widest uppercase">
+                © 2024 LOH MIN YU // DISSOCIATIVE RECOMBINATION v4.1
+            </p>
+            <p class="font-mono text-[10px] text-cerenkov/50 tracking-widest uppercase">
+                STATUS: ENCRYPTED // CONNECTION: SECURE
+            </p>
+        </div>
+    </footer>
+
+    <script src="src/script/projects-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            const projects = window.projectsData || [];
+            const projectIndex = projects.findIndex(p => p.id === projectId);
+            const project = projects[projectIndex];
+
+            const container = document.getElementById('project-container');
+            const content = document.getElementById('project-content');
+            const error = document.getElementById('error-screen');
+
+            // Theme handling
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            if (!project) {
+                content.classList.add('hidden');
+                error.classList.remove('hidden');
+                container.classList.remove('opacity-0');
+                return;
+            }
+
+            // Fill content
+            document.title = `${project.title} | Miu`;
+            document.getElementById('project-title').textContent = project.title;
+            document.getElementById('project-type').textContent = project.type.toUpperCase();
+            document.getElementById('project-id').textContent = `#${project.id.toUpperCase()}`;
+            document.getElementById('project-intro').textContent = project.introduction;
+            document.getElementById('project-overview').innerHTML = project.details.overview.split('\n').map(p => `<p>${p}</p>`).join('');
+
+            // Stack
+            const stackContainer = document.getElementById('project-stack');
+            project.stack.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = 'text-[9px] uppercase font-mono text-cerenkov bg-cerenkov/5 px-3 py-1 rounded-full border border-cerenkov/10 tracking-tighter';
+                span.textContent = tech;
+                stackContainer.appendChild(span);
+            });
+
+            // Flexible Media Gallery
+            const gallery = document.getElementById('project-media-gallery');
+            const media = project.media;
+            
+            const createMediaElement = (type, url) => {
+                const div = document.createElement('div');
+                div.className = 'rounded-xl overflow-hidden border border-gray-500/10 bg-black/5 shadow-2xl';
+                if (type === 'youtube') {
+                    div.className += ' aspect-video';
+                    div.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${url}" frameborder="0" allowfullscreen></iframe>`;
+                } else if (type === 'video') {
+                    div.className += ' aspect-video';
+                    div.innerHTML = `<video class="w-full h-full object-cover" src="${url}" controls></video>`;
+                } else if (type === 'images') {
+                    const urls = Array.isArray(url) ? url : [url];
+                    div.innerHTML = urls.map(u => `<img class="w-full h-auto mb-4 last:mb-0" src="${u}" alt="${project.title}">`).join('');
+                } else if (type === 'figma') {
+                    div.className += ' h-[600px]';
+                    div.innerHTML = `<iframe class="w-full h-full" src="https://www.figma.com/embed?embed_host=astra&url=${url}" allowfullscreen></iframe>`;
+                }
+                return div;
+            };
+
+            gallery.appendChild(createMediaElement(media.type, media.content));
+
+            // Artifacts (Posters, PPTs) with Switcher
+            const artifactsSection = document.getElementById('artifacts-section');
+            const artifactsViewer = document.getElementById('artifacts-viewer');
+            const artifactTabs = document.getElementById('artifact-tabs');
+            
+            if (project.artifacts && project.artifacts.length > 0) {
+                artifactsSection.classList.remove('hidden');
+                let activeIndex = 0;
+
+                const renderArtifact = (index) => {
+                    const art = project.artifacts[index];
+                    let contentHtml = '';
+                    if (art.type === 'poster') {
+                        contentHtml = `<div class="aspect-[1/1.414] max-w-2xl mx-auto rounded-lg overflow-hidden border border-gray-500/20 bg-white/5 shadow-2xl transition-all duration-500">
+                            <img src="${art.url}" class="w-full h-full object-contain" alt="${art.title}">
+                        </div>`;
+                    } else if (art.type === 'ppt' || art.type === 'slides') {
+                        contentHtml = `<div class="aspect-video rounded-lg overflow-hidden border border-gray-500/20 bg-black shadow-2xl">
+                            <iframe src="${art.url}" class="w-full h-full" frameborder="0" allowfullscreen="true"></iframe>
+                        </div>`;
+                    }
+                    
+                    artifactsViewer.innerHTML = `
+                        ${contentHtml}
+                        <div class="mt-8 text-center">
+                            <h3 class="font-mono text-xs uppercase tracking-[0.4em] text-cerenkov mb-2">${art.title}</h3>
+                            <p class="text-[10px] font-mono text-theme-text-muted opacity-50 uppercase tracking-widest">Index: ${index + 1} / ${project.artifacts.length}</p>
+                        </div>
+                    `;
+
+                    // Update tabs
+                    document.querySelectorAll('.artifact-tab').forEach((t, i) => {
+                        if (i === index) t.classList.add('bg-cerenkov', 'text-white');
+                        else t.classList.remove('bg-cerenkov', 'text-white');
+                    });
+                };
+
+                project.artifacts.forEach((art, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = `artifact-tab px-4 py-1 font-mono text-[10px] rounded border border-cerenkov/30 hover:border-cerenkov transition-all uppercase tracking-tighter`;
+                    btn.textContent = art.type;
+                    btn.addEventListener('click', () => {
+                        activeIndex = i;
+                        renderArtifact(activeIndex);
+                    });
+                    artifactTabs.appendChild(btn);
+                });
+
+                document.getElementById('prev-artifact').addEventListener('click', () => {
+                    activeIndex = (activeIndex - 1 + project.artifacts.length) % project.artifacts.length;
+                    renderArtifact(activeIndex);
+                });
+
+                document.getElementById('next-artifact').addEventListener('click', () => {
+                    activeIndex = (activeIndex + 1) % project.artifacts.length;
+                    renderArtifact(activeIndex);
+                });
+
+                renderArtifact(0);
+            }
+
+            // Features
+            const featuresList = document.getElementById('project-features');
+            project.details.features.forEach(f => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-4 text-sm text-theme-text-muted leading-relaxed group';
+                li.innerHTML = `<span class="text-cerenkov mt-1 opacity-40 group-hover:opacity-100 transition-opacity">◆</span> <span>${f}</span>`;
+                featuresList.appendChild(li);
+            });
+
+            // Responsibilities & Challenges
+            const populateList = (id, data, bullet, bulletColor) => {
+                const list = document.getElementById(id);
+                if (data && data.length > 0) {
+                    data.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'flex items-start gap-4 leading-relaxed';
+                        li.innerHTML = `<span class="${bulletColor} mt-1.5 text-[8px] flex-shrink-0">${bullet}</span> <span>${item}</span>`;
+                        list.appendChild(li);
+                    });
+                } else {
+                    list.closest('aside').classList.add('hidden');
+                }
+            };
+
+            populateList('project-responsibilities', project.details.responsibilities, '●', 'text-cerenkov');
+            populateList('project-challenges', project.details.challenges, '□', 'text-alert');
+
+            // Links
+            const linkContainer = document.getElementById('project-links');
+            const labels = { 'demo': 'INITIALIZE_LIVE_DEMO', 'github': 'GET_SOURCE_CODE', 'live': 'VIEW_PRODUCTION', 'figma': 'OPEN_DESIGN_FILE', 'info': 'EXTENDED_DOCUMENTATION' };
+            project.showcase.forEach(item => {
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.target = "_blank";
+                a.className = 'btn-glitch text-center px-6 py-4 font-mono text-[10px] text-cerenkov uppercase tracking-[0.2em] border border-cerenkov/20 hover:bg-cerenkov hover:text-white transition-all';
+                a.textContent = labels[item.type] || item.type.toUpperCase();
+                linkContainer.appendChild(a);
+            });
+
+            // Next Project
+            const nextProjectLink = document.getElementById('next-project-link');
+            const nextProject = projects[(projectIndex + 1) % projects.length];
+            if (nextProject && projects.length > 1) {
+                nextProjectLink.innerHTML = `
+                    <span class="font-mono text-[10px] text-theme-text-muted uppercase tracking-widest block mb-2">// NEXT_SEQUENCE</span>
+                    <a href="project.html?id=${nextProject.id}" class="text-2xl md:text-3xl font-bold text-theme-text hover:text-cerenkov transition-colors tracking-tight">
+                        ${nextProject.title} →
+                    </a>
+                `;
+            }
+
+            // Reveal
+            setTimeout(() => container.classList.remove('opacity-0'), 100);
+        });
+    </script>
+</body>
+</html>
+</body>
+
+</html>
