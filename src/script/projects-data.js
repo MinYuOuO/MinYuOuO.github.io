@@ -1,900 +1,618 @@
 const projectsData = [
     {
-        id: 'remind',
-        title: 'ReMind - Mobile Relationship Manager',
-        type: 'Mobile App',
-        stack: [
-            'Ionic',
-            'Angular',
-            'Capacitor',
-            'SQLite',
-            'Ionic Storage'
-        ],
-        shortDesc:
-            'A privacy-first, offline-first relationship manager that helps users store friend details (birthdays, notes, contact info)',
-
-        media: {
-            type: 'youtube',
-            content: 'v6Pw95EJqNA'
-        },
-
-        introduction:
-            'ReMind is a privacy-focused mobile relationship manager built with Ionic + Angular. It helps users record and organize key friend information (e.g., birthdays, contact details, conversation notes) and manages all data locally using SQLite to support an offline-first experience.',
-
+        id: 'prms-fyp',
+        title: 'Postgraduate Research Progress Monitoring System',
+        type: 'Full-Stack / FYP',
+        category: 'WEB_SYSTEMS',
+        stack: ['Laravel', 'PHP', 'Redis', 'MySQL', 'SDLC'],
+        shortDesc: 'A dedicated web platform to streamline and monitor postgraduate research milestones and progress.',
+        media: { type: 'images', content: ['./src/assets/docs/FinalYearProject/FYP PPT.pdf'] },
+        introduction: 'A dedicated web platform engineered to solve communication gaps and administrative inefficiencies in higher education research management by streamlining the monitoring of postgraduate research milestones.',
         details: {
-            overview:
-                'Developed as a mobile application development project to explore hybrid app architecture with Ionic/Angular and robust local data management. The app prioritizes privacy by storing user data on-device and implementing a complete CRUD data core with SQLite, complemented by local caching for fast startup and offline reliability.',
-
+            overview: 'Developed as a Final Year Project, this system addresses the complexities of academic research tracking. It enforces strict institutional workflows and provides transparent oversight for students, supervisors, and administrative stakeholders.',
             features: [
-                'Friend Records CRUD: Create, view, edit, and delete friend profiles (name, relationship type, birthday, notes) backed by local SQLite tables.',
-                'Offline-first Storage: Stores and retrieves all records directly on-device via @capacitor-community/sqlite (no network required).',
-                'Client-side Caching: Uses Ionic Storage + Capacitor Preferences to persist and quickly load friend data for smoother offline UX.',
-                'Real-time UI Updates: Reflects database changes immediately in the UI using Angular data binding for a responsive list experience.',
-                'Decision Roulette: A gamified “spin wheel” module for randomized suggestions (e.g., activities/meetups).'
+                'Progress Tracking Dashboards: Real-time visualization of research milestones and completion status.',
+                'Milestone Submission Workflows: Structured pathways for thesis drafts, progress reports, and supervisor approvals.',
+                'Stakeholder Communication: Centralized communication channels to ensure all parties are aligned on research goals.',
+                'Secure Record Management: Persistent storage of academic history and administrative documents.'
             ],
-
             responsibilities: [
-                'Project Lead & Technical Owner: Led the overall development of ReMind, defined the technical direction, coordinated task allocation, and ensured consistent integration across frontend, database, and native layers.',
-                'Core Data Architecture: Designed and implemented the offline-first data layer using SQLite with @capacitor-community/sqlite, including schema planning and repository-style CRUD services.',
-                'CRUD & Persistence Implementation: Built and validated full Create, Read, Update, and Delete workflows for friend records, ensuring real-time UI updates via Angular data binding and reliable local persistence.',
-                'Offline Reliability & Caching Strategy: Implemented client-side caching with Ionic Storage and Capacitor Preferences to guarantee fast startup and stable access to data without network connectivity.',
-                'System Integration & Debugging: Integrated Capacitor plugins, resolved environment and plugin-related issues, and debugged data consistency problems between SQLite and cached storage.',
-                'Testing & Quality Assurance: Conducted manual functional testing across devices to verify CRUD correctness, offline behavior, validation logic, and UI stability with zero runtime errors.',
-                'Future Architecture Planning: Designed the foundation for advanced features including reminders, biometric/PIN security, and AI-assisted interaction insights, ensuring scalability beyond the assignment scope.'
+                'Lead Developer: Engineered the core system using Laravel (PHP) and integrated Redis for performance optimization.',
+                'System Architect: Designed the normalized relational database schema and mapped the complete SDLC for the project.',
+                'Backend Engineer: Implemented secure authentication, role-based access control, and automated notification systems.'
             ],
-
             challenges: [
-                'Offline Data Consistency: Ensured create/update/delete operations stay consistent between SQLite and cached storage; validated that deleted items do not reappear after refresh/reopen.',
-                'Responsive UI on Small Screens: Identified layout issues (e.g., roulette component padding/overlap) and iterated UI adjustments to maintain usability across screen sizes.',
-                'Scalable Feature Roadmap: Designed the foundation to extend into reminders, security unlock (PIN/biometric), and optional AI-assisted interaction insights.'
+                'Administrative Workflow Modeling: Translating complex, often non-linear academic processes into a digital system.',
+                'Stakeholder Alignment: Ensuring the interface meets the differing needs of tech-savvy students and busy supervisors.'
             ]
         },
-
-        showcase: [
-            { type: 'github', url: 'https://github.com/MinYuOuO/ReMind' },
-            { type: 'figma', url: 'https://www.figma.com/design/6ukaFjEmDfwMgvfcJJop5N/ReMind?node-id=0-1&t=oSeDMvmTn8c8KBmz-1' },
-        ],
-
+        showcase: [],
         artifacts: [
-            {
-                type: 'poster',
-                title: 'Project Poster',
-                url: 'https://i.postimg.cc/7LYZMMsN/jiuxi.png' // Placeholder image
-            },
-            {
-                type: 'ppt',
-                title: 'Presentation Slides',
-                url: 'https://docs.google.com/presentation/d/e/2PACX-1vTshk0P_LlyuU6L-TjH1hDq_KkKk_HjGzO-XWlWwXWlWwXWlWw/embed?start=false&loop=false&delayms=3000' // Placeholder embed
-            }
+            { type: 'pdf', title: 'Presentation Slides (FYP PPT)', url: './src/assets/docs/FinalYearProject/FYP PPT.pdf' }
         ],
-
-        link: 'https://github.com/MinYuOuO/ReMind'
+        link: ''
     },
     {
         id: 'jiuxi-mindscape',
-        title: 'JiuXi Mindscape — AI Cultural Narrator',
+        title: 'JiuXi — Voice-Enabled AI Interface',
         type: 'AI Service',
-        stack: [
-            'JavaScript',
-            'HTML5',
-            'CSS3',
-            'AI / LLM',
-            'Voice / AI',
-            'iFLYTEK'
-        ],
-        shortDesc:
-            'Voice-enabled AI avatar conversation service designed for on-site cultural tourism, supporting multilingual narration.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/7LYZMMsN/jiuxi.png'
-            ]
-        },
-
-        introduction:
-            'JiuXi Mindscape is a lightweight, voice-enabled AI narrator interface designed for cultural tourism experiences. The system provides multilingual conversational guidance through a talking avatar, integrating speech recognition, text-to-speech, and configurable LLM services while supporting offline and demo-friendly deployment.',
-
+        category: 'AI_DATA',
+        stack: ['JavaScript', 'HTML5', 'CSS3', 'AI / LLM', 'Voice / AI', 'iFLYTEK'],
+        shortDesc: 'Multilingual voice interface for cultural tourism information, supporting real-time conversational guidance.',
+        media: { type: 'images', content: ['./src/assets/docs/JiuXi/JiuXiDashboard.png'] },
+        introduction: 'JiuXi is a voice-enabled interface designed for exhibition environments. The system provides multilingual conversational guidance through an animated avatar, integrating speech recognition and LLM services.',
         details: {
-            overview:
-                'This project was developed as part of the Raffles Graduation Show 2025 (Nanao IP cross-disciplinary project), collaborating with design and arts teams to deliver an interactive AI concierge for rural cultural tourism. The system emphasizes resilience, portability, and ease of deployment, enabling on-site demonstrations even in low-connectivity environments. Built as a static SPA, it can run standalone, embedded via WebView/iframe, or served from any simple web server.',
-
+            overview: 'Developed as part of the Raffles Graduation Show 2025 (Nanao IP project), this system emphasizes resilience and ease of deployment, enabling on-site demonstrations even in low-connectivity environments.',
             features: [
-                'Voice-enabled Conversation UX: Supports both text input and push-to-talk voice interaction using ASR with real-time feedback.',
+                'Voice-enabled Conversation UX: Supports push-to-talk voice interaction using ASR with real-time feedback.',
                 'Multilingual Support: Designed for Chinese, English, and Malay cultural narration scenarios.',
-                'Provider-flexible Speech Pipeline: Integrates high-fidelity iFLYTEK ASR/TTS with automatic browser fallbacks (Web Speech API & SpeechSynthesis).',
-                'LLM-agnostic Architecture: Connects to any compatible REST-based LLM endpoint (e.g., custom gateway, OpenAI-compatible APIs).',
-                'Context & Persona Management: Uses persona profiles, knowledge materials, and simplified RAG logic to guide culturally relevant responses.',
-                'Offline & Demo Mode: Mock Mode enables zero-credential, offline demonstrations for exhibitions and on-site showcases.',
-                'Animated Avatar Feedback: Visual avatar states (idle, listening, thinking, speaking, error) provide intuitive conversational feedback.',
-                'Debugging & Persistence Tools: In-app settings and logging panels with localStorage persistence and export/import support.'
+                'LLM-agnostic Architecture: Connects to any compatible REST-based LLM endpoint.',
+                'Offline & Demo Mode: Mock Mode enables zero-credential demonstrations for exhibitions.',
+                'Animated Avatar Feedback: Visual states (idle, listening, thinking, speaking) provide conversational cues.'
             ],
-
             responsibilities: [
-                'Core System Developer: Designed and implemented the entire frontend SPA architecture, managing UI state, conversation flow, and asynchronous voice/LLM interactions.',
-                'Voice & AI Integration: Integrated ASR (speech-to-text), TTS (text-to-speech), and configurable LLM REST APIs into a unified conversational pipeline.',
-                'Architecture Design: Planned a modular service-based structure (ASR manager, TTS manager, LLM manager, settings manager) to ensure maintainability and extensibility.',
-                'Offline-first Demo Strategy: Implemented Mock Mode and local configuration persistence to support exhibitions, demos, and low-connectivity environments.',
-                'Cross-disciplinary Collaboration: Worked closely with design and arts teams to align technical behavior with narrative, visual, and cultural experience goals.',
-                'Deployment & Security Considerations: Implemented client-side credential handling, HMAC-based WebSocket signing, and documented production security recommendations.'
+                'Core System Developer: Designed the frontend SPA architecture and managed asynchronous voice/LLM interactions.',
+                'Voice & AI Integration: Integrated ASR, TTS, and configurable LLM REST APIs into a unified pipeline.',
+                'Offline Strategy: Implemented Mock Mode and local configuration persistence for low-connectivity environments.'
             ],
-
             challenges: [
-                'Voice Reliability Across Environments: Addressed inconsistent microphone and audio behavior across browsers and WebViews by implementing provider fallbacks and user-gesture audio gating.',
-                'Offline Demonstration Constraints: Designed Mock Mode to simulate full AI conversations without external APIs, ensuring smooth exhibition demos.',
-                'Asynchronous State Management: Coordinated ASR, LLM inference, TTS playback, and avatar animation states without a frontend framework.',
-                'Security Trade-offs: Balanced client-side API key usage for demos while documenting server-side proxy recommendations for production deployment.'
+                'Voice Reliability: Addressed inconsistent microphone behavior across browsers by implementing provider fallbacks.',
+                'Asynchronous State Management: Coordinated ASR, LLM inference, and TTS playback states without a framework.'
             ]
         },
-
         showcase: [
-            {
-                type: 'info',
-                url: 'https://raffles-university.edu.my/first-draft-%C2%B7-raffles-graduation-show-2025/'
-            },
-            {
-                type: 'info',
-                url: 'https://kancilawards.com/student-winners/entry/2025/8590'
-            }
+            { type: 'info', url: 'https://raffles-university.edu.my/first-draft-%C2%B7-raffles-graduation-show-2025/' },
+            { type: 'info', url: 'https://kancilawards.com/student-winners/entry/2025/8590' }
         ],
-
+        artifacts: [
+            { type: 'md', title: 'Technical Documentation (README)', url: './src/assets/docs/JiuXi/README.md' },
+            { type: 'image', title: 'System Flowchart', url: './src/assets/docs/JiuXi/flowchart.png' },
+            { type: 'image', title: 'Operational Logic Diagram', url: './src/assets/docs/JiuXi/Diagrams-Working-EN.png' },
+            { type: 'image', title: 'Full System Architecture', url: './src/assets/docs/JiuXi/Diagrams-Full-EN.png' },
+            { type: 'image', title: 'Dashboard UI Showcase', url: './src/assets/docs/JiuXi/JiuXiDashboard.png' },
+            { type: 'image', title: 'Voice Interaction Logic', url: './src/assets/docs/JiuXi/Diagrams-Working-CH.png' }
+        ],
         link: 'https://raffles-university.edu.my/first-draft-%C2%B7-raffles-graduation-show-2025/'
-    },
-    {
-        id: 'hangman-game',
-        title: 'Hangman Game — Object-Oriented Multiplayer Console Game',
-        type: 'Game Development',
-        stack: [
-            'C++',
-            'OOP',
-            'SFML',
-            'TCP Networking',
-            'CMake',
-            'Git'
-        ],
-        shortDesc:
-            'A C++ object-oriented Hangman game supporting single-player, local multiplayer, and online multiplayer modes.',
-
-        media: {
-            type: 'youtube',
-            content: 'fBLt0iN_Cxo'
-        },
-
-        introduction:
-            'This Hangman Game was developed as part of an Object-Oriented Programming course to demonstrate practical application of OOP principles in a real-world system. The game supports multiple gameplay modes, integrates audio feedback, and implements online multiplayer functionality using TCP networking, all built with a modular and extensible C++ architecture.',
-
-        details: {
-            overview:
-                'The project was designed to move beyond a simple console game by emphasizing software architecture, scalability, and clean object-oriented design. An abstract Game base class unifies all gameplay modes, while dedicated classes handle player state, word management, categories, audio playback, and networking. The system is cross-platform, built with CMake, and demonstrates how OOP concepts can be applied to interactive and networked applications.',
-
-            features: [
-                'Multiple Game Modes: Single-player, local two-player, and online multiplayer (client/server) gameplay using a unified Game interface.',
-                'Object-Oriented Architecture: Uses abstraction, encapsulation, inheritance, and polymorphism to separate responsibilities and support extensibility.',
-                'Category-based Word System: Randomized word selection from predefined categories such as Food, Countries, and Computer Science.',
-                'Online Multiplayer via TCP: Implements LAN-based multiplayer using SFML TCP sockets with synchronized gameplay flow.',
-                'Audio Feedback System: Background music and sound effects (correct/incorrect guesses) powered by SFML Audio.',
-                'Cross-platform Build System: Uses CMake to ensure consistent compilation across different environments.',
-                'Robust Testing Coverage: Manual unit, integration, functional, and network testing documented with structured test cases.'
-            ],
-
-            responsibilities: [
-                'Team Lead & System Architect: Led the overall project design, defined the object-oriented architecture, and ensured alignment with course learning outcomes.',
-                'Core Game Architecture Design: Designed the abstract Game base class and polymorphic structure enabling seamless switching between gameplay modes.',
-                'Multiplayer Logic Oversight: Planned and validated the client–server interaction model for online multiplayer using TCP sockets.',
-                'Code Review & Integration: Reviewed team contributions, resolved integration conflicts, and ensured consistent coding standards across modules.',
-                'Debugging & Testing Coordination: Led debugging efforts, verified gameplay correctness across all modes, and ensured all documented test cases passed.',
-                'Documentation & Presentation Support: Contributed to system design explanations, UML interpretation, and final project validation.'
-            ],
-
-            challenges: [
-                'Designing Scalable OOP Architecture: Ensuring that multiple game modes could share a common interface without duplicating logic.',
-                'Network Synchronization: Managing turn-based gameplay and state consistency between server and client in online multiplayer mode.',
-                'Audio Integration in Console Context: Integrating SFML audio playback while maintaining a console-based UI.',
-                'Balancing Complexity and Stability: Implementing advanced features (networking, audio, polymorphism) while keeping the system stable and testable.'
-            ]
-        },
-
-        showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/Hangman-Game'
-            }
-        ],
-
-        link: 'https://github.com/MinYuOuO/Hangman-Game'
-    }
-    ,
-    {
-        id: 'miu-portfolio',
-        title: 'Miu Portfolio — Dissociative Recombination Web Experience',
-        type: 'Portfolio Website',
-        stack: [
-            'HTML5',
-            'CSS3',
-            'Tailwind CSS',
-            'JavaScript',
-            'Three.js',
-            'WebGL',
-            'GitHub Pages'
-        ],
-        shortDesc:
-            'A highly experimental personal portfolio that rejects conventional grid-based layouts, combining anti-design principles, asymmetric UI, and WebGL-driven interactions to express both technical rigor and creative dissociation.',
-
-        media: {
-            type: 'images',
-            content: [
-                './src/assets/preview-card.png'
-            ]
-        },
-
-        introduction:
-            'The Miu Portfolio is a personal web experience designed to move beyond the “static brochure” model of traditional developer portfolios. It fuses structured front-end engineering with experimental visual systems inspired by digital deconstruction and dissociative recombination, presenting projects as an evolving computational space rather than a fixed layout.',
-
-        details: {
-            overview:
-                'This project serves as both a professional portfolio and a design research experiment. Conceptually inspired by anti-design and scientific metaphors from dissociative recombination, the site deliberately fractures conventional UI patterns while maintaining usability, accessibility, and responsive behavior. A clear separation is enforced between the logical content layer (HTML/CSS) and an expressive dissociative layer (WebGL/Three.js), allowing controlled chaos without sacrificing clarity.',
-
-            features: [
-                'Anti-design & Asymmetric Layout: Breaks standard grid systems using aggressive negative space, off-axis alignment, and non-linear visual flow.',
-                'Hybrid Rendering Architecture: Combines traditional DOM-based UI with WebGL canvas layers for immersive visual effects.',
-                'Three.js Interactive Visuals: Implements animated 3D elements, particle systems, and wireframe structures as narrative UI components.',
-                'Dissociative Interaction Effects: Includes fluid data distortion, chromatic aberration, and controlled glitch effects driven by cursor and scroll input.',
-                'Responsive & Accessible Design: Uses fluid units, media queries, and reduced-motion fallbacks to maintain usability across devices.',
-                'Design System Consistency: Enforces a strict neon-on-dark color palette and typographic hierarchy to balance chaos with readability.'
-            ],
-
-            responsibilities: [
-                'Concept & Visual System Design: Defined the core design philosophy and translated abstract theory into a concrete UI system.',
-                'Frontend Engineering: Implemented the complete site using semantic HTML, modern CSS utilities, and vanilla JavaScript.',
-                'WebGL & Three.js Development: Built and integrated interactive 3D scenes, shaders, and post-processing effects to support narrative-driven interactions.',
-                'Architecture Planning: Designed a layered system separating logical content rendering from experimental visual effects.',
-                'Performance & Accessibility Considerations: Tuned animations, applied reduced-motion strategies, and ensured responsive behavior across screen sizes.',
-                'Continuous Iteration: Refactored and expanded the portfolio across multiple design versions, evolving from controlled chaos to a more formalized theoretical framework.'
-            ],
-
-            challenges: [
-                'Balancing Chaos and Usability: Ensuring experimental layouts remained readable and navigable despite heavy visual distortion.',
-                'WebGL Performance Constraints: Managing real-time effects and particle systems without degrading frame rate on lower-end devices.',
-                'Design Originality: Avoiding common sci-fi and cyberpunk clichés while still delivering a high-impact futuristic aesthetic.',
-                'Cross-device Responsiveness: Adapting asymmetrical, rotated layouts for mobile screens without losing design intent.'
-            ]
-        },
-
-        showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/MinYuOuO.github.io'
-            },
-            {
-                type: 'live',
-                url: 'https://minyuouo.github.io/'
-            }
-        ],
-
-        link: 'https://minyuouo.github.io/'
-    },
-    {
-        id: 'stellar-echoes',
-        title: 'Stellar Echoes — Interactive Friendship Memory Archive',
-        type: 'Creative Web Experience',
-        stack: [
-            'JavaScript',
-            'Three.js',
-            'HTML5',
-            'CSS3',
-            'Web Audio API'
-        ],
-        shortDesc:
-            'An immersive 3D web experience that visualizes personal friendship memories as floating starlight particles, transforming a birthday gift into a long-term digital archive of shared moments.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/pL0HxNCW/stellar_Echoes.png'
-            ]
-        },
-
-        introduction:
-            'Stellar Echoes began as a birthday gift website for a close friend and evolved into a personal digital archive of friendship memories. The project uses Three.js to render photographs as interactive starlight fragments in deep space, allowing users to explore, recall, and preserve emotional moments through an immersive 3D interface.',
-
-        details: {
-            overview:
-                'The project explores how software engineering and real-time graphics can be used to express emotional narratives. Memory photographs are transformed into spatial particles distributed in a nebula-like formation, accompanied by atmospheric audio and subtle interaction cues. The experience emphasizes emotional resonance while maintaining technical robustness, performance stability, and cross-device support.',
-
-            features: [
-                '3D Stellar Memory System: Displays photos as glowing 3D particles arranged in spherical space, simulating a starfield of memories.',
-                'Interactive Exploration: Supports rotation, zoom, and click/tap interactions to inspect individual memory fragments.',
-                'Boot Sequence & Narrative UI: Implements a terminal-style loading sequence to frame memory recall as a system initialization process.',
-                'Photo Modal Viewer: Clicking a particle opens a decrypted memory view with smooth modal transitions.',
-                'Audio Atmosphere: Integrates background music and sound effects using the Web Audio API to enhance immersion.',
-                'Cross-platform Interaction: Supports mouse, touch, pinch-to-zoom, and responsive resizing across devices.',
-                'Performance-aware Rendering: Optimized particle count, lazy image loading, and post-processing for smooth 60 FPS animation.'
-            ],
-
-            responsibilities: [
-                'Concept Creation & Emotional Design: Conceived the project as an emotional storytelling medium, translating personal friendship memories into an interactive technical format.',
-                'Three.js Scene Engineering: Designed and implemented the complete 3D scene, camera system, particle geometry, and post-processing pipeline.',
-                'Interaction System Implementation: Built custom mouse and touch interaction logic for rotation, zooming, and raycasting-based photo selection.',
-                'UI & Narrative Layer Design: Developed the HUD, boot screen, modal system, and glitch-style visual language to support the memory recall narrative.',
-                'Audio Integration: Implemented background music and sound effects using the Web Audio API, synchronized with user interactions.',
-                'Performance & Device Optimization: Tuned rendering settings, interaction handling, and asset loading to ensure stable performance on desktop and mobile devices.'
-            ],
-
-            challenges: [
-                'Balancing Emotion and Technical Clarity: Ensuring the experience conveyed intimacy and warmth without sacrificing usability or performance.',
-                'Real-time Performance: Managing post-processing effects, particle animations, and interactions while maintaining smooth frame rates.',
-                'Cross-device Input Handling: Supporting mouse, touch, and gesture controls within a single interaction system.',
-                'Scalability of Memories: Designing the system to accommodate additional photos without overwhelming the visual space.'
-            ]
-        },
-
-        showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/MinYuOuO.github.io'
-            },
-            {
-                type: 'live',
-                url: 'https://minyuouo.github.io/stellarEchoes.html'
-            }
-        ],
-
-        link: 'https://minyuouo.github.io/stellarEchoes.html'
-    },
-    {
-        id: 'travel-calculator',
-        title: 'Travel Calculator App — OOP-based Trip Cost Planner',
-        type: 'Desktop Application',
-        stack: [
-            'C++',
-            'OOP',
-            'STL',
-            'CLI',
-            'Git'
-        ],
-        shortDesc:
-            'A C++ object-oriented travel cost calculator that helps users estimate trip expenses using modular OOP design, multiple calculation modes',
-
-        // Template supports ONE media type.
-        // Replace with your actual YouTube presentation video ID.
-        media: {
-            type: 'youtube',
-            content: 'zHorgB2bUeg'
-        },
-
-        introduction:
-            'The Travel Calculator App is an object-oriented C++ application developed to apply OOP principles to a real-world problem: estimating and planning travel expenses. The system emphasizes modular design, extensibility, and clean separation of responsibilities while providing an intuitive console-based user experience.',
-
-        details: {
-            overview:
-                'This project was developed as part of an Object-Oriented Programming assignment and iteratively refined through multiple versions, culminating in a stable v2.0.0 release. The application decomposes travel planning into reusable classes responsible for transport, accommodation, food, and miscellaneous costs, demonstrating abstraction, encapsulation, and polymorphism in practice.',
-
-            features: [
-                'Modular Cost Calculation: Separates transport, accommodation, food, and additional expenses into dedicated classes.',
-                'Object-Oriented Architecture: Applies encapsulation, inheritance, and polymorphism to manage calculation logic cleanly.',
-                'User-driven Input Flow: Guides users through structured input steps with validation to reduce calculation errors.',
-                'Extensible Design: Allows new cost categories or pricing rules to be added without modifying core logic.',
-                'Versioned Release (v2.0.0): Improved structure, refined calculations, and clearer user prompts compared to earlier iterations.'
-            ],
-
-            responsibilities: [
-                'Team Lead & Design Coordinator: Led the project direction, coordinated development tasks, and ensured alignment with OOP learning objectives.',
-                'Core Architecture Planning: Defined the class structure and responsibility boundaries for cost calculation modules.',
-                'Implementation Support: Contributed to core logic development and assisted teammates in resolving design and implementation issues.',
-                'Code Review & Integration: Reviewed team contributions, merged features, and resolved integration conflicts.',
-                'Testing & Validation Oversight: Coordinated testing of calculation accuracy and ensured stable behavior prior to the v2.0.0 release.'
-            ],
-
-            challenges: [
-                'Applying OOP to a Real-world Scenario: Translating abstract OOP principles into a practical travel-planning workflow.',
-                'Balancing Simplicity and Flexibility: Keeping the console UI easy to use while maintaining extensible class design.',
-                'Team Coordination: Managing contributions from multiple developers and integrating features consistently.',
-                'Iterative Refactoring: Refactoring early code to improve structure and maintainability for the final release.'
-            ]
-        },
-
-        showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/Travel-Calculator-App'
-            },
-            {
-                type: 'live',
-                url: 'https://github.com/MinYuOuO/Travel-Calculator-App/releases/tag/v2.0.0'
-            }
-        ],
-
-        link: 'https://github.com/MinYuOuO/Travel-Calculator-App'
     },
     {
         id: 'colorella-ticketing',
         title: 'Colorella Event — Ticketing & Finance Management System',
         type: 'Internal Event System',
-        stack: [
-            'Python',
-            'Tkinter',
-            'Google Sheets API',
-            'pandas',
-            'Async UI'
-        ],
-        shortDesc:
-            'A custom-built ticketing and attendance management system developed for the Colorella: Bazaar of Colors event, supporting tiered ticket sales, payment review, and real-time attendance tracking for a large-scale student festival.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/ZnFMY38Z/Colorella-Ticketing-System.png'
-            ]
-        },
-
-        introduction:
-            'Colorella is a large-scale student-led cultural festival involving multiple universities, vendors, and charitable partners. As SRC Treasurer, I designed and implemented a dedicated ticketing system to manage registrations, ticket tiers, payments, and attendance, ensuring financial transparency and smooth on-site operations.',
-
+        category: 'WEB_SYSTEMS',
+        stack: ['Python', 'Tkinter', 'Google Sheets API', 'pandas', 'Async UI'],
+        shortDesc: 'A custom-built ticketing and attendance management system supporting tiered sales, payment review, and real-time tracking.',
+        media: { type: 'images', content: ['https://i.postimg.cc/ZnFMY38Z/Colorella-Ticketing-System.png'] },
+        introduction: 'As SRC Treasurer, I designed this system for the Colorella festival to replace manual spreadsheets. It manages registrations, ticket tiers, and payments while ensuring financial transparency.',
         details: {
-            overview:
-                'The Colorella Ticketing System was created to replace manual spreadsheet workflows with a structured, reliable desktop application. Using Google Sheets as a shared backend, the system synchronizes registration data from Google Forms, enforces tier caps, prevents duplicate registrations, and provides fast tools for payment approval and attendance marking during the event.',
-
+            overview: 'Using Google Sheets as a backend, the system synchronizes registration data, enforces tier caps, and provides tools for payment approval and attendance marking.',
             features: [
-                'Google Forms Ingestion: Automatically syncs and processes registration responses from one or multiple Google Sheets.',
-                'Tiered Ticket Management: Supports Early Bird, Mid Batch, and Last Chance tiers with participant caps and automatic waitlisting.',
-                'De-duplication Logic: Identifies duplicate registrations by email and assigns tier position and confirmation status.',
-                'Payment Review Workflow: Allows treasurers to open payment proof links and approve or reject payments directly from the UI.',
-                'Attendance Tracking: Provides searchable participant records with one-click attendance marking during event check-in.',
-                'Responsive Desktop UI: Uses background threads and batched I/O to ensure the Tkinter interface never blocks during sync operations.',
-                'Structured OOP Architecture: Separates gateway, repository, service, and UI layers for maintainability and clarity.'
+                'Google Forms Ingestion: Automatically processes registration responses from shared sheets.',
+                'Tiered Ticket Management: Supports Early Bird and other tiers with participant caps.',
+                'Payment Review Workflow: Allows treasurers to approve or reject payments directly from the UI.',
+                'Attendance Tracking: One-click attendance marking during event check-in.',
+                'Responsive Desktop UI: Uses background threads to ensure the Tkinter interface never blocks.'
             ],
-
             responsibilities: [
-                'SRC Treasurer & Finance Lead: Oversaw ticket pricing strategies, revenue tracking, and financial transparency for the event.',
-                'System Architect & Developer: Designed and implemented the complete ticketing system, from Google Sheets integration to the desktop UI.',
-                'Tier & Pricing Logic Design: Implemented tier caps, discounts (EduCity, volunteer), and confirmation/waitlist rules aligned with the approved event proposal.',
-                'Operational Support: Used the system during live event operations to manage check-in, attendance, and payment verification.',
-                'Cross-team Coordination: Worked closely with publicity, security, and guest check-in teams to ensure ticketing data matched on-site workflows.',
-                'Data Integrity & Auditability: Ensured consistent records for participants, payments, and attendance to support post-event financial reporting.'
+                'SRC Treasurer: Oversaw ticket pricing strategies and revenue tracking.',
+                'System Architect: Designed the complete system from API integration to desktop UI.',
+                'Operational Lead: Managed live check-in and payment verification during the event.'
             ],
-
             challenges: [
-                'Scaling for Large Participation: Designing a system capable of handling hundreds of registrations across multiple universities.',
-                'Real-time Event Constraints: Ensuring fast search and attendance marking during peak check-in periods.',
-                'Preventing Data Inconsistencies: Managing concurrent updates to shared Google Sheets while maintaining reliable state.',
-                'Bridging Technical & Non-technical Users: Creating a UI usable by SRC members without programming background.'
+                'Scaling for High Volume: Designing for hundreds of concurrent registrations.',
+                'Data Integrity: Managing concurrent updates to shared sheets without state loss.'
             ]
         },
-
         showcase: [
-            {
-                type: 'info',
-                url: 'https://share.google/aimode/FuksYKCE3dbNmDNIx'
-            },
+            { type: 'info', url: 'https://share.google/aimode/FuksYKCE3dbNmDNIx' }
         ],
-
         link: ''
+    },
+    {
+        id: 'remind',
+        title: 'ReMind - Mobile Relationship Manager',
+        type: 'Mobile App',
+        category: 'WEB_SYSTEMS',
+        stack: ['Ionic', 'Angular', 'Capacitor', 'SQLite', 'Ionic Storage'],
+        shortDesc: 'A privacy-first, offline-first relationship manager that helps users store friend details securely on-device.',
+        media: { type: 'youtube', content: 'v6Pw95EJqNA' },
+        introduction: 'ReMind is a privacy-focused mobile relationship manager. it manages all data locally using SQLite to support a fully offline-first experience.',
+        details: {
+            overview: 'Developed to explore hybrid app architecture, ReMind prioritizes privacy by keeping data on-device and using local caching for fast startup.',
+            features: [
+                'Friend Records CRUD: Complete profile management backed by SQLite.',
+                'Offline-first Storage: No network required for data access or updates.',
+                'Client-side Caching: Uses Ionic Storage for smoother offline UX.',
+                'Real-time UI Updates: Reflects database changes immediately via Angular binding.',
+                'Decision Roulette: A gamified module for randomized social suggestions.'
+            ],
+            responsibilities: [
+                'Project Lead: Defined the technical direction and coordinated task allocation.',
+                'Core Data Architecture: Designed the offline-first layer using SQLite.',
+                'Testing & QA: Conducted functional testing to verify CRUD correctness and offline stability.'
+            ],
+            challenges: [
+                'Offline Consistency: Ensuring data stays consistent between SQLite and cache.',
+                'Responsive Design: Iterating UI layouts for diverse screen sizes.'
+            ]
+        },
+        showcase: [
+            { type: 'github', url: 'https://github.com/MinYuOuO/ReMind' },
+            { type: 'figma', url: 'https://www.figma.com/design/6ukaFjEmDfwMgvfcJJop5N/ReMind?node-id=0-1&t=oSeDMvmTn8c8KBmz-1' }
+        ],
+        artifacts: [
+            { type: 'pdf', title: 'Project Management Plan (PMP)', url: './src/assets/docs/ReMind/ProjectReMind_PMP_V3.3_20251124.pdf' },
+            { type: 'pdf', title: 'Development Presentation', url: './src/assets/docs/ReMind/ProjectReMind_PPT_V2_20251124.pdf' },
+            { type: 'image', title: 'Use Case Diagram', url: './src/assets/docs/ReMind/Diagrams-Use Case.drawio.png' },
+            { type: 'image', title: 'Project Charter', url: './src/assets/docs/ReMind/PM ReMind Project Charter.png' },
+            { type: 'image', title: 'Work Breakdown Structure (WBS)', url: './src/assets/docs/ReMind/Project ReMind Work Breakdown Structure v1.png' }
+        ],
+        link: 'https://github.com/MinYuOuO/ReMind'
+    },
+    {
+        id: 'telco-churn-malaysia',
+        title: 'Telecom Customer Churn Prediction System (Malaysia)',
+        type: 'Data Mining / ML',
+        category: 'AI_DATA',
+        stack: ['Python', 'scikit-learn', 'pandas', 'Orange Mining', 'Tkinter'],
+        shortDesc: 'A Malaysia-contextualized telecom churn dataset analysis and predictive decision-support system.',
+        media: { type: 'images', content: ['https://i.postimg.cc/kGfm5kCN/Telecom_Churn_Predictor_Exe.png'] },
+        introduction: 'This project analyzes customer churn in the Malaysian telecom sector. It evaluates multiple predictive models and deploys a desktop prototype for churn prediction.',
+        details: {
+            overview: 'The project combines data warehousing design, EDA, and machine learning. A synthetic dataset was generated using DOSM demographic distributions and national statistics.',
+            features: [
+                'Relational Data Warehouse: Designed Customer, Usage, and Churn tables.',
+                'Malaysia-specific Data: Shaped synthetic data using national population distributions.',
+                'Multi-model Data Mining: Implemented Random Forest, Decision Tree, and Logistic Regression.',
+                'Decision-support Prototype: Tkinter GUI for predicting churn probability and retention priority.'
+            ],
+            responsibilities: [
+                'Dataset Design: Co-designed the synthetic Malaysia-specific churn dataset.',
+                'Model Development: Implemented and compared ML models in Python and Orange.',
+                'Prototype Developer: Integrated models into a desktop application for decision support.'
+            ],
+            challenges: [
+                'Data Realism: Ensuring synthetic behavior reflected real usage patterns.',
+                'Interpretability: Selecting models that offer both predictive power and business insights.'
+            ]
+        },
+        showcase: [
+            { type: 'info', url: 'https://colab.research.google.com/drive/1rND6DuffaajBer8j4GUiCMip2_VEeaKa?usp=sharing' }
+        ],
+        artifacts: [
+            { type: 'pdf', title: 'Project Technical Report', url: './src/assets/docs/TelecomCustomerChurnPrediction/Data Mining and Warehousing Project V2.pdf' },
+            { type: 'pdf', title: 'Data Mining Presentation', url: './src/assets/docs/TelecomCustomerChurnPrediction/Data Mining PPT.pdf' },
+            { type: 'image', title: 'System Design Flowchart', url: './src/assets/docs/TelecomCustomerChurnPrediction/System Design Flowchart.drawio.png' }
+        ],
+        link: 'https://colab.research.google.com/drive/1rND6DuffaajBer8j4GUiCMip2_VEeaKa?usp=sharing'
+    },
+    {
+        id: 'mamak-eateries-analytics',
+        title: 'Mamak Eateries — Data Analytics & Power BI Visualization',
+        type: 'Data Analytics / Visualization',
+        category: 'AI_DATA',
+        stack: ['Power BI', 'Data Analytics', 'Market Analysis', 'Business Intelligence'],
+        shortDesc: 'A comprehensive data analytics project exploring the Mamak eatery landscape using Power BI for visual storytelling.',
+        media: { type: 'images', content: ['./src/assets/docs/MamakEateries/PowerBI Mamak Eateries.png'] },
+        introduction: 'This project focuses on the visualization and analysis of the Mamak eatery market in Malaysia. By leveraging Power BI, I transformed raw data into actionable insights regarding consumer behavior and market trends.',
+        details: {
+            overview: 'The analysis covers geographic distribution, popular food items, and pricing strategies within the Mamak industry, aimed at providing business intelligence for new market entrants.',
+            features: [
+                'Interactive Dashboards: Real-time filtering and drill-down capabilities for eatery data.',
+                'Geospatial Analysis: Mapping eatery densities across different Malaysian regions.',
+                'Consumer Sentiment Tracking: Visualizing preferences and peak traffic periods.',
+                'Pricing Benchmarks: Comparative analysis of standard item pricing.'
+            ],
+            responsibilities: [
+                'Data Visualization Lead: Designed the complete Power BI dashboard and narrative flow.',
+                'Market Researcher: Gathered and cleaned the dataset to ensure regional representativeness.',
+                'Strategic Analyst: Interpreted data patterns to provide business recommendations.'
+            ],
+            challenges: [
+                'Data Normalization: Harmonizing inconsistent naming conventions across regional datasets.',
+                'Visualization Clarity: Designing a dense dashboard that remains intuitive for non-technical users.'
+            ]
+        },
+        showcase: [],
+        artifacts: [
+            { type: 'pdf', title: 'Data Analytics Final Project Poster', url: './src/assets/docs/MamakEateries/Data Analytics Final Project Poster.pdf' },
+            { type: 'image', title: 'Power BI Dashboard Showcase', url: './src/assets/docs/MamakEateries/PowerBI Mamak Eateries.png' }
+        ],
+        link: ''
+    },
+    {
+        id: 'hangman-game',
+        title: 'Hangman Game — OOP Multiplayer Console Game',
+        type: 'C++ Game',
+        category: 'GAME_CREATIVE',
+        stack: ['C++', 'OOP', 'SFML', 'TCP Networking', 'CMake', 'Git'],
+        shortDesc: 'A C++ object-oriented Hangman game supporting single-player, local, and online TCP multiplayer modes.',
+        media: { type: 'youtube', content: 'fBLt0iN_Cxo' },
+        introduction: 'Developed for an OOP course, this game demonstrates the practical application of polymorphism and inheritance. It supports multiple gameplay modes and integrates audio feedback.',
+        details: {
+            overview: 'Emphasizing software architecture and scalability, an abstract Game base class unifies all modes while dedicated classes handle player state and networking.',
+            features: [
+                'Multiple Game Modes: Single-player, local two-player, and online client/server gameplay.',
+                'Object-Oriented Architecture: Uses inheritance and polymorphism for extensibility.',
+                'Online Multiplayer via TCP: Implements LAN-based play using SFML sockets.',
+                'Audio Feedback System: Background music and sound effects powered by SFML Audio.'
+            ],
+            responsibilities: [
+                'Team Lead: Led overall project design and defined the OOP architecture.',
+                'Core Architecture: Designed the polymorphic structure for seamless mode switching.',
+                'Multiplayer Logic: Planned and validated the client-server interaction model.'
+            ],
+            challenges: [
+                'Scalable Architecture: Sharing common interfaces without logic duplication.',
+                'Network Synchronization: Managing state consistency in turn-based play.'
+            ]
+        },
+        showcase: [
+            { type: 'github', url: 'https://github.com/MinYuOuO/Hangman-Game' }
+        ],
+        link: 'https://github.com/MinYuOuO/Hangman-Game'
     },
     {
         id: 'student-score-management',
         title: 'Student Score Management System',
-        type: 'Console Application',
-        stack: [
-            'Python',
-            'OOP',
-            'File I/O',
-            'PrettyTable',
-            'CLI'
-        ],
-        shortDesc:
-            'A Python-based student score management system that allows teachers to input, manage, sort, and analyze student academic records using a structured object-oriented design.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/sx9pG40y/SSMS.png'
-            ]
-        },
-
-        introduction:
-            'The Student Score Management System is a console-based Python application developed to support teachers in managing and analyzing student academic records. It provides essential CRUD operations, sorting, and basic analytics through a clear object-oriented structure and persistent file storage.',
-
+        type: 'Python + PHP Web',
+        category: 'WEB_SYSTEMS',
+        stack: ['Python', 'PHP', 'MySQL', 'File I/O', 'PrettyTable', 'HTML/CSS'],
+        shortDesc: 'A student record system that evolved from a Python console app into a full-stack web application.',
+        media: { type: 'images', content: ['https://i.postimg.cc/sx9pG40y/SSMS.png'] },
+        introduction: 'This project evolved from a simple Python console application into a web-based system, implementing CRUD workflows and secure authentication.',
         details: {
-            overview:
-                'Developed as a coursework project for Principles of Computer Programming, this system focuses on applying fundamental programming and object-oriented concepts to a real-world educational scenario. The application separates core logic and user interaction into multiple modules, using text files as a lightweight persistence layer to store student records.',
-
+            overview: 'Developed across multiple courses, this system focuses on database normalization and the transition from local tools to web environments.',
             features: [
-                'Student Record CRUD: Allows users to create, search, modify, and delete student records stored in a text-based database.',
-                'Object-Oriented Data Model: Implements a Student class to encapsulate student attributes and related behaviors.',
-                'Input Validation: Validates score inputs to prevent invalid or out-of-range data from being stored.',
-                'Sorting & Analysis: Supports sorting student records by subject scores in ascending or descending order.',
-                'Summary Statistics: Calculates and displays the total number of students in the system.',
-                'Formatted Output: Uses PrettyTable to display student data in a clean, readable tabular format within the console.'
+                'Normalized MySQL Schema: Efficiently handles many-to-many academic relationships.',
+                'Secure Authentication: Implements login and session management.',
+                'Performance Visualization: Graphical representation of student scores.',
+                'Formatted CLI Output: Uses PrettyTable for the console version.'
             ],
-
             responsibilities: [
-                'Sole Developer: Designed and implemented the entire system independently, from requirement analysis to final testing.',
-                'System Architecture Design: Structured the project into separate modules (main menu and score management logic) for clarity and maintainability.',
-                'OOP Implementation: Designed the Student class and related methods to apply encapsulation and abstraction.',
-                'File-based Persistence: Implemented text file read/write logic to store and retrieve student records reliably.',
-                'Testing & Debugging: Conducted manual testing for all core workflows, including insertion, modification, sorting, and deletion of records.',
-                'Documentation: Produced complete technical documentation explaining algorithms, data structures, and testing scenarios.'
+                'Lead Developer: Designed and implemented both CLI and Web versions.',
+                'Database Architect: Refactored early structures into optimized relational models.',
+                'UI Designer: Built the frontend interfaces for score analysis.'
             ],
-
             challenges: [
-                'Managing Data Consistency: Ensuring file-based data remained consistent after multiple modify and delete operations.',
-                'Applying OOP Concepts Correctly: Translating abstract OOP principles into a functional, beginner-friendly system design.',
-                'Input Validation & Error Handling: Preventing invalid data types and values from breaking program flow.',
-                'Balancing Simplicity and Functionality: Keeping the system easy to understand while supporting multiple management features.'
+                'System Migration: Transitioning logic from Python scripts to a PHP/MySQL stack.',
+                'Data Consistency: Maintaining integrity during record modification and deletion.'
             ]
         },
-
         showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/Student-Score-Management'
-            }
+            { type: 'github', url: 'https://github.com/MinYuOuO/Student-Score-Management' }
         ],
-
         link: 'https://github.com/MinYuOuO/Student-Score-Management'
     },
     {
-        id: 'bmi-calculator-se',
-        title: 'BMI Calculator — Software Engineering Assignment',
-        type: 'Desktop Application',
-        stack: [
-            'Python',
-            'Tkinter',
-            'Software Engineering',
-            'Git',
-            'Modular Design'
-        ],
-        shortDesc:
-            'A Python Tkinter-based BMI calculator that computes and categorizes Body Mass Index with robust input validation, iterative refinement, and modular architecture following software engineering principles.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/59Tcsq0H/lteration4.png'
-            ]
-        },
-
-        introduction:
-            'This project is a BMI (Body Mass Index) calculator developed as part of the Raffles University BAI21113 Software Engineering course. It provides a simple graphical interface for users to input height and weight, calculates BMI in real time, and classifies the result into standard health categories.',
-
+        id: 'network-security-simulation',
+        title: 'Network Security Protocols Simulation',
+        type: 'Cybersecurity',
+        category: 'SYSTEMS_SECURITY',
+        stack: ['Python', 'OpenSSL', 'Cloudflare', 'Blockchain', 'VPN'],
+        shortDesc: 'A simulation and comparative study of network security protocols for secure transmission.',
+        media: { type: 'images', content: [] },
+        introduction: 'A simulation and comparative study of network security protocols. This project explores cryptography mechanics and certificate-based trust.',
         details: {
-            overview:
-                'The BMI Calculator was developed through multiple structured iterations to demonstrate the application of software engineering methodologies, including modularization, error handling, version control workflows, and iterative improvement. The project separates UI logic from computation logic and emphasizes maintainability, clarity, and correctness.',
-
+            overview: 'Built as a course project for Data Communication to explore the practical mechanics of secure communications.',
             features: [
-                'Graphical User Interface: Built with Tkinter for an intuitive desktop-based user experience.',
-                'Accurate BMI Calculation: Computes BMI using validated height and weight inputs.',
-                'Health Category Classification: Categorizes results into Underweight, Normal, Overweight, or Obesity.',
-                'Robust Input Validation: Prevents invalid, non-numeric, or zero-height inputs from producing errors.',
-                'Modular Code Structure: Separates BMI calculation logic into independent modules for maintainability.',
-                'Readable Result Display: Enhanced UI text styling and layout for clarity.'
+                'Blockchain Prototype: Demonstrated hashing and immutability logic.',
+                'DNS/SSL Protection: Configured security layers via Cloudflare.',
+                'TLS/SSL Handshake: Manual simulations using OpenSSL.',
+                'VPN Simulation: Comparative analysis of secure tunneling protocols.'
             ],
-
             responsibilities: [
-                'Primary Developer: Designed and implemented the full BMI calculator system independently.',
-                'Requirement Interpretation: Translated assignment requirements into functional UI and logic components.',
-                'Iterative Development: Delivered the project through multiple iterations, progressively improving correctness, usability, and structure.',
-                'Error Handling Implementation: Added validation logic to handle invalid inputs and prevent runtime errors.',
-                'Modularization & Refactoring: Extracted calculation logic into separate modules to improve code organization.',
-                'Version Control Management: Used Git branching and pull requests to manage features, fixes, and documentation updates.'
+                'Researcher: Performed manual protocol analysis and comparative studies.',
+                'Developer: Built the Python blockchain prototype for security demonstration.',
+                'System Configurer: Managed DNS/SSL setups and certificate trust workflows.'
             ],
-
             challenges: [
-                'Handling Invalid User Input: Ensuring numerical validation and preventing division-by-zero errors.',
-                'Maintaining Correct Calculations: Fixing logic errors related to incorrect height handling across iterations.',
-                'Balancing Simplicity and Structure: Keeping the application beginner-friendly while applying proper software engineering practices.',
-                'Iteration Management: Correcting earlier commits and ensuring documentation accurately reflected code changes.'
+                'Protocol Complexity: Understanding the intricate steps of the TLS handshake.',
+                'Security Fidelity: Recreating real-world trust scenarios in a local environment.'
             ]
         },
-
-        showcase: [
-            {
-                type: 'github',
-                url: 'https://github.com/MinYuOuO/SE-Assignment'
-            }
+        showcase: [],
+        artifacts: [
+            { type: 'pdf', title: 'Introduction to Cybersecurity Certificate', url: './src/assets/docs/NetworkSecurity/Cisco Introduction to Cybersecurity.pdf' },
+            { type: 'pdf', title: 'Security Protocols Case Study', url: './src/assets/docs/NetworkSecurity/Computer Network Group Assignment.pdf' }
         ],
-
-        link: 'https://github.com/MinYuOuO/SE-Assignment'
+        link: ''
     },
     {
         id: 'internet-penetration-analysis',
-        title: "Data Processing & Visualization — Malaysia's Internet Penetration Analysis (2000–2023)",
-        type: 'Data Analysis',
-        stack: [
-            'Python',
-            'pandas',
-            'NumPy',
-            'Matplotlib',
-            'Seaborn',
-            'Jupyter Notebook'
-        ],
-        shortDesc:
-            "A data processing and visualization project comparing Malaysia’s internet penetration growth (2000–2023) against selected countries using cleaned World Bank data and multiple visual analytics (trend lines, bar charts, heatmaps, correlation matrix).",
-
-        media: {
-            type: 'youtube',
-            content: 'FEO8kZxSLHQ'
-        },
-
-        introduction:
-            "This project analyzes how Malaysia’s internet penetration rate evolved from 2000 to 2023 and compares it with the UK, US, Germany, China, Russia, Japan, Indonesia, and Thailand. The workflow focuses on end-to-end data acquisition, cleaning, transformation, and visualization to identify growth trends, gaps, and correlations across countries.",
-
+        title: "Malaysia's Internet Penetration Analysis (2000–2023)",
+        type: 'Data Science',
+        category: 'AI_DATA',
+        stack: ['Python', 'pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter'],
+        shortDesc: "A quantitative study of internet penetration trends in Malaysia, benchmarked against selected countries.",
+        media: { type: 'youtube', content: 'FEO8kZxSLHQ' },
+        introduction: "This project analyzes how Malaysia’s internet penetration rate evolved over two decades, comparing it with global and regional peers.",
         details: {
-            overview:
-                "Using World Bank Open Data (Individuals using the Internet % of population), we filtered relevant countries and years, handled missing values via forward/backward filling, removed duplicates (precautionary), treated outliers outside 0–100%, transformed the dataset from wide to tidy long format, and encoded countries for analysis. Visualizations include trend comparisons, 2023 snapshots, growth-rate heatmaps, and a correlation matrix to summarize relationships in adoption patterns",
-
+            overview: "Using World Bank Open Data, the workflow focuses on end-to-end data cleaning, transformation, and visual analytics.",
             features: [
-                'Data Acquisition & Filtering: Loaded World Bank dataset and filtered selected countries and years (2000–2023).',
-                'Missing Value Treatment: Reduced missing values after filtering and filled remaining gaps using forward/backward fill.',
-                'Outlier Detection & Cleaning: Converted to numeric and removed invalid penetration values (<0% or >100%).',
-                'Data Reshaping: Melted wide-format year columns into a tidy long-format dataset (Country–Year–Usage).',
-                'Country Encoding: Added numeric country IDs for modeling and consistent visualization.',
-                'Multi-chart Analytics: Built line charts for trends, bar charts for 2023 comparison, heatmaps for growth rate, and correlation matrix for relationships.'
+                'Data Acquisition: Loaded and filtered World Bank historical datasets.',
+                'Data Cleaning: Handled sparse early-year data via forward/backward fill.',
+                'Trend Visualization: Produced multi-country line charts and heatmaps.',
+                'Correlation Analysis: Summarized adoption patterns across countries.'
             ],
-
             responsibilities: [
-                'Co-author & Analyst: Conducted end-to-end data preparation and visualization for the comparative study.',
-                'Data Cleaning Pipeline: Implemented missing value handling, duplicate checks, and outlier treatment to ensure valid ranges.',
-                'Data Transformation: Converted the dataset into analysis-friendly long format and created encoded identifiers for countries.',
-                'Visualization Development: Produced the core charts (trend line, 2023 bar comparison, growth heatmap, correlation matrix) and interpreted key patterns.',
-                'Insight Writing: Summarized findings and limitations (e.g., incomplete early-year data and correlation not implying causation).'
+                'Data Analyst: Conducted end-to-end data preparation and cleaning.',
+                'Visualization Lead: Created core charts and interpreted growth patterns.',
+                'Technical Writer: Summarized findings and statistical limitations.'
             ],
-
             challenges: [
-                'Handling Sparse Historical Data: Early-year missing values required careful fill strategies after filtering.',
-                'Ensuring Valid Ranges: Internet penetration must remain within 0–100%, so outlier treatment was necessary.',
-                'Avoiding Misinterpretation: Correlation analysis highlights relationships but does not prove causation.',
-                'Communicating Complex Trends: Selecting visualizations that clearly explain long-term adoption patterns across multiple countries.'
+                'Sparse Data: Handling missing historical values without distorting trends.',
+                'Ensuring Range Validity: Keeping penetration metrics strictly within 0-100%.'
             ]
         },
-
         showcase: [
-            // Add your repo / notebook link if you have one
-            // { type: 'info', url: '' },
-
-            // If you want the PPT as a showcase item, host it and paste the link:
             { type: 'demo', url: 'https://youtu.be/FEO8kZxSLHQ' }
-        ]
+        ],
+        link: 'https://youtu.be/FEO8kZxSLHQ'
     },
     {
-        id: 'food-waste-eda',
-        title: 'Exploratory Data Analysis — Food Waste at Mamak Eateries',
-        type: 'Data Analytics',
-        stack: [
-            'Python',
-            'pandas',
-            'NumPy',
-            'Data Visualization',
-            'Jupyter'
-        ],
-        shortDesc:
-            'An exploratory data analysis project examining pre-consumer food waste at mamak eateries, using cleaned and simulated datasets derived from real interviews to uncover waste patterns and operational inefficiencies.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/GtYc3wnt/Power-BI-Mamak-Eateries.png'
-            ]
-        },
-
-        introduction:
-            'This EDA project analyzes pre-consumer food waste in mamak eateries to understand how customer volume and food preparation practices influence wastage levels. Interview data collected from actual operators was transformed into a simulated quantitative dataset and explored using Python-based data analytics and visualization techniques.',
-
+        id: 'university-db-system',
+        title: 'University Database System',
+        type: 'SQL Architecture',
+        category: 'SYSTEMS_SECURITY',
+        stack: ['SQL', 'MySQL', 'ERD Design', 'Normalization', 'Relational Modeling'],
+        shortDesc: 'A relational database for managing students, lecturers, courses, and academic programs.',
+        media: { type: 'images', content: ['./src/assets/docs/DatabaseProject/BAI12123_A1T3_LohMinYu_V004.png'] },
+        introduction: 'A comprehensive relational database for managing the entire lifecycle of university academics, from enrollment to examination records.',
         details: {
-            overview:
-                'Conducted as part of the BDS 23114 Data Analytics course, the project follows a complete EDA workflow: data understanding, cleaning, transformation, statistical summarization, and visualization. The study focuses on key variables such as daily customers, servings per item, staff per shift, and pre-consumer waste percentage to identify trends and correlations that inform operational recommendations.',
-
+            overview: 'Designed to emphasize the importance of normalization and scalability in conceptual-to-physical database design.',
             features: [
-                'Data Cleaning & Validation: Checked for missing values and duplicates, and removed outliers using the IQR method.',
-                'Feature Engineering: Grouped daily customer counts into Low, Medium, and High categories for comparative analysis.',
-                'Descriptive Statistics: Computed mean, median, standard deviation, and range to summarize operational variables.',
-                'Histogram Analysis: Visualized the distribution of pre-consumer waste percentages to identify skewness and common ranges.',
-                'Correlation Heatmap: Analyzed relationships between customer volume, servings per item, and waste percentage.',
-                'Comparative Visualization: Compared waste levels across different customer load groups using bar charts with variability indicators.'
+                'Relational Modeling: Optimized schema for enrollment and academic program tracking.',
+                'Complex Analytics: Advanced SQL queries for demographic and performance reporting.',
+                'Data Integrity: Strict enforcement of primary/foreign key constraints.',
+                'Normalized Design: Iterative refinement from ERD to physical implementation.'
             ],
-
             responsibilities: [
-                'Data Analyst & Co-author: Contributed to dataset design, cleaning, exploratory analysis, and interpretation of results.',
-                'EDA Pipeline Implementation: Executed data preprocessing, statistical summaries, and visualization using Python.',
-                'Visualization Development: Created core plots including histograms, correlation heatmaps, and grouped waste comparisons.',
-                'Insight Generation: Interpreted analytical results to derive actionable operational insights and recommendations.',
-                'Reporting & Presentation: Assisted in preparing the written report and final poster summarizing methodology, findings, and conclusions.'
+                'Database Designer: Iteratively refined ERDs to ensure 3NF compliance.',
+                'Physical Schema Lead: Implemented the database on MySQL with strict constraints.',
+                'Query Developer: Wrote complex analytical SQL for program-level reporting.'
             ],
-
             challenges: [
-                'Limited Real-world Data Volume: Worked with a small simulated dataset derived from interviews, requiring careful interpretation.',
-                'Outlier Sensitivity: Ensured that extreme values did not distort trends by applying IQR-based filtering.',
-                'Avoiding Over-interpretation: Treated correlations cautiously, recognizing that correlation does not imply causation.',
-                'Communicating Insights Clearly: Translating statistical patterns into practical, actionable recommendations for operators.'
+                'Normalization Trade-offs: Balancing strict normalization with efficient query performance.',
+                'Mapping Complexity: Managing many-to-many relationships across diverse academic entities.'
             ]
         },
-
-        showcase: [
-            // Optional: add a GitHub repo or notebook link if available
-            { type: 'info', url: 'https://colab.research.google.com/drive/1QqTAhM5hGkFpGegCzdgVfixNcCNy_1W0?usp=sharing' }
-        ]
-    },
-    {
-        id: 'telco-churn-malaysia',
-        title: 'Data Mining & Warehousing — Telecom Customer Churn in Malaysia',
-        type: 'Data Mining & Decision Support System',
-        stack: [
-            'Python',
-            'scikit-learn',
-            'pandas',
-            'Orange Mining',
-            'Tkinter',
-            'Data Warehouse'
+        showcase: [],
+        artifacts: [
+            { type: 'image', title: 'Conceptual ERD', url: './src/assets/docs/DatabaseProject/BAI12123_A1T1_LohMinYu_V002.png' },
+            { type: 'image', title: 'Logical ERD', url: './src/assets/docs/DatabaseProject/BAI12123_A1T2_LohMinYu_V001.png' },
+            { type: 'image', title: 'Physical Schema Design', url: './src/assets/docs/DatabaseProject/BAI12123_A1T3_LohMinYu_V004.png' },
+            { type: 'image', title: 'Complex Analytics Queries', url: './src/assets/docs/DatabaseProject/BAI12123_A2T4_LohMinYu_V002.png' }
         ],
-        shortDesc:
-            'A data mining and data warehousing project that builds a Malaysia-contextualized telecom churn dataset, evaluates multiple predictive models, and deploys a desktop decision-support prototype for churn prediction.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/kGfm5kCN/Telecom_Churn_Predictor_Exe.png'
-            ]
-        },
-
-        introduction:
-            'This project analyzes customer churn in the Malaysian telecommunications sector by constructing a realistic, Malaysia-contextualized dataset and applying data mining techniques to predict churn. Multiple models are evaluated and integrated into a desktop decision-support system that provides churn probabilities and retention recommendations.',
-
-        details: {
-            overview:
-                'Developed for the BDS23124 Data Mining and Data Warehousing course, the project combines data warehousing design, exploratory data analysis, and predictive modeling. A synthetic but realistic dataset was generated using global churn data, Malaysian demographic distributions (DOSM), and telecom statistics, structured into three relational tables and later merged for modeling.',
-
-            features: [
-                'Relational Data Warehouse Design: Designed Customer Master, Usage Transaction, and Churn Decision tables to reflect real telecom operations.',
-                'Malaysia-contextualized Data Generation: Shaped synthetic data using DOSM population distribution and national telecom statistics.',
-                'Comprehensive EDA: Performed statistical and visual EDA on demographics, usage patterns, payment behavior, and churn outcomes.',
-                'Multi-model Data Mining: Implemented Decision Tree, Random Forest, and Logistic Regression models for churn prediction.',
-                'Model Evaluation & Comparison: Evaluated models using accuracy, precision, recall, F1-score, and ROC/AUC in both Python and Orange.',
-                'Decision-support Prototype: Built a Tkinter-based GUI that allows users to input customer data and receive churn probability, label, and retention tier.'
-            ],
-
-            responsibilities: [
-                'Dataset Design & Generation: Co-designed the synthetic Malaysia-specific churn dataset and implemented feature distributions aligned with real demographics.',
-                'Data Warehousing Structure: Structured and validated relational tables and merged datasets for modeling and analysis.',
-                'EDA & Insight Extraction: Conducted exploratory analysis to validate realism and uncover churn-related behavioral patterns.',
-                'Model Development & Evaluation: Implemented and compared Logistic Regression, Random Forest, and Decision Tree models in Python and Orange.',
-                'System Prototype Development: Integrated trained models into a Tkinter-based desktop application for churn prediction and retention decision support.',
-                'Technical Reporting: Authored major sections of the final report covering methodology, results, and system design.'
-            ],
-
-            challenges: [
-                'Realism of Synthetic Data: Ensuring generated data accurately reflected Malaysian telecom demographics and usage behavior.',
-                'Model Comparison Fairness: Reconciling differences between Python train-test splits and Orange cross-validation results.',
-                'Balancing Interpretability and Accuracy: Selecting models that offer both predictive power and business interpretability.',
-                'System Integration: Bridging data mining outputs with a usable desktop decision-support interface.'
-            ]
-        },
-
-        showcase: [
-            // Optional: add repo / notebook if hosted
-            // { type: 'github', url: 'PASTE_REPO_URL_HERE' }
-            { type: 'info', url: 'https://colab.research.google.com/drive/1rND6DuffaajBer8j4GUiCMip2_VEeaKa?usp=sharing' }
-        ]
-    },
-    {
-        id: 'uiux-unifi-tv-redesign',
-        title: 'UI/UX Interface Redesign — Unifi TV Box',
-        type: 'UI/UX Design',
-        stack: [
-            'Figma',
-            'UX Research',
-            'Prototyping'
-        ],
-        shortDesc:
-            'A comprehensive UI/UX redesign of the Unifi TV Box interface, focusing on accessibility, simplified navigation, and remote-friendly interaction through user personas, user stories, wireframes, and an interactive prototype.',
-
-        media: {
-            type: 'youtube',
-            content: 'OHjgUJ5DjpQ'
-        },
-
-        introduction:
-            'This project redesigns the Unifi TV Box interface to improve usability for Malaysian IPTV users, particularly middle-aged and less tech-savvy audiences. The redesign emphasizes clarity, minimal navigation steps, and large, legible UI elements suitable for TV viewing distances and remote-control interaction.',
-
-        details: {
-            overview:
-                'Developed for ADE22074 UI/UX Analysis (Assignment 2), the project follows a full user-centered design process. The team analyzed the existing Unifi TV Box interface, identified usability issues, and proposed an improved design using personas, empathy maps, user stories, information architecture, and multiple design variations before finalizing a polished prototype.',
-
-            features: [
-                'User Persona Development: Created realistic personas (e.g., Ahmad Firdaus, a working technician) to represent primary user groups.',
-                'User Story Mapping: Defined common TV usage scenarios such as searching content, watching with family, and managing settings.',
-                'User Journey Mapping: Visualized end-to-end user interactions to identify friction points and improvement opportunities.',
-                'Information Architecture: Designed a clear navigation flow optimized for remote-based interaction.',
-                'Wireframes & Design Variations: Produced low-fidelity wireframes and three visual design styles before selecting a final direction.',
-                'Final UI Design: Delivered a high-fidelity interface with large typography, strong contrast, and simplified layout.',
-                'Interactive Prototype: Built a clickable Figma prototype and demo video showcasing the redesigned experience.'
-            ],
-
-            responsibilities: [
-                'UI/UX Designer & Research Contributor: Contributed to interface analysis, persona definition, and UX rationale.',
-                'User Persona & Story Development: Helped define user personas, user stories, and daily usage scenarios to guide design decisions.',
-                'Interaction Flow Design: Assisted in mapping navigation flow, content hierarchy, and interaction logic.',
-                'Design Iteration & Refinement: Participated in wireframing, design variation evaluation, and final UI refinement.',
-                'Reflection & Documentation: Authored individual reflection focusing on accessibility, clarity, and teamwork outcomes.'
-            ],
-
-            challenges: [
-                'Designing for TV Constraints: Adapting UI/UX principles for large screens and remote-control input instead of touch.',
-                'Balancing Simplicity and Functionality: Reducing visual clutter while preserving essential IPTV features.',
-                'User Diversity: Designing an interface usable by both tech-savvy users and older or less experienced users.',
-                'Iterative Consistency: Maintaining alignment across multiple design variations and final mockups.'
-            ]
-        },
-
-        showcase: [
-            {
-                type: 'figma',
-                url: 'https://www.figma.com/design/GIst9HOpXmD8OJt5RSNwuR/Unifi-TV-Box'
-            },
-            {
-                type: 'demo',
-                url: 'https://youtu.be/OHjgUJ5DjpQ'
-            }
-        ]
+        link: ''
     },
     {
         id: 'smart-rain-alert-hci',
-        title: 'Smart Rain Alert System — HCI & IoT Interactive Prototype',
-        type: 'HCI / IoT System',
-        stack: [
-            'ESP32',
-            'IoT',
-            'Figma',
-            'UX Research'
-        ],
-        shortDesc:
-            'An HCI-focused IoT rain detection system that delivers real-time alerts using visual LEDs, audio buzzers, and a mobile interface, designed through user research and usability testing.',
-
-        media: {
-            type: 'images',
-            content: [
-                'https://i.postimg.cc/htgK0byZ/HCI_Presentation.png'
-            ]
-        },
-
-        introduction:
-            'The Smart Rain Alert System is an IoT-based interactive system designed to provide immediate rainfall alerts through visual, audio, and digital feedback. Developed for a Human-Computer Interaction course, the project emphasizes user-centered design, accessibility, and timely environmental awareness.',
-
+        title: 'Smart Rain Alert System',
+        type: 'Hardware / IoT',
+        category: 'IOT_DESIGN',
+        stack: ['ESP32', 'HW-038 Sensor', 'IoT', 'Figma', 'UX Research', 'Usability Testing'],
+        shortDesc: 'An IoT rain detection system that delivers real-time visual, audio, and mobile alerts.',
+        media: { type: 'images', content: ['https://i.postimg.cc/htgK0byZ/HCI_Presentation.png'] },
+        introduction: 'The Smart Rain Alert System is an IoT-based interactive system designed for timely environmental awareness through multi-modal feedback.',
         details: {
-            overview:
-                'This project integrates hardware sensors with interaction design to explore how environmental data can be communicated effectively to users. Using an ESP32 microcontroller and HW-038 rain sensor, the system detects rainfall intensity and communicates status through LED colors, buzzer alerts, and a companion mobile interface designed in Figma. User surveys and public demonstrations were conducted to evaluate usability and preferences.',
-
+            overview: 'Integrates sensors with interaction design to communicate rain status through LED colors, buzzer alerts, and a mobile interface.',
             features: [
-                'Real-time Rain Detection: Uses HW-038 water sensor to detect rainfall onset and intensity.',
-                'Multi-modal Feedback: Communicates rain status through colored LEDs (green, yellow, red), buzzer sounds, and visual alerts.',
-                'Rain Level Logic: Categorizes rain into No Rain, Warning, Small Rain, and Heavy Rain using threshold-based logic.',
-                'User Preference Integration: Alert frequency and feedback modes informed by survey responses from 21 participants.',
-                'Mobile Interface Prototype: Designed a companion control and notification interface using Figma.',
-                'Physical Demonstration Model: Implemented within a house model to simulate real household usage scenarios.',
-                'Public Exhibition Testing: Demonstrated the system at Brainwave Plaza to gather real user feedback.'
+                'Real-time Detection: Uses ESP32 and HW-038 sensor for rainfall monitoring.',
+                'Multi-modal Feedback: LED colors, buzzers, and digital notifications.',
+                'Usability Testing: Alert modes informed by survey responses from 21 participants.',
+                'Interactive Prototype: Figma-designed companion mobile interface.'
             ],
-
             responsibilities: [
-                'Co-designer & Developer: Contributed to system concept, interaction design, and overall implementation.',
-                'HCI Research & User Study: Designed and analyzed user preference surveys focusing on alert visibility, frequency, and usability.',
-                'Interaction Logic Design: Helped define rain-level thresholds and corresponding feedback behaviors.',
-                'UI/UX Prototyping: Created Figma wireframes illustrating system control, notification flow, and tutorial screens.',
-                'Presentation & Demonstration: Participated in system setup, live demonstrations, and user feedback collection during exhibition.'
+                'IoT Developer: Integrated hardware sensors and calibrated intensity thresholds.',
+                'UI Researcher: Conducted usability testing and mapped rain levels to feedback modes.',
+                'Prototype Designer: Created high-fidelity wireframes for the companion app.'
             ],
-
             challenges: [
-                'Sensor Sensitivity: HW-038 sensor detected small water amounts as high rainfall, leading to overestimation.',
-                'Clarity of LED Indicators: Users required clearer mapping between LED colors and rain severity.',
-                'Balancing Alert Frequency: Avoiding excessive notifications while ensuring timely warnings.',
-                'Hardware–UX Alignment: Translating raw sensor data into meaningful, user-friendly feedback.'
+                'Sensor Calibration: Reducing false positives from small water droplets.',
+                'Alert Balance: Avoiding notification fatigue while ensuring safety warnings.'
             ]
         },
-
         showcase: [
-            {
-                type: 'figma',
-                url: 'https://www.figma.com/proto/YTjfsQGR3AL6Wvp1oU49jS/HCI-interface-design'
-            }
-        ]
+            { type: 'figma', url: 'https://www.figma.com/proto/YTjfsQGR3AL6Wvp1oU49jS/HCI-interface-design' }
+        ],
+        link: ''
+    },
+    {
+        id: 'digital-passport-locker',
+        title: 'Digital Passport Management System',
+        type: 'System Analysis',
+        category: 'SYSTEMS_SECURITY',
+        stack: ['System Analysis', 'Requirements Engineering', 'Biometrics', 'Feasibility Study'],
+        shortDesc: 'A proposed digital passport locker system replacing manual logbooks with biometric workflows.',
+        media: { type: 'images', content: ['./src/assets/docs/DigitalPassportManagement/LohMinYu_AT1_V004.1.JPG'] },
+        introduction: 'A proposed digital passport locker system designed to replace manual logbook tracking with secure, server-backed biometric workflows.',
+        details: {
+            overview: 'Focused on system analysis and design, this project evaluates the feasibility and migration strategy for a high-security storage system.',
+            features: [
+                'Biometric Workflow: Fingerprint-secured access to document lockers.',
+                'Feasibility Analysis: Technical, economic, legal, and operational assessments.',
+                'Requirements Engineering: Detailed mapping of stakeholder needs to system specs.',
+                'Architecture Planning: Server-backed deployment plan for institutional use.'
+            ],
+            responsibilities: [
+                'Systems Analyst: Conducted feasibility studies and translated requirements into specs.',
+                'Technical Researcher: Evaluated biometric hardware and database migration risks.',
+                'Co-Developer: Contributed to the architectural deployment specifications.'
+            ],
+            challenges: [
+                'Legal Compliance: Navigating privacy laws concerning biometric data storage.',
+                'Infrastructure Transition: Designing a cost-effective plan to replace manual workflows.'
+            ]
+        },
+        showcase: [],
+        artifacts: [
+            { type: 'image', title: 'System Architecture (Part 1)', url: './src/assets/docs/DigitalPassportManagement/LohMinYu_AT1_V004.1.JPG' },
+            { type: 'image', title: 'System Architecture (Part 2)', url: './src/assets/docs/DigitalPassportManagement/LohMinYu_AT1_V004.2.JPG' },
+            { type: 'image', title: 'Feasibility Analysis Summary', url: './src/assets/docs/DigitalPassportManagement/LohMinYu_AT2_V002.jpg' },
+            { type: 'image', title: 'Requirement Specifications', url: './src/assets/docs/DigitalPassportManagement/LohMinYu_AT3_V004.jpg' }
+        ],
+        link: ''
+    },
+    {
+        id: 'unimate-campus-app',
+        title: 'UniMate Campus Companion App',
+        type: 'UI/UX + Mobile App',
+        category: 'IOT_DESIGN',
+        stack: ['Figma', 'UX Research', 'Wireframing', 'Information Architecture', 'Gamification'],
+        shortDesc: 'A campus mobile app concept combining schedules, events, and a gamified rewards experience.',
+        media: { type: 'images', content: ['./src/assets/docs/UniMate/User Persona 1.png'] },
+        introduction: 'UniMate is a campus mobile app concept that fuses structured academic tools with a gamified community experience.',
+        details: {
+            overview: 'Converts fragmented user pain points into a cohesive mobile-first design, emphasizing student engagement and retention.',
+            features: [
+                'Gamified Experience: Rewards system to encourage participation in campus events.',
+                'Integrated Schedules: Unified view for classes, exams, and club activities.',
+                'Empathy Mapping: End-to-end user journeys based on student personas.',
+                'Interactive Mockups: High-fidelity Figma prototypes for core functional modules.'
+            ],
+            responsibilities: [
+                'UI/UX Designer: Conducted competitor case studies and built empathy maps.',
+                'Information Architect: Designed the app navigation and feature hierarchy.',
+                'Prototyper: Produced interactive wireframes and conducted rapid prototyping.'
+            ],
+            challenges: [
+                'Feature Cohesion: Integrating disparate modules (schedules/rewards) into a single UI.',
+                'User Motivation: Balancing functional utility with gamified retention elements.'
+            ]
+        },
+        showcase: [],
+        artifacts: [
+            { type: 'image', title: 'Student Empathy Map', url: './src/assets/docs/UniMate/Empathy Map.png' },
+            { type: 'image', title: 'User Persona: Undergraduate Student', url: './src/assets/docs/UniMate/User Persona 1.png' },
+            { type: 'image', title: 'User Persona: Club Leader', url: './src/assets/docs/UniMate/User Persona 2.png' },
+            { type: 'image', title: 'User Persona: International Student', url: './src/assets/docs/UniMate/User Persona 3.png' }
+        ],
+        link: ''
+    },
+    {
+        id: 'uniclarity',
+        title: 'UniClarity — Interactive Academic Planning Concept',
+        type: 'UI/UX Design',
+        category: 'IOT_DESIGN',
+        stack: ['Figma', 'UI/UX', 'Product Design', 'Business Model Canvas'],
+        shortDesc: 'A comprehensive academic planning tool concept featuring interactive wireframes, business modeling, and visual communication assets.',
+        media: { type: 'images', content: ['./src/assets/docs/UniClarity/UniClarity Poster.png'] },
+        introduction: 'UniClarity is a strategic design project that bridges academic planning with intuitive user experience, developed to simplify the complex landscape of university requirements.',
+        details: {
+            overview: 'This project includes a full business model canvas, high-fidelity wireframes, and promotional materials designed to showcase a professional-grade educational product.',
+            features: [
+                'Business Model Canvas: Strategic planning for product viability and market fit.',
+                'Interactive Wireframes: High-fidelity mockups showcasing core user flows.',
+                'Visual Communication: Professional poster and presentation materials for stakeholders.'
+            ],
+            responsibilities: [
+                'Product Designer: Developed the core visual identity and interactive wireframes.',
+                'Strategic Planner: Authored the business model canvas and value proposition.'
+            ],
+            challenges: [
+                'Information Density: Organizing complex academic data into a clean, actionable interface.',
+                'Visual Branding: Creating a trustworthy and professional aesthetic for an educational tool.'
+            ]
+        },
+        showcase: [],
+        artifacts: [
+            { type: 'image', title: 'UniClarity Project Poster', url: './src/assets/docs/UniClarity/UniClarity Poster.png' },
+            { type: 'pdf', title: 'Presentation Slides (Light Theme)', url: './src/assets/docs/UniClarity/UniClarity PPT light.pdf' },
+            { type: 'image', title: 'Business Model Canvas', url: './src/assets/docs/UniClarity/UniClarity Business Model Canvas.png' },
+            { type: 'image', title: 'Wireframe Showcase', url: './src/assets/docs/UniClarity/Wireframe Showcase of UniClarity.png' }
+        ],
+        link: ''
+    },
+    {
+        id: 'miu-portfolio',
+        title: 'Personal Technical Portfolio',
+        type: 'Portfolio Website',
+        category: 'WEB_SYSTEMS',
+        stack: ['Three.js', 'WebGL', 'GSAP', 'Web Audio API', 'Tailwind CSS', 'JavaScript'],
+        shortDesc: 'A personal portfolio website focused on frontend performance, WebGL integration, and secure asset management.',
+        media: { type: 'images', content: ['./src/assets/preview-card.png'] },
+        introduction: 'A technical portfolio developed to demonstrate core frontend engineering skills, 3D graphics implementation, and system-wide asset verification.',
+        details: {
+            overview: 'This project focuses on the practical application of modern web standards, including custom navigation engines and optimized 3D rendering.',
+            features: [
+                'Custom Navigation Transitions: Symmetrical shutter-style page transitions using GSAP and CSS backdrop filters.',
+                'Procedural Audio: Integrated UI sound feedback generated using the Web Audio API.',
+                '3D Visual Elements: WebGL-based hero section with custom bloom and chromatic aberration shaders.',
+                'Subresource Integrity (SRI): Security implementation for verifying external CDN-hosted libraries.',
+                'Integrated Project Database: Client-side project archive with dynamic filtering and search capabilities.'
+            ],
+            responsibilities: [
+                'Frontend Engineering: Built the core application logic and transition engine using vanilla JavaScript.',
+                'Graphics Development: Integrated Three.js for real-time 3D elements and post-processing effects.',
+                'Security Implementation: Configured SRI hashes and secure AudioContext handling.'
+            ],
+            challenges: [
+                'Usability Balance: Ensuring readability despite visual distortion.',
+                'Performance: Managing real-time effects and particle systems.'
+            ]
+        },
+        showcase: [
+            { type: 'github', url: 'https://github.com/MinYuOuO/MinYuOuO.github.io' }
+        ],
+        link: 'https://minyuouo.github.io/'
+    },
+    {
+        id: 'stellar-echoes',
+        title: 'Stellar Echoes — 3D Memory Visualization',
+        type: '3D Web Application',
+        category: 'GAME_CREATIVE',
+        stack: ['Three.js', 'JavaScript', 'Web Audio API', 'HTML5'],
+        shortDesc: 'A 3D visualization project that renders images as interactive particle fragments using WebGL.',
+        media: { type: 'images', content: ['https://i.postimg.cc/pL0HxNCW/stellar_Echoes.png'] },
+        introduction: 'Stellar Echoes transforms photographs into interactive 3D fragments within a WebGL-rendered environment.',
+        details: {
+            overview: 'The project focuses on the integration of real-time 3D graphics with custom interaction logic.',
+            features: [
+                '3D Particle System: Image-based fragments rendered in a spherical coordinate space.',
+                'Procedural UI: A terminal-style interface for system state feedback.',
+                'Audio Synchronization: Dynamic background audio integrated with scene updates.'
+            ],
+            responsibilities: [
+                'Scene Engineering: Developed the 3D environment, camera controls, and lighting.',
+                'Interaction Logic: Implemented custom pointer-based selection for 3D elements.'
+            ],
+            challenges: [
+                'Optimization: Maintaining 60 FPS performance while managing multiple particle layers.'
+            ]
+        },
+        showcase: [
+            { type: 'demo', url: './stellarEchoes.html' },
+            { type: 'github', url: 'https://github.com/MinYuOuO/MinYuOuO.github.io' }
+        ],
+        link: 'https://minyuouo.github.io/stellarEchoes.html'
+    },
+    {
+        id: 'travel-calculator',
+        title: 'Travel Expense Calculator',
+        type: 'Desktop Application',
+        category: 'WEB_SYSTEMS',
+        stack: ['C++', 'OOP', 'STL', 'CLI'],
+        shortDesc: 'A C++ trip cost planner utilizing object-oriented design principles.',
+        media: { type: 'youtube', content: 'zHorgB2bUeg' },
+        introduction: 'The Travel Expense Calculator application estimates costs using a modular class-based architecture.',
+        details: {
+            overview: 'The application uses object-oriented decomposition to manage transport, food, and lodging costs.',
+            features: [
+                'Modular Architecture: Independent classes for different expense categories.',
+                'Input Validation: Logic-driven flow to ensure accurate data entry.'
+            ],
+            responsibilities: [
+                'Team Lead: Coordinated development and ensured OOP alignment.',
+                'Database Architect: Planned class responsibility boundaries.'
+            ],
+            challenges: [
+                'OOP Application: Translating abstract principles into a practical workflow.'
+            ]
+        },
+        showcase: [
+            { type: 'github', url: 'https://github.com/MinYuOuO/Travel-Calculator-App' }
+        ],
+        link: 'https://github.com/MinYuOuO/Travel-Calculator-App'
     }
 ];
 

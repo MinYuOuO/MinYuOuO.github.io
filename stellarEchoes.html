@@ -12,13 +12,13 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js" integrity="sha512-SfpDfwYbMVGz9/cd1mQ8jnA3DBZuJxE7jk9Uh+tfqEjvwHIU+rbT7pBA0NcG+TaHvmaOiZH4rGeLBu+uIm4Hbw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js" integrity="sha512-uVgklHV6xbAl0GhqEPzZ40wOaMR69akRtT+VwCnXltCj6e5d96gX3T0Mfe7QzNrnwKTSiKZhqmW089SGb/bPrA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js" integrity="sha512-RmFnvfjrM2Hk3xMANDTkQ8UJElvEfbD+O09kgapS0m8AYdebqLXe3YT51lhrHn/8Ni86VbE4L+HYNpBt3k+6Xg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js" integrity="sha512-f1wXHlrWYMe7ANt6ixYI6xBxwqy6W2his3FOLmYGSkIpbgoFL98IQfDeMJZzjOSvYCXKffW7zzQcFD8Gs0kbcA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js" integrity="sha512-gbpLio77df+cHQ3SlswJV8w+2b5hTBvYLqmO2PSO0A7iZxbZ+1KzBq4NFDykOEL95CQKS4C34PlEaB38CQzEZw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js" integrity="sha512-vZJ7LOAdToY8OFTPkwFZZDDggJOMILmYVThoJv8vSFl/QQ91aGCKhmpINltpgysvsvj5Q0BRcJdPnfFBn0xuAg==" crossorigin="anonymous"></script>
 
     <style>
         :root {
@@ -376,7 +376,7 @@
             </div>
             <div class="hud-text text-right hidden md:block">
                 SECTOR: DEEP_SPACE<br>
-                OBJ_COUNT: 23
+                OBJ_COUNT: <span id="obj-count">0</span>
             </div>
         </div>
     </div>
@@ -445,31 +445,7 @@
         // CONFIG & STATE
         // ============================================
         const CONFIG = {
-            photos: [
-                'https://i.postimg.cc/5t2SwHsL/image1.jpg',
-                'https://i.postimg.cc/FKHVjfTj/image2.jpg',
-                'https://i.postimg.cc/mrgyQcmy/image3.jpg',
-                'https://i.postimg.cc/g02HvwgD/image4.jpg',
-                'https://i.postimg.cc/TPNqQRs5/image5.jpg',
-                'https://i.postimg.cc/QMYkSXzT/image6.jpg',
-                'https://i.postimg.cc/yNpXnVGm/image7.jpg',
-                'https://i.postimg.cc/GpgJzcfv/image8.jpg',
-                'https://i.postimg.cc/yNhJ1R2c/image9.jpg',
-                'https://i.postimg.cc/Bv58SFRT/image10.jpg',
-                'https://i.postimg.cc/fb73zd17/image11.jpg',
-                'https://i.postimg.cc/NMzQBfG0/image12.jpg',
-                'https://i.postimg.cc/V6VzmLsk/image13.jpg',
-                'https://i.postimg.cc/Y9stMq26/image14.jpg',
-                'https://i.postimg.cc/mD5TB2ZS/image15.jpg',
-                'https://i.postimg.cc/1RFzswFY/image16.jpg',
-                'https://i.postimg.cc/j57RqYDJ/image17.jpg',
-                'https://i.postimg.cc/5N3b232p/image18.jpg',
-                'https://i.postimg.cc/PqBkRVSb/image19.jpg',
-                'https://i.postimg.cc/tTWHQdch/image20.jpg',
-                'https://i.postimg.cc/fLmhn7Pc/image21.jpg',
-                'https://i.postimg.cc/q79d5D12/image22.jpg',
-                'https://i.postimg.cc/5tZMRKss/image23.jpg',
-            ],
+            photos: [],
             colors: {
                 bg: 0x050505,
                 accent: 0x00f0ff,
@@ -507,29 +483,44 @@
             });
         }
 
-        function runBootSequence() {
+        async function runBootSequence() {
             const log = document.getElementById('boot-log');
             const btn = document.getElementById('start-btn');
             const progressBar = document.getElementById('progress-bar');
 
-            log.innerText = "SCANNING_MEMORY_SHARDS...";
+            log.innerText = "ACCESSING_MANIFEST_RECORDS...";
 
-            preloadImages(CONFIG.photos, (loaded, total) => {
-                const percent = Math.floor((loaded / total) * 100);
-                progressBar.style.width = `${percent}%`;
-                log.innerText = `BUFFERING_DATA... [${loaded}/${total}]`;
+            try {
+                const response = await fetch('./src/assets/images.json');
+                const filenames = await response.json();
+                CONFIG.photos = filenames.map(name => `./src/assets/images/${name}`);
 
-                if (loaded % 3 === 0) playSfx(200 + (loaded * 10));
+                // Update HUD count
+                document.getElementById('obj-count').innerText = filenames.length;
 
-            }, () => {
-                setTimeout(() => {
-                    log.innerText = "SYSTEM_READY. LINK_ESTABLISHED.";
-                    log.style.color = "var(--color-cerenkov)";
-                    btn.style.opacity = 1;
-                    btn.style.pointerEvents = "all";
-                    playSfx(600, 'square');
-                }, 500);
-            });
+                log.innerText = "SCANNING_MEMORY_SHARDS...";
+
+                preloadImages(CONFIG.photos, (loaded, total) => {
+                    const percent = Math.floor((loaded / total) * 100);
+                    progressBar.style.width = `${percent}%`;
+                    log.innerText = `BUFFERING_DATA... [${loaded}/${total}]`;
+
+                    if (loaded % 3 === 0) playSfx(200 + (loaded * 10));
+
+                }, () => {
+                    setTimeout(() => {
+                        log.innerText = "SYSTEM_READY. LINK_ESTABLISHED.";
+                        log.style.color = "var(--color-cerenkov)";
+                        btn.style.opacity = 1;
+                        btn.style.pointerEvents = "all";
+                        playSfx(600, 'square');
+                    }, 500);
+                });
+            } catch (err) {
+                log.innerText = "ERROR: MANIFEST_ACCESS_DENIED";
+                log.style.color = "var(--color-alert)";
+                console.error("Failed to load images.json:", err);
+            }
         }
 
         document.addEventListener('DOMContentLoaded', runBootSequence);
@@ -539,6 +530,7 @@
             screen.style.opacity = 0;
             setTimeout(() => screen.style.display = 'none', 800);
             playSfx(400, 'square');
+            initThree();
         });
 
         // ============================================
@@ -778,7 +770,6 @@
             playSfx(300, 'square');
         });
 
-        initThree();
     </script>
 </body>
 

@@ -24,15 +24,16 @@ This repository contains the source code for my personal portfolio. Designed wit
 ![](https://img.shields.io/badge/Frontend-HTML5%20%7C%20JS%20%7C%20Tailwind%20v4-cyan?style=flat-square)
 ![](https://img.shields.io/badge/3D%20Engine-Three.js-white?style=flat-square&logo=three.js&logoColor=black)
 ![](https://img.shields.io/badge/Animation-GSAP-green?style=flat-square&logo=greensock&logoColor=white)
-![](https://img.shields.io/badge/SEO-AI--Optimized-blue?style=flat-square)
+![](https://img.shields.io/badge/Security-SRI%20Verified-blue?style=flat-square)
 
 ## 🚀 Key Features
 
-- **Interactive 3D Hero**: Generative WebGL orb with post-processing (Bloom, RGB Shift).
-- **Industrial Tech Ticker**: Infinite-scroll marquee categorized by domain (Data, AI, Web, Systems).
-- **Dynamic Project Archive**: Advanced filtering system with real-time search and tag normalization.
-- **AI-Ready**: Optimized for citation by LLMs (Google AI Overviews, Perplexity, ChatGPT).
-- **Responsive Schematic**: Blueprint-themed UI with dark/light mode memory.
+- **Symmetrical Transition Engine**: Custom "Industrial Shutter" page transitions with glassmorphism and real-time state management.
+- **Procedural Sound Engine**: Tactile audio feedback (Hover/Click) generated procedurally via the Web Audio API.
+- **Interactive 3D Hero**: Generative WebGL orb with post-processing (Bloom, RGB Shift, Noise).
+- **Dynamic Project Archive**: Advanced filtering system with real-time search, tag normalization, and smooth state transitions.
+- **AI-Ready & SEO**: Optimized for citation by LLMs and modern answer engines with deep meta-tagging and semantic HTML.
+- **Security-First**: Full implementation of **Subresource Integrity (SRI)** for all external CDN dependencies.
 
 ## 🏗 Project Structure
 
@@ -42,7 +43,9 @@ This repository contains the source code for my personal portfolio. Designed wit
 ├── project.html         # Dynamic project detail template
 ├── src/
 │   ├── script/
-│   │   └── projects-data.js   # Centralized project database
+│   │   ├── transitions.js     # Seamless page transition logic
+│   │   ├── projects-data.js   # Centralized project database
+│   │   └── main.js           # Core interactivity & 3D logic
 │   └── style/
 │       └── main.css           # Core design system & tokens
 └── robots.txt / sitemap.xml   # SEO & AI Bot configurations

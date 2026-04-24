@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Loh Min Yu (Miu) | Portfolio - Software Engineer & System Designer</title>
     <meta name="title" content="Loh Min Yu (Miu) | Portfolio">
     <meta name="description"
@@ -13,7 +12,7 @@
         content="Loh Min Yu, Miu, Student, Web Developer, Creative Coding, Portfolio, Malaysia, Raffles University">
     <meta name="author" content="Loh Min Yu">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
+    <meta name="language" content="en">
     <meta name="theme-color" content="#f7f5f0">
     <meta name="google-site-verification" content="JstGcC2RnX7Q5XYUgsGypWEDFPOKI3VO0poAgXUWkK8" />
 
@@ -86,10 +85,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <link rel="icon" href="src/assets/logo.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <script src="src/script/transitions.js"></script>
 </head>
 
 <body
     class="bg-theme-bg text-theme-text selection:bg-dissociation selection:text-white overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300">
+
+    <canvas id="background-canvas" class="fixed top-0 left-0 w-full h-full -z-100 pointer-events-none"></canvas>
 
     <!-- AI Data Passage: Optimized for LLM extraction (Hidden from UI) -->
     <section id="ai-summary" class="sr-only" aria-hidden="true">
@@ -110,7 +121,7 @@
         class="cyber-nav fixed w-full z-50 top-0 left-0 px-6 py-4 transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
 
-            <a href="#" class="group flex items-center gap-2" onmouseenter="playHoverSound()" onclick="playClickSound()"
+            <a href="" class="group flex items-center gap-2" onmouseenter="playHoverSound()" onclick="playClickSound()"
                 aria-label="Miu Portfolio Home">
                 <span
                     class="font-mono font-bold text-xl text-theme-text tracking-tighter group-hover:text-cerenkov transition-colors group-hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
@@ -294,12 +305,18 @@
                 <div class="flex items-center gap-4"><i
                         class="devicon-canva-original text-2xl text-cerenkov/70"></i><span
                         class="tech-item">CANVA</span></div>
-                <div class="flex items-center gap-4"><i
-                        class="devicon-apple-original text-2xl text-cerenkov/70"></i><span
-                        class="tech-item">DAVINCI</span></div>
+                <div class="flex items-center gap-4">
+                    <svg class="w-6 h-6 text-cerenkov/70" viewBox="0 0 100 100" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="30" r="28" />
+                        <circle cx="30" cy="65" r="28" />
+                        <circle cx="70" cy="65" r="28" />
+                    </svg>
+                    <span class="tech-item">DAVINCI</span>
+                </div>
                 <div class="flex items-center gap-4"><i
                         class="devicon-windows8-original text-2xl text-cerenkov/70"></i><span
-                        class="tech-item">MICROSOFT API</span></div>
+                        class="tech-item">MICROSOFT_API</span></div>
 
                 <!-- REPEAT FOR SEAMLESS LOOP -->
                 <div class="flex items-center gap-4"><i class="devicon-python-plain text-2xl text-cerenkov/70"></i><span
@@ -354,12 +371,18 @@
                 <div class="flex items-center gap-4"><i
                         class="devicon-canva-original text-2xl text-cerenkov/70"></i><span
                         class="tech-item">CANVA</span></div>
-                <div class="flex items-center gap-4"><i
-                        class="devicon-apple-original text-2xl text-cerenkov/70"></i><span
-                        class="tech-item">DAVINCI</span></div>
+                <div class="flex items-center gap-4">
+                    <svg class="w-6 h-6 text-cerenkov/70" viewBox="0 0 100 100" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="30" r="28" />
+                        <circle cx="30" cy="65" r="28" />
+                        <circle cx="70" cy="65" r="28" />
+                    </svg>
+                    <span class="tech-item">DAVINCI</span>
+                </div>
                 <div class="flex items-center gap-4"><i
                         class="devicon-windows8-original text-2xl text-cerenkov/70"></i><span
-                        class="tech-item">MICROSOFT API</span></div>
+                        class="tech-item">MICROSOFT_API</span></div>
             </div>
         </div>
         <section id="about" class="py-24 relative pointer-events-auto">
@@ -463,8 +486,7 @@
                                     <span class="hover:text-theme-text transition-colors">- System Design, UML,
                                         SDLC</span>
                                     <span class="hover:text-theme-text transition-colors">- FP / OOP Patterns</span>
-                                    <span class="hover:text-theme-text transition-colors">- MVC, DDD Architecture
-                                        (Learning)</span>
+                                    <span class="hover:text-theme-text transition-colors">- MVC Architecture</span>
                                     <span class="hover:text-theme-text transition-colors">- Project Management</span>
                                 </div>
                             </div>
@@ -513,7 +535,8 @@
 
             <div class="text-center mb-20 mt-12">
                 <a href="archives.html"
-                    class="btn-glitch inline-block px-12 py-5 font-mono text-cerenkov uppercase text-xs md:text-sm tracking-[0.3em] border border-cerenkov/30 hover:bg-cerenkov hover:text-white transition-all">
+                    class="btn-glitch inline-block px-12 py-5 font-mono text-cerenkov uppercase text-xs md:text-sm tracking-[0.3em] border border-cerenkov/30 hover:bg-cerenkov hover:text-white transition-all"
+                    onmouseenter="playHoverSound()" onclick="playClickSound()">
                     Access_Full_Archives()
                 </a>
             </div>
@@ -742,7 +765,7 @@
 
             <div class="mb-4 md:mb-0 text-center md:text-left">
                 <p class="mb-1 text-cerenkov/50">>> SYSTEM_STATUS: ONLINE</p>
-                <p>&copy; 2025 Loh Min Yu. All Digital Rights Reserved.</p>
+                <p>&copy; 2026 Loh Min Yu. All Digital Rights Reserved.</p>
             </div>
         </div>
 
@@ -751,22 +774,37 @@
         </div>
     </footer>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-    <script defer
-        src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-    <script defer
-        src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-    <script defer
-        src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/RGBShiftShader.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"
+        integrity="sha512-SfpDfwYbMVGz9/cd1mQ8jnA3DBZuJxE7jk9Uh+tfqEjvwHIU+rbT7pBA0NcG+TaHvmaOiZH4rGeLBu+uIm4Hbw=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"
+        integrity="sha512-uVgklHV6xbAl0GhqEPzZ40wOaMR69akRtT+VwCnXltCj6e5d96gX3T0Mfe7QzNrnwKTSiKZhqmW089SGb/bPrA=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"
+        integrity="sha512-RmFnvfjrM2Hk3xMANDTkQ8UJElvEfbD+O09kgapS0m8AYdebqLXe3YT51lhrHn/8Ni86VbE4L+HYNpBt3k+6Xg=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"
+        integrity="sha512-f1wXHlrWYMe7ANt6ixYI6xBxwqy6W2his3FOLmYGSkIpbgoFL98IQfDeMJZzjOSvYCXKffW7zzQcFD8Gs0kbcA=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"
+        integrity="sha512-gbpLio77df+cHQ3SlswJV8w+2b5hTBvYLqmO2PSO0A7iZxbZ+1KzBq4NFDykOEL95CQKS4C34PlEaB38CQzEZw=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"
+        integrity="sha512-vZJ7LOAdToY8OFTPkwFZZDDggJOMILmYVThoJv8vSFl/QQ91aGCKhmpINltpgysvsvj5Q0BRcJdPnfFBn0xuAg=="
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/RGBShiftShader.js"
+        integrity="sha512-B1Ww7w9FQ+fsDH7vbu/XKsYTZ/3Bi7w6oN3DgptV+VF8na6EdUpaGn9dlWXqw1VZGNP7AgrGdUkq221Trjt34w=="
+        crossorigin="anonymous"></script>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
+        integrity="sha512-iU75mTk9AqGsEqmsAupS/sejIWCdsxgDjeIFOOA9zgj8gi3ZNfJISd0FKhnmuKo4XuglcvL+iGd0mS2wA03zCQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous"></script>
 
     <script defer src="src/script/projects-data.js"></script>
     <script defer src="src/script/main.js"></script>

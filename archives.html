@@ -38,6 +38,14 @@
 
     <link rel="stylesheet" href="src/style/output.css">
     <link rel="icon" href="src/assets/logo.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <script src="src/script/transitions.js"></script>
     <style>
         .blueprint-grid {
             position: fixed;
@@ -47,7 +55,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -100;
-            opacity: 0.8;
+            opacity: 0.4;
             background-image:
                 linear-gradient(var(--border-primary) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border-primary) 1px, transparent 1px),
@@ -57,7 +65,7 @@
         }
 
         [data-theme="dark"] .blueprint-grid {
-            opacity: 0.3;
+            opacity: 0.15;
             background-image:
                 linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
@@ -73,12 +81,11 @@
 
     <nav class="p-6">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="font-mono text-xs text-cerenkov group flex items-center gap-2">
-                <span class="transition-transform group-hover:-translate-x-1">←</span> [ RETURN_TO_BASE ]
+            <a href="index.html#projects" class="font-mono text-xs text-cerenkov group flex items-center gap-2">
+                <span class="transition-transform group-hover:-translate-x-1">←</span> [ RETURN ]
             </a>
             <div class="flex items-center gap-4">
-                <span
-                    class="font-mono text-[10px] text-theme-text-muted opacity-50 uppercase tracking-widest">Database_Access:
+                <span class="font-mono text-[10px] text-theme-text-muted opacity-50 uppercase tracking-widest">
                     Authorized</span>
             </div>
         </div>
@@ -140,17 +147,13 @@
             const toggleTagsBtn = document.getElementById('toggle-all-tags');
             const noResults = document.getElementById('no-results');
 
-            // Theme handling
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-
             let activeTag = 'ALL';
             let tagsExpanded = false;
 
-            // Extract unique tags and prioritize them
+            // Extract unique categories and prioritize them
             const tags = new Set(['ALL']);
             projects.forEach(p => {
-                p.stack.forEach(s => tags.add(s.toUpperCase()));
+                if (p.category) tags.add(p.category.toUpperCase());
             });
 
             const sortedTags = Array.from(tags).sort((a, b) => {
@@ -199,7 +202,7 @@
                     const matchesSearch = p.title.toLowerCase().includes(query) ||
                         p.shortDesc.toLowerCase().includes(query) ||
                         p.stack.some(s => s.toLowerCase().includes(query));
-                    const matchesTag = activeTag === 'ALL' || p.stack.some(s => s.toUpperCase() === activeTag);
+                    const matchesTag = activeTag === 'ALL' || (p.category && p.category.toUpperCase() === activeTag);
                     return matchesSearch && matchesTag;
                 });
 

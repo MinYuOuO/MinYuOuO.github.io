@@ -3,6 +3,20 @@
 // ==========================================
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+// Auto-resume AudioContext on first user interaction to satisfy browser policies
+const resumeAudio = () => {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    // Remove listeners after first interaction
+    document.removeEventListener('click', resumeAudio);
+    document.removeEventListener('touchstart', resumeAudio);
+    document.removeEventListener('keydown', resumeAudio);
+};
+document.addEventListener('click', resumeAudio);
+document.addEventListener('touchstart', resumeAudio);
+document.addEventListener('keydown', resumeAudio);
+
 function playHoverSound() {
     if (audioCtx.state === 'suspended') audioCtx.resume();
     const osc = audioCtx.createOscillator();
@@ -161,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const projectGrid = document.getElementById('project-grid');
-    const INITIAL_COUNT = window.innerWidth < 768 ? 3 : 6;
+    const INITIAL_COUNT = 3;
 
     function renderProjects(count) {
         if (!projectGrid) return;
@@ -219,8 +233,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         // Use container dimensions
-        const width = container.offsetWidth || 600;
-        const height = container.offsetHeight || 600;
+        let width = container.offsetWidth;
+        let height = container.offsetHeight;
+
+        // Fallback if dimensions are 0 (e.g., hidden container or initial load race)
+        if (width <= 0 || height <= 0) {
+            // Try parent or window as fallback for calculation, but prefer early exit if truly zero
+            width = 600;
+            height = 600;
+        }
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
@@ -336,15 +357,107 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             const newWidth = container.offsetWidth;
             const newHeight = container.offsetHeight;
-            camera.aspect = newWidth / newHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(newWidth, newHeight);
-            composer.setSize(newWidth, newHeight);
+            if (newWidth > 0 && newHeight > 0) {
+                camera.aspect = newWidth / newHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(newWidth, newHeight);
+                composer.setSize(newWidth, newHeight);
+            }
         });
     }
 
+    // ==========================================
+    // DYNAMIC CANVAS DOT GRID
+    // ==========================================
+    function initDotGrid() {
+        const canvas = document.getElementById('background-canvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        const spacing = 40;
+        let mouse = { x: -1000, y: -1000 };
+        let isHovering = false;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initDots();
+        }
+
+        function initDots() {
+            dots = [];
+            const cols = Math.ceil(canvas.width / spacing) + 1;
+            const rows = Math.ceil(canvas.height / spacing) + 1;
+
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    dots.push({
+                        x: i * spacing,
+                        y: j * spacing,
+                        baseRadius: 0.8,
+                        radius: 0.8,
+                        targetRadius: 0.8,
+                        shimmerTimer: Math.random() * 100
+                    });
+                }
+            }
+        }
+
+        function getDotColor() {
+            const style = getComputedStyle(document.documentElement);
+            return style.getPropertyValue('--border-primary').trim() || 'rgba(74, 55, 40, 0.15)';
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const dotColor = getDotColor();
+            ctx.fillStyle = dotColor;
+
+            dots.forEach(dot => {
+                // Hover effect logic
+                const dx = mouse.x - dot.x;
+                const dy = mouse.y - dot.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 150;
+
+                let target = dot.baseRadius;
+
+                if (dist < maxDist) {
+                    const factor = 1 - (dist / maxDist);
+                    target = dot.baseRadius + (2.2 * factor);
+                }
+
+                // Random shimmer logic (randomly scale up some dots)
+                dot.shimmerTimer += 0.05;
+                if (Math.sin(dot.shimmerTimer) > 0.995) {
+                    target = Math.max(target, 2.0);
+                }
+
+                // Smooth radius transition
+                dot.radius += (target - dot.radius) * 0.1;
+
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            isHovering = true;
+        });
+
+        resize();
+        animate();
+    }
+
     initHeroOrb();
-    // Section Divider Three.js removed as per "only keep in first section" request
+    initDotGrid();
 
     // ==========================================
     // SCROLL PROGRESS BAR
