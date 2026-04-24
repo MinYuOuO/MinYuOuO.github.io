@@ -554,7 +554,7 @@ const projectsData = [
         showcase: [
             { type: 'github', url: 'https://github.com/MinYuOuO/MinYuOuO.github.io' }
         ],
-        link: 'https://minyuouo.github.io/'
+        link: 'https://minyu.my/'
     },
     {
         id: 'stellar-echoes',
@@ -584,7 +584,7 @@ const projectsData = [
             { type: 'demo', url: './stellarEchoes.html' },
             { type: 'github', url: 'https://github.com/MinYuOuO/MinYuOuO.github.io' }
         ],
-        link: 'https://minyuouo.github.io/stellarEchoes.html'
+        link: 'https://minyu.my/stellarEchoes.html'
     },
     {
         id: 'travel-calculator',
