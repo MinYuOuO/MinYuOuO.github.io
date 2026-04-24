@@ -140,7 +140,6 @@ const projectsData = [
             { type: 'figma', url: 'https://www.figma.com/design/6ukaFjEmDfwMgvfcJJop5N/ReMind?node-id=0-1&t=oSeDMvmTn8c8KBmz-1' }
         ],
         artifacts: [
-            { type: 'pdf', title: 'Project Management Plan (PMP)', url: './src/assets/docs/ReMind/ProjectReMind_PMP_V3.3_20251124.pdf' },
             { type: 'pdf', title: 'Development Presentation', url: './src/assets/docs/ReMind/ProjectReMind_PPT_V2_20251124.pdf' },
             { type: 'image', title: 'Use Case Diagram', url: './src/assets/docs/ReMind/Diagrams-Use Case.drawio.png' },
             { type: 'image', title: 'Project Charter', url: './src/assets/docs/ReMind/PM ReMind Project Charter.png' },
