@@ -612,6 +612,34 @@ const projectsData = [
             { type: 'github', url: 'https://github.com/MinYuOuO/Travel-Calculator-App' }
         ],
         link: 'https://github.com/MinYuOuO/Travel-Calculator-App'
+    },
+    {
+        id: 'caribbean',
+        title: 'Caribbean',
+        type: 'Web Project',
+        category: 'WEB_SYSTEMS',
+        stack: ['HTML5', 'CSS3', 'JavaScript'],
+        shortDesc: 'Multimedia Technology Assignment 2 - Caribbean Website.',
+        media: { type: 'images', content: ['./src/assets/images/caribbean-preview.png'] },
+        introduction: 'A frontend web project developed for the Multimedia Technology assignment, showcasing interactive elements and responsive design.',
+        details: {
+            overview: 'This project is a website for Caribbean, serving as a practical assignment for multimedia technology principles.',
+            features: [
+                'Responsive Design: Adapts to various screen sizes.',
+                'Interactive UI: Built with vanilla JavaScript for enhanced user experience.'
+            ],
+            responsibilities: [
+                'Frontend Developer: Implemented the design using HTML, CSS, and JS.'
+            ],
+            challenges: [
+                'Integrating multimedia elements smoothly into the web interface.'
+            ]
+        },
+        showcase: [
+            { type: 'demo', url: './caribbean/index.html' }
+        ],
+        artifacts: [],
+        link: './caribbean/index.html'
     }
 ];
 

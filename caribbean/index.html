@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caribbean Juice Bar - WebAR Menu</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Kivicube Web iframe Plugin -->
+    <script type="text/javascript" src="https://www.kivicube.com/lib/iframe-plugin.js"></script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Caribbean Juice Bar",
+      "image": "https://minyu.my/caribbean/storefront.png",
+      "description": "This is only a demo of assignment for a conceptual Caribbean Juice Bar.",
+      "url": "https://minyu.my/caribbean/",
+      "menu": "https://minyu.my/caribbean/",
+      "servesCuisine": "Juice Bar",
+      "priceRange": "$$"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- --- Header & Navigation --- -->
+    <header id="mainHeader">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <img src="logo.svg" alt="Caribbean Logo" class="logo-img">
+            </a>
+            
+            <div class="nav-controls">
+                <!-- Table Selector -->
+                <div class="table-selector">
+                    <i class="fa-solid fa-chair text-secondary"></i>
+                    <label for="tableSelect">Table</label>
+                    <select id="tableSelect">
+                        <option value="1">Table 1</option>
+                        <option value="2">Table 2</option>
+                        <option value="3" selected>Table 3</option>
+                        <option value="4">Table 4</option>
+                        <option value="5">Table 5</option>
+                    </select>
+                </div>
+                
+                <!-- Dark/Light Theme Toggle -->
+                <button class="btn-icon" id="themeToggle" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                
+                <!-- Shopping Cart Icon -->
+                <button class="btn-icon" id="cartToggle" title="View Order">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- --- Hero Section --- -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>
+                    Slow down,<br>
+                    Fuel up,<br>
+                    <span style="font-size: 0.75em; font-family: 'Inter', sans-serif; font-weight: 400; font-style: normal; display: block; margin: 10px 0; color: var(--text-secondary);">but most importantly,</span>
+                    <span class="accent-text">Enjoy the moment..</span>
+                </h1>
+                <p>Enjoy our 100% natural, cold-pressed juices and vibrant smoothie bowls. Scan, explore in Augmented Reality, and order straight to your table.</p>
+                <div class="hero-actions">
+                    <a href="#menuSection" class="btn-primary">
+                        <i class="fa-solid fa-compass"></i> Explore AR Menu
+                    </a>
+                    <a href="https://caribbeanjuicebar.wixsite.com/johor" target="_blank" class="btn-secondary">Our Philosophy</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-circle"></div>
+                <img src="storefront.png" alt="Caribbean Juice Bar Storefront" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Pillars of Integrity (About) --- -->
+    <section class="pillars" id="aboutSection">
+        <div class="container pillars-grid">
+            <div class="pillar-card glass-panel">
+                <div class="pillar-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>Island Community</h3>
+                <p>Our juice bar is not just a place to grab a drink; it's a community hub where locals and visitors come together to savour the taste of the tropics.</p>
+            </div>
+            <div class="pillar-card glass-panel">
+                <div class="pillar-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3>Sustainable Practices</h3>
+                <p>We are dedicated to sustainability, from our eco-friendly packaging to our support of local farmers. Enjoy our juices guilt-free, knowing that we prioritize the health of our planet.</p>
+            </div>
+            <div class="pillar-card glass-panel">
+                <div class="pillar-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                <h3>Pure Integrity</h3>
+                <p>We believe in transparency and honesty. Every ingredient in our juices is selected with care, ensuring that you experience the pure, unadulterated taste of nature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Interactive Menu Section --- -->
+    <section class="menu-section" id="menuSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Fresh Menu</h2>
+                <p>Select a category, click the 3D cube to view a dish in AR right on your table, and add items to your order.</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="juices">Cold-Pressed Juices</button>
+                <button class="tab-btn" data-category="smoothies">Superfood Smoothies</button>
+                <button class="tab-btn" data-category="bowls">Acai & Smoothie Bowls</button>
+                <button class="tab-btn" data-category="snacks">Vegan Snacks</button>
+            </div>
+            
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- JavaScript will dynamically populate cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- --- AR Viewer Side Drawer --- -->
+    <div class="ar-modal" id="arDrawer">
+        <div class="ar-modal-header">
+            <h3 id="arItemName">Smoothie Bowl</h3>
+            <button class="btn-close" id="closeArDrawer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <!-- AR Iframe Viewer -->
+        <div class="ar-viewer-container">
+            <iframe 
+                id="kivicubeViewer" 
+                src="" 
+                allow="xr-spatial-tracking;camera;microphone;autoplay;fullscreen;gyroscope;accelerometer" 
+                frameborder="0" 
+                style="width: 100%; height: 100%;">
+            </iframe>
+        </div>
+        
+        <!-- Presenter Control Deck -->
+        <div class="control-deck">
+            <div class="control-deck-header" id="controlDeckTrigger">
+                <h4><i class="fa-solid fa-sliders"></i> Presenter Control Deck</h4>
+                <i class="fa-solid fa-chevron-down toggle-chevron"></i>
+            </div>
+            
+            <div class="control-deck-content" id="controlDeckContent">
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; margin-top: 12px;">
+                    Use these controls to present your WebAR prototype. Load any custom Kivicube Scene or Collection ID.
+                </p>
+                
+                <div class="control-group">
+                    <label>Kivicube Scene ID</label>
+                    <div class="input-row">
+                        <input type="text" id="sceneIdInput" placeholder="Enter Scene ID (e.g. lU0kh9Mn...)">
+                        <button class="btn-apply" id="btnApplyScene">Load Scene</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Kivicube Collection ID</label>
+                    <div class="input-row">
+                        <input type="text" id="collectionIdInput" placeholder="Enter Collection ID (e.g. b46rfc)">
+                        <button class="btn-apply" id="btnApplyCollection">Load Collection</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- Cart Side Drawer --- -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="btn-close" id="closeCartDrawer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Dynamically populated cart items -->
+        </div>
+        
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">RM 0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Service Tax (6%)</span>
+                <span id="cartTax">RM 0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">RM 0.00</span>
+            </div>
+            <button class="btn-checkout" id="btnCheckout">Place Order</button>
+        </div>
+    </div>
+
+    <!-- --- Visit & Contact Section --- -->
+    <section class="visit-section" id="visitSection">
+        <div class="container">
+            <h2 class="section-title">Visit Our Tropical Oasis</h2>
+            <p class="section-subtitle">Come say hi, grab a fresh cold-pressed juice, and enjoy the sandy beach breeze.</p>
+            
+            <div class="visit-grid">
+                <!-- Opening Hours Card -->
+                <div class="visit-card glass-panel">
+                    <div class="visit-card-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Opening Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday</span> <span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Tuesday</span> <span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Wednesday</span> <span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Thursday</span> <span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Friday</span> <span>3:00 PM - 11:00 PM</span></li>
+                        <li><span>Saturday</span> <span>12:00 PM - 12:00 AM</span></li>
+                        <li><span>Sunday</span> <span>12:00 PM - 11:00 PM</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Location & Address Card -->
+                <div class="visit-card glass-panel">
+                    <div class="visit-card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>Location</h3>
+                    <p class="address-text">
+                        Caribbean Juice Bar,<br>
+                        Sandy Beach, Puteri Harbour,<br>
+                        79100 Iskandar Puteri, Johor
+                    </p>
+                    <div class="navigation-buttons">
+                        <a href="https://www.google.com/maps/place/Caribbean+Juice+Bar/@1.4209542,103.6577249,15z/data=!4m2!3m1!1s0x0:0x6f4ec9e2491b1a63?sa=X&ved=1t:2428&ictx=111" target="_blank" class="btn-nav google-maps">
+                            <i class="fa-solid fa-map"></i> Google Maps
+                        </a>
+                        <a href="https://www.waze.com/en-GB/live-map/directions/my/johor/iskandar-puteri/caribbean-juice-bar?to=place.ChIJpd_oLFQN2jERYxobSeLJTm8" target="_blank" class="btn-nav waze">
+                            <i class="fa-brands fa-waze"></i> Waze Navigation
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact & Socials Card -->
+                <div class="visit-card glass-panel">
+                    <div class="visit-card-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <h3>Connect With Us</h3>
+                    <p class="contact-email">
+                        <i class="fa-solid fa-envelope text-accent"></i> 
+                        <a href="mailto:Juicebarcaribbean@gmail.com">Juicebarcaribbean@gmail.com</a>
+                    </p>
+                    <div class="social-links-grid">
+                        <a href="https://caribbeanjuicebar.wixsite.com/johor" target="_blank" class="social-btn" title="Official Website">
+                            <i class="fa-solid fa-globe"></i>
+                            <span>Official Website</span>
+                        </a>
+                        <a href="https://www.facebook.com/caribbean.jb" target="_blank" class="social-btn" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/caribbean.jb/" target="_blank" class="social-btn" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Footer --- -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Onyxx Tech & LighOxy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

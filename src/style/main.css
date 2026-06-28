@@ -774,3 +774,9 @@ html.lenis body {
   opacity: 0;
   transform: translateY(15px);
 }
+
+/* Logo Theme Toggle */
+.logo-light { display: block; }
+.logo-dark { display: none; }
+[data-theme="dark"] .logo-light { display: none !important; }
+[data-theme="dark"] .logo-dark { display: block !important; }
