@@ -4,33 +4,79 @@ const projectsData = [
         title: 'Postgraduate Research Progress Monitoring System',
         type: 'Full-Stack / FYP',
         category: 'WEB_SYSTEMS',
-        stack: ['Laravel', 'PHP', 'Redis', 'MySQL', 'SDLC'],
-        shortDesc: 'A dedicated web platform to streamline and monitor postgraduate research milestones and progress.',
-        media: { type: 'images', content: ['./src/assets/docs/FinalYearProject/FYP PPT.pdf'] },
-        introduction: 'A dedicated web platform engineered to solve communication gaps and administrative inefficiencies in higher education research management by streamlining the monitoring of postgraduate research milestones.',
+        stack: ['Laravel 12', 'PHP 8.2', 'Alpine.js', 'Tailwind CSS v4', 'PostgreSQL', 'Docker', 'Vite'],
+        shortDesc: 'Institutional academic governance & progress monitoring system for Raffles University / IPSRE with automated risk engines and digital signatures.',
+        media: { type: 'images', content: ['./src/assets/docs/FinalYearProject/PRMS System Architecture Diagram.png'] },
+        introduction: 'The Postgraduate Research Progress Monitoring System (PRMS) is an institutional governance platform engineered for Raffles University / IPSRE. It centralises postgraduate supervision records, research milestone tracking, and periodic progress reporting into a unified, auditable web application.',
         details: {
-            overview: 'Developed as a Final Year Project, this system addresses the complexities of academic research tracking. It enforces strict institutional workflows and provides transparent oversight for students, supervisors, and administrative stakeholders.',
+            overview: 'Developed as a Final Year Project, PRMS replaces fragmented paper forms, email submissions, and spreadsheets with role-scoped governance tools. Built using a service-layer backend architecture in Laravel 12 and Alpine.js/Tailwind CSS v4 on the frontend, it enforces strict institutional academic policies, automated risk tracking, and dual-signed immutable auditing.',
             features: [
-                'Progress Tracking Dashboards: Real-time visualization of research milestones and completion status.',
-                'Milestone Submission Workflows: Structured pathways for thesis drafts, progress reports, and supervisor approvals.',
-                'Stakeholder Communication: Centralized communication channels to ensure all parties are aligned on research goals.',
-                'Secure Record Management: Persistent storage of academic history and administrative documents.'
+                'Automated Risk Monitoring Engine: CLI/Artisan background engine analyzing GoT buffer limits (>6 semesters without defence), missing report cycles, zero supervision activity, and recurring revisions.',
+                'Digital Signature & Dual-Locking: HTML canvas-based digital signatures with SHA-256 hash hashing and immutable dual-signature locking for supervision logs and progress reports.',
+                'Role-Scoped Dashboards (RBAC & ReBAC): Tailored, secure portals for Students (progress %, milestone indicator), Supervisors (sign-off queue, assigned candidates), and Admin (cohort KPIs, at-risk flags).',
+                'Enterprise Auth & Security: Session authentication with 2FA TOTP enforcement, Microsoft Entra ID (Azure AD) SSO auto-linking, ULID primary keys, and strict Policy checks.',
+                'Immutable Audit Observer & Inspector Board: Centralized Observers auto-capturing system lifecycles paired with an Admin Inspector interface featuring side-by-side JSON diff snapshots.'
             ],
             responsibilities: [
-                'Lead Developer: Engineered the core system using Laravel (PHP) and integrated Redis for performance optimization.',
-                'System Architect: Designed the normalized relational database schema and mapped the complete SDLC for the project.',
-                'Backend Engineer: Implemented secure authentication, role-based access control, and automated notification systems.'
+                'Lead Full-Stack Developer: Architected thin-controller/service-layer architecture in Laravel 12 with PHP 8.2, Alpine.js, and Tailwind CSS v4.',
+                'Security & Auth Engineer: Implemented 2FA TOTP enforcement, Microsoft SSO via Socialite, ULID database keys, and ReBAC/RBAC authorization policies.',
+                'Backend & Risk Engine Architect: Built the automated risk monitoring engine (`app:update-project-risk`), dual SHA-256 canvas signature hashing, and immutable Eloquent audit observer system.',
+                'DevOps & System Designer: Dockerized application stack, designed normalized relational schemas, and managed environment validation pipelines.'
             ],
             challenges: [
-                'Administrative Workflow Modeling: Translating complex, often non-linear academic processes into a digital system.',
-                'Stakeholder Alignment: Ensuring the interface meets the differing needs of tech-savvy students and busy supervisors.'
+                'Institutional Academic Compliance: Enforcing strict server-side deadline logic (`submission_date` and `endorsement_deadline`) while keeping interface interaction reactive.',
+                'Immutable Audit & Cryptographic Integrity: Safeguarding supervision log entries post dual-signature using SHA-256 payload hashing and blocking updating/deleting events at the model level.'
             ]
         },
         showcase: [],
         artifacts: [
-            { type: 'pdf', title: 'Presentation Slides (FYP PPT)', url: './src/assets/docs/FinalYearProject/FYP PPT.pdf' }
+            { type: 'pdf', title: 'Presentation Slides (FYP PPT)', url: './src/assets/docs/FinalYearProject/FYP PPT.pdf' },
+            { type: 'image', title: 'System Architecture Diagram', url: './src/assets/docs/FinalYearProject/PRMS System Architecture Diagram.png' },
+            { type: 'image', title: 'Entity Relationship Diagram (ERD)', url: './src/assets/docs/FinalYearProject/ERD.png' },
+            { type: 'image', title: 'Audit Logging Architecture Overview', url: './src/assets/docs/FinalYearProject/Audit Logging Architecture Overview.png' },
+            { type: 'image', title: 'Data Integration and Workflow Model', url: './src/assets/docs/FinalYearProject/Data Integration and Workflow Model.png' },
+            { type: 'image', title: 'High-Level Workflow Diagram', url: './src/assets/docs/FinalYearProject/High-Level Workflow.png' },
+            { type: 'image', title: 'Use Case Diagram', url: './src/assets/docs/FinalYearProject/use case diagram.png' },
+            { type: 'image', title: 'Graduation Clearance Workflow', url: './src/assets/docs/FinalYearProject/Scholarly Publication Registry and Graduation Clearance Workflow.png' },
+            { type: 'image', title: 'Project Gantt Chart (Apr-Aug 2026)', url: './src/assets/docs/FinalYearProject/Project Gantt Chart (April to August 2026).png' }
         ],
         link: ''
+    },
+    {
+        id: 'traces-of-senai',
+        title: 'Traces of Senai · 寻迹士乃',
+        type: 'Full-Stack / AI & WebAR',
+        category: 'AI_DATA',
+        stack: ['Laravel 11', 'PHP 8.4', 'Vue 3', 'Tailwind CSS v4', 'DeepSeek AI', 'Qwen CosyVoice (TTS)', 'Kivicube WebAR', 'Docker', 'MySQL'],
+        shortDesc: 'A cultural tourism web app with AI voice chat and WebAR, built for Kampung Baru Senai in Johor.',
+        media: { type: 'images', content: [] },
+        introduction: 'Traces of Senai (寻迹士乃) is an interactive web platform for Projects for Happiness 2.0. It guides users through an 8-stop cultural tour in Kampung Baru Senai using AI voice chat, QR code physical check-ins, and WebAR visual experiences.',
+        details: {
+            overview: 'The web app combines a 14-page Vue 3 / Laravel 11 frontend with a custom PHP & MySQL search system for the AI, delivering fast AI responses ("Wong Zi Song" persona) and real-time voice narration.',
+            features: [
+                'Fast AI Search (RAG): Built a fast, low-cost search engine directly in PHP and MySQL without needing complex vector databases.',
+                'Interactive Map: 8 illustrated location stops with real-time status tracking (Locked, Active, Completed).',
+                'AI Tour Guide Persona: "Wong Zi Song" AI guide that answers questions based on local oral history and adapts its tone for different age groups.',
+                'Real-Time Voice Streaming: Generates instant AI voice responses in the browser, with built-in fixes for mobile Safari audio restrictions.',
+                'WebAR Experience: Embedded Kivicube WebAR camera views directly in the web app for 3D historical overlays at physical stops.'
+            ],
+            responsibilities: [
+                'Lead Full-Stack Developer: Built the Laravel 11 backend, MySQL database, and Vue 3 frontend UI.',
+                'AI & Voice Integration: Connected DeepSeek AI for text responses and Qwen CosyVoice for real-time speech output.',
+                'DevOps & Deployment: Dockerized the app and deployed it on a Linux VPS with Nginx.'
+            ],
+            challenges: [
+                'Fast Search Without Extra Tools: Making AI story lookup fast and accurate using only standard PHP and MySQL.',
+                'Mobile Audio Compatibility: Ensuring smooth AI voice playback across iOS Safari and mobile browsers.'
+            ]
+        },
+        showcase: [
+            { type: 'demo', url: 'https://tracesofsenai.site/' },
+            { type: 'info', url: 'https://www.facebook.com/profile.php?id=61590735754222' },
+            { type: 'info', url: 'https://www.instagram.com/loiahcimziakhi.senai/' }
+        ],
+        artifacts: [],
+        link: 'https://tracesofsenai.site/'
     },
     {
         id: 'jiuxi-mindscape',
