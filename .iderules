@@ -1,0 +1,226 @@
+# ============================================================
+# .iderules — Lightoxy Engineering Portal (minyu.my)
+# Author: Loh Min Yu (MinYuOuO) (Lead Systems Engineer & Founder)
+# Hosted: https://minyu.my / https://minyuouo.github.io/
+# ============================================================
+# This file governs AI coding assistant behaviour for this
+# project. Read it before suggesting or making any changes.
+# ============================================================
+
+
+# ─────────────────────────────────────────────
+# 1. PROJECT OVERVIEW & BRAND IDENTITY
+# ─────────────────────────────────────────────
+
+## Purpose
+The personal brand and engineering portfolio for Loh Min Yu (MinYuOuO),
+showcasing enterprise system architecture, civic AI applications, and
+high-performance creative WebGL engineering under the crafted banner
+"Lightoxy". The design language matches 2026 developer-tool benchmarks
+(Linear, Raycast, and Tubik Studio).
+
+## The 6-Zone Continuous Landing Architecture
+The landing page (`index.html`) is structured into an unbroken visual journey
+guided by The Architectural Guide Spine:
+- Zone 0: Floating Frosted Glass Header (Lightoxy vector logo, drawer, theme coordinator, resume CTA).
+- Zone 1: Fluid Hero Viewport (fluid typography bounds, Three.js 3D WebGL dual-mesh icosahedron).
+- The Architectural Guide Spine: Continuous vertical progress guide connecting Zones 1 through 6 (`--scroll-progress`).
+- Zone 2: Infinite Hardware-Accelerated Tech Marquee (`transform: translateX()`, 60fps, hover-pause, reduced-motion).
+- Zone 3: Horizontal Expanding Accordion Deck (`min-h-[clamp(26rem,55vh,36rem)]`, `cubic-bezier(0.16, 1, 0.3, 1)`, 4 flagship cards: PRMS, Traces of Senai, JiuXi Mindscape, Colorella).
+- Zone 4: Asymmetric 12-Column Bento Grid as an Interactive Engineering Skill Matrix by Stack Layer (Row 1: Backend 8-col, DevOps 4-col; Row 2: AI 5-col, Frontend 7-col) with sub-16ms dynamic inspection and CLS = 0.
+- Zone 5: Secondary Showcase Gateway (ReMind, Mamak Analytics, Telco Churn) leading to `pages/archives.html`.
+- Zone 6: Footer with brand attribution to Loh Min Yu (MinYuOuO) and Simone Weil anchor quote:
+  "Attention is the rarest and purest form of generosity."
+
+## Live Domain
+- Canonical: https://minyu.my
+- Fallback: https://minyuouo.github.io/
+
+## Deployment
+Automated GitHub Pages deployment via `.github/workflows/deploy.yml` compiling
+static output directly to `dist/` with zero runtime server or database.
+
+
+# ─────────────────────────────────────────────
+# 2. TECH STACK & MODERN TOOLCHAIN
+# ─────────────────────────────────────────────
+
+## Build Engine & Bundler
+- Vite 8.3 Multi-Page Application (MPA) Bundler.
+- Fast local development with instant Hot Module Replacement (`npm run dev`).
+- Sub-400ms multi-page production compilation (`npm run build`).
+
+## Styling Architecture
+- Tailwind CSS v4 via official `@tailwindcss/vite` plugin.
+- Source stylesheet: `src/style/main.css` (imported directly in HTML via `/src/style/main.css`).
+- Zero standalone CLI build wrappers; no `output.css` intermediate files.
+- Design tokens defined directly via CSS-first `@theme` directives.
+
+## JavaScript & Modules
+- Modular ES6+ JavaScript (`src/script/main.js`) loaded via `<script type="module">`.
+- Three.js is bundled directly from local npm package (`import * as THREE from 'three'`).
+- Zero reliance on external third-party CDNs (no CDNJS, no JSDelivr for scripts).
+- Zero client-side hydration framework overhead (no React, Vue, or Angular runtime).
+
+## Fonts (Self-Hosted Variable Fonts)
+- Space Grotesk  → `src/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf` (headings, body)
+- JetBrains Mono → `src/assets/fonts/JetBrainsMono-VariableFont_wght.ttf` (code, UI, metrics)
+
+
+# ─────────────────────────────────────────────
+# 3. REPOSITORY DIRECTORY STRUCTURE
+# ─────────────────────────────────────────────
+
+```text
+MinYuOuO.github.io/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # Automated GitHub Pages CI/CD workflow
+├── docs/                           # Authoritative 39-Document Governance & Architecture Suite
+│   ├── DOCUMENTATION_STANDARD.md   # PORT-GOV-001 Documentation Governance
+│   ├── 01-planning/                # PORT-PLAN-* (Proposal, PRD, Scope)
+│   ├── 02-requirements/            # PORT-REQ-* (SRS, Stories, Use Cases, Criteria)
+│   ├── 03-architecture/            # PORT-ARCH-* (SAD, Context, HLD, LLD, Data Flow, ADRs)
+│   ├── 04-design/                  # PORT-DES-* (Design System, User Flow, UX, Breakpoints)
+│   ├── 05-development/             # PORT-DEV-* (Coding Standards, Env, Git, Licensing, Tech Design)
+│   ├── 06-testing/                 # PORT-TEST-* (Test Plan, Test Cases, Reports, UAT)
+│   ├── 07-deployment/              # PORT-DEP-* (Deployment Guide, DNS, CI/CD, Rollback)
+│   └── 08-maintenance/             # PORT-MAINT-* (Manual, Release Notes, Changelog)
+├── pages/                          # Dedicated Showcase Deep-Dives & Historical Catalog
+│   ├── prms.html                   # Flagship 01: Postgraduate Review & Monitoring System
+│   ├── senai.html                  # Flagship 02: Traces of Senai Civic AI Tour Guide
+│   ├── jiuxi.html                  # Flagship 03: JiuXi Mindscape Conversational Voice AI
+│   ├── colorella.html              # Flagship 04: Colorella Ticketing & Event Management
+│   ├── remind.html                 # Deep-Dive: ReMind Mobile Offline-First CRM
+│   ├── mamak-analytics.html        # Deep-Dive: Mamak Spatial BI Intelligence
+│   ├── telco-churn.html            # Deep-Dive: Telecom Customer Churn Predictive ML
+│   └── archives.html               # Central Directory of all 20+ Systems & Explorations
+├── public/                         # Static Assets Copied Directly to dist/ Root
+│   ├── .nojekyll                   # GitHub Pages raw static flag
+│   ├── CNAME                       # minyu.my custom domain
+│   ├── favicon.svg                 # Canonical vector favicon
+│   ├── robots.txt                  # Search & AI crawler governance
+│   ├── sitemap.xml                 # XML search sitemap
+│   ├── caribbean/                  # Standalone WebAR restaurant menu prototype
+│   └── src/assets/                 # Public downloadable PDFs (Resume, Portfolio) & docs
+├── src/
+│   ├── assets/
+│   │   ├── fonts/                  # Space Grotesk & JetBrains Mono variable fonts
+│   │   ├── images/                 # Lightoxy brand vectors and showcase diagrams
+│   │   └── docs/                   # Academic specifications & architecture schematics
+│   ├── script/
+│   │   └── main.js                 # Modular ES6+ client engine & WebGL controllers
+│   └── style/
+│       └── main.css                # Tailwind CSS v4 design tokens & spring easing keyframes
+├── index.html                      # The 6-Zone Continuous Landing Architecture
+├── package.json                    # Project configuration & npm dependencies
+├── package-lock.json               # Lockfile
+├── README.md                       # Modernized repository documentation & blueprint
+├── vite.config.js                  # Vite 8.3 MPA multi-entry Rollup configuration
+└── .gitignore                      # Clean rules: tracks docs/, ignores dist/ & temp files
+```
+
+
+# ─────────────────────────────────────────────
+# 4. DESIGN SYSTEM & MOTION STANDARDS
+# ─────────────────────────────────────────────
+
+## Color Tokens (CSS Variables in main.css)
+Default (Light-First Priority):
+  --color-cerenkov:    #0284c7   ← Cerulean Blue primary accent
+  --color-dissociation:#8b2f5a   ← Deep Rose secondary accent
+  --color-alert:       #8b2f5a
+  --color-abyssal:     #f7f5f0   ← Warm editorial background
+  --color-graphite:    #eeebe3   ← Secondary structural background
+  --text-primary:      #1a1612
+  --text-secondary:    #5c5248
+  --text-tertiary:     #7d736a
+
+Dark Mode ([data-theme="dark"]):
+  --color-cerenkov:    #00f0ff   ← Neon Cyan accent
+  --color-dissociation:#ff0088   ← Neon Magenta accent
+  --color-alert:       #ff0055
+  --color-abyssal:     #050505   ← Deep dark background
+  --color-graphite:    #1a1a1a   ← Secondary dark background
+  --text-primary:      #e0e0e0
+  --text-secondary:    #a0a0a0
+  --text-tertiary:     #666666
+
+## Core Motion Principle
+All kinetic motion, accordion expansions, and interactive reveals are governed
+by the unified Tubik 2026 spring curve:
+  CSS Spring Token: cubic-bezier(0.16, 1, 0.3, 1)
+
+## Zero-Rigid-Pixels Mandate
+Hardcoded `px` units for layout containers, section heights, and padding are
+strictly forbidden. All geometry must use fluid scaling:
+- Relative scaling: `rem`, `em`, `%`.
+- Viewport dynamics: `vw`, `dvh` (accommodates mobile browser chrome).
+- Fluid clamping: `clamp(min, preferred, max)`.
+- Explicit container height token: `min-h-[clamp(26rem,55vh,36rem)]`.
+
+
+# ─────────────────────────────────────────────
+# 5. CORE SUBSYSTEM IMPLEMENTATIONS
+# ─────────────────────────────────────────────
+
+## Three.js WebGL Hero Orb (Dual-Mesh + Power Gating)
+- Outer wireframe icosahedron (`IcosahedronGeometry(2.3, 2)`).
+- Inner counter-rotating core (`IcosahedronGeometry(1.2, 1)`).
+- Cursor parallax lerp.
+- **Power Gating:** Managed via `IntersectionObserver`. Whenever the container
+  exits the viewport, `requestAnimationFrame` is cancelled immediately (0% idle CPU).
+
+## The Architectural Guide Spine
+- Driven by GPU custom property `--scroll-progress` updated in a passive scroll listener.
+- Optical thread connects Hero, Marquee, Accordion, Bento Grid, and Footer.
+
+## Zone 4 Bento Grid Interactive Skill Matrix
+- Asymmetric 12-column grid organized by stack layer:
+  - Row 1: Backend & Data (8 cols) + DevOps & Infrastructure (4 cols)
+  - Row 2: AI & Machine Learning (5 cols) + Frontend & WebGL (7 cols)
+- Clickable skill pills update the context panel (`SKILL_DATA`) in `< 16ms`.
+- Panel maintains an explicit fluid floor (`min-h-[clamp(6rem,12vh,8rem)]`) guaranteeing `CLS = 0`.
+- Semantic `<button>` elements with `aria-pressed="true/false"` for total keyboard accessibility.
+
+
+# ─────────────────────────────────────────────
+# 6. CODING STANDARDS & CODE HYGIENE
+# ─────────────────────────────────────────────
+
+## Brand Sovereignty
+- Always attribute **Lightoxy** as Loh Min Yu's crafted personal brand banner, never an agency or studio.
+- Founder attribution: **Loh Min Yu (MinYuOuO)**.
+
+## Strictly Prohibited Monikers
+- Any legacy or retired personal aliases are permanently deprecated.
+- Strictly ZERO occurrences of the retired moniker are permitted anywhere in code, comments, documentation, or commit messages (enforced by automated scanner).
+
+## HTML & Link Standards
+- Root landing page is `index.html`.
+- All showcase deep-dives live in `pages/` (e.g. `pages/prms.html`).
+- Static files live in `public/` (e.g. `public/CNAME`, `public/robots.txt`).
+- Relative navigation: `pages/*.html` link back to `../index.html#projects`.
+- Stylesheet link: `<link rel="stylesheet" href="/src/style/main.css">`.
+- Script entry: `<script type="module" src="/src/script/main.js"></script>`.
+
+## Development Workflow
+1. Install: `npm install`
+2. Dev Server: `npm run dev` (starts Vite with instant HMR)
+3. Production Build: `npm run build` (Rollup multi-page compilation to `dist/` in < 400ms)
+4. Local Preview: `npm run preview`
+5. Automated CI/CD: Push to `main` triggers `.github/workflows/deploy.yml` which builds and deploys `./dist` to GitHub Pages (`minyu.my`).
+
+
+# ─────────────────────────────────────────────
+# 7. WHAT NOT TO DO
+# ─────────────────────────────────────────────
+- Do NOT use the retired personal moniker anywhere in the codebase.
+- Do NOT use hardcoded pixel heights or widths (`px`) on layout containers.
+- Do NOT re-introduce external CDN scripts (CDNJS, JSDelivr) for Three.js or GSAP; use local npm modules.
+- Do NOT introduce heavy client-side SPA frameworks (React, Vue runtime, Angular).
+- Do NOT create standalone output CSS files or run separate CLI watchers; Vite handles Tailwind v4 compilation natively.
+- Do NOT place showcase HTML pages directly in the root directory; keep them in `pages/`.
+- Do NOT place static deployment files (`CNAME`, `robots.txt`, `sitemap.xml`) directly in the root directory; maintain them in `public/`.
+- Do NOT remove `IntersectionObserver` power gating from WebGL animation loops.
+- Do NOT modify document identifiers or frontmatter schemas in `docs/` without conforming to `PORT-GOV-001`.

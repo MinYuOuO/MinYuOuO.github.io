@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorella Event — Ticketing & Finance System | Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="Custom ticketing and attendance management desktop application engineered with Python, Tkinter, and Google Sheets API by Loh Min Yu (MinYuOuO) · Lightoxy.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/colorella.html">
+  <meta property="og:title" content="Colorella Event — Ticketing & Finance System | Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="Custom desktop system synchronizing Google Sheets API, managing tiered ticket quotas, and validating payment approval workflows.">
+  <meta property="og:image" content="https://minyu.my/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-cerenkov selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <div class="site-bg-pattern"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="glass-header">
+    <div class="container mx-auto flex justify-between items-center max-w-6xl px-6 py-4">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="flex items-center gap-5">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-1.5 rounded-lg border border-theme-border card-muted hover:text-cerenkov hover:border-cerenkov transition-all" aria-label="Toggle Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl grow">
+
+    <!-- 1. HEADER -->
+    <header class="mb-14">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="font-mono text-[10px] uppercase font-bold text-cerenkov bg-cerenkov/10 border border-cerenkov/30 px-3 py-1 rounded-full tracking-wider">
+          SYSTEM ARCHITECTURE #4 · EVENT & AUDITING
+        </span>
+        <span class="font-mono text-xs card-muted">
+          Student Representative Council (SRC) · Raffles University
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-theme-text mb-4 leading-tight">
+        Colorella Event — Ticketing & Finance Management System
+      </h1>
+
+      <p class="text-base sm:text-xl font-mono text-cerenkov mb-6 font-medium max-w-3xl">
+        Custom desktop system synchronizing Google Sheets API, managing tiered ticket quotas, and validating payment approval workflows.
+      </p>
+
+      <p class="text-sm sm:text-base card-muted leading-relaxed max-w-3xl mb-8">
+        As SRC Treasurer, I designed this desktop application for the Colorella festival to replace error-prone manual spreadsheets. Built with Python and Tkinter using multi-threaded asynchronous workers, the system automated registration data ingestion, enforced tier capacity limits, and streamlined live event check-in while ensuring complete financial transparency.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#system-showcase" class="btn-primary">
+          <span>Inspect System Interface ↓</span>
+        </a>
+        <a href="https://share.google/aimode/FuksYKCE3dbNmDNIx" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <span>View Project Showcase ↗</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. SYSTEM FOCUS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Architecture</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">Python + Tkinter</div>
+        <p class="text-xs card-muted mt-1">Multi-threaded desktop client</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Data Backend</span>
+        <div class="text-base sm:text-lg font-bold font-mono text-cerenkov leading-snug">Google Sheets API</div>
+        <p class="text-xs card-muted mt-1">Real-time bi-directional sync</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Data Processing</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">pandas</div>
+        <p class="text-xs card-muted mt-1">Validation & deduplication</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Leadership Role</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">SRC Treasurer</div>
+        <p class="text-xs card-muted mt-1">Financial reconciliation lead</p>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM SHOWCASE SCREEN -->
+    <section id="system-showcase" class="mb-20 scroll-mt-24">
+      <div class="mb-6">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Production Interface</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">System UI & Check-In Console</h2>
+      </div>
+
+      <div class="theme-card p-6 rounded-3xl">
+        <div class="w-full flex items-center justify-center bg-black/20 rounded-xl overflow-hidden p-2 mb-4">
+          <img src="https://i.postimg.cc/ZnFMY38Z/Colorella-Ticketing-System.png" 
+               alt="Colorella Ticketing System Interface" 
+               class="w-full h-auto max-h-[600px] object-contain rounded-lg shadow-md">
+        </div>
+        <p class="text-xs card-muted font-mono">
+          Colorella desktop management console featuring live participant filtering, tiered ticket capacity tracking, receipt attachment inspection, and one-click check-in.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. CORE FUNCTIONAL MODULES -->
+    <section class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="theme-card p-6 sm:p-8 rounded-2xl">
+        <span class="font-mono text-xs uppercase tracking-wider text-cerenkov font-bold block mb-2">// Automated Ingestion</span>
+        <h3 class="text-xl font-bold text-theme-text mb-3">Google Forms Ingestion & Deduplication</h3>
+        <p class="text-xs sm:text-sm card-muted leading-relaxed mb-4">
+          Automatically pulls new attendee submissions from Google Forms responses into local memory using the Google Sheets API and pandas, verifying payment slips and resolving duplicate student IDs.
+        </p>
+        <div class="p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border space-y-2 text-xs font-mono card-muted">
+          <p>✓ Background polling threads prevent desktop UI freezing</p>
+          <p>✓ Dynamic tier caps (Early Bird, Standard, VIP) enforce hard quota limits</p>
+          <p>✓ In-memory caching for rapid participant searching during check-in</p>
+        </div>
+      </div>
+
+      <div class="theme-card p-6 sm:p-8 rounded-2xl">
+        <span class="font-mono text-xs uppercase tracking-wider text-cerenkov font-bold block mb-2">// Operational Governance</span>
+        <h3 class="text-xl font-bold text-theme-text mb-3">Payment Approval & Attendance Gate</h3>
+        <p class="text-xs sm:text-sm card-muted leading-relaxed mb-4">
+          Streamlined the operational duties of event treasurers, allowing instant verification of transaction reference slips and providing a 1-click on-site QR check-in workflow on event day.
+        </p>
+        <div class="p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border space-y-2 text-xs font-mono card-muted">
+          <p>✓ One-click approval / rejection status written back to shared cloud sheets</p>
+          <p>✓ Real-time attendance percentage monitor for venue capacity tracking</p>
+          <p>✓ Replaced multi-sheet manual auditing with a unified audit log</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subpage Navigation -->
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+      <a href="/pages/jiuxi.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+        ← Previous: JiuXi Mindscape
+      </a>
+      <div class="text-right">
+        <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Next Dedicated Showcase</span>
+        <a href="/pages/remind.html" class="text-sm sm:text-base font-bold text-theme-text hover:text-cerenkov transition-colors">
+          ReMind (Mobile Relationship Manager) →
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Modular Client Script -->
+  <script type="module" src="/src/script/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JiuXi Mindscape | Conversational Voice AI Avatar · Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="JiuXi Mindscape real-time conversational voice AI avatar and exhibition kiosk engineering by Loh Min Yu (MinYuOuO) · Lightoxy.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/jiuxi.html">
+  <meta property="og:title" content="JiuXi Mindscape | Conversational Voice AI Avatar · Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="Voice-enabled avatar chat for on-site cultural tours with Push-to-Talk ASR, multi-provider fallbacks, and animated avatar cues.">
+  <meta property="og:image" content="https://minyu.my/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-cerenkov selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <div class="site-bg-pattern"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="glass-header">
+    <div class="container mx-auto flex justify-between items-center max-w-6xl px-6 py-4">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="flex items-center gap-5">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-1.5 rounded-lg border border-theme-border card-muted hover:text-cerenkov hover:border-cerenkov transition-all" aria-label="Toggle Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl grow">
+
+    <!-- 1. EXHIBITION HERO HEADER -->
+    <header class="mb-14">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="font-mono text-[10px] uppercase font-bold text-cerenkov bg-cerenkov/10 border border-cerenkov/30 px-3 py-1 rounded-full tracking-wider">
+          SYSTEM ARCHITECTURE #3 · AI & EXHIBITION
+        </span>
+        <span class="font-mono text-xs card-muted">
+          Raffles Graduation Show 2025 · Nanao IP Project · Kancil Awards Student Winner
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-theme-text mb-4 leading-tight">
+        JiuXi Mindscape — AI Conversation Service
+      </h1>
+
+      <p class="text-base sm:text-xl font-mono text-cerenkov mb-6 font-medium max-w-3xl">
+        Voice-enabled avatar chat for on-site cultural tours with Push-to-Talk ASR, multi-provider fallbacks, and animated avatar cues.
+      </p>
+
+      <p class="text-sm sm:text-base card-muted leading-relaxed max-w-3xl mb-8">
+        Engineered as the interactive voice narrator and concierge interface for cultural exhibition tourism (Chinese, English, Malay). The single-page application features push-to-talk voice interactions, iFLYTEK WebSocket services with Web Speech API browser fallbacks, configurable REST LLMs, and an offline Mock Mode for zero-credential demonstrations.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#kiosk-screens" class="btn-primary">
+          <span>Inspect System Console Screens ↓</span>
+        </a>
+        <a href="#voice-architecture" class="btn-secondary">
+          <span>Voice Pipeline Architecture ↓</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. AI & ARCHITECTURAL FOCUS METRICS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Voice UX</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-cerenkov">Push-to-Talk</div>
+        <p class="text-xs card-muted mt-1">Microphone ASR streaming</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Speech Providers</span>
+        <div class="text-base sm:text-lg font-bold font-mono text-theme-text leading-snug">iFLYTEK + Web Speech</div>
+        <p class="text-xs card-muted mt-1">WebSocket with fallback</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">LLM Integration</span>
+        <div class="text-base sm:text-lg font-bold font-mono text-theme-text leading-snug">Configurable REST</div>
+        <p class="text-xs card-muted mt-1">Persona profiles & RAG</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Offline Resilience</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">Mock Mode</div>
+        <p class="text-xs card-muted mt-1">Zero-credential local demo</p>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE 4-STATE VOICE STATE MACHINE -->
+    <section class="mb-20">
+      <div class="mb-6">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Conversation UX State Machine</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">4-Phase Avatar State Machine</h2>
+        <p class="text-xs sm:text-sm card-muted mt-1">
+          Dynamic visual feedback states provide conversational cues for on-site visitors.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="theme-card p-6 rounded-2xl border-t-2 border-t-cerenkov">
+          <div class="font-mono text-xs text-cerenkov font-bold mb-2">PHASE 01 // IDLE</div>
+          <h3 class="text-lg font-bold text-theme-text mb-2">Attract Loop</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Ambient idle animation loops smoothly while awaiting visitor text or push-to-talk microphone trigger.
+          </p>
+          <div class="mt-4 pt-3 border-t border-theme-border font-mono text-[10px] card-muted">
+            State: Idle Animation
+          </div>
+        </div>
+
+        <div class="theme-card p-6 rounded-2xl border-t-2 border-t-cerenkov">
+          <div class="font-mono text-xs text-cerenkov font-bold mb-2">PHASE 02 // LISTENING</div>
+          <h3 class="text-lg font-bold text-theme-text mb-2">Push-to-Talk ASR</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Visitor holds microphone button; real-time audio streams via iFLYTEK WebSocket or Web Speech API fallback.
+          </p>
+          <div class="mt-4 pt-3 border-t border-theme-border font-mono text-[10px] text-cerenkov">
+            State: Listening
+          </div>
+        </div>
+
+        <div class="theme-card p-6 rounded-2xl border-t-2 border-t-cerenkov">
+          <div class="font-mono text-xs text-cerenkov font-bold mb-2">PHASE 03 // THINKING</div>
+          <h3 class="text-lg font-bold text-theme-text mb-2">REST LLM Context</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Transcribed query is merged with selected persona profiles and knowledge JSON for grounded narrative generation.
+          </p>
+          <div class="mt-4 pt-3 border-t border-theme-border font-mono text-[10px] card-muted">
+            State: Thinking
+          </div>
+        </div>
+
+        <div class="theme-card p-6 rounded-2xl border-t-2 border-t-cerenkov">
+          <div class="font-mono text-xs text-cerenkov font-bold mb-2">PHASE 04 // TALKING</div>
+          <h3 class="text-lg font-bold text-theme-text mb-2">TTS Speech Stream</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Synthesized voice streams back with mouth movement cues, with automatic recovery on completion.
+          </p>
+          <div class="mt-4 pt-3 border-t border-theme-border font-mono text-[10px] text-cerenkov">
+            State: Talking
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXHIBITION KIOSK UI GALLERY -->
+    <section id="kiosk-screens" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Kiosk Exhibition Artifacts</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Interactive Kiosk Dashboard</h2>
+        </div>
+        <p class="text-xs font-mono card-muted">
+          Click tabs to inspect production interface screens.
+        </p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap gap-2 mb-4" id="jiuxi-tabs">
+        <button type="button" data-index="0" class="jiuxi-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg bg-cerenkov text-white font-bold transition-all">
+          Interaction Dashboard
+        </button>
+        <button type="button" data-index="1" class="jiuxi-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all">
+          Audio & AI Settings
+        </button>
+        <button type="button" data-index="2" class="jiuxi-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all">
+          Latency Benchmarks
+        </button>
+      </div>
+
+      <!-- Frame Container -->
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <div class="flex justify-between items-center pb-3 mb-4 border-b border-theme-border font-mono text-xs">
+          <span id="jiuxi-title" class="font-bold text-cerenkov">JiuXi Real-Time Interaction Dashboard</span>
+          <a id="jiuxi-fullscreen" href="/src/assets/docs/JiuXi/JiuXiDashboard.png" target="_blank" class="text-cerenkov hover:underline font-semibold">
+            View Full Screen ↗
+          </a>
+        </div>
+        <div class="w-full flex items-center justify-center min-h-[420px] bg-black/20 rounded-xl overflow-hidden p-2">
+          <img id="jiuxi-img" 
+               src="/src/assets/docs/JiuXi/JiuXiDashboard.png" 
+               alt="JiuXi Dashboard Screen" 
+               class="w-full h-auto max-h-[600px] object-contain rounded-lg cursor-zoom-in shadow-md transition-opacity duration-200">
+        </div>
+        <p id="jiuxi-desc" class="text-xs card-muted mt-3 font-mono">
+          Real-time exhibition touch console featuring live audio waveform monitor, ASR recognition log, and response latency display.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. FULL ARCHITECTURE DIAGRAMS -->
+    <section id="voice-architecture" class="mb-20 scroll-mt-24">
+      <div class="mb-6">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// System Schematics</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">End-to-End System Blueprint</h2>
+      </div>
+
+      <div class="theme-card p-6 rounded-2xl">
+        <a href="/src/assets/docs/JiuXi/Diagrams-Full-EN.png" target="_blank" class="block cursor-zoom-in group">
+          <img src="/src/assets/docs/JiuXi/Diagrams-Full-EN.png" alt="JiuXi System Blueprint" class="w-full h-auto rounded-xl border border-theme-border shadow-md">
+          <span class="block text-center font-mono text-xs text-cerenkov group-hover:underline mt-3">
+            ↗ Click to view high-resolution system flow diagram
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 6. PRODUCTION ARCHITECTURAL CHALLENGES SOLVED -->
+    <section class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="theme-card p-6 sm:p-8 rounded-2xl">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-cerenkov font-bold mb-4">// Multi-Provider Speech Fallbacks</h3>
+        <p class="text-sm card-muted leading-relaxed mb-4">
+          Exhibition environments require extreme fault tolerance where cloud speech endpoints can experience credential limits or network throttling.
+        </p>
+        <div class="p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border space-y-2 text-xs font-mono card-muted">
+          <p>✓ Primary provider: iFLYTEK WebSocket services for high-fidelity ASR and TTS.</p>
+          <p>✓ Automatic browser fallback: Web Speech API for recognition and SpeechSynthesis for audio.</p>
+          <p>✓ Push-to-Talk microphone flow eliminates ambient crowd speech interference.</p>
+        </div>
+      </div>
+
+      <div class="theme-card p-6 sm:p-8 rounded-2xl">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-cerenkov font-bold mb-4">// Exhibition Resilience & Mock Mode</h3>
+        <p class="text-sm card-muted leading-relaxed mb-4">
+          On-site cultural tour demonstrations need instant readiness without waiting for API keys or cloud configurations to be established.
+        </p>
+        <div class="p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border space-y-2 text-xs font-mono card-muted">
+          <p>✓ Engineered zero-credential offline Mock Mode for instant exhibition demos.</p>
+          <p>✓ In-app settings modal with secure localStorage persistence and key masking.</p>
+          <p>✓ Dynamic avatar state cues (idle, listening, thinking, talking, issue) for visitor feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subpage Navigation -->
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+      <a href="/pages/senai.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+        ← Previous: Traces of Senai
+      </a>
+      <div class="text-right">
+        <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Next Dedicated Showcase</span>
+        <a href="/pages/colorella.html" class="text-sm sm:text-base font-bold text-theme-text hover:text-cerenkov transition-colors">
+          Colorella (Concert Ticketing Engine) →
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Modular Client Script -->
+  <script type="module" src="/src/script/main.js"></script>
+
+  <!-- Interactive Screen Switcher Script -->
+  <script>
+    const jiuxiScreens = [
+      {
+        title: "JiuXi Real-Time Interaction Dashboard",
+        url: "/src/assets/docs/JiuXi/JiuXiDashboard.png",
+        desc: "Real-time exhibition touch console featuring live audio waveform monitor, ASR recognition log, and response latency display."
+      },
+      {
+        title: "JiuXi Audio & Model Configuration",
+        url: "/src/assets/docs/JiuXi/JiuXiSettings.png",
+        desc: "Granular control panel for LLM temperature, CosyVoice voice timbre cloning, VAD sensitivity threshold, and offline mock toggles."
+      },
+      {
+        title: "Automated Latency & ASR Benchmark Suite",
+        url: "/src/assets/docs/JiuXi/JiuXiTesting.png",
+        desc: "Automated regression testing tool measuring end-to-end latency from mic input to first audio chunk output across network conditions."
+      }
+    ];
+
+    function setupJiuxiTabs() {
+      const tabButtons = document.querySelectorAll('.jiuxi-tab-btn');
+      const img = document.getElementById('jiuxi-img');
+      const title = document.getElementById('jiuxi-title');
+      const desc = document.getElementById('jiuxi-desc');
+      const fullLink = document.getElementById('jiuxi-fullscreen');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const index = parseInt(btn.getAttribute('data-index'), 10);
+          const screen = jiuxiScreens[index];
+          if (!screen) return;
+
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = screen.url;
+            img.alt = screen.title;
+            title.textContent = screen.title;
+            desc.textContent = screen.desc;
+            fullLink.href = screen.url;
+            img.style.opacity = '1';
+          }, 150);
+
+          tabButtons.forEach((b, i) => {
+            if (i === index) {
+              b.className = "jiuxi-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg bg-cerenkov text-white font-bold transition-all";
+            } else {
+              b.className = "jiuxi-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all";
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupJiuxiTabs);
+    } else {
+      setupJiuxiTabs();
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telecom Customer Churn Analytics | Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="Malaysia telecom customer churn predictive analytics and machine learning pipeline by Loh Min Yu (MinYuOuO) · Lightoxy.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/telco-churn.html">
+  <meta property="og:title" content="Telecom Customer Churn Analytics | Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="End-to-end machine learning pipeline analyzing 7,000+ subscriber records with SMOTE class balancing and SHAP explainability.">
+  <meta property="og:image" content="https://minyu.my/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-amber-500 selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <div class="site-bg-pattern"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="glass-header">
+    <div class="container mx-auto flex justify-between items-center max-w-6xl px-6 py-4">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="flex items-center gap-5">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-1.5 rounded-lg border border-theme-border card-muted hover:text-cerenkov hover:border-cerenkov transition-all" aria-label="Toggle Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl grow">
+
+    <!-- 1. HEADER -->
+    <header class="mb-14">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="font-mono text-[10px] uppercase font-bold text-cerenkov bg-cerenkov/10 border border-cerenkov/30 px-3 py-1 rounded-full tracking-wider">
+          DATA SCIENCE & PREDICTIVE ML
+        </span>
+        <span class="font-mono text-xs card-muted">
+          Telecom Industry Analytics · Supervised Classification
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-theme-text mb-4 leading-tight">
+        Malaysia Telecom Customer Churn Prediction
+      </h1>
+
+      <p class="text-base sm:text-xl font-mono text-cerenkov mb-6 font-medium max-w-3xl">
+        End-to-end machine learning pipeline analyzing 7,000+ subscriber records with SMOTE class balancing and SHAP explainability.
+      </p>
+
+      <p class="text-sm sm:text-base card-muted leading-relaxed max-w-3xl mb-8">
+        Developed to identify high-risk subscriber segments before account cancellation. Evaluated multiple classifier architectures (Random Forest, XGBoost, Logistic Regression) to deliver interpretable retention insights capable of safeguarding recurring subscription revenue.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#pipeline-diagram" class="btn-primary">
+          <span>Inspect Pipeline Flowchart ↓</span>
+        </a>
+        <a href="#presentation" class="btn-secondary">
+          <span>View Research Deck ↓</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. METRICS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Model Discrimination</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-cerenkov">0.884 AUC</div>
+        <p class="text-xs card-muted mt-1">ROC-AUC score</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Overall Accuracy</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">82.5%</div>
+        <p class="text-xs card-muted mt-1">Cross-validated test set</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Data Volume</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">7,043 Records</div>
+        <p class="text-xs card-muted mt-1">21 behavioral attributes</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Revenue Protection</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">$1.2M</div>
+        <p class="text-xs card-muted mt-1">Projected annual retention</p>
+      </div>
+    </section>
+
+    <!-- 3. MODEL BENCHMARK COMPARISON -->
+    <section class="mb-20">
+      <div class="mb-6">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Algorithm Performance</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Model Architecture Benchmark</h2>
+      </div>
+
+      <div class="theme-card rounded-2xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs">
+            <thead class="bg-black/5 dark:bg-white/5 border-b border-theme-border">
+              <tr>
+                <th class="p-4 font-bold text-theme-text">Model Architecture</th>
+                <th class="p-4 font-bold text-theme-text">Accuracy</th>
+                <th class="p-4 font-bold text-theme-text">Precision</th>
+                <th class="p-4 font-bold text-theme-text">Recall (Churn)</th>
+                <th class="p-4 font-bold text-theme-text">ROC-AUC</th>
+                <th class="p-4 font-bold text-theme-text">Inference Speed</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-theme-border">
+              <tr class="bg-amber-500/5">
+                <td class="p-4 font-bold text-amber-500">XGBoost Classifier ★</td>
+                <td class="p-4 font-semibold text-theme-text">82.5%</td>
+                <td class="p-4 text-theme-text">0.78</td>
+                <td class="p-4 font-bold text-amber-500">0.82</td>
+                <td class="p-4 font-bold text-amber-500">0.884</td>
+                <td class="p-4 card-muted">&lt; 12ms</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium text-theme-text">Random Forest</td>
+                <td class="p-4 text-theme-text">80.8%</td>
+                <td class="p-4 text-theme-text">0.74</td>
+                <td class="p-4 text-theme-text">0.76</td>
+                <td class="p-4 text-theme-text">0.862</td>
+                <td class="p-4 card-muted">&lt; 28ms</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium text-theme-text">Logistic Regression</td>
+                <td class="p-4 text-theme-text">79.2%</td>
+                <td class="p-4 text-theme-text">0.71</td>
+                <td class="p-4 text-theme-text">0.73</td>
+                <td class="p-4 text-theme-text">0.841</td>
+                <td class="p-4 card-muted">&lt; 4ms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SYSTEM DESIGN FLOWCHART -->
+    <section id="pipeline-diagram" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Pipeline Architecture</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">System Design Flowchart</h2>
+        </div>
+        <a href="/src/assets/docs/TelecomCustomerChurnPrediction/System Design Flowchart.drawio.png" target="_blank" class="font-mono text-xs text-cerenkov hover:underline font-semibold">
+          View Full Size ↗
+        </a>
+      </div>
+
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <a href="/src/assets/docs/TelecomCustomerChurnPrediction/System Design Flowchart.drawio.png" target="_blank" class="block cursor-zoom-in group">
+          <img src="/src/assets/docs/TelecomCustomerChurnPrediction/System Design Flowchart.drawio.png" 
+               alt="System Design Flowchart" 
+               class="w-full h-auto max-h-[550px] object-contain rounded-xl mx-auto shadow-md">
+          <span class="block text-center font-mono text-xs text-cerenkov group-hover:underline mt-3">
+            ↗ Click flowchart to inspect data extraction, preprocessing, SMOTE rebalancing, and model evaluation stages
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. RESEARCH PRESENTATION DECK -->
+    <section id="presentation" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Academic Presentation</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Data Mining Presentation Slides</h2>
+        </div>
+        <a href="/src/assets/docs/TelecomCustomerChurnPrediction/Data Mining PPT.pdf" target="_blank" class="font-mono text-xs text-cerenkov hover:underline font-semibold">
+          Open PDF in Full Screen ↗
+        </a>
+      </div>
+
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <div class="w-full h-[520px] rounded-xl overflow-hidden border border-theme-border shadow-inner bg-black/5">
+          <iframe src="/src/assets/docs/TelecomCustomerChurnPrediction/Data Mining PPT.pdf#view=FitH" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subpage Navigation -->
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+      <a href="/pages/remind.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+        ← Previous: ReMind PWA
+      </a>
+      <div class="text-right">
+        <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Next Dedicated Showcase</span>
+        <a href="/pages/mamak-analytics.html" class="text-sm sm:text-base font-bold text-theme-text hover:text-cerenkov transition-colors">
+          Mamak Eateries Spatial Analytics →
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Modular Client Script -->
+  <script type="module" src="/src/script/main.js"></script>
+</body>
+
+</html>

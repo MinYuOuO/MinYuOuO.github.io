@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traces of Senai · 寻迹士乃 | Conversational AI Heritage Tour · Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="Civic heritage case study: Traces of Senai (寻迹士乃 · Loi Ah, Cim Ziak Hi) by Loh Min Yu (MinYuOuO) & Joon Yu Xuan. Real-time bilingual AI guide (Wong Zi Song), Native PHP + MySQL ngram RAG, CosyVoice WebSocket streaming, 7-stop illustrated QR trail, Kivicube WebAR, and Zero-Trust K3s.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/senai.html">
+  <meta property="og:title" content="Traces of Senai · 寻迹士乃 | Conversational AI Heritage Tour · Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="Student-led Hakka heritage platform featuring AI Wong Zi Song (389 ms TTFT), Native MySQL FULLTEXT RAG over 139 oral-history records, 7-stop illustrated QR trail, and zero-install Kivicube WebAR.">
+  <meta property="og:image" content="https://minyu.my/src/assets/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-cerenkov selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <!-- Zero-CPU Background Grid -->
+  <div class="site-bg-pattern" aria-hidden="true"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Spine Waypoint Navigator (01 - 06) -->
+  <nav class="spine-waypoints" aria-label="Section Navigator">
+    <button type="button" class="spine-waypoint-node is-active" data-zone-target="senai-hero" aria-label="01: Overview">
+      <span class="spine-waypoint-tooltip">01 // Overview &amp; Telemetry</span>
+    </button>
+    <button type="button" class="spine-waypoint-node" data-zone-target="senai-transformation" aria-label="02: Physical & Digital">
+      <span class="spine-waypoint-tooltip">02 // Physical &amp; Digital</span>
+    </button>
+    <button type="button" class="spine-waypoint-node" data-zone-target="senai-ai-guide" aria-label="03: Trace Soul AI">
+      <span class="spine-waypoint-tooltip">03 // Trace Soul AI</span>
+    </button>
+    <button type="button" class="spine-waypoint-node" data-zone-target="senai-trail" aria-label="04: 7-Stop Map">
+      <span class="spine-waypoint-tooltip">04 // 7-Stop Trail</span>
+    </button>
+    <button type="button" class="spine-waypoint-node" data-zone-target="senai-architecture" aria-label="05: Architecture">
+      <span class="spine-waypoint-tooltip">05 // Architecture</span>
+    </button>
+    <button type="button" class="spine-waypoint-node" data-zone-target="senai-impact" aria-label="06: Field Impact">
+      <span class="spine-waypoint-tooltip">06 // Field Impact</span>
+    </button>
+  </nav>
+
+  <!-- Sticky Glass Navigation Header -->
+  <header class="glass-header">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+
+      <div class="flex items-center gap-4 sm:gap-6">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors hidden sm:inline-block">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-xl border border-theme-border hover:border-cerenkov transition-all text-theme-text-muted hover:text-cerenkov cursor-pointer" aria-label="Toggle Color Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="grow relative z-10">
+
+    <!-- ====================================================================
+         SECTION 1: HERO & SYSTEM TELEMETRY
+         ==================================================================== -->
+    <section id="senai-hero" class="min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-12 max-w-6xl mx-auto datum-track">
+      <div class="w-full senai-hero-inner">
+        <div class="senai-hero-copy mb-12">
+          <!-- Badges & Identity -->
+          <div class="hero-stagger flex flex-wrap items-center gap-2.5 mb-5">
+            <span class="font-mono text-[10px] uppercase font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full tracking-wider">
+              SYSTEM ARCHITECTURE #2 · PRODUCTION LIVE
+            </span>
+            <span class="font-mono text-[10px] uppercase font-bold text-theme-text-muted bg-theme-surface border border-theme-border px-3 py-1 rounded-full tracking-wider">
+              SOLE TECHNICAL ARCHITECT · 2-PERSON TEAM
+            </span>
+            <span class="font-mono text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full tracking-wider">
+              PROJECTS FOR HAPPINESS 2.0 · SEP – NOV 2026
+            </span>
+          </div>
+
+          <!-- Brand Lockup + Headline -->
+          <div class="hero-stagger flex flex-wrap items-center gap-4 mb-4">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/90 border border-theme-border p-1.5 flex items-center justify-center shadow-sm shrink-0">
+              <img src="/src/assets/docs/TracesOfSenai/logo.png" alt="Traces of Senai Official Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-theme-text leading-[1.08]">
+                Traces of Senai · 寻迹士乃
+              </h1>
+              <p class="font-mono text-xs sm:text-sm text-amber-600 dark:text-amber-400 font-semibold tracking-wide mt-1">
+                Loi Ah, Cim Ziak Hi · Kampung Baru Senai, Johor, Malaysia
+              </p>
+            </div>
+          </div>
+
+          <!-- Monospace Subheadline -->
+          <p class="hero-stagger text-base sm:text-xl font-mono text-cerenkov mb-5 font-medium max-w-4xl leading-relaxed">
+            Conversational bilingual AI heritage guide, 7-stop hand-illustrated QR trail, and zero-install Kivicube WebAR reconstructing Senai's Hakka pioneer history.
+          </p>
+
+          <!-- Narrative Paragraph -->
+          <p class="hero-stagger text-sm sm:text-base card-muted leading-relaxed max-w-4xl mb-8">
+            A student-led civic heritage initiative funded by <strong class="text-theme-text">Projects for Happiness 2.0</strong> (My Starfish Foundation &amp; MSEF) alongside <strong class="text-theme-text">Raffles University</strong>. Built by a 2-person core team—<strong class="text-theme-text">Loh Min Yu</strong> (Sole Technical Architect &amp; Full-Stack Engineer) and <strong class="text-theme-text">Joon Yu Xuan</strong> (Graphic Designer)—pairing physical Trace Packs with a real-time voice-to-voice AI elder (<strong class="text-theme-text">黄子松 / Wong Zi Song</strong>) grounded in 139 verified oral-history records.
+          </p>
+
+          <!-- Hero Action Controls -->
+          <div class="hero-stagger flex flex-wrap gap-3 sm:gap-4 items-center">
+            <a href="https://tracesofsenai.site/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <span>Launch Live Web App (tracesofsenai.site)</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4-Card Digital Metric Matrix -->
+        <div class="senai-hero-metrics grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Metric Card 1 -->
+          <div class="theme-card hero-metric-card p-5 rounded-2xl relative overflow-hidden group hover:border-cerenkov/50 hover:-translate-y-1 transition-all">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-mono card-muted uppercase tracking-wider">Voice Streaming TTFT</span>
+              <span class="w-2 h-2 rounded-full bg-cerenkov"></span>
+            </div>
+            <div class="text-xl sm:text-2xl font-bold font-mono text-cerenkov mb-1">389 ms Avg</div>
+            <p class="text-xs card-muted mb-3">Raw PHP TLS WebSocket streaming CosyVoice v3-flash audio chunks.</p>
+            <div class="font-mono text-[9px] text-cerenkov bg-cerenkov/10 border border-cerenkov/20 px-2 py-1 rounded inline-block">
+              TCP_NODELAY · CHUNKED MP3
+            </div>
+          </div>
+
+          <!-- Metric Card 2 -->
+          <div class="theme-card hero-metric-card p-5 rounded-2xl relative overflow-hidden group hover:border-cerenkov/50 hover:-translate-y-1 transition-all">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-mono card-muted uppercase tracking-wider">Zero-Vector-DB RAG</span>
+              <span class="w-2 h-2 rounded-full bg-cerenkov"></span>
+            </div>
+            <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text mb-1">139 Records</div>
+            <p class="text-xs card-muted mb-3">Native PHP + MySQL 8.4 ngram FULLTEXT weighted search with guardrails.</p>
+            <div class="font-mono text-[9px] text-cerenkov bg-cerenkov/10 border border-cerenkov/20 px-2 py-1 rounded inline-block">
+              WEIGHTS: 3.0× / 2.5× / 1.5×
+            </div>
+          </div>
+
+          <!-- Metric Card 3 -->
+          <div class="theme-card hero-metric-card p-5 rounded-2xl relative overflow-hidden group hover:border-cerenkov/50 hover:-translate-y-1 transition-all">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-mono card-muted uppercase tracking-wider">Unit AI Economics</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </div>
+            <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text mb-1">&lt; $0.0015 / user</div>
+            <p class="text-xs card-muted mb-3">DeepSeek KV-cached dual JSON; $4.30 USD total across dev + all live rounds.</p>
+            <div class="font-mono text-[9px] text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded inline-block">
+              &lt; RM 0.01 PER ACTIVE VISITOR
+            </div>
+          </div>
+
+          <!-- Metric Card 4 -->
+          <div class="theme-card hero-metric-card p-5 rounded-2xl relative overflow-hidden group hover:border-cerenkov/50 hover:-translate-y-1 transition-all">
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[10px] font-mono card-muted uppercase tracking-wider">Field Validation (76 Responses)</span>
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            </div>
+            <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text mb-1">4.47 / 5.00</div>
+            <p class="text-xs card-muted mb-3">Place Connection rating (92.1% positive) across 4 cross-generational cohorts.</p>
+            <div class="font-mono text-[9px] text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded inline-block">
+              PEAK 4.78/5 · PRIMARY STUDENTS
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: BRIDGING PHYSICAL & DIGITAL HERITAGE
+         ==================================================================== -->
+    <section id="senai-transformation" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="senai-section-head mb-12">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold block mb-2">// 02 · Hybrid Experience Architecture</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-theme-text mb-3">Bridging Physical &amp; Digital Heritage</h2>
+        <p class="text-sm sm:text-base card-muted max-w-3xl">
+          Traces of Senai pairs tactile on-site community exploration across Kampung Baru Senai with a zero-install web companion—linking physical landmarks, elders, and print craft to conversational AI and WebAR.
+        </p>
+        <div class="senai-divider-line mt-5 h-px w-full bg-gradient-to-r from-cerenkov/60 via-theme-border to-transparent origin-left"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- LEFT WING: PHYSICAL TRAIL -->
+        <div class="theme-card senai-wing-legacy p-6 sm:p-8 rounded-3xl border border-amber-500/30 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-theme-border">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold block">Physical World · Kampung Baru Senai</span>
+                <h3 class="text-lg sm:text-xl font-bold text-theme-text">On-Site Heritage Walk &amp; Craft</h3>
+              </div>
+            </div>
+          </div>
+
+          <ul class="space-y-4 text-xs sm:text-sm">
+            <li class="senai-compare-row p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+              <strong class="block text-theme-text font-semibold mb-1">Physical Trace Pack &amp; Journal</strong>
+              <span class="card-muted leading-relaxed">Collected at Stop 01 (<strong class="text-theme-text">Trace Station</strong>, paper sponsored by KPP-Antalis) so visitors can record their first impressions of Senai and collect stickers along the route.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+              <strong class="block text-theme-text font-semibold mb-1">7 Real-World Landmarks &amp; Physical QR Markers</strong>
+              <span class="card-muted leading-relaxed">Participants walk through Kong Hay Tong, Tong Le Theatre, 1909 Senai Railway, Senai River, and Old Street, scanning physical QR markers (<code class="font-mono">/scan/{qr_code_id}</code>) at each stop.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+              <strong class="block text-theme-text font-semibold mb-1">Hands-On Hakka Culinary Session</strong>
+              <span class="card-muted leading-relaxed">At Stop 07 (<strong class="text-theme-text">Hakka Flavors</strong>), local elders guide visitors step by step in making traditional Hakka <em>Lei Cha</em> (擂茶), <em>Muah Chee</em> (麻糍), and snacks.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+              <strong class="block text-theme-text font-semibold mb-1">The Physical Trace Wall</strong>
+              <span class="card-muted leading-relaxed">Concludes the trail as a shared community installation where participants pin written reflections comparing how they saw Senai before and after the walk.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT WING: DIGITAL COMPANION -->
+        <div class="theme-card senai-wing-modern p-6 sm:p-8 rounded-3xl border border-cerenkov/35 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-theme-border">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-cerenkov/10 border border-cerenkov/30 flex items-center justify-center text-cerenkov shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>
+                </svg>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block">Digital Layer · Zero-Install Web App</span>
+                <h3 class="text-lg sm:text-xl font-bold text-theme-text">Interactive AI Guide, Map &amp; WebAR</h3>
+              </div>
+            </div>
+          </div>
+
+          <ul class="space-y-4 text-xs sm:text-sm">
+            <li class="senai-compare-row p-3.5 rounded-xl bg-cerenkov/5 border border-cerenkov/20">
+              <strong class="block text-theme-text font-semibold mb-1">Bilingual Onboarding &amp; 4-Tier Audience Calibration</strong>
+              <span class="card-muted leading-relaxed">EN/ZH language switch, frictionless Google/Facebook/OTP/Guest login, and 4 audience profiles (Primary, Secondary, University, Public/Elders) that tune AI depth and tone.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-cerenkov/5 border border-cerenkov/20">
+              <strong class="block text-theme-text font-semibold mb-1">Hand-Illustrated Interactive Progress Map</strong>
+              <span class="card-muted leading-relaxed">Custom panoramic map tracking locked vs. completed hotspots as visitors scan each stop, paired with pre-recorded bilingual stop narrations.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-cerenkov/5 border border-cerenkov/20">
+              <strong class="block text-theme-text font-semibold mb-1">Trace Soul Voice-to-Voice AI (黄子松 / Wong Zi Song)</strong>
+              <span class="card-muted leading-relaxed">Push-to-talk Qwen FunASR + DeepSeek SSE + Hakka-phrased CosyVoice WebSocket audio (389 ms TTFT) grounded in 139 curated oral-history records via MySQL <code class="font-mono text-cerenkov">ngram FULLTEXT</code> RAG.</span>
+            </li>
+            <li class="senai-compare-row p-3.5 rounded-xl bg-cerenkov/5 border border-cerenkov/20">
+              <strong class="block text-theme-text font-semibold mb-1">Kivicube WebAR Spatial Overlays (Stops 3–6)</strong>
+              <span class="card-muted leading-relaxed">Browser-native fullscreen AR directly in Safari/Chrome reconstructing 1930s Tong Le Theatre, 1909 Senai Railway, Senai River life, and 1929–1939 Old Street.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: INTERACTIVE WONG ZI SONG (TRACE SOUL) SIMULATOR
+         ==================================================================== -->
+    <section id="senai-ai-guide" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="senai-section-head mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold block mb-2">// 03 · Conversational AI Persona &amp; Voice Pipeline</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-theme-text mb-3">Trace Soul · Interactive Wong Zi Song (黄子松) Simulator</h2>
+        <p class="text-sm sm:text-base card-muted max-w-3xl">
+          Modelled after Senai's real Hakka community leader who arrived alone at age 13 (~1894) and co-initiated SJK (C) Senai, Senai Chinese Chamber of Commerce, and Kong Hay Tong (1947). Test bilingual dual-output JSON (<code class="font-mono text-cerenkov">display_text</code> + Hakka <code class="font-mono text-cerenkov">tts_text</code>), audience tone adaptation, real MP3 voice clips, and MySQL <code class="font-mono">FULLTEXT</code> RAG grounding below.
+        </p>
+        <div class="senai-divider-line mt-5 h-px w-full bg-gradient-to-r from-cerenkov/60 via-theme-border to-transparent origin-left"></div>
+      </div>
+
+      <div class="theme-card senai-sim-card p-5 sm:p-8 rounded-3xl border border-cerenkov/30 relative overflow-hidden">
+        <!-- Top Control Strip: Language + Audience Tone -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b border-theme-border">
+          <!-- Language Toggle -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-wider card-muted mr-1">UI &amp; Display:</span>
+            <button type="button" data-sim-lang="en" class="sim-lang-btn px-3 py-1.5 rounded-lg font-mono text-xs font-semibold border border-cerenkov bg-cerenkov/15 text-cerenkov transition-all cursor-pointer" aria-pressed="true">
+              English
+            </button>
+            <button type="button" data-sim-lang="zh" class="sim-lang-btn px-3 py-1.5 rounded-lg font-mono text-xs font-semibold border border-theme-border card-muted hover:border-cerenkov hover:text-theme-text transition-all cursor-pointer" aria-pressed="false">
+              中文 (Simplified)
+            </button>
+          </div>
+
+          <!-- Audience Tone Selector -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-wider card-muted mr-1">Audience Tone:</span>
+            <button type="button" data-sim-audience="primary" class="sim-audience-btn px-2.5 py-1 rounded-lg font-mono text-[11px] border border-theme-border card-muted hover:border-cerenkov transition-all cursor-pointer" aria-pressed="false">
+              Primary
+            </button>
+            <button type="button" data-sim-audience="secondary" class="sim-audience-btn px-2.5 py-1 rounded-lg font-mono text-[11px] border border-theme-border card-muted hover:border-cerenkov transition-all cursor-pointer" aria-pressed="false">
+              Secondary
+            </button>
+            <button type="button" data-sim-audience="university" class="sim-audience-btn px-2.5 py-1 rounded-lg font-mono text-[11px] border border-cerenkov bg-cerenkov/15 text-cerenkov font-semibold transition-all cursor-pointer" aria-pressed="true">
+              University / Youth
+            </button>
+            <button type="button" data-sim-audience="public" class="sim-audience-btn px-2.5 py-1 rounded-lg font-mono text-[11px] border border-theme-border card-muted hover:border-cerenkov transition-all cursor-pointer" aria-pressed="false">
+              Public / Elders
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Simulator Grid -->
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <!-- Left Column: Animated Trace Soul Avatar + State Telemetry + Real Audio Player -->
+          <div class="lg:col-span-4 flex flex-col items-center text-center p-5 rounded-2xl bg-black/5 dark:bg-white/5 border border-theme-border">
+            <div class="relative w-44 h-44 sm:w-52 sm:h-52 rounded-2xl overflow-hidden border border-cerenkov/35 bg-gradient-to-b from-amber-500/15 via-cerenkov/10 to-transparent flex items-center justify-center mb-4">
+              <img id="sim-avatar-img"
+                   src="/src/assets/docs/TracesOfSenai/avatar-trace-soul.png"
+                   alt="Wong Zi Song Trace Soul Animated Avatar"
+                   class="w-full h-full object-contain p-2 transition-opacity duration-300">
+              <span id="sim-state-badge" class="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-theme-bg/90 border border-theme-border font-mono text-[10px] font-bold text-cerenkov backdrop-blur-sm">
+                <span id="sim-state-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span id="sim-state-text">STATE: IDLE</span>
+              </span>
+            </div>
+
+            <h3 class="text-lg font-bold text-theme-text">黄子松 · Wong Zi Song</h3>
+            <p class="font-mono text-[11px] card-muted mb-3">
+              5-State WebP Avatar · CosyVoice <code class="text-cerenkov">longlaobo_v3</code>
+            </p>
+
+            <!-- State Pill Visualizer -->
+            <div class="flex flex-wrap justify-center gap-1.5 mb-4 font-mono text-[9px]">
+              <span data-avatar-state-pill="idle" class="px-2 py-0.5 rounded bg-cerenkov/15 text-cerenkov border border-cerenkov/30 font-bold">idle</span>
+              <span data-avatar-state-pill="thinking" class="px-2 py-0.5 rounded bg-theme-bg card-muted border border-theme-border">thinking</span>
+              <span data-avatar-state-pill="speaking" class="px-2 py-0.5 rounded bg-theme-bg card-muted border border-theme-border">speaking</span>
+            </div>
+
+            <!-- Real Audio Narration Player -->
+            <div class="w-full p-3.5 rounded-xl bg-theme-bg border border-theme-border text-left">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="font-mono text-[10px] uppercase tracking-wider card-muted">Real Wong Zi Song Audio</span>
+                <div id="sim-waveform" class="flex items-end gap-0.5 h-3.5 senai-wave-paused" aria-hidden="true">
+                  <span class="senai-wave-bar w-0.5 h-full bg-cerenkov rounded-full"></span>
+                  <span class="senai-wave-bar w-0.5 h-full bg-cerenkov rounded-full"></span>
+                  <span class="senai-wave-bar w-0.5 h-full bg-cerenkov rounded-full"></span>
+                  <span class="senai-wave-bar w-0.5 h-full bg-cerenkov rounded-full"></span>
+                  <span class="senai-wave-bar w-0.5 h-full bg-cerenkov rounded-full"></span>
+                </div>
+              </div>
+              <button type="button" id="sim-audio-btn" class="w-full py-2 px-3 rounded-lg bg-cerenkov/10 hover:bg-cerenkov/20 border border-cerenkov/35 text-cerenkov font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer">
+                <svg id="sim-audio-play-icon" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="sim-audio-pause-icon" class="w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                <span id="sim-audio-label">Play Real Stop Audio (EN)</span>
+              </button>
+              <p id="sim-audio-meta" class="font-mono text-[10px] card-muted mt-2 truncate">
+                Track: en_stop2.mp3 · Kong Hay Tong
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Prompt Picker + Dual-Output JSON Stream + Collapsible RAG Peek -->
+          <div class="lg:col-span-8 space-y-5">
+            <!-- Clickable Prompt Chips -->
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider card-muted block mb-2.5">Select a Real Field Query to Simulate SSE + RAG Pipeline:</span>
+              <div id="sim-prompt-list" class="grid sm:grid-cols-2 gap-2.5">
+                <!-- Populated & hydrated by senai.js -->
+              </div>
+            </div>
+
+            <!-- Simulated Live Conversation Box -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-black/5 dark:bg-white/5 border border-theme-border space-y-4">
+              <!-- User Utterance -->
+              <div class="flex items-start gap-3">
+                <span class="px-2 py-0.5 rounded bg-theme-bg border border-theme-border font-mono text-[10px] font-bold text-cerenkov shrink-0 mt-0.5">USER</span>
+                <p id="sim-user-msg" class="text-xs sm:text-sm font-medium text-theme-text leading-relaxed"></p>
+              </div>
+
+              <!-- Dual Output 1: display_text -->
+              <div class="p-4 rounded-xl bg-cerenkov/10 border border-cerenkov/25">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="font-mono text-[10px] font-bold text-cerenkov uppercase tracking-wider">
+                    SSE JSON · display_text (On-Screen Transcript)
+                  </span>
+                  <span id="sim-audience-tag" class="font-mono text-[10px] card-muted">Tone: University / Youth</span>
+                </div>
+                <p id="sim-display-text" class="text-xs sm:text-sm text-theme-text leading-relaxed min-h-[clamp(4.5rem,9vh,6.5rem)]"></p>
+              </div>
+
+              <!-- Dual Output 2: Hakka tts_text -->
+              <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                  <span class="font-mono text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                    SSE JSON · tts_text (Hakka-Phrased Voice Synthesis Input)
+                  </span>
+                  <span class="font-mono text-[10px] card-muted">CosyVoice v3-flash · 389 ms TTFT</span>
+                </div>
+                <p id="sim-tts-text" class="font-mono text-xs text-theme-text leading-relaxed"></p>
+              </div>
+            </div>
+
+            <!-- Collapsible MySQL FULLTEXT RAG Source Match Peek -->
+            <div class="rounded-2xl border border-theme-border overflow-hidden">
+              <button type="button" id="sim-rag-toggle" class="w-full px-4 py-3 bg-theme-surface flex items-center justify-between text-left hover:bg-cerenkov/5 transition-colors cursor-pointer" aria-expanded="false">
+                <div class="flex items-center gap-2.5">
+                  <svg class="w-4 h-4 text-cerenkov shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 3.75v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+                  </svg>
+                  <span class="font-mono text-xs font-semibold text-theme-text">
+                    Inspect MySQL 8.4 <code class="text-cerenkov">ngram FULLTEXT</code> RAG Match &amp; Guardrail
+                  </span>
+                </div>
+                <span id="sim-rag-chevron" class="font-mono text-xs text-cerenkov transition-transform duration-200">+ Expand</span>
+              </button>
+
+              <div id="sim-rag-panel" class="hidden p-4 bg-black/5 dark:bg-white/5 border-t border-theme-border space-y-3 font-mono text-xs">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span id="sim-rag-id" class="px-2 py-0.5 rounded bg-cerenkov/15 text-cerenkov border border-cerenkov/30 font-bold"></span>
+                  <span id="sim-rag-score" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-bold"></span>
+                  <span class="card-muted text-[11px]">Parser: <code class="text-theme-text">WITH PARSER ngram</code></span>
+                </div>
+                <div>
+                  <span class="text-[10px] uppercase tracking-wider card-muted block mb-1">Expanded Chinese Query Groups (3.0× / 2.5× / 1.5×):</span>
+                  <p id="sim-rag-keywords" class="text-theme-text bg-theme-bg p-2.5 rounded-lg border border-theme-border"></p>
+                </div>
+                <div>
+                  <span class="text-[10px] uppercase tracking-wider text-rose-500 font-bold block mb-1">Enforced Anti-Hallucination Boundary ("Do Not Say"):</span>
+                  <p id="sim-rag-guardrail" class="card-muted bg-rose-500/5 p-2.5 rounded-lg border border-rose-500/20 leading-relaxed"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 4: INTERACTIVE 7-STOP ILLUSTRATED TRAIL EXPLORER
+         ==================================================================== -->
+    <section id="senai-trail" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="senai-section-head mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold block mb-2">// 04 · Custom Illustrated Map &amp; Physical QR Trail</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-theme-text mb-3">The 7 Physical Trail Stops &amp; Trace Wall</h2>
+        <p class="text-sm sm:text-base card-muted max-w-3xl">
+          Instead of a generic map API, visitors navigate <strong class="text-theme-text">Joon Yu Xuan's</strong> panoramic hand-illustrated map with percentage-mapped hotspots (<code class="font-mono text-cerenkov">map_x</code>, <code class="font-mono text-cerenkov">map_y</code>) unlocked on-site via physical QR codes (<code class="font-mono">/scan/{qr_code_id}</code>). Click any pin to explore its historical dossier, WebAR status, and real bilingual stop narration.
+        </p>
+        <div class="senai-divider-line mt-5 h-px w-full bg-gradient-to-r from-cerenkov/60 via-theme-border to-transparent origin-left"></div>
+      </div>
+
+      <!-- Panoramic Map Card -->
+      <div class="theme-card senai-map-card rounded-3xl overflow-hidden border border-theme-border mb-6">
+        <!-- Map Toolbar -->
+        <div class="px-4 sm:px-6 py-3.5 border-b border-theme-border flex flex-wrap items-center justify-between gap-3 bg-theme-surface/60">
+          <div class="flex items-center gap-2 font-mono text-xs">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            <span class="font-semibold text-theme-text">Panoramic Trail Map</span>
+            <span class="card-muted hidden sm:inline">· 8192×2395 Hand-Illustrated Canvas · Scroll or Select a Stop</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 font-mono text-[10px] px-2.5 py-1 rounded-full bg-cerenkov/10 text-cerenkov border border-cerenkov/25">
+              <span class="w-1.5 h-1.5 rounded-full bg-cerenkov"></span>
+              Stops 3–6: Kivicube WebAR
+            </span>
+            <button type="button" id="map-scroll-left" class="p-1.5 rounded-lg border border-theme-border hover:border-cerenkov text-theme-text transition-colors cursor-pointer" aria-label="Scroll Map Left">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" id="map-scroll-right" class="p-1.5 rounded-lg border border-theme-border hover:border-cerenkov text-theme-text transition-colors cursor-pointer" aria-label="Scroll Map Right">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Horizontal Scrollable Panoramic Map Viewport -->
+        <div id="senai-map-viewport" class="senai-map-viewport relative overflow-x-auto overflow-y-hidden bg-amber-950/10 select-none">
+          <div id="senai-map-stage" class="relative h-[clamp(18rem,40vh,25rem)] aspect-[3.42/1] mx-auto">
+            <img src="/src/assets/docs/TracesOfSenai/map-bg.webp"
+                 alt="Traces of Senai Hand-Illustrated 7-Stop Heritage Map by Joon Yu Xuan"
+                 loading="lazy"
+                 class="w-full h-full object-cover block pointer-events-none">
+
+            <!-- Connecting SVG Route Path matching real map_x / map_y coordinates -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <polyline
+                points="2.2,30 13.1,59 27.2,27 41.8,58 56.2,25 70.2,60.8 83.9,19.6"
+                fill="none"
+                stroke="#0284c7"
+                stroke-width="0.45"
+                stroke-dasharray="1.2 0.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                opacity="0.85" />
+            </svg>
+
+            <!-- Interactive Stop Pins Container (hydrated by senai.js with real StopSeeder coordinates) -->
+            <div id="senai-map-pins" class="absolute inset-0"></div>
+          </div>
+        </div>
+
+        <!-- 7-Stop Quick Selector Bar -->
+        <div id="senai-stop-pills" class="p-3 sm:p-4 border-t border-theme-border flex items-center gap-2 overflow-x-auto bg-theme-surface/40">
+          <!-- Populated by senai.js -->
+        </div>
+      </div>
+
+      <!-- Active Stop Dossier Card -->
+      <div id="senai-stop-dossier" class="theme-card p-5 sm:p-8 rounded-3xl border border-cerenkov/30">
+        <div class="grid md:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <!-- Left: Real Stop Artwork + Meta Badges -->
+          <div class="md:col-span-5">
+            <div class="relative rounded-2xl overflow-hidden border border-theme-border bg-black/5 dark:bg-white/5 aspect-[4/3]">
+              <img id="stop-dossier-img"
+                   src="/src/assets/docs/TracesOfSenai/stops/stop1-bg.png"
+                   alt="Active Trail Stop Illustration"
+                   class="w-full h-full object-cover transition-opacity duration-300">
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                <span id="stop-dossier-num" class="px-2.5 py-1 rounded-full bg-theme-bg/90 border border-theme-border font-mono text-[10px] font-bold text-cerenkov backdrop-blur-sm">STOP 01 / 07</span>
+                <span id="stop-dossier-ar" class="px-2.5 py-1 rounded-full bg-theme-bg/90 border border-theme-border font-mono text-[10px] font-bold backdrop-blur-sm"></span>
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-theme-bg/90 border border-theme-border backdrop-blur-sm font-mono text-[10px]">
+                <span id="stop-dossier-qr" class="text-theme-text font-semibold">/scan/trace-station</span>
+                <span id="stop-dossier-coords" class="card-muted">map_x: 2.2% · map_y: 30%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Historical Context + Real Wong Zi Song Stop Narration + Audio -->
+          <div class="md:col-span-7 space-y-4">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3 id="stop-dossier-title" class="text-2xl sm:text-3xl font-bold text-theme-text">Trace Station · 寻迹总站</h3>
+                <p id="stop-dossier-significance" class="text-xs sm:text-sm card-muted mt-1.5 leading-relaxed"></p>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button type="button" data-stop-lang="en" class="stop-lang-btn px-2.5 py-1 rounded-lg font-mono text-[11px] font-semibold border border-cerenkov bg-cerenkov/15 text-cerenkov cursor-pointer" aria-pressed="true">EN</button>
+                <button type="button" data-stop-lang="zh" class="stop-lang-btn px-2.5 py-1 rounded-lg font-mono text-[11px] font-semibold border border-theme-border card-muted hover:border-cerenkov cursor-pointer" aria-pressed="false">中文</button>
+              </div>
+            </div>
+
+            <!-- Real Scenario Context Script -->
+            <div class="p-4 rounded-2xl bg-black/5 dark:bg-white/5 border border-theme-border">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-2">
+                Wong Zi Song · On-Site Narration Script (<code class="font-mono">StopSeeder</code>)
+              </span>
+              <p id="stop-dossier-script" class="text-xs sm:text-sm text-theme-text leading-relaxed whitespace-pre-line"></p>
+            </div>
+
+            <!-- Embedded Real Audio Playback Bar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-cerenkov/10 border border-cerenkov/25">
+              <div class="flex items-center gap-3">
+                <button type="button" id="stop-audio-btn" class="w-10 h-10 rounded-xl bg-cerenkov text-white flex items-center justify-center shrink-0 hover:opacity-90 transition-opacity cursor-pointer" aria-label="Play Stop Audio Narration">
+                  <svg id="stop-audio-play-icon" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg id="stop-audio-pause-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <div>
+                  <span id="stop-audio-title" class="block font-mono text-xs font-bold text-theme-text">Listen to Stop 01 Narration (EN)</span>
+                  <span id="stop-audio-file" class="block font-mono text-[10px] card-muted">Real MP3: en_stop1.mp3</span>
+                </div>
+              </div>
+              <div id="stop-audio-progress-wrap" class="flex items-center gap-2 font-mono text-[10px] card-muted">
+                <span id="stop-audio-time">0:00 / 0:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 5: SYSTEM ARCHITECTURE & ENGINEERING BLUEPRINTS
+         ==================================================================== -->
+    <section id="senai-architecture" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="senai-section-head mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold block mb-2">// 05 · Systems Engineering &amp; Infrastructure</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-theme-text mb-3">Production Architecture &amp; Technical Blueprints</h2>
+        <p class="text-sm sm:text-base card-muted max-w-3xl">
+          Built on <strong class="text-theme-text">Laravel (PHP 8.3+/8.5) + Blade + Tailwind CSS v4 + Vite 8 + Turbo</strong>, MySQL 8.4, Redis, and hardened <strong class="text-theme-text">K3s + Cloudflare Zero Trust Tunnel</strong>. Switch tabs to inspect each subsystem schematic.
+        </p>
+        <div class="senai-divider-line mt-5 h-px w-full bg-gradient-to-r from-cerenkov/60 via-theme-border to-transparent origin-left"></div>
+      </div>
+
+      <!-- Architecture Tabs -->
+      <div class="flex flex-wrap gap-2.5 mb-6" role="tablist" aria-label="Architecture Blueprint Tabs">
+        <button type="button" data-arch-tab="rag" role="tab" aria-selected="true" class="arch-tab-btn px-4 py-2.5 rounded-xl font-mono text-xs font-semibold border border-cerenkov bg-cerenkov/15 text-cerenkov transition-all cursor-pointer">
+          01 // AI Voice &amp; MySQL ngram RAG
+        </button>
+        <button type="button" data-arch-tab="k3s" role="tab" aria-selected="false" class="arch-tab-btn px-4 py-2.5 rounded-xl font-mono text-xs font-semibold border border-theme-border card-muted hover:border-cerenkov hover:text-theme-text transition-all cursor-pointer">
+          02 // Zero-Trust Hybrid K3s + Cloudflare
+        </button>
+        <button type="button" data-arch-tab="webar" role="tab" aria-selected="false" class="arch-tab-btn px-4 py-2.5 rounded-xl font-mono text-xs font-semibold border border-theme-border card-muted hover:border-cerenkov hover:text-theme-text transition-all cursor-pointer">
+          03 // Kivicube WebAR &amp; QR Flow
+        </button>
+      </div>
+
+      <!-- Interactive Blueprint Drafting Stage -->
+      <div class="theme-card senai-arch-card rounded-3xl overflow-hidden border border-theme-border mb-10">
+        <div class="px-5 sm:px-6 py-4 border-b border-theme-border flex flex-wrap items-center justify-between gap-2 bg-theme-surface/60">
+          <div>
+            <span id="arch-title" class="font-mono text-xs sm:text-sm font-bold text-theme-text block"></span>
+            <span id="arch-subtitle" class="font-mono text-[11px] card-muted"></span>
+          </div>
+          <span id="arch-badge" class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-full bg-cerenkov/10 text-cerenkov border border-cerenkov/25"></span>
+        </div>
+
+        <!-- Crisp Responsive Vector Schematic Stage -->
+        <div id="arch-diagram-stage" class="p-4 sm:p-8 bg-black/[0.03] dark:bg-white/[0.02] overflow-x-auto">
+          <!-- Inline SVG schematic rendered by senai.js -->
+        </div>
+
+        <!-- Architectural Specs Strip -->
+        <div id="arch-specs-grid" class="p-5 sm:p-6 border-t border-theme-border grid sm:grid-cols-3 gap-4">
+          <!-- Populated by senai.js -->
+        </div>
+      </div>
+
+      <!-- Top 3 Engineering Challenges Solved -->
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="theme-card senai-challenge-card p-6 rounded-2xl border border-theme-border">
+          <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-2">Challenge 01 // Retrieval &amp; Cost</span>
+          <h3 class="text-base font-bold text-theme-text mb-2">Zero-Vector-DB Bilingual RAG</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Replaced a planned Node.js microservice with Native PHP + MySQL 8.4 <code class="font-mono text-cerenkov">ngram FULLTEXT</code> weighted scoring (<code class="font-mono">3.0×/2.5×/1.5×</code>) plus LLM query expansion and strict historical guardrails—eliminating vector DB hosting while keeping LLM spend under <strong class="text-theme-text">$0.0015/user</strong>.
+          </p>
+        </div>
+
+        <div class="theme-card senai-challenge-card p-6 rounded-2xl border border-theme-border">
+          <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-2">Challenge 02 // Mobile Audio Latency</span>
+          <h3 class="text-base font-bold text-theme-text mb-2">389 ms WebSocket Streaming &amp; iOS Unlock</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Engineered a raw PHP TLS WebSocket client (<code class="font-mono text-cerenkov">TCP_NODELAY</code>) piping CosyVoice audio chunks directly to browsers, paired with an interaction-driven iOS Safari autoplay unlock and a 3-tier failover service benchmarked against local 60 MB Piper VITS (<code class="font-mono">wong_zi_song.onnx</code>).
+          </p>
+        </div>
+
+        <div class="theme-card senai-challenge-card p-6 rounded-2xl border border-theme-border">
+          <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-2">Challenge 03 // Security Hardening</span>
+          <h3 class="text-base font-bold text-theme-text mb-2">Zero-Trust Hybrid K3s Migration</h3>
+          <p class="text-xs card-muted leading-relaxed">
+            Hardened the deployment into a self-hosted K3s cluster keeping MySQL 8.4 private over WireGuard Flannel, routing all traffic via outbound-only <strong class="text-theme-text">Cloudflare Zero Trust Tunnels</strong> with non-root <code class="font-mono">seccompProfile</code> pods, HSTS, and Kivicube-safe CSP headers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 6: FIELD VALIDATION, COMMUNITY IMPACT, PARTNERS & PRESS
+         ==================================================================== -->
+    <section id="senai-impact" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="senai-section-head mb-12">
+        <span class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold block mb-2">// 06 · Field Validation &amp; Recognition</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-theme-text mb-3">Real-World Rollout Outcomes (76 Survey Responses)</h2>
+        <p class="text-sm sm:text-base card-muted max-w-3xl">
+          Validated across 4 live cohorts spanning ages &lt;12 to 50 between September and October 2026 (<strong class="text-theme-text">76 participant survey responses</strong>).
+        </p>
+        <div class="senai-divider-line mt-5 h-px w-full bg-gradient-to-r from-cerenkov/60 via-theme-border to-transparent origin-left"></div>
+      </div>
+
+      <!-- 4 Live Rollout Cohort Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div class="theme-card senai-impact-card p-5 rounded-2xl">
+          <span class="font-mono text-[10px] uppercase text-cerenkov font-bold block mb-1">Round 1 · 5 Sep 2026</span>
+          <h3 class="text-base font-bold text-theme-text">Foon Yew High School</h3>
+          <div class="font-mono text-2xl font-bold text-theme-text my-2">31 responses</div>
+          <p class="text-xs card-muted">Secondary school pilot cohort; surfaced route pacing insights refined in later rounds.</p>
+        </div>
+
+        <div class="theme-card senai-impact-card p-5 rounded-2xl">
+          <span class="font-mono text-[10px] uppercase text-cerenkov font-bold block mb-1">Round 2 · 12 Sep 2026</span>
+          <h3 class="text-base font-bold text-theme-text">SJK (C) Senai</h3>
+          <div class="font-mono text-2xl font-bold text-amber-600 dark:text-amber-400 my-2">9 · 4.78/5</div>
+          <p class="text-xs card-muted">Primary students (under 12) achieved the highest Place Connection score across all groups.</p>
+        </div>
+
+        <div class="theme-card senai-impact-card p-5 rounded-2xl">
+          <span class="font-mono text-[10px] uppercase text-cerenkov font-bold block mb-1">Round 3 · 19 Sep 2026</span>
+          <h3 class="text-base font-bold text-theme-text">Raffles University</h3>
+          <div class="font-mono text-2xl font-bold text-theme-text my-2">24 responses</div>
+          <p class="text-xs card-muted">University youth cohort evaluating AI Q&amp;A depth and WebAR old-vs-new spatial overlays.</p>
+        </div>
+
+        <div class="theme-card senai-impact-card p-5 rounded-2xl">
+          <span class="font-mono text-[10px] uppercase text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Cohort 4 · Oct 2026</span>
+          <h3 class="text-base font-bold text-theme-text">Public Self-Guided</h3>
+          <div class="font-mono text-2xl font-bold text-emerald-600 dark:text-emerald-400 my-2">12 · 4.67/5</div>
+          <p class="text-xs card-muted">Mid-Autumn community families &amp; adults; top ratings for Enjoyability &amp; Route Pacing.</p>
+        </div>
+      </div>
+
+      <!-- Survey Likert Bars -->
+      <div id="senai-telemetry-card" class="theme-card senai-impact-card p-6 sm:p-8 rounded-3xl mb-10">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block">5-Point Likert Evaluation</span>
+            <h3 class="text-lg sm:text-xl font-bold text-theme-text">Participant Experience Telemetry</h3>
+          </div>
+          <span class="font-mono text-xs px-2.5 py-1 rounded-full bg-cerenkov/10 text-cerenkov border border-cerenkov/25 font-semibold">76 Responses</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-5">
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">Place Connection to Senai</span>
+              <span class="font-mono font-bold text-cerenkov">4.47 / 5.00 <span class="card-muted font-normal">(92.1% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-cerenkov origin-left" data-target-width="89.4%"></div>
+            </div>
+          </div>
+
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">Hakka Food Experience (Lei Cha &amp; Muah Chee)</span>
+              <span class="font-mono font-bold text-cerenkov">4.46 / 5.00 <span class="card-muted font-normal">(93.4% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-cerenkov origin-left" data-target-width="89.2%"></div>
+            </div>
+          </div>
+
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">Overall Enjoyability</span>
+              <span class="font-mono font-bold text-cerenkov">4.41 / 5.00 <span class="card-muted font-normal">(88.2% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-cerenkov origin-left" data-target-width="88.2%"></div>
+            </div>
+          </div>
+
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">AI Guide (Trace Soul) Helpfulness</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">4.22 / 5.00 <span class="card-muted font-normal">(89.5% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-amber-500 origin-left" data-target-width="84.4%"></div>
+            </div>
+          </div>
+
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">Kivicube WebAR Experience (Stops 3–6)</span>
+              <span class="font-mono font-bold text-amber-600 dark:text-amber-400">4.12 / 5.00 <span class="card-muted font-normal">(82.9% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-amber-500 origin-left" data-target-width="82.4%"></div>
+            </div>
+          </div>
+
+          <div class="senai-metric-bar-row">
+            <div class="flex justify-between items-baseline text-xs mb-1.5">
+              <span class="font-semibold text-theme-text">Route Timing &amp; Pacing (3.32 R1 → 4.67 Public)</span>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">3.99 / 5.00 <span class="card-muted font-normal">(73.7% ≥ 4)</span></span>
+            </div>
+            <div class="h-2 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+              <div class="senai-likert-fill h-full rounded-full bg-emerald-500 origin-left" data-target-width="79.8%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Participant Quotes -->
+      <div class="mb-12">
+        <h3 class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold mb-4">// Verified Participant Voices</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <blockquote class="theme-card senai-quote-card p-5 rounded-2xl flex flex-col justify-between">
+            <p class="text-xs sm:text-sm text-theme-text leading-relaxed italic mb-4">
+              "Trace Soul. At first I thought the AI would just be a gimmick, but after using it, it was actually really convenient to ask whatever I was curious about."
+            </p>
+            <footer class="font-mono text-[10px] card-muted uppercase tracking-wider">— Raffles University Student</footer>
+          </blockquote>
+
+          <blockquote class="theme-card senai-quote-card p-5 rounded-2xl flex flex-col justify-between">
+            <p class="text-xs sm:text-sm text-theme-text leading-relaxed italic mb-4">
+              "The AI is really unique — like ChatGPT, but Senai's own ChatGPT."
+            </p>
+            <footer class="font-mono text-[10px] card-muted uppercase tracking-wider">— Public Self-Guided Participant</footer>
+          </blockquote>
+
+          <blockquote class="theme-card senai-quote-card p-5 rounded-2xl flex flex-col justify-between">
+            <p class="text-xs sm:text-sm text-theme-text leading-relaxed italic mb-4">
+              "Seeing the old and current Senai together [in AR] made it easier to imagine how the place changed."
+            </p>
+            <footer class="font-mono text-[10px] card-muted uppercase tracking-wider">— Raffles University Student</footer>
+          </blockquote>
+
+          <blockquote class="theme-card senai-quote-card p-5 rounded-2xl flex flex-col justify-between md:col-span-1">
+            <p class="text-xs sm:text-sm text-theme-text leading-relaxed italic mb-4">
+              "Talking to AI Grandpa, because I could ask him questions."
+            </p>
+            <footer class="font-mono text-[10px] card-muted uppercase tracking-wider">— SJK (C) Senai Student (&lt;12)</footer>
+          </blockquote>
+
+          <blockquote class="theme-card senai-quote-card p-5 rounded-2xl flex flex-col justify-between md:col-span-2">
+            <p class="text-xs sm:text-sm text-theme-text leading-relaxed italic mb-4">
+              "The AI Q&amp;A was the most engaging — my child kept thinking through answers on their own to collect all the stickers."
+            </p>
+            <footer class="font-mono text-[10px] card-muted uppercase tracking-wider">— Parent, Public Self-Guided Mid-Autumn Event</footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Core Team + Sponsors / Partners -->
+      <div id="senai-team-card" class="theme-card senai-impact-card p-6 sm:p-8 rounded-3xl mb-10">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <!-- 2-Person Core Team -->
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-2">Core 2-Person Team</span>
+            <h3 class="text-xl font-bold text-theme-text mb-4">Engineering Meets Visual Storytelling</h3>
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border">
+                <div class="font-bold text-sm text-theme-text">Loh Min Yu</div>
+                <div class="font-mono text-[11px] text-cerenkov">Developer · Sole Technical Architect &amp; Full-Stack Engineer</div>
+                <p class="text-xs card-muted mt-1">Laravel/Blade backend, MySQL ngram RAG, DeepSeek/FunASR/CosyVoice streaming, Kivicube WebAR embedding, and K3s/Cloudflare DevOps.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-black/5 dark:bg-white/5 border border-theme-border">
+                <div class="font-bold text-sm text-theme-text">Joon Yu Xuan</div>
+                <div class="font-mono text-[11px] text-amber-600 dark:text-amber-400">Graphic Designer · Brand, Map &amp; Trace Pack</div>
+                <p class="text-xs card-muted mt-1">Hand-illustrated panoramic trail map, Wong Zi Song character art &amp; animations, stop visuals, and physical Trace Pack journal design.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Official Partners & Sponsors Logos -->
+          <div class="lg:col-span-7">
+            <span class="font-mono text-[10px] uppercase tracking-wider card-muted font-bold block mb-3">Supported &amp; Sponsored By</span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/raffles.svg" alt="Raffles University" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Supported By</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/my-starfish.webp" alt="My Starfish Foundation" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Sponsored By</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/project-happiness.webp" alt="Projects for Happiness 2.0" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Grant Program</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/msef.webp" alt="MSEF" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Sponsored By</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/leo.svg" alt="Leo Club" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Advisory Sponsor</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white border border-theme-border flex flex-col items-center justify-center gap-2 text-center">
+                <img src="/src/assets/docs/TracesOfSenai/partners/antalis.svg" alt="KPP-Antalis" loading="lazy" class="h-10 w-auto object-contain">
+                <span class="font-mono text-[9px] text-neutral-600 uppercase">Paper Sponsor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Press & Official Grant Recognition -->
+      <div class="mb-14">
+        <h3 class="font-mono text-xs uppercase tracking-widest text-cerenkov font-bold mb-4">// Press &amp; Official Grant Recognition</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="https://johor.sinchew.com.my/news/20260919/johor/7857270" target="_blank" rel="noopener noreferrer" class="theme-card senai-press-card p-5 rounded-2xl group hover:border-cerenkov/50 hover:-translate-y-1 transition-all flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-1.5">Sin Chew Daily · 星洲日报</span>
+              <h4 class="text-sm font-bold text-theme-text group-hover:text-cerenkov transition-colors mb-2">Johor Regional Heritage Feature</h4>
+              <p class="text-xs card-muted leading-relaxed">Coverage of the Traces of Senai live community rollout in Johor (19 Sep 2026).</p>
+            </div>
+            <span class="font-mono text-[11px] text-cerenkov font-semibold mt-4 inline-flex items-center gap-1">Read Article ↗</span>
+          </a>
+
+          <a href="https://www.utusan.com.my/terkini/2026/11/geran-rm110000-sokong-21-projek-komuniti-mahasiswa-upnm/" target="_blank" rel="noopener noreferrer" class="theme-card senai-press-card p-5 rounded-2xl group hover:border-cerenkov/50 hover:-translate-y-1 transition-all flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-cerenkov font-bold block mb-1.5">Utusan Malaysia</span>
+              <h4 class="text-sm font-bold text-theme-text group-hover:text-cerenkov transition-colors mb-2">RM110,000 Youth Community Grant</h4>
+              <p class="text-xs card-muted leading-relaxed">National news highlighting the 21 university student community projects supported by the grant (Nov 2026).</p>
+            </div>
+            <span class="font-mono text-[11px] text-cerenkov font-semibold mt-4 inline-flex items-center gap-1">Read Article ↗</span>
+          </a>
+
+          <a href="https://raffles-university.edu.my/starfish-happiness-project/" target="_blank" rel="noopener noreferrer" class="theme-card senai-press-card p-5 rounded-2xl group hover:border-cerenkov/50 hover:-translate-y-1 transition-all flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold block mb-1.5">Raffles University</span>
+              <h4 class="text-sm font-bold text-theme-text group-hover:text-cerenkov transition-colors mb-2">Starfish Happiness Project Spotlight</h4>
+              <p class="text-xs card-muted leading-relaxed">Official institutional feature highlighting the student-led cultural preservation initiative.</p>
+            </div>
+            <span class="font-mono text-[11px] text-cerenkov font-semibold mt-4 inline-flex items-center gap-1">View Feature ↗</span>
+          </a>
+
+          <a href="https://mystarfishfoundation.org.my/projects-for-happiness/projects/221/loi-ah-cim-ziak-hi" target="_blank" rel="noopener noreferrer" class="theme-card senai-press-card p-5 rounded-2xl group hover:border-cerenkov/50 hover:-translate-y-1 transition-all flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-bold block mb-1.5">My Starfish Foundation</span>
+              <h4 class="text-sm font-bold text-theme-text group-hover:text-cerenkov transition-colors mb-2">Grant Registry #221 · Loi Ah, Cim Ziak Hi</h4>
+              <p class="text-xs card-muted leading-relaxed">Official Projects for Happiness 2.0 funded project page documenting Traces of Senai.</p>
+            </div>
+            <span class="font-mono text-[11px] text-cerenkov font-semibold mt-4 inline-flex items-center gap-1">View Registry ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Direct Live Production Action Strip -->
+      <div class="theme-card p-8 sm:p-10 rounded-3xl text-center mb-14 border-2 border-cerenkov/35">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-cerenkov font-bold block mb-2">Production Live · Cloudflare Zero Trust Tunnel</span>
+        <h3 class="text-2xl sm:text-3xl font-bold text-theme-text mb-2">Experience Senai's Living Heritage</h3>
+        <p class="text-sm card-muted max-w-xl mx-auto mb-6">
+          Explore the deployed web application, talk to AI Wong Zi Song, and walk the 7-stop illustrated trail live on the web.
+        </p>
+        <a href="https://tracesofsenai.site/" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-3 px-8">
+          <span>Launch Live Web App (tracesofsenai.site) ↗</span>
+        </a>
+      </div>
+
+      <!-- Subpage Navigation -->
+      <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+        <a href="/pages/prms.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          ← Previous: PRMS Architecture
+        </a>
+        <div class="text-right">
+          <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Next Dedicated Showcase</span>
+          <a href="/pages/jiuxi.html" class="text-sm sm:text-base font-bold text-theme-text hover:text-cerenkov transition-colors">
+            JiuXi Mindscape (Voice AI Avatar) →
+          </a>
+        </div>
+      </nav>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto relative z-10">
+    <div class="container mx-auto px-6 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dedicated Traces of Senai Interactive & Choreography Script -->
+  <script type="module" src="/src/script/senai.js"></script>
+</body>
+
+</html>

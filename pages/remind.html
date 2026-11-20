@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReMind Mobile Relationship Manager | Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="ReMind local-first minimalist offline personal relationship manager and mobile architecture by Loh Min Yu (MinYuOuO) · Lightoxy.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/remind.html">
+  <meta property="og:title" content="ReMind Mobile Relationship Manager | Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="Privacy-first, offline-first personal relationship manager helping users securely store friend details and contact logs on-device.">
+  <meta property="og:image" content="https://minyu.my/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-emerald-500 selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <div class="site-bg-pattern"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="glass-header">
+    <div class="container mx-auto flex justify-between items-center max-w-6xl px-6 py-4">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="flex items-center gap-5">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-1.5 rounded-lg border border-theme-border card-muted hover:text-cerenkov hover:border-cerenkov transition-all" aria-label="Toggle Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl grow">
+
+    <!-- 1. HEADER -->
+    <header class="mb-14">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="font-mono text-[10px] uppercase font-bold text-cerenkov bg-cerenkov/10 border border-cerenkov/30 px-3 py-1 rounded-full tracking-wider">
+          MOBILE SYSTEMS & DATA PRIVACY
+        </span>
+        <span class="font-mono text-xs card-muted">
+          Mobile Application · Software Engineering Project
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-theme-text mb-4 leading-tight">
+        ReMind — Mobile Relationship Manager
+      </h1>
+
+      <p class="text-base sm:text-xl font-mono text-cerenkov mb-6 font-medium max-w-3xl">
+        Privacy-first, offline-first personal relationship manager helping users securely store friend details and contact logs on-device.
+      </p>
+
+      <p class="text-sm sm:text-base card-muted leading-relaxed max-w-3xl mb-8">
+        Designed for users seeking radical privacy and seamless personal interaction tracking. Built with Ionic, Angular, and Capacitor, ReMind persists 100% of user data locally inside an on-device SQLite database, guaranteeing complete data sovereignty and instantaneous interactions with zero cloud telemetry.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#blueprints" class="btn-primary">
+          <span>Inspect System Blueprints ↓</span>
+        </a>
+        <a href="#slides" class="btn-secondary">
+          <span>View Engineering Deck ↓</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. SYSTEM FOCUS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Framework</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">Ionic + Angular</div>
+        <p class="text-xs card-muted mt-1">Cross-platform mobile UI</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Native Bridge</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-cerenkov">Capacitor</div>
+        <p class="text-xs card-muted mt-1">Hardware & storage bridge</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Database Engine</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">SQLite</div>
+        <p class="text-xs card-muted mt-1">Ionic Storage local engine</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Privacy Model</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">Offline-First</div>
+        <p class="text-xs card-muted mt-1">Zero cloud telemetry required</p>
+      </div>
+    </section>
+
+    <!-- 3. PROJECT BLUEPRINTS & WORK BREAKDOWN -->
+    <section id="blueprints" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Project Engineering</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Project Governance & Blueprints</h2>
+        </div>
+        <p class="text-xs font-mono card-muted">
+          Click tabs below to inspect project management artifacts.
+        </p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap gap-2 mb-4" id="remind-tabs">
+        <button type="button" data-index="0" class="remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg bg-cerenkov text-white font-bold transition-all">
+          Project Charter
+        </button>
+        <button type="button" data-index="1" class="remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all">
+          Work Breakdown Structure (WBS)
+        </button>
+        <button type="button" data-index="2" class="remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all">
+          Organizational Structure
+        </button>
+        <button type="button" data-index="3" class="remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all">
+          Use Case Diagram
+        </button>
+      </div>
+
+      <!-- Display Frame -->
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <div class="flex justify-between items-center pb-3 mb-4 border-b border-theme-border font-mono text-xs">
+          <span id="remind-title" class="font-bold text-cerenkov">ReMind Official Project Charter</span>
+          <a id="remind-fullscreen" href="/src/assets/docs/ReMind/PM ReMind Project Charter.png" target="_blank" class="text-cerenkov hover:underline font-semibold">
+            View Full Size ↗
+          </a>
+        </div>
+        <div class="w-full flex items-center justify-center min-h-[420px] bg-black/5 dark:bg-black/30 rounded-xl overflow-hidden p-2">
+          <img id="remind-img" 
+               src="/src/assets/docs/ReMind/PM ReMind Project Charter.png" 
+               alt="ReMind Project Charter" 
+               class="w-full h-auto max-h-[600px] object-contain rounded-lg cursor-zoom-in shadow-md transition-opacity duration-200">
+        </div>
+        <p id="remind-desc" class="text-xs card-muted mt-3 font-mono">
+          Project charter delineating scope baseline, key stakeholders, critical deliverables, and milestone deadlines.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. EMBEDDED PROJECT PRESENTATION -->
+    <section id="slides" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// System Presentation</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">ReMind Engineering Pitch Deck</h2>
+        </div>
+        <a href="/src/assets/docs/ReMind/ProjectReMind_PPT_V2_20251124.pdf" target="_blank" class="font-mono text-xs text-cerenkov hover:underline font-semibold">
+          Open PDF in Full Screen ↗
+        </a>
+      </div>
+
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <div class="w-full h-[520px] rounded-xl overflow-hidden border border-theme-border shadow-inner bg-black/5">
+          <iframe src="/src/assets/docs/ReMind/ProjectReMind_PPT_V2_20251124.pdf#view=FitH" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subpage Navigation -->
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+      <a href="/pages/colorella.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+        ← Previous: Colorella Ticketing
+      </a>
+      <div class="text-right">
+        <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Next Dedicated Showcase</span>
+        <a href="/pages/telco-churn.html" class="text-sm sm:text-base font-bold text-theme-text hover:text-cerenkov transition-colors">
+          Telecom Churn Analytics →
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Modular Client Script -->
+  <script type="module" src="/src/script/main.js"></script>
+
+  <!-- Interactive Blueprint Switcher Script -->
+  <script>
+    const remindDiagrams = [
+      {
+        title: "ReMind Official Project Charter",
+        url: "/src/assets/docs/ReMind/PM ReMind Project Charter.png",
+        desc: "Project charter delineating scope baseline, key stakeholders, critical deliverables, and milestone deadlines."
+      },
+      {
+        title: "Work Breakdown Structure (WBS v1)",
+        url: "/src/assets/docs/ReMind/Project ReMind Work Breakdown Structure v1.png",
+        desc: "Hierarchical decomposition of engineering packages covering local database layer, PWA service worker, UI components, and test automation."
+      },
+      {
+        title: "Project Organization & Resource Matrix",
+        url: "/src/assets/docs/ReMind/Project ReMind Structure Organizational Chart v1.png",
+        desc: "Team structure, technical role allocations, and escalation paths ensuring agile sprint delivery."
+      },
+      {
+        title: "System Use Case Diagram",
+        url: "/src/assets/docs/ReMind/Diagrams-Use Case.drawio.png",
+        desc: "Comprehensive behavioral model defining offline habit streak computation, task categorization, and local export/import."
+      }
+    ];
+
+    function setupRemindTabs() {
+      const tabButtons = document.querySelectorAll('.remind-tab-btn');
+      const img = document.getElementById('remind-img');
+      const title = document.getElementById('remind-title');
+      const desc = document.getElementById('remind-desc');
+      const fullLink = document.getElementById('remind-fullscreen');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const index = parseInt(btn.getAttribute('data-index'), 10);
+          const diag = remindDiagrams[index];
+          if (!diag) return;
+
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = diag.url;
+            img.alt = diag.title;
+            title.textContent = diag.title;
+            desc.textContent = diag.desc;
+            fullLink.href = diag.url;
+            img.style.opacity = '1';
+          }, 150);
+
+          tabButtons.forEach((b, i) => {
+            if (i === index) {
+              b.className = "remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg bg-cerenkov text-white font-bold transition-all";
+            } else {
+              b.className = "remind-tab-btn px-3.5 py-1.5 font-mono text-xs rounded-lg border border-theme-border card-muted hover:border-cerenkov transition-all";
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupRemindTabs);
+    } else {
+      setupRemindTabs();
+    }
+  </script>
+</body>
+
+</html>

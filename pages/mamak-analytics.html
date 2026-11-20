@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamak Eateries Spatial Analytics | Loh Min Yu · Lightoxy</title>
+  <meta name="description" content="Mamak eateries geospatial analytics, pricing intelligence, and PowerBI dashboard by Loh Min Yu (MinYuOuO) · Lightoxy.">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://minyu.my/pages/mamak-analytics.html">
+  <meta property="og:title" content="Mamak Eateries Spatial Analytics | Loh Min Yu · Lightoxy">
+  <meta property="og:description" content="Geospatial distribution, cross-regional menu pricing variance, and density clustering across Malaysian urban centers.">
+  <meta property="og:image" content="https://minyu.my/preview-card.png">
+
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" href="/favicon.svg">
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</head>
+
+<body class="bg-theme-bg text-theme-text selection:bg-orange-500 selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+  <div class="site-bg-pattern"></div>
+
+  <!-- The Architectural Guide Spine -->
+  <div class="spine-track" aria-hidden="true">
+    <div id="spine-progress" class="spine-progress-filament"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="glass-header">
+    <div class="container mx-auto flex justify-between items-center max-w-6xl px-6 py-4">
+      <a href="/index.html#projects" class="inline-flex items-center gap-2 font-mono text-xs text-cerenkov group hover:underline font-semibold">
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Return to Portfolio</span>
+      </a>
+      <div class="flex items-center gap-5">
+        <a href="/pages/archives.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+          All Systems Archive
+        </a>
+        <button id="theme-toggle" class="p-1.5 rounded-lg border border-theme-border card-muted hover:text-cerenkov hover:border-cerenkov transition-all" aria-label="Toggle Theme">
+          <svg class="sun-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl grow">
+
+    <!-- 1. HEADER -->
+    <header class="mb-14">
+      <div class="flex flex-wrap items-center gap-2.5 mb-4">
+        <span class="font-mono text-[10px] uppercase font-bold text-cerenkov bg-cerenkov/10 border border-cerenkov/30 px-3 py-1 rounded-full tracking-wider">
+          GEOSPATIAL ANALYTICS & BI
+        </span>
+        <span class="font-mono text-xs card-muted">
+          Cultural Food Economy · PowerBI Spatial Intelligence
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-theme-text mb-4 leading-tight">
+        Mamak Eateries Spatial Analytics
+      </h1>
+
+      <p class="text-base sm:text-xl font-mono text-cerenkov mb-6 font-medium max-w-3xl">
+        Geospatial distribution, cross-regional menu pricing variance, and density clustering across Malaysian urban centers.
+      </p>
+
+      <p class="text-sm sm:text-base card-muted leading-relaxed max-w-3xl mb-8">
+        An empirical study combining Python web scraping, GIS geocoding, and interactive PowerBI visualizations to evaluate pricing dynamics, density clustering, and consumer accessibility of Malaysia’s iconic Mamak food establishments.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#powerbi-dashboard" class="btn-primary">
+          <span>Inspect PowerBI Dashboard ↓</span>
+        </a>
+        <a href="#research-poster" class="btn-secondary">
+          <span>View Research Poster (PDF) ↓</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 2. METRICS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Spatial Density</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-cerenkov">K-Means</div>
+        <p class="text-xs card-muted mt-1">Geographic clustering</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Pricing Variance</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">±28.4%</div>
+        <p class="text-xs card-muted mt-1">Urban vs. suburban spread</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Toolchain</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">PowerBI</div>
+        <p class="text-xs card-muted mt-1">Python ETL + DAX</p>
+      </div>
+      <div class="theme-card p-5 rounded-2xl">
+        <span class="block text-[10px] font-mono card-muted uppercase tracking-wider mb-1">Data Pipeline</span>
+        <div class="text-xl sm:text-2xl font-bold font-mono text-theme-text">Automated</div>
+        <p class="text-xs card-muted mt-1">Geocoded coordinates</p>
+      </div>
+    </section>
+
+    <!-- 3. POWERBI DASHBOARD SHOWCASE -->
+    <section id="powerbi-dashboard" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Analytics Dashboard</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Interactive PowerBI Visualizations</h2>
+        </div>
+        <a href="/src/assets/docs/MamakEateries/PowerBI Mamak Eateries.png" target="_blank" class="font-mono text-xs text-cerenkov hover:underline font-semibold">
+          View Full Image ↗
+        </a>
+      </div>
+
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <a href="/src/assets/docs/MamakEateries/PowerBI Mamak Eateries.png" target="_blank" class="block cursor-zoom-in group">
+          <img src="/src/assets/docs/MamakEateries/PowerBI Mamak Eateries.png" 
+               alt="PowerBI Mamak Eateries Dashboard" 
+               class="w-full h-auto max-h-[580px] object-contain rounded-xl mx-auto shadow-md">
+          <span class="block text-center font-mono text-xs text-cerenkov group-hover:underline mt-3">
+            ↗ Click dashboard to view full resolution maps, price dispersion charts, and correlation matrices
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. RESEARCH POSTER PDF -->
+    <section id="research-poster" class="mb-20 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6 border-b border-theme-border pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-cerenkov block mb-1">// Research Deliverable</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-theme-text">Final Analytics Research Poster</h2>
+        </div>
+        <a href="/src/assets/docs/MamakEateries/Data Analytics Final Project Poster.pdf" target="_blank" class="font-mono text-xs text-cerenkov hover:underline font-semibold">
+          Open PDF in Full Screen ↗
+        </a>
+      </div>
+
+      <div class="theme-card rounded-2xl p-4 sm:p-6">
+        <div class="w-full h-[540px] rounded-xl overflow-hidden border border-theme-border shadow-inner bg-black/5">
+          <iframe src="/src/assets/docs/MamakEateries/Data Analytics Final Project Poster.pdf#view=FitH" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subpage Navigation -->
+    <nav class="flex flex-col sm:flex-row justify-between items-center py-8 border-t border-theme-border gap-4">
+      <a href="/pages/telco-churn.html" class="font-mono text-xs card-muted hover:text-cerenkov transition-colors">
+        ← Previous: Telecom Churn Analytics
+      </a>
+      <div class="text-right">
+        <span class="block font-mono text-[10px] card-muted uppercase tracking-wider mb-0.5">Explore All</span>
+        <a href="/pages/archives.html" class="text-sm sm:text-base font-bold text-cerenkov hover:underline transition-colors">
+          Project Archives (20 Systems) →
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="py-8 border-t border-theme-border bg-black/5 dark:bg-white/5 mt-auto">
+    <div class="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono card-muted">
+      <p>© 2026 Loh Min Yu (MinYuOuO) · Lightoxy.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/MinYuOuO" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/min-yu-loh/" target="_blank" rel="noopener noreferrer" class="hover:text-cerenkov transition-colors">LinkedIn ↗</a>
+        <a href="/pages/archives.html" class="text-cerenkov hover:underline">All Archives</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Modular Client Script -->
+  <script type="module" src="/src/script/main.js"></script>
+</body>
+
+</html>
